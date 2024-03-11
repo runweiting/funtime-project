@@ -15,7 +15,7 @@ const baseRoutes = [
         name: "home",
         component: () => import("../views/UserHome.vue"),
         meta: {
-          title: "UNIQLOLO 網路旗艦店",
+          title: "funtime 聖經企劃",
         },
       },
       {
@@ -23,7 +23,15 @@ const baseRoutes = [
         name: "products",
         component: () => import("../views/UserProducts.vue"),
         meta: {
-          title: "商品列表",
+          title: "企劃排名",
+        },
+      },
+      {
+        path: "articles",
+        name: "articles",
+        component: () => import("../views/UserArticles.vue"),
+        meta: {
+          title: "聖經趣聞",
         },
       },
       {
@@ -31,7 +39,7 @@ const baseRoutes = [
         name: "productInfo",
         component: () => import("../views/UserProductInfo.vue"),
         meta: {
-          title: "單一商品介紹",
+          title: "企劃介紹",
         },
       },
       {
