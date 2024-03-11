@@ -1,6 +1,6 @@
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-5 m-6">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-5 m-3 m-md-6">
             <div class="container p-5">
                 <a class="navbar-brand mb-0 fs-2 fw-bold" href="index.html">funtime</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
