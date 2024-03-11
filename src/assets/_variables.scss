@@ -311,9 +311,9 @@ $dark: $gray-900 !default;
 // scss-docs-start theme-colors-map
 $theme-colors: (
   "primary": #6637ED,  // custom
-  "secondary": $secondary,
+  "secondary": #54FA80,  // custom
   "success": $success,
-  "info": $info,
+  "info": #FFDD82,  // custom
   "warning": $warning,
   "danger": $danger,
   "light": $light,
@@ -426,6 +426,18 @@ $spacers: (
   10: $spacer * 2.5,
   11: $spacer * 2.75,
   12: $spacer * 3,
+  13: $spacer * 3.25,
+  14: $spacer * 3.5,
+  15: $spacer * 3.75,
+  16: $spacer * 4,
+  17: $spacer * 4.25,
+  18: $spacer * 4.5,
+  19: $spacer * 4.75,
+  20: $spacer * 5,
+  25: $spacer * 6.25,
+  30: $spacer * 7.5,
+  35: $spacer * 8.75,
+  40: $spacer * 10,
 ) !default;
 // scss-docs-end spacer-variables-maps
 
