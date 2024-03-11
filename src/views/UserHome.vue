@@ -1,6 +1,19 @@
 <template>
-    <div class="container" data-aos="fade-up">
-        <h1 class="pt-5 text-center">WELCOME UNIQLOLO 網路旗艦店</h1>
+    <div class="container p-10" data-aos="fade-up">
+        <div class="row">
+            <div class="col col-lg-6 col-xl-4">
+                <img src="../../public/dazzle-woman-stands-with-her-back-with-a-magnifying-glass.png" alt="home-png-left" class="object-fit-cover img-fluid">
+            </div>
+            <div class="col col-lg-6 col-xl-4 d-flex flex-column justify-content-center align-items-center gap-2">
+                <h1 class="display-2 pt-5 fw-bold">funtime</h1>
+                <h2 class="fs-2 fw-bold">讓有趣的聖經企劃發生</h2>
+                <h5>和你一起探索信仰的美好</h5>
+                <RouterLink :to="{ name: 'products' }" class="btn btn-primary">探索企劃</RouterLink>
+            </div>
+            <div class="d-none col-xl-4 d-xl-block text-end">
+                <img src="../../public/dazzle-man-getting-ready-for-arm-wrestling.png" class="object-fit-cover img-fluid">
+            </div>
+        </div>
     </div>
     <div class="container position-relative" style="height: 100vh;">
         <div class="row">

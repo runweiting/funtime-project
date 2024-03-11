@@ -69,6 +69,7 @@
                         <span>Copyright ©2023 whatisfuntime</span>
                         <span>All rights reserved.</span>
                         <span>隱私權政策</span>
+                        <span>Illustration by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA" class="text-white">Icons 8</a> from <a href="https://icons8.com/illustrations" class="text-white">Ouch!</a></span>
                     </small>
                     <div class="d-flex align-items-center gap-6 fs-5 text-white">
                         <i class="bi bi-line"></i>
