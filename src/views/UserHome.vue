@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-10" data-aos="fade-up">
+    <div class="container py-10" data-aos="fade-up">
         <div class="row">
             <div class="col col-lg-6 col-xl-4">
                 <img src="../../public/dazzle-woman-stands-with-her-back-with-a-magnifying-glass.png" alt="home-png-left" class="object-fit-cover img-fluid">
@@ -7,7 +7,7 @@
             <div class="col col-lg-6 col-xl-4 d-flex flex-column justify-content-center align-items-center gap-2">
                 <h1 class="display-2 pt-5 fw-bold">funtime</h1>
                 <h2 class="fs-2 fw-bold">讓有趣的聖經企劃發生</h2>
-                <h5>和你一起探索信仰的美好</h5>
+                <h5 class="d-none d-md-block">和你一起探索信仰的美好</h5>
                 <RouterLink :to="{ name: 'products' }" class="btn btn-primary">探索企劃</RouterLink>
             </div>
             <div class="d-none col-xl-4 d-xl-block text-end">
