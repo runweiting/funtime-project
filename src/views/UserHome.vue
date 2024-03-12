@@ -79,7 +79,7 @@
     </div>
     <!-- how -->
     <div class="container pt-10 px-5 pt-md-20" data-aos="fade-up">
-        <div class="row row-cols-1 g-1 row-cols-md-2 g-4 my-3 my-lg-6">
+        <div class="row row-cols-1 g-1 row-cols-md-2 my-3 my-lg-6">
             <div class="col d-flex flex-column justify-content-center text-center text-md-start">
                 <h3 class="fw-bold">你的支持</h3>
                 <h2 class="display-6 fw-bold">讓有價值的企劃得以實現</h2>
@@ -227,6 +227,103 @@
             </div>
         </div>
     </div>
+    <!-- 最新企劃 -->
+    <div class="bg-light rounded-5 m-3 m-md-6">
+        <div class="container px-5 p-10 p-md-20" data-aos="fade-up">
+            <div class="row my-3 my-lg-6">
+                <div class="col p-0 p-md-3">
+                    <div class="d-flex flex-column flex-md-row align-items-baseline gap-2">
+                        <h2 class="fw-bold mb-0">What's news?</h2>
+                        <h3 class="fw-bold mb-0">最新企劃</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+                <div class="col p-0 p-md-3">
+                    <div class="card h-100 shadow-sm ">
+                        <a href="#" class="stretched-link">
+                            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame1">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">《走入創世記》A Walk Through Genesis</h5>
+                            <p class="card-text mb-8">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="progress" style="width: 85%;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                    </div>
+                                </div>
+                                <small class="text-primary">75%</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="fst-italic fw-bold">目標 500 組 / 累計 50 組</small>
+                                <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
+                                    <span>20 <i class="bi bi-heart-fill"></i>
+                                    </span>
+                                    <span>20 <i class="bi bi-chat-fill"></i>
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col p-0 p-md-3">
+                    <div class="card h-100 shadow-sm ">
+                        <a href="#" class="stretched-link">
+                            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame2">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">《走入創世記》A Walk Through Genesis</h5>
+                            <p class="card-text mb-8">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="progress" style="width: 85%;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                    </div>
+                                </div>
+                                <small class="text-primary">75%</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="fst-italic fw-bold">目標 500 組 / 累計 50 組</small>
+                                <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
+                                    <span>20 <i class="bi bi-heart-fill"></i>
+                                    </span>
+                                    <span>20 <i class="bi bi-chat-fill"></i>
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col p-0 p-md-3">
+                    <div class="card h-100 shadow-sm ">
+                        <a href="#" class="stretched-link">
+                            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame3">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">《走入創世記》A Walk Through Genesis</h5>
+                            <p class="card-text mb-8">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="progress" style="width: 85%;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                    </div>
+                                </div>
+                                <small class="text-primary">75%</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="fst-italic fw-bold">目標 500 組 / 累計 50 組</small>
+                                <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
+                                    <span>20 <i class="bi bi-heart-fill"></i>
+                                    </span>
+                                    <span>20 <i class="bi bi-chat-fill"></i>
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

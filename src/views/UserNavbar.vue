@@ -47,7 +47,7 @@
         <router-view></router-view>
     </main>
     <footer>
-        <div class="bg-primary rounded-5 m-6 p-5">
+        <div class="bg-primary rounded-5 m-3 p-5">
             <div class="container">
                 <nav class="navbar navbar-dark">
                     <div class="d-flex flex-column flex-md-row align-items-md-center">
