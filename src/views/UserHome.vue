@@ -5,9 +5,9 @@
             <div class="col col-lg-6 col-xl-4">
                 <img src="../../public/dazzle-woman-stands-with-her-back-with-a-magnifying-glass.png" alt="home-png-left" class="object-fit-cover img-fluid">
             </div>
-            <div class="col col-lg-6 col-xl-4 d-flex flex-column justify-content-center align-items-center gap-2 text-center text-md-start">
-                <h1 class="display-2 pt-5 fw-bold">funtime</h1>
-                <h2 class="fs-2 fw-bold">讓有趣的聖經企劃發生</h2>
+            <div class="col col-lg-6 col-xl-4 d-flex flex-column justify-content-center align-items-center gap-2 text-center">
+                <h1 class="display-1 pt-5 fw-bold">funtime</h1>
+                <h2 class="display-6 fw-bold">讓有趣的聖經企劃發生</h2>
                 <h5 class="d-none d-md-block">和你一起探索信仰的美好</h5>
                 <RouterLink :to="{ name: 'products' }" class="btn btn-primary">探索企劃</RouterLink>
             </div>
@@ -16,61 +16,67 @@
             </div>
         </div>
     </div>
-    <div class="container bg-secondary rounded-5 my-3 my-lg-6 px-10 px-lg-30 py-10 py-lg-20" data-aos="fade-up">
-        <div class="d-flex flex-column flex-md-row justify-content-md-between">
-            <div class="d-flex flex-column justify-content-center text-center text-md-start">
-                <h2 class="fw-bold mb-5">funtime是什麼?</h2>
-                <h5 class="responsive-lh-ls">
-                    <strong>funtime</strong>是一個預購 / 集資平台。<br>
-                    發佈各種好玩有趣的創意企劃，<br>
-                    歡迎每一位喜歡讀聖經的人們！
-                </h5>
-            </div>
-            <div class="text-center text-md-end">
-                <img src="../../public/bouncy-open-book-glasses-and-stars.gif" class="object-fit-cover img-fluid">
-            </div>
-        </div>
-    </div>
-    <div class="container my-3 my-lg-6 px-10 px-lg-30 py-10 py-lg-20" data-aos="fade-up">
-        <div class="row text-center mb-10">
-            <div class="col">
-                <h4 class="fw-bold">總覺得</h4>
-                <h2 class="fw-bold">認識聖經可以更有趣？</h2>
-            </div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 g-8">
-            <div class="col">
-                <div class="card h-100 rounded-5 border border-info border-10 p-10">
-                    <div style="height: 182px;">
-                        <img src="../../public/dazzle-man-with-light-bulb-generating-ideas.png" class="card-img-top object-fit-cover">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">發現聖經的智慧</h5>
-                    </div>
+    <!-- introduction: what -->
+    <div class="m-3 my-lg-6">
+        <div class="container bg-secondary rounded-5 pt-10 px-5 p-md-20" data-aos="fade-up">
+            <div class="row row-cols-1 g-1 row-cols-md-2 g-4">
+                <div class="col d-flex flex-column justify-content-center text-center text-md-start">
+                    <h2 class="fw-bold mb-5">funtime 是什麼?</h2>
+                    <h5 class="responsive-lh-ls">
+                        <strong>funtime</strong> 是一個預購集資平台，<br class="d-md-none d-xl-block">發佈各種好玩有趣的創意企劃，<br class="d-md-none d-xl-block">
+                        歡迎每一位喜歡讀聖經的人們！
+                    </h5>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 rounded-5 border border-info border-10 p-10">
-                    <div class="d-flex justify-content-center align-items-center" style="height: 182px">
-                        <img src="../../public/dazzle-two-books-with-a-bookmark.gif" class="card-img-top object-fit-cover w-50">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">認識聖經歷史地理</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 rounded-5 border border-info border-10 p-10">
-                    <div style="height: 182px;">
-                        <img src="../../public/dazzle-success.gif" class="card-img-top object-fit-cover">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">一起學習聖經故事</h5>
+                <div class="col">
+                    <div class="text-center">
+                        <img src="../../public/bouncy-open-book-glasses-and-stars.gif" class="object-fit-cover img-fluid" style="max-height: 290px;">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- introduction: why -->
+    <div class="container my-3 my-lg-6 p-10 p-lg-20" data-aos="fade-up">
+        <div class="row mb-10 text-center">
+            <div class="col">
+                <h3 class="fw-bold">總覺得</h3>
+                <h2 class="display-6 fw-bold">認識聖經可以更有趣？</h2>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-xl-3 g-10 text-center">
+            <div class="col">
+                <div class="card h-100 rounded-5 border border-info border-10 p-5 p-md-10">
+                    <div class="overflow-hidden" style="height: 182px;">
+                        <img src="../../public/dazzle-man-with-light-bulb-generating-ideas.png" class="object-fit-cover img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">想要發現聖經的智慧</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 rounded-5 border border-info border-10 p-10">
+                    <div class="d-flex justify-content-center align-items-center" style="min-height: 182px">
+                        <img src="../../public/dazzle-two-books-with-a-bookmark.gif" class="object-fit-cover w-50">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">更多認識當時歷史和地理</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 rounded-5 border border-info border-10  p-5 p-md-10">
+                    <div class="overflow-hidden" style="height: 182px;">
+                        <img src="../../public/dazzle-success.gif" class="object-fit-cover img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">一起學習聖經的真理</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- introduction: how -->
     <div class="container position-relative" style="height: 100vh;">
         <div class="row">
             <div class="col">
@@ -190,11 +196,8 @@ export default {
     border-width: 10px !important;
 }
 /* line-height */
-@media (min-width: 992px) {
-    /* 992px 以上 */
-    .responsive-lh-ls {
+.responsive-lh-ls {
         line-height: 1.6;
         letter-spacing: 1.5px;
     }
-}
 </style>
