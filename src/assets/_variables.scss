@@ -313,9 +313,10 @@ $theme-colors: (
   "primary": #6637ED,  // custom
   "secondary": #54FA80,  // custom
   "success": $success,
-  "info": #FFDD82,  // custom
+  "info-light": #FFDD82,  // custom
+  "info": #FF9B13,  // custom 
   "warning": $warning,
-  "danger": $danger,
+  "danger": #FF4662,  // custom
   "light": $light,
   "dark": $dark,
 ) !default;

@@ -15,9 +15,12 @@
                             </RouterLink>
                         </li>
                         <li class="nav-item">
-                        <!-- RouterLink 生成路由連結，編譯後轉為 <a>，to 代表要進入的路由 -->
                             <RouterLink 
                             :to="{ name: 'products' }" class="nav-link text-decoration-none">{{ $t('menu.products') }}</RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink 
+                            :to="{ name: 'activities' }" class="nav-link text-decoration-none">{{ $t('menu.activities') }}</RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink 

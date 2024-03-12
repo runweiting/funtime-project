@@ -35,8 +35,9 @@
             </div>
         </div>
     </div>
-    <!-- introduction: why -->
-    <div class="container my-3 my-lg-6 p-10 p-lg-20" data-aos="fade-up">
+    <!-- proposal: why, how -->
+    <!-- why -->
+    <div class="container my-3 my-lg-6 pt-10 pt-lg-20" data-aos="fade-up">
         <div class="row mb-10 text-center">
             <div class="col">
                 <h3 class="fw-bold">總覺得</h3>
@@ -45,7 +46,7 @@
         </div>
         <div class="row row-cols-1 row-cols-xl-3 g-10 text-center">
             <div class="col">
-                <div class="card h-100 rounded-5 border border-info border-10 p-5 p-md-10">
+                <div class="card h-100 rounded-5 border border-info-light border-10 p-5 p-md-10">
                     <div class="overflow-hidden" style="height: 182px;">
                         <img src="../../public/dazzle-man-with-light-bulb-generating-ideas.png" class="object-fit-cover img-fluid">
                     </div>
@@ -55,17 +56,17 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100 rounded-5 border border-info border-10 p-10">
-                    <div class="d-flex justify-content-center align-items-center" style="min-height: 182px">
+                <div class="card h-100 rounded-5 border border-info-light border-10  p-5 p-md-10">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 182px">
                         <img src="../../public/dazzle-two-books-with-a-bookmark.gif" class="object-fit-cover w-50">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">更多認識當時歷史和地理</h5>
+                        <h5 class="card-title">更多認識歷史和地理</h5>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card h-100 rounded-5 border border-info border-10  p-5 p-md-10">
+                <div class="card h-100 rounded-5 border border-info-light border-10  p-5 p-md-10">
                     <div class="overflow-hidden" style="height: 182px;">
                         <img src="../../public/dazzle-success.gif" class="object-fit-cover img-fluid">
                     </div>
@@ -76,7 +77,161 @@
             </div>
         </div>
     </div>
-    <!-- introduction: how -->
+    <!-- how -->
+    <div class="container pt-10 px-5 pt-md-20" data-aos="fade-up">
+        <div class="row row-cols-1 g-1 row-cols-md-2 g-4 my-3 my-lg-6">
+            <div class="col d-flex flex-column justify-content-center text-center text-md-start">
+                <h3 class="fw-bold">你的支持</h3>
+                <h2 class="display-6 fw-bold">讓有價值的企劃得以實現</h2>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <img src="../../public/dazzle-girl-sitting-on-a-box-and-choosing-products-in-online-shop.gif" class="object-fit-cover img-fluid" style="max-height: 290px;">
+                </div>
+            </div>
+        </div>
+        <div class="row d-none d-md-block">
+            <div class="col rounded-5 border border-secondary border-10 pt-15">
+                <ol class="list-unstyled d-flex justify-content-center mb-0">
+                    <li class="d-flex g-xl-2 p-xl-5 text-center">
+                        <div class="d-flex flex-column align-items-center me-xl-6">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-people-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">參與試玩</h5>
+                            <h6>讓我們知道<br>你的想法</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                    <li class="d-flex g-xl-2 p-xl-5 text-center">
+                        <div class="d-flex flex-column align-items-center me-xl-6">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-bag-check-fill  fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">加入預購</h5>
+                            <h6>立即登記<br>享有優惠價</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                    <li class="d-flex g-xl-2 p-xl-5 text-center">
+                        <div class="d-flex flex-column align-items-center me-xl-6">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-buildings-fill  fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">集資成功</h5>
+                            <h6>即啟動生產<br>依約定完成</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                    <li class="d-flex g-xl-2 p-xl-5 text-center">
+                        <div class="d-flex flex-column align-items-center me-xl-6">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">通知付款</h5>
+                            <h6>通知結帳<br>完成付款</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                    <li class="d-flex g-xl-2 p-xl-5 text-center">
+                        <div class="d-flex flex-column align-items-center me-xl-6">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">出貨</h5>
+                            <h6>確認款項<br>依序出貨</h6>
+                        </div>
+                    </li>
+                </ol>
+                <div class="p-15 text-center">
+                    <RouterLink :to="{ name: 'activities' }" class="btn btn-primary btn-lg me-10 w-25">參與試玩</RouterLink>
+                    <RouterLink :to="{ name: 'products' }" class="btn btn-primary btn-lg w-25">探索企劃</RouterLink>
+                </div>
+            </div>
+        </div>
+        <div class="row d-md-none">
+            <div class="col rounded-5 border border-secondary border-10 p-10">
+                <ol class="list-unstyled d-flex justify-content-center mb-5">
+                    <li class="d-flex text-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-people-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">參與<br class="d-sm-none">試玩</h5>
+                            <h6 class="d-none d-sm-block">讓我們知道<br>你的想法</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 40px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                    <li class="d-flex text-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-bag-check-fill  fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">加入<br class="d-sm-none">預購</h5>
+                            <h6 class="d-none d-sm-block">立即登記<br>享有優惠價</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 40px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                    <li class="d-flex text-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-buildings-fill  fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">集資<br class="d-sm-none">成功</h5>
+                            <h6 class="d-none d-sm-block">即啟動生產<br>依約定完成</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 40px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                </ol>
+                <ol class="list-unstyled d-flex justify-content-center mb-5">
+                    <li class="d-flex text-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">通知<br class="d-sm-none">付款</h5>
+                            <h6 class="d-none d-sm-block">通知結帳<br>完成付款</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center" style="width: 40px; height: 50px;">
+                            <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                        </div>
+                    </li>
+                    <li class="d-flex text-center">
+                        <div class="d-flex flex-column align-items-center me-5">
+                            <div class="bg-info text-white rounded-circle position-relative mb-5" style="width: 50px; height: 50px;">
+                                <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h5 class="fw-bold">出貨</h5>
+                            <h6 class="d-none d-sm-block">確認款項<br>依序出貨</h6>
+                        </div>
+                    </li>
+                </ol>
+                <div class="d-flex justify-content-center">
+                    <RouterLink :to="{ name: 'activities' }" class="btn btn-primary w-50 me-4">參與試玩</RouterLink>
+                    <RouterLink :to="{ name: 'products' }" class="btn btn-primary w-50">探索企劃</RouterLink>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <div class="container position-relative" style="height: 100vh;">
         <div class="row">
             <div class="col">
@@ -197,7 +352,7 @@ export default {
 }
 /* line-height */
 .responsive-lh-ls {
-        line-height: 1.6;
-        letter-spacing: 1.5px;
-    }
+    line-height: 1.6;
+    letter-spacing: 1.5px;
+}
 </style>

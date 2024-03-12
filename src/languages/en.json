@@ -1,6 +1,7 @@
 {
     "menu.home": "Home",
     "menu.products": "Products",
+    "menu.activity": "Activities",
     "menu.articles": "Blogs",
     "menu.cart": "Cart",
     "menu.login": "Login"

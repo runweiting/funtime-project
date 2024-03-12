@@ -27,6 +27,14 @@ const baseRoutes = [
         },
       },
       {
+        path: "activities",
+        name: "activities",
+        component: () => import("../views/UserActivities.vue"),
+        meta: {
+          title: "試玩活動",
+        },
+      },
+      {
         path: "articles",
         name: "articles",
         component: () => import("../views/UserArticles.vue"),
@@ -122,7 +130,6 @@ const adminRoutes = [
     ],
   },
 ];
-
 // 3. 建立 VueRouter 實體物件
 const router = createRouter({
   // 網址路徑模式：使用 URL Hash(#錨點)
