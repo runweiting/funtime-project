@@ -22,10 +22,10 @@
     <div class="m-3 m-lg-6">
         <div class="container bg-secondary rounded-5 p-10 p-md-30" data-aos="fade-up">
             <div class="row row-cols-1 g-1 row-cols-md-2 g-4">
-                <div class="col d-flex flex-column justify-content-center text-center text-md-start">
+                <div class="col d-flex flex-column justify-content-center text-sm-center text-md-start">
                     <h2 class="fw-bold mb-5">funtime 是什麼?</h2>
                     <h5 class="responsive-lh-ls">
-                        <strong>funtime</strong> 是一個預購集資平台，<br class="d-md-none d-xl-block">發佈各種好玩有趣的創意企劃，<br class="d-md-none d-xl-block">
+                        <strong>funtime</strong> 是一個預購集資平台，<br class="d-md-none d-xl-block d-414-none">發佈各種好玩有趣的創意企劃，<br class="d-md-none d-xl-block d-414-none">
                         歡迎每一位喜歡讀聖經的人們！
                     </h5>
                 </div>
@@ -108,7 +108,7 @@
                                     <i class="bi bi-people-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">參與<br class="d-sm-block d-md-none">試玩</h5>
-                                <h6 class="d-none d-md-block">讓我們知道<br>你的想法</h6>
+                                <h6 class="d-none d-md-block fw-normal">讓我們知道<br>你的想法</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
                                 <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
@@ -120,10 +120,10 @@
                                     <i class="bi bi-bag-check-fill  fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">加入<br class="d-sm-block d-md-none">預購</h5>
-                                <h6 class="d-none d-md-block">立即登記<br>享有優惠價</h6>
+                                <h6 class="d-none d-md-block fw-normal">立即登記<br>享有優惠價</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
-                                <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                                <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
                             </div>
                         </li>
                         <li class="d-flex g-xl-2 px-xl-5 text-center">
@@ -132,10 +132,10 @@
                                     <i class="bi bi-buildings-fill  fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">集資<br class="d-sm-block d-md-none">成功</h5>
-                                <h6 class="d-none d-md-block">即啟動生產<br>依約定完成</h6>
+                                <h6 class="d-none d-md-block fw-normal">即啟動生產<br>依約定完成</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
-                                <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                                <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
                             </div>
                         </li>
                         <li class="d-flex g-xl-2 px-xl-5 text-center">
@@ -144,10 +144,10 @@
                                     <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">通知<br class="d-sm-block d-md-none">付款</h5>
-                                <h6 class="d-none d-md-block">通知結帳<br>完成付款</h6>
+                                <h6 class="d-none d-md-block fw-normal">通知結帳<br>完成付款</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
-                                <i class="bi bi-arrow-right-short text-black fs-1"></i>
+                                <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
                             </div>
                         </li>
                         <li class="d-flex g-xl-2 px-xl-5 text-center">
@@ -156,7 +156,7 @@
                                     <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">出貨</h5>
-                                <h6 class="d-none d-md-block">確認款項<br>依序出貨</h6>
+                                <h6 class="d-none d-md-block fw-normal">確認款項<br>依序出貨</h6>
                             </div>
                         </li>
                     </ol>
@@ -480,7 +480,7 @@
                         </li>
                         <li class="accordion-item bg-transparent">
                             <!-- button 可以呼叫 collapse，呼叫的目標是 #collapse1 -->
-                            <button class="accordion-button collapsed d-block px-3 px-xl-5 py-6 py-xl-8 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed d-block px-3 px-xl-5 py-6 py-xl-8 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapseOne">
                             <!-- 標題 -->
                             <h2 class="accordion-header row fs-4 text-dark fw-medium align-items-center">
                                 <span class="col-10 px-0 px-xl-3">
@@ -493,7 +493,7 @@
                                 </span>
                             </h2>
                             <!-- 隱藏內容 -->
-                            <div id="collapse1" class="accordion-collapse collapse row" data-bs-parent="#accordionFAQ">
+                            <div id="collapse2" class="accordion-collapse collapse row" data-bs-parent="#accordionFAQ">
                                 <!-- 和標題一樣寬 -->
                                 <div class="col px-0 col-xl-9 px-xl-3">
                                 <p class="accordion-body text-dark mt-2 mb-0 p-0">
@@ -505,7 +505,7 @@
                         </li>
                         <li class="accordion-item bg-transparent">
                             <!-- button 可以呼叫 collapse，呼叫的目標是 #collapse1 -->
-                            <button class="accordion-button collapsed d-block px-3 px-xl-5 py-6 py-xl-8 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed d-block px-3 px-xl-5 py-6 py-xl-8 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapseOne">
                             <!-- 標題 -->
                             <h2 class="accordion-header row fs-4 text-dark fw-medium align-items-center">
                                 <span class="col-10 px-0 px-xl-3">
@@ -518,7 +518,7 @@
                                 </span>
                             </h2>
                             <!-- 隱藏內容 -->
-                            <div id="collapse1" class="accordion-collapse collapse row" data-bs-parent="#accordionFAQ">
+                            <div id="collapse3" class="accordion-collapse collapse row" data-bs-parent="#accordionFAQ">
                                 <!-- 和標題一樣寬 -->
                                 <div class="col px-0 col-xl-9 px-xl-3">
                                 <p class="accordion-body text-dark mt-2 mb-0 p-0">
@@ -600,27 +600,11 @@ export default {
     line-height: 1.6;
     letter-spacing: 1.5px;
 }
-/* shake */
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-}
-.shake {
-    animation: shake 0.5s ease infinite;
-}
-/* rotate */
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(10deg); }
-    50% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
-    100% { transform: rotate(0deg); }
-}
-.rotate {
-    animation: rotate 2s linear infinite;
+.d-414-none {
+    @media (max-width: 414px) {
+        display: none;
+        
+    }
 }
 /* pulse */
 @-webkit-keyframes hvr-pulse {
@@ -703,33 +687,33 @@ export default {
 }
 /* progress-chart */
 .icon-area {
-    width: 50px;
-    height: 50px;
-    @media (max-width: 375px) {
-        width: 35px;
-        height: 35px;
+    width: 35px;
+    height: 35px;
+    @media (min-width: 576px) {
+        width: 50px;
+        height: 50px;
     }
-    @media(min-width: 992px) {
+    @media (min-width: 992px) {
         width: 85px;
         height: 85px;
     }
 }
-.icon {
-    @media (max-width: 375px) {
-        font-size: 16px;
-    }
-    @media(min-width: 992px) {
-        font-size: 32px !important;
-    }
-}
 .icon-title {
-    @media (max-width: 375px) {
-        font-size: 16px;
+    font-size: 16px;
+    @media (min-width: 768px) {
+        font-size: 20px;
     }
-    @media(min-width: 992px) {
-        font-size: 24px !important;
+    @media (min-width: 992px) {
+        font-size: 24px;
     }
 }
+.icon {
+    font-size: 16px;
+    @media (min-width: 992px) {
+        font-size: 32px;
+    }
+}
+
 /* accordion-button */
 .accordion-button {
     border-bottom: 3px dotted white;
