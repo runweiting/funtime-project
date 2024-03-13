@@ -47,8 +47,8 @@
         <router-view></router-view>
     </main>
     <footer>
-        <div class="bg-primary rounded-5 m-3 p-5">
-            <div class="container">
+        <div class="bg-primary rounded-5 m-3 m-md-6">
+            <div class="container p-5">
                 <nav class="navbar navbar-dark">
                     <div class="d-flex flex-column flex-md-row align-items-md-center">
                         <a class="navbar-brand mb-0 fs-2 fw-bold" href="index.html">funtime</a>
