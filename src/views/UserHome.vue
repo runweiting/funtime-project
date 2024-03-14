@@ -108,7 +108,7 @@
                                     <i class="bi bi-people-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">參與<br class="d-sm-block d-md-none">試玩</h5>
-                                <h6 class="d-none d-md-block fw-normal">讓我們知道<br>你的想法</h6>
+                                <h6 class="d-none d-md-block fw-normal text-dark-gray">讓我們知道<br>你的想法</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
                                 <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
@@ -120,7 +120,7 @@
                                     <i class="bi bi-bag-check-fill  fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">加入<br class="d-sm-block d-md-none">預購</h5>
-                                <h6 class="d-none d-md-block fw-normal">立即登記<br>享有優惠價</h6>
+                                <h6 class="d-none d-md-block fw-normal text-dark-gray">立即登記<br>享有優惠價</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
                                 <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
@@ -132,7 +132,7 @@
                                     <i class="bi bi-buildings-fill  fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">集資<br class="d-sm-block d-md-none">成功</h5>
-                                <h6 class="d-none d-md-block fw-normal">即啟動生產<br>依約定完成</h6>
+                                <h6 class="d-none d-md-block fw-normal text-dark-gray">即啟動生產<br>依約定完成</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
                                 <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
@@ -144,7 +144,7 @@
                                     <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">通知<br class="d-sm-block d-md-none">付款</h5>
-                                <h6 class="d-none d-md-block fw-normal">通知結帳<br>完成付款</h6>
+                                <h6 class="d-none d-md-block fw-normal text-dark-gray">通知結帳<br>完成付款</h6>
                             </div>
                             <div class="d-flex justify-content-center align-items-center icon-area">
                                 <i class="bi bi-arrow-right-short text-black fs-1 icon"></i>
@@ -156,7 +156,7 @@
                                     <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
                                 </div>
                                 <h5 class="fw-bold icon-title">出貨</h5>
-                                <h6 class="d-none d-md-block fw-normal">確認款項<br>依序出貨</h6>
+                                <h6 class="d-none d-md-block fw-normal text-dark-gray">確認款項<br>依序出貨</h6>
                             </div>
                         </li>
                     </ol>
@@ -192,7 +192,7 @@
                         <button type="button" class="btn position-absolute p-0 hvr-pulse">
                             <i class="bi bi-heart-fill fs-5"></i>
                         </button>
-                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
+                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
                             <span class="text-white fw-bold fs-6" >試玩</span>
                             <small class="text-white" >報名中</small>
                         </div>
@@ -233,19 +233,19 @@
                         <button type="button" class="btn position-absolute p-0 hvr-pulse">
                             <i class="bi bi-heart-fill fs-5"></i>
                         </button>
-                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
+                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
                             <span class="text-white fw-bold fs-6" >試玩</span>
                             <small class="text-white" >報名中</small>
                         </div>
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame1">
-                            <span class="badge rounded-pill bg-white text-primary position-absolute z-index-8" style="bottom: 16px;right: 16px;"># 讀經工具</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame1">
                         <div class="card-body d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold">《走入創世記》A Walk Through Genesis</h5>
-                                <p class="card-text">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
-                            </div>
+                            <h5 class="card-title fw-bold">《走入創世記》新手讀經工具</h5>
+                            <p class="card-text">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記！</p>
+                            <nav class="d-flex gap-2 mb-2" aria-label="breadcrumb">
+                                <small class="text-dark-gray">預購專案</small>
+                                <small class="text-dark-gray" style="font-size: 12px;">|</small>
+                                <small class="text-dark-gray">讀經</small>
+                            </nav>
                             <div>
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div class="progress" style="width: 85%;">
@@ -328,7 +328,7 @@
                                         <i class="bi bi-star-fill fs-6"></i>
                                         <i class="bi bi-star-fill fs-6"></i>
                                     </div>
-                                    <p class="card-text">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
+                                    <p class="card-text text-start">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
                                     <div class="d-flex gap-2">
                                         <span class="badge rounded-pill bg-secondary text-black"># 試玩</span>
                                         <span class="badge rounded-pill bg-secondary text-black"># 讀經工具</span>
@@ -424,7 +424,7 @@
     </div>
     <!-- 常見問題 -->
     <div class="m-3 m-lg-6 pb-3 pb-lg-10">
-        <div class="container rounded-5 bg-gray p-10 p-md-20" data-aos="fade-up">
+        <div class="container rounded-5 bg-light-gray p-10 p-md-20" data-aos="fade-up">
             <div class="row my-3 my-lg-6">
                 <div class="col px-0 px-md-3">
                     <div class="d-flex justify-content-between">

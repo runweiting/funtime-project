@@ -45,7 +45,7 @@
                                 <div class="row gx-0">
                                     <div class="col-4">
                                         <div class="h-100 pt-4">
-                                            <small class="fst-italic text-muted">累計</small>
+                                            <small class="fst-italic text-gray-dark">累計</small>
                                         </div>
                                     </div>
                                     <div class="col-8">
