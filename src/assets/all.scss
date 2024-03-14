@@ -1,3 +1,14 @@
+// bootstrap
 @import "bootstrap/scss/functions";
-@import "./variables";
+@import "./scss/helpers/variables";
 @import "bootstrap/scss/bootstrap.scss";
+
+// base
+@import './scss/base/base';
+
+// helpers
+@import './scss/helpers/hover';
+
+// component
+@import './scss/component/swiper';
+@import './scss/component/accordion';

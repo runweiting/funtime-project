@@ -192,13 +192,13 @@
                         <button type="button" class="btn position-absolute p-0 hvr-pulse">
                             <i class="bi bi-heart-fill fs-5"></i>
                         </button>
-                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0" style="width: 65px; height: 65px;top: 16px;left: 16px; z-index: 9; transform: rotate(-10deg);">
+                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
                             <span class="text-white fw-bold fs-6" >試玩</span>
                             <small class="text-white" >報名中</small>
                         </div>
                         <div class="position-relative">
                             <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame1">
-                            <span class="badge rounded-pill bg-white text-primary position-absolute" style="bottom: 16px;right: 16px; z-index: 8;"># 讀經工具</span>
+                            <span class="badge rounded-pill bg-white text-primary position-absolute z-index-8" style="bottom: 16px;right: 16px;"># 讀經工具</span>
                         </div>
                         <div class="card-body d-flex flex-column justify-content-between">
                             <div>
@@ -233,13 +233,13 @@
                         <button type="button" class="btn position-absolute p-0 hvr-pulse">
                             <i class="bi bi-heart-fill fs-5"></i>
                         </button>
-                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0" style="width: 65px; height: 65px;top: 16px;left: 16px; z-index: 9; transform: rotate(-10deg);">
+                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
                             <span class="text-white fw-bold fs-6" >試玩</span>
                             <small class="text-white" >報名中</small>
                         </div>
                         <div class="position-relative">
                             <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame1">
-                            <span class="badge rounded-pill bg-white text-primary position-absolute" style="bottom: 16px;right: 16px; z-index: 8;"># 讀經工具</span>
+                            <span class="badge rounded-pill bg-white text-primary position-absolute z-index-8" style="bottom: 16px;right: 16px;"># 讀經工具</span>
                         </div>
                         <div class="card-body d-flex flex-column justify-content-between">
                             <div>
@@ -541,12 +541,8 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 // 2. side effect Swiper css
 import 'swiper/css';
 // 3. side effect 所需 modules 的 css
-import 'swiper/css/effect-cards';
-import 'swiper/css/effect-creative';
-import 'swiper/css/pagination';
 import 'swiper/css/autoplay'
-// 4. 匯入自定義 css
-import '../assets/swiper/feedBackCards.css'
+// 4. 在 assets/scss/component 匯入自定義 scss
 // 5. 依需求匯入所需 modules
 import { Autoplay } from 'swiper/modules';
 
@@ -591,151 +587,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
-.border-10 {
-    border-width: 10px !important;
-}
-/* line-height */
-.responsive-lh-ls {
-    line-height: 1.6;
-    letter-spacing: 1.5px;
-}
-.d-414-none {
-    @media (max-width: 414px) {
-        display: none;
-        
-    }
-}
-/* pulse */
-@-webkit-keyframes hvr-pulse {
-    25% {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    75% {
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-    }
-}
-@keyframes hvr-pulse {
-    25% {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    75% {
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-    }
-}
-.hvr-pulse {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1.5px solid white; 
-    top: 16px;
-    right: 16px;
-    z-index: 10;
-    color: white;
-    &:hover {
-        color: white;
-    }
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1.5px) translateZ(0);
-    transform: perspective(1.5px) translateZ(0);
-    box-shadow: 0 0 1.5px rgba(0, 0, 0, 0);
-}
-.hvr-pulse:hover, .hvr-pulse:focus {
-    -webkit-animation-name: hvr-pulse;
-    animation-name: hvr-pulse;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-}
-/* pop */
-@-webkit-keyframes hvr-pop {
-  50% {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-}
-@keyframes hvr-pop {
-  50% {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-}
-.hvr-pop {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
-.hvr-pop:hover, .hvr-pop:focus, .hvr-pop:active {
-  -webkit-animation-name: hvr-pop;
-  animation-name: hvr-pop;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-}
-/* progress-chart */
-.icon-area {
-    width: 35px;
-    height: 35px;
-    @media (min-width: 576px) {
-        width: 50px;
-        height: 50px;
-    }
-    @media (min-width: 992px) {
-        width: 85px;
-        height: 85px;
-    }
-}
-.icon-title {
-    font-size: 16px;
-    @media (min-width: 768px) {
-        font-size: 20px;
-    }
-    @media (min-width: 992px) {
-        font-size: 24px;
-    }
-}
-.icon {
-    font-size: 16px;
-    @media (min-width: 992px) {
-        font-size: 32px;
-    }
-}
-
-/* accordion-button */
-.accordion-button {
-    border-bottom: 3px dotted white;
-    &::after {
-        content: none;
-    }
-    /* 未點擊時 */
-    .addIcon {
-        display: block;
-    }
-    .removeIcon {
-        display: none;
-    }
-    /* 當點擊時，自動略過有 .collapsed 的 button，其他都要套用
-     */
-    &:not(.collapsed) {
-        .addIcon {
-            display: none;
-        }
-        .removeIcon {
-            display: block;
-        }
-    }
-}
+<style lang="scss">
 </style>

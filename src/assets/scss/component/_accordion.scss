@@ -1,0 +1,23 @@
+.accordion-button {
+    border-bottom: 3px dotted white;
+    &::after {
+        content: none;
+    }
+    /* 未點擊時 */
+    .addIcon {
+        display: block;
+    }
+    .removeIcon {
+        display: none;
+    }
+    /* 當點擊時，自動略過有 .collapsed 的 button，其他都要套用
+     */
+    &:not(.collapsed) {
+        .addIcon {
+            display: none;
+        }
+        .removeIcon {
+            display: block;
+        }
+    }
+}
