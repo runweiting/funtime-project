@@ -318,7 +318,7 @@
               <li>▶ 發票如需開立抬頭/統編，請於備註欄註明</li>
             </ul>
             <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
-            <div class="d-flex gap-2">
+            <div class="d-flex align-items-center gap-2">
               <i class="bi bi-check-circle-fill text-dark-secondary"></i>
               <small>臺灣本島免運、可寄離島</small>
             </div>
@@ -349,7 +349,7 @@
               <li>▶ 發票如需開立抬頭/統編，請於備註欄註明</li>
             </ul>
             <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
-            <div class="d-flex gap-2">
+            <div class="d-flex align-items-center gap-2">
               <i class="bi bi-check-circle-fill text-dark-secondary"></i>
               <small>臺灣本島免運、可寄離島</small>
             </div>

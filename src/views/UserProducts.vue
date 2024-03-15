@@ -1,12 +1,12 @@
 <template>
   <!-- 企劃排名 -->
   <div class="m-3 m-lg-6">
-      <div class="container bg-primary rounded-5 p-10 p-md-30" data-aos="fade-up">
+      <div class="container bg-primary rounded-5 p-5 p-md-10" data-aos="fade-up">
           <div class="row">
               <div class="col">
-                <div class="d-flex flex-column justify-content-center align-items-center gap-10">
-                  <h2 class="fs-1 text-white fw-bold mb-5">企劃排名</h2>
-                  <h5 class="text-white responsive-lh-ls text-normal">
+                <div class="d-flex flex-column justify-content-center align-items-center gap-5">
+                  <h2 class="fs-1 text-white fw-bold mb-0">企劃排名</h2>
+                  <h5 class="text-white responsive-lh-ls text-normal mb-0">
                     對喜歡的企劃按贊、留言，增加人氣，告訴我們你的想法，一起探索信仰的美好！
                   </h5>
                 </div>
@@ -16,19 +16,19 @@
   </div>
   <!-- 企劃排名 -->
   <div class="m-3 m-lg-6">
-    <div class="container p-10 p-md-20" data-aos="fade-up">
-        <div class="row row-cols-1 row-cols-xl-2 gy-md-4">
+    <div class="container p-5 p-md-10" data-aos="fade-up">
+        <div class="row row-cols-1 row-cols-xl-2">
             <!-- 企劃排名 -->
             <div class="col-xl-9">
                 <div class="row row-cols-1">
-                    <div class="col px-0 px-md-3 my-3 my-lg-6">
+                    <div class="col px-0 px-md-3 mb-3 mb-lg-6">
                         <div class="d-flex align-items-baseline gap-2">
                             <h2 class="d-none d-sm-block fw-bold mb-0">Ranking</h2>
-                            <h3 class="fw-bold mb-0">企劃排名</h3>
+                            <h4 class="fw-bold mb-0">企劃排名</h4>
                         </div>
                     </div>
                 </div>
-                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 position-relative">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
                     <div class="col mb-md-0 px-0 px-md-3">
                         <div class="card h-100 shadow-sm position-relative">
                             <a href="#" class="stretched-link">
@@ -134,10 +134,10 @@
             <!-- 熱門標籤 -->
             <div class="col-xl-3">
                 <div class="row row-cols-1">
-                    <div class="col px-0 px-md-3 my-3 my-lg-6">
+                    <div class="col px-0 px-md-3 mb-3 mb-lg-6">
                         <div class="d-flex align-items-baseline gap-2">
                             <h2 class="d-none d-sm-block fw-bold mb-0">Category</h2>
-                            <h3 class="fw-bold mb-0">熱門標籤</h3>
+                            <h4 class="fw-bold mb-0">熱門標籤</h4>
                         </div>
                     </div>
                 </div>
