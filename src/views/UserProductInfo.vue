@@ -150,21 +150,21 @@
       </div>
     </div>
   </div>
-
   <!-- 企劃內容 -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12" data-aos="fade-up">
-      <div class="row row-cols-1 py-2 p-xl-4 row-cols-xl-2">
-        <div class="col-xl-7 px-xl-4 ">
+      <div class="row row-cols-1 py-2 p-xl-4 pt-xl-8 row-cols-xl-2">
+        <div class="col-xl-7 px-xl-4">
           <div class="position-relative rounded-5 border border-5 border-secondary p-5">
-            <h2 class="fs-5 fw-bold">
+            <h3 class="fs-5 fw-bold">
               立即預購，享優惠價！
-            </h2>
-            <h3 class="fs-6 fw-normal mb-0">
-              須達成500組，才能啟動生產，您的支持讓有趣的聖經企劃發生！
             </h3>
+            <h4 class="fs-6 fw-normal mb-0">
+              須達成500組，才能啟動生產，您的支持讓有趣的聖經企劃發生！
+            </h4>
             <span class="position-absolute top-50 end-0 translate-middle-y" style="left: 100%; border-width: 12px 0px 12px 20px; border-style: solid; border-color: transparent transparent transparent #54FA80; border-radius: 0px 20px 20px 0px;"></span>
           </div>
+          <hr class="w-100 border-top my-8" style="border: 5px dotted #8C8C8E;">
           <div class="d-flex flex-column justify-content-between gap-4">
             <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 400px">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between gap-2 mb-2">
@@ -180,80 +180,155 @@
           </div>
         </div>
         <div class="col-xl-5 px-xl-4">
-          <div class="h-100 d-flex flex-column justify-content-between gap-2">
-            <div class="row row-cols-1 align-items-center align-items-md-end row-cols-xl-1 gy-2">
-              <div class="col-md-5">
-                <div class="d-flex gap-8 align-items-center">
-                  <div class="fst-italic">
-                    <small class="text-dark-gray">目標 500 組</small>
-                    <h3 class="fw-bold mt-2 mb-0">累計 50 組</h3>
-                  </div>
-                  <div class="fst-italic">
-                    <small class="text-dark-gray text-start">預購人數</small>
-                    <h3 class="fw-bold mt-2 mb-0 text-end">50 人</h3>
-                  </div>
-                </div>
+          <!-- 提案人 -->
+          <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 mb-4">
+            <div class="d-flex gap-2">
+              <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
               </div>
-              <div class="col-md-7">
-                <div class="row align-items-center">
-                  <div class="col-10">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-2 text-end">
-                    <small class="fw-bold">75%</small>
-                  </div>
-                </div>
+              <div class="d-flex flex-column justify-content-between">
+                <small class="text-dark-gray">提案人</small>
+                <span class="text-dark-gray">我們的主日學</span>
               </div>
             </div>
-            <p class="card-text mb-0 text-gray-dark">探索《創世記》的精彩旅程！將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。無論您是新手還是聖經學者，這款遊戲都將為您提供一個獨特而豐富啟發的體驗。
-            </p>
-            <div class="d-flex flex-xl-row gap-4">
-              <div class="d-flex justify-content-center gap-1">
-                <i class="bi bi-lightning-fill text-primary"></i>
-                <small class="text-dark-gray">原創商品</small>
+          </div>
+          <!-- 專案介紹 -->
+          <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4">
+            <a href="#" class="stretched-link"></a>
+            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+            <h3 class="fs-6 text-dark-gray mb-0">雙入組</h3>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex gap-2">
+                <h5 class="fw-bold mb-0">NT$ 1,300</h5>
+                <span class="badge bg-info-light text-black">65折</span>
               </div>
-              <div class="d-flex justify-content-center gap-1">
-                <i class="bi bi-people-fill text-primary"></i>
-                <small class="text-dark-gray">臺灣設計</small>
-              </div>
-              <div class="d-flex justify-content-center gap-1">
-                <i class="bi bi-flag-fill text-primary"></i>
-                <small class="text-dark-gray">臺灣製造</small>
-              </div>
+              <span class="fs-6 badge bg-danger">剩餘498份</span>
             </div>
-            <div class="rounded-5 border border-5 border-light p-3">
-              <div class="d-flex">
-                <i class="bi bi-circle-fill text-primary" style="scale: 40%;"></i>
-                <span class="fs-6 fw-bold fst-italic text-black text-center">登記享優惠資格，無需先付款。</span>              
-              </div>
-              <div class="d-flex">
-                <i class="bi bi-circle-fill text-primary" style="scale: 40%;"></i>
-                <span class="fs-6 fw-bold fst-italic text-black text-center">歡迎試玩、分享，越早實現企劃。</span>              
-              </div>
+            <small class="text-dark-gray">預定售價 NT$ 1,000，現省 NT$ 700</small>
+            <ul class="list-unstyled mb-0">
+              <li>✧ 中英雙語地圖 x 3 張</li>
+              <li>✧ 聖經故事圖卡 x 62 個</li>
+              <li>✔ 中英說明書 x 1 份</li>
+              <li>✔ 圓形魔鬼氈 x 2 片</li>
+            </ul>
+            <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
+            <ul class="list-unstyled mb-0">
+              <li>▶ 製作時程需 3 個月</li>
+              <li>▶ 達成目標數量，即啟動生產</li>
+              <li>▶ 依預購順序出貨，歡迎團購</li>
+              <li>▶ 發票如需開立抬頭/統編，請於備註欄註明</li>
+            </ul>
+            <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
+            <div class="d-flex gap-2">
+              <i class="bi bi-check-circle-fill text-dark-secondary"></i>
+              <small>臺灣本島免運、可寄離島</small>
             </div>
-            <div class="d-flex justify-content-end align-items-center gap-6">
-              <button type="button" class="btn p-0 hvr-pop text-primary">
-                <i class="bi bi-line fs-4"></i>
-              </button>
-              <button type="button" class="btn p-0 hvr-pop text-primary">
-                <i class="bi bi-facebook fs-4"></i>
-              </button>
-              <button type="button" class="btn p-0 hvr-pop text-primary">
-                <i class="bi bi-share-fill fs-4"></i>
-              </button>
-              <button type="button" class="btn p-0 hvr-pop text-primary">
-                <i class="bi bi-heart-fill fs-4"></i>
-              </button>
+          </div>
+          <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3">
+            <a href="#" class="stretched-link"></a>
+            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+            <h3 class="fs-6 text-dark-gray mb-0">10 入組</h3>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex gap-2">
+                <h5 class="fw-bold mb-0">NT$ 6,500</h5>
+                <span class="badge bg-info-light text-black">65折</span>
+              </div>
+              <span class="fs-6 badge bg-danger">剩餘498份</span>
+            </div>
+            <small class="text-dark-gray">預定售價 NT$ 10,000，現省 NT$ 3,500</small>
+            <ul class="list-unstyled mb-0">
+              <li>✧ 中英雙語地圖 x 3 張</li>
+              <li>✧ 聖經故事圖卡 x 62 個</li>
+              <li>✔ 中英說明書 x 1 份</li>
+              <li>✔ 圓形魔鬼氈 x 2 片</li>
+            </ul>
+            <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
+            <ul class="list-unstyled mb-0">
+              <li>▶ 製作時程需 3 個月</li>
+              <li>▶ 達成目標數量，即啟動生產</li>
+              <li>▶ 依預購順序出貨，歡迎團購</li>
+              <li>▶ 發票如需開立抬頭/統編，請於備註欄註明</li>
+            </ul>
+            <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
+            <div class="d-flex gap-2">
+              <i class="bi bi-check-circle-fill text-dark-secondary"></i>
+              <small>臺灣本島免運、可寄離島</small>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  
+  <div class="h-100 d-flex flex-column justify-content-between gap-2 rounded-5 border border-5 border-light p-5 pt-10">
+    <div class="row row-cols-1 align-items-center align-items-md-end row-cols-xl-1 gy-2">
+      <div class="col-md-5">
+        <div class="d-flex gap-8 align-items-center">
+          <div class="fst-italic">
+            <small class="text-dark-gray">目標 500 組</small>
+            <h3 class="fw-bold mt-2 mb-0">累計 50 組</h3>
+          </div>
+          <div class="fst-italic">
+            <small class="text-dark-gray text-start">預購人數</small>
+            <h3 class="fw-bold mt-2 mb-0 text-end">50 人</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row align-items-center">
+          <div class="col-10">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+          </div>
+          <div class="col-2 text-end">
+            <small class="fw-bold">75%</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="card-text mb-0 text-gray-dark">探索《創世記》的精彩旅程！將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。無論您是新手還是聖經學者，這款遊戲都將為您提供一個獨特而豐富啟發的體驗。
+    </p>
+    <div class="d-flex flex-xl-row gap-4">
+      <div class="d-flex justify-content-center gap-1">
+        <i class="bi bi-lightning-fill text-primary"></i>
+        <small class="text-dark-gray">原創商品</small>
+      </div>
+      <div class="d-flex justify-content-center gap-1">
+        <i class="bi bi-people-fill text-primary"></i>
+        <small class="text-dark-gray">臺灣設計</small>
+      </div>
+      <div class="d-flex justify-content-center gap-1">
+        <i class="bi bi-flag-fill text-primary"></i>
+        <small class="text-dark-gray">臺灣製造</small>
+      </div>
+    </div>
+    <div class="rounded-5 border border-5 border-light p-3">
+      <div class="d-flex">
+        <i class="bi bi-circle-fill text-primary" style="scale: 40%;"></i>
+        <span class="fs-6 fw-bold fst-italic text-black text-center">登記享優惠資格，無需先付款。</span>              
+      </div>
+      <div class="d-flex">
+        <i class="bi bi-circle-fill text-primary" style="scale: 40%;"></i>
+        <span class="fs-6 fw-bold fst-italic text-black text-center">歡迎試玩、分享，越早實現企劃。</span>              
+      </div>
+    </div>
+    <div class="d-flex justify-content-end align-items-center gap-6">
+      <button type="button" class="btn p-0 hvr-pop text-primary">
+        <i class="bi bi-line fs-4"></i>
+      </button>
+      <button type="button" class="btn p-0 hvr-pop text-primary">
+        <i class="bi bi-facebook fs-4"></i>
+      </button>
+      <button type="button" class="btn p-0 hvr-pop text-primary">
+        <i class="bi bi-share-fill fs-4"></i>
+      </button>
+      <button type="button" class="btn p-0 hvr-pop text-primary">
+        <i class="bi bi-heart-fill fs-4"></i>
+      </button>
+    </div>
+  </div>
 
 
 
