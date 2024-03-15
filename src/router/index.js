@@ -55,7 +55,15 @@ const baseRoutes = [
         name: "cart",
         component: () => import("../views/UserCart.vue"),
         meta: {
-          title: "購物車",
+          title: "選擇方案",
+        },
+      },
+      {
+        path: "payment",
+        name: "payment",
+        component: () => import("../views/UserPayment.vue"),
+        meta: {
+          title: "結帳付款",
         },
       },
     ],
