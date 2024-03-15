@@ -27,9 +27,15 @@
         <div class="col-xl-7 px-xl-4">
           <div class="h-100 d-flex flex-column justify-content-between gap-4">
             <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 400px">
-            <div class="d-flex gap-2">
-              <span class="badge rounded-pill bg-primary text-white"># 聖經歷史和地理</span>
-              <span class="badge rounded-pill bg-primary text-white"># 讀經工具</span>
+            <div class="d-flex justify-content-between gap-2">
+              <div class="d-flex gap-2">
+                <span class="badge rounded-pill bg-primary text-white"># 聖經歷史和地理</span>
+                <span class="badge rounded-pill bg-primary text-white"># 讀經工具</span>
+              </div>
+              <div class="d-flex align-items-baseline gap-3">
+                <small class="text-dark-gray">提案人</small>
+                <small class="text-dark-gray">我們的主日學</small>
+              </div>
             </div>
           </div>
         </div>
@@ -77,8 +83,22 @@
               </div>
               <div class="d-flex">
                 <i class="bi bi-circle-fill text-primary" style="scale: 40%;"></i>
-                <span class="fs-6 fw-bold fst-italic text-black text-center">越多人登記，越早實現企劃。</span>              
+                <span class="fs-6 fw-bold fst-italic text-black text-center">歡迎試玩、分享，越早實現企劃。</span>              
               </div>
+            </div>
+            <div class="d-flex justify-content-end align-items-center gap-6">
+              <button type="button" class="btn p-0 hvr-pop text-primary">
+                <i class="bi bi-line fs-4"></i>
+              </button>
+              <button type="button" class="btn p-0 hvr-pop text-primary">
+                <i class="bi bi-facebook fs-4"></i>
+              </button>
+              <button type="button" class="btn p-0 hvr-pop text-primary">
+                <i class="bi bi-share-fill fs-4"></i>
+              </button>
+              <button type="button" class="btn p-0 hvr-pop text-primary">
+                <i class="bi bi-heart-fill fs-4"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -87,9 +107,9 @@
   </div>
   <!-- 企劃導航 -->
   <div class="mx-3 mx-lg-10">
-    <div class="container bg-light-gray rounded-5 p-10">
-      <div class="row row-cols-2">
-        <div class="col">
+    <div class="container bg-light-gray rounded-5 py-5 px-16">
+      <div class="row row-cols-2 align-items-center">
+        <div class="col-7">
           <ul class="list-unstyled d-flex gap-6 mb-0">
             <li>
               <a class="text-black text-decoration-none" href="#">專案內容</a>
@@ -102,30 +122,10 @@
             </li>
           </ul>
         </div>
-        <div class="col">
-          <div class="d-flex gap-2">
-            <button type="button" class="btn p-0 hvr-pop text-primary">
-              <i class="bi bi-heart-fill fs-4"></i>
-            </button>
-            <button type="button" class="btn btn-primary flex-fill">登記預購</button>
-          </div>
-          <div class="d-flex align-items-center gap-6">
-            <button type="button" class="btn p-0 hvr-pop text-primary">
-              <i class="bi bi-line fs-4"></i>
-            </button>
-            <button type="button" class="btn p-0 hvr-pop text-primary">
-              <i class="bi bi-facebook fs-4"></i>
-            </button>
-            <button type="button" class="btn p-0 hvr-pop text-primary">
-              <i class="bi bi-share-fill fs-4"></i>
-            </button>
-          </div>
-          <div class="rounded-5 border border-5 border-light p-2">
-            <span class="fs-6 fw-bold fst-italic text-black text-center">分享給更多人知道，讓有價值的聖經企劃得以實現。</span>              
-          </div>
-          <div class="d-flex align-items-baseline gap-3">
-            <small class="fst-italic text-dark-gray">提案人</small>
-            <span class="fw-bold">我們的主日學</span>
+        <div class="col-5">
+          <div class="d-flex gap-4">
+            <button type="button" class="btn btn-primary flex-fill hvr-pop">報名試玩</button>
+            <button type="button" class="btn btn-primary flex-fill hvr-pop">登記預購</button>
           </div>
         </div>
       </div>
