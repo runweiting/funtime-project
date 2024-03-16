@@ -311,13 +311,14 @@ $dark: $gray-900 !default;
 // scss-docs-start theme-colors-map
 $theme-colors: (
   "primary": #6637ED,  // custom
+  "primary-light": #C285FF,  // custom
   "secondary": #54FA80,  // custom
   "dark-secondary": #00B844,  // custom
   "success": $success,
   "info-light": #FFDD82,  // custom
   "info": #FF9B13,  // custom 
   "warning": $warning,
-  "danger": #FF4662,  // custom
+  "danger": #FF5C6F,  // custom
   "light-gray": #f7f7f9,  // custom
   "gray": #8C8C8E,  // custom
   "dark-gray": #5B5B5D,  // custom

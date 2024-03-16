@@ -69,6 +69,30 @@
                     <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
                         <a href="#" class="stretched-link"></a>
                         <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+                        <h3 class="fs-6 text-dark-gray mb-0">6 入組</h3>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <h5 class="fw-bold mb-0">NT$ 3,900</h5>
+                                <span class="badge bg-info-light text-black">65折</span>
+                                </div>
+                                <span class="fs-6 badge bg-danger">剩餘498份</span>
+                            </div>
+                        <small class="text-dark-gray">預定售價 NT$ 10,000，現省 NT$ 2,100</small>
+                        <div>
+                            <span>本方案內含：</span><br>
+                            <span class="fs-5 fw-bold">《走入創世記》6 套</span>
+                        </div>
+                        <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
+                        <div class="d-flex gap-2">
+                            <i class="bi bi-check-circle-fill text-dark-secondary"></i>
+                            <small>臺灣本島免運、可寄離島</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col px-xl-4 my-3 my-lg-6">
+                    <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
+                        <a href="#" class="stretched-link"></a>
+                        <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px;">
                         <h3 class="fs-6 text-dark-gray mb-0">10 入組</h3>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex gap-2">

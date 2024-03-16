@@ -24,7 +24,7 @@
             <div class="row row-cols-1 g-1 row-cols-md-2 g-4">
                 <div class="col d-flex flex-column justify-content-center text-sm-center text-md-start">
                     <h2 class="fw-bold mb-5">funtime 是什麼?</h2>
-                    <h5 class="responsive-lh-ls">
+                    <h5 class="h5-lh-ls">
                         <strong>funtime</strong> 是一個預購集資平台，<br class="d-md-none d-xl-block d-414-none">發佈各種好玩有趣的創意企劃，<br class="d-md-none d-xl-block d-414-none">
                         歡迎每一位喜歡讀聖經的人們！
                     </h5>

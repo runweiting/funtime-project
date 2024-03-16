@@ -1,3 +1,8 @@
+/* placeholder */
+.coupon-input::placeholder {
+    color: #c5c5c5 !important;
+}
+/* border */
 .border-10 {
     border-width: 10px !important;
 }
@@ -15,15 +20,30 @@
     z-index: 8;
 }
 /* line-height */
-.responsive-lh-ls {
+.h5-lh-ls {
     line-height: 1.6;
     letter-spacing: 1.5px;
 }
+.span-lh-ls {
+    letter-spacing: 10px;
+    @media (max-width: 768px) {
+        letter-spacing: 5px;
+    }
+    @media (max-width: 414px) {
+        letter-spacing: normal;
+    }
+    @media (max-width: 375px) {
+        font-size: 14px;
+    }
+}
+/* 414px */
 .d-414-none {
     @media (max-width: 414px) {
         display: none;
-        
     }
+}
+.gap-414-2 {
+    gap: 0.5rem; // 8px
 }
 /* progress-chart */
 .icon-area {
@@ -51,5 +71,11 @@
     font-size: 16px;
     @media (min-width: 992px) {
         font-size: 32px;
+    }
+}
+.position-992-sticky {
+    @media (min-width: 992px) {
+        position: sticky;
+        top: 0px;
     }
 }
