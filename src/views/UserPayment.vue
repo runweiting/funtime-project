@@ -80,7 +80,7 @@
                         <div class="rounded-5 border border-5 border-light-gray p-5 gap-3">
                             <label for="coupon-code" class="form-label text-danger fw-medium">優惠卷</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control coupon-input" id="coupon-code" placeholder="請輸入優惠卷">
+                                <input type="text" class="form-control placeholder-light" id="coupon-code" placeholder="請輸入優惠卷">
                                 <button class="btn btn-danger text-white" type="button" id="coupon-code">確認</button>
                             </div>
                             <h6 class="mb-2">付款明細</h6>
@@ -149,12 +149,12 @@
                         </form>
                     </div>
                     <!-- 專案進度 -->
-                    <div class="rounded-5 border border-5 border-light-gray p-5 mb-5">
+                    <div class="p-5 mb-5">
                         <h3 class="fs-5 mb-10">專案進度</h3>
                         <div class="w-100 px-8 pb-12">
                             <div class="position-relative">
                                 <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-info-light" role="progressbar" style="width: 33.33%;" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-info-light" role="progressbar" style="width: 0%;" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 0.99%">
@@ -167,7 +167,7 @@
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 33.33%;">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="bg-info text-white rounded-circle position-relative" style="width: 50px; height: 50px;">
+                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                                             <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                                         </div>
                                         <small>集資成功</small>
@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 66.66%;">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="bg-info text-white rounded-circle position-relative" style="width: 50px; height: 50px;">
+                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                                             <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                                         </div>
                                         <small>通知付款</small>
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 98.99%;">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="bg-info text-white rounded-circle position-relative" style="width: 50px; height: 50px;">
+                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                                             <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                                         </div>
                                         <small>出貨</small>
@@ -195,7 +195,7 @@
                     <!-- 收件資料 -->
                     <div class="rounded-5 border border-5 border-light p-5 mb-5">
                         <from ref="form">
-                            <h3 class="fs-5 pt-3">收件人</h3>
+                            <h3 class="fs-5">收件人</h3>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-floating mb-3">
@@ -204,7 +204,6 @@
                                         class="form-control"
                                         id="floatingName"
                                         name="姓名"
-                                        placeholder="請輸入姓名"
                                         />
                                         <label for="floatingName" class="form-label">真實姓名</label>
                                         <ErrorMessage name="姓名" class="invalid-feedback" />
@@ -235,19 +234,19 @@
                                 <ErrorMessage name="email" class="invalid-feedback" />
                             </div>
                             <h4 class="fs-6">請選擇運送方式</h4>
-                            <select class="form-select bg-light text-center mb-4" aria-label="select-shipment" disabled>
+                            <select class="form-select bg-light text-center mb-4 text-dark-gray" aria-label="select-shipment" disabled>
                                 <option value="home-delivery" selected>宅配到府</option>
                             </select>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label class="form-label">收件地點</label>
+                                    <label class="form-label text-dark-gray">收件地點</label>
                                     <select class="form-select" aria-label="select-country">
                                         <option value="taiwan-mainland" selected>台灣本島</option>
                                         <option value="taiwan-outerIslands">台灣外島</option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <label class="form-label">縣市</label>
+                                    <label class="form-label text-dark-gray">縣市</label>
                                     <select class="form-select" aria-label="select-city">
                                         <option value="taipei" selected>台北</option>
                                         <option value="taichung">台中</option>
@@ -255,7 +254,7 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <label class="form-label">鄉鎮市區</label>
+                                    <label class="form-label text-dark-gray">鄉鎮市區</label>
                                     <select class="form-select" aria-label="select-region">
                                         <option value="north" selected>北區</option>
                                         <option value="center">中區</option>
@@ -291,27 +290,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-6">
-                                <label for="message" class="form-label">備註（選填）</label>
+                            <div class="mb-3">
+                                <label for="message" class="form-label text-dark-gray">備註（選填）</label>
                                 <textarea
                                 id="message"
                                 class="form-control"
                                 ></textarea>
                             </div>
                             <div class="text-end">
-                                <button type="submit" class="btn btn-secondary">送出訂單</button>
+                                <button type="submit" class="btn btn-primary text-white">送出訂單</button>
                             </div>
 
                         </from>
                     </div>
-                    <!-- 付款方式 -->
-                    <div class="rounded-5 border border-5 border-light p-5">
-                        <h3 class="fs-5 pt-3">付款方式</h3>
-                        <div class="row row-cols-1 gy-2 mb-6">
+                    <!-- 發票類型 -->
+                    <div class="rounded-5 border border-5 border-light p-5 mb-5">
+                        <h3 class="fs-5">發票類型</h3>
+                        <div class="row row-cols-1 gy-2">
                             <div class="col">
                                 <div class="rounded-5 border border-light border-3 p-4">
                                     <div class="form-check ps-10">
-                                        <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="個人發票" id="individual-invoice">
+                                        <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="個人發票-電子發票" id="individual-invoice">
                                         <label class="form-check-label text-dark-gray" for="individual-invoice">
                                             個人發票（電子發票）
                                         </label>
@@ -323,16 +322,16 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-check ps-10">
-                                                <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="個人發票" id="individual-invoice">
+                                                <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="個人發票-手機載具" id="individual-invoice">
                                                 <label class="form-check-label text-dark-gray" for="individual-invoice">
                                                     個人發票（手機載具）
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <label for="mobile-invoice" class="form-label">手機載具</label>
+                                            <label for="mobile-invoice" class="form-label text-dark-gray">手機載具</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="mobile-invoice" aria-describedby="mobile-invoice" placeholder="請輸入手機載具">
+                                                <input type="text" class="form-control placeholder-light" id="mobile-invoice" aria-describedby="mobile-invoice" placeholder="請輸入手機載具">
                                             </div>
                                         </div>
                                     </div>
@@ -350,21 +349,102 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <label for="company-ubn" class="form-label">統一編號</label>
+                                            <label for="company-ubn" class="form-label text-dark-gray">統一編號</label>
                                             <div class="input-group mb-4">
-                                                <input type="text" class="form-control" id="company-ubn" aria-describedby="company-ubn" placeholder="請輸入統一編號">
+                                                <input type="text" class="form-control placeholder-light" id="company-ubn" aria-describedby="company-ubn" placeholder="請輸入統一編號">
                                             </div>
-                                            <label for="company-name" class="form-label">公司抬頭</label>
+                                            <label for="company-name" class="form-label text-dark-gray">公司抬頭</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="company-name" aria-describedby="company-name" placeholder="請輸入公司抬頭">
+                                                <input type="text" class="form-control placeholder-light" id="company-name" aria-describedby="company-name" placeholder="請輸入公司抬頭">
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="w-100 border-top mt-1 mb-6" style="border: 3px dotted #8C8C8E;">
+                    </div>
+                    <!-- 付款方式 -->
+                    <div class="rounded-5 border border-5 border-light p-5">
+                        <h3 class="fs-5">付款方式</h3>
+                        <div class="row row-cols-1 gy-2">
+                            <div class="col">
+                                <div class="rounded-5 border border-light border-3 p-4">
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <div class="form-check ps-10">
+                                                <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="credit-card" id="credit-card">
+                                                <label class="form-check-label text-dark-gray" for="credit-card">
+                                                    線上刷卡
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <label for="name" class="form-label text-dark-gray">持卡人</label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control placeholder-light" id="name" aria-describedby="name" placeholder="請輸入持卡人姓名">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="credit-card-number" class="form-label text-dark-gray">信用卡號碼</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control placeholder-light" id="credit-card-number" aria-describedby="credit-card-number" placeholder="請填入信用卡號碼">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-cols-3">
+                                        <div class="col">
+                                            <label for="expiry-date-month" class="form-label text-dark-gray">有效期限 MM</label>
+                                            <div class="input-group mb-4">
+                                                <input type="number" class="form-control placeholder-light" id="expiry-date-month" aria-describedby="expiry-date-month" placeholder="MM">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control placeholder-light align-self-end" id="expiry-date-month" aria-describedby="expiry-date-month" placeholder="YY" style="margin-top: 32px;">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="credit-card-cvv" class="form-label text-dark-gray">安全碼</label>
+                                            <div class="input-group mb-4">
+                                                <input type="number" class="form-control placeholder-light" id="credit-card-cvv" aria-describedby="credit-card-cvv" placeholder="CVV">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="rounded-5 border border-light border-3 p-4">
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <div class="form-check ps-10">
+                                                <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="bank-transfer" id="bank-transfer">
+                                                <label class="form-check-label text-dark-gray" for="bank-transfer">
+                                                    ATM虛擬帳號轉帳
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex gap-2 mb-2">
+                                                <span>繳費銀行名稱：</span>
+                                                <span>六角銀行</span>
+                                            </div>
+                                            <div class="d-flex gap-2 mb-2">
+                                                <span>繳費銀行代碼：</span>
+                                                <span>xxx</span>
+                                            </div>
+                                            <div class="d-flex gap-2 mb-2">
+                                                <span>繳費虛擬帳號：</span>
+                                                <span>xxxx xxxx xxxx xxxx</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
