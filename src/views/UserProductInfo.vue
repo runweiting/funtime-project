@@ -292,7 +292,7 @@
             </div>
           </div>
           <!-- 預購方案介紹 -->
-          <div class="position-992-sticky">
+          <div class="position-lg-sticky">
             <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative">
               <a href="#" class="stretched-link"></a>
               <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">

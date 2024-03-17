@@ -99,12 +99,12 @@
     <!-- 結帳明細 -->
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12 py-3 py-lg-6">
-            <div class="row row-cols-1">
+            <div class="row row-cols-1 gy-3">
                 <!-- 方案明細 -->
                 <div class="col-md-4 px-xl-4">
-                    <div class="position-sticky top-0">
+                    <div class="position-md-sticky">
                         <!-- 方案內容 -->
-                        <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
+                        <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
                             <a href="#" class="stretched-link"></a>
                             <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
                             <h3 class="fs-6 text-dark-gray mb-0">2 入組</h3>
@@ -156,9 +156,9 @@
                 <div class="col-md-8 px-xl-4">
                     <div class="rounded-5 border border-5 border-light p-5 h-100">
                         <div class="row row-cols-1 gy-5">
-                            <div class="col px-10">
-                                <div class="row align-items-center">
-                                    <div class="col">
+                            <div class="col px-8 px-xl-10">
+                                <div class="row row-cols-1 row-cols-sm-2 align-items-center">
+                                    <div class="col-sm-7">
                                         <div class="d-flex gap-2 text-dark-gray mb-2">
                                             <span>訂單時間</span>
                                             <span>2024/03/17 14:45:04</span>
@@ -168,15 +168,15 @@
                                             <span>20240317144504</span>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="d-flex justify-content-center align-items-center gap-2 gap-lg-4 p-4">
+                                    <div class="col-sm-5">
+                                        <div class="d-flex justify-content-start justify-content-sm-center align-items-center gap-2 gap-lg-4 pt-4 pt-sm-0">
                                             <i class="bi bi-check-circle-fill text-dark-secondary fs-4"></i>
                                             <h4 class="mb-0">預購成功</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col px-5">
+                            <div class="col px-xl-5">
                                 <div class="d-flex flex-column justify-content-between">
                                     <div class="rounded-5 border border-light border-3 p-4 mb-5">
                                         <table class="table table-border">
@@ -187,24 +187,20 @@
                                             </thead>
                                             <tbody class="align-middle">
                                                 <tr>
-                                                    <th scope="row">預購金額</th>
+                                                    <th scope="row">預購<br class="d-414-block">金額</th>
                                                     <td>
                                                         <span class="fs-5 fw-bold">NT$ 1,300元</span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex gap-2">
+                                                        <div class="d-flex gap-2 mt-1">
                                                             <i class="bi bi-check-circle-fill text-dark-secondary"></i>
                                                             <span class="text-dark-gray">已使用優惠卷</span>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">預購內容</th>
+                                                    <th scope="row">預購<br class="d-414-block">內容</th>
                                                     <td>
-                                                        <span class="fs-5 fw-bold">《走入創世記》<br>2 套</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-dark-gray">
+                                                        <span class="fs-5 fw-bold">《走入創世記》2套</span>
+                                                        <div class="text-dark-gray mt-1">
                                                             完整 1 套內含：
                                                             <ul class="list-unstyled mb-0">
                                                                 <li>✔ 中英雙語地圖 x 3 張</li>
@@ -212,11 +208,11 @@
                                                                 <li>✔ 中英說明書 x 1 份</li>
                                                                 <li>✔ 圓形魔鬼氈 x 2 片</li>
                                                             </ul>
-                                                        </span>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">收件訊息</th>
+                                                    <th scope="row">收件<br class="d-414-block">訊息</th>
                                                     <td colspan="2">
                                                         <ul class="list-unstyled mb-0 text-dark-gray">
                                                             <li>收件姓名：</li>
@@ -228,8 +224,8 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                                <tr class="border-">
-                                                    <th scope="row">付款狀態</th>
+                                                <tr>
+                                                    <th scope="row">付款<br class="d-414-block">狀態</th>
                                                     <td colspan="2">
                                                         <div class="d-flex gap-2">
                                                             <i class="bi bi-pause-circle-fill text-gray"></i>

@@ -100,51 +100,97 @@
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12 py-3 py-lg-6">
             <div class="row row-cols-1">
-                <!-- 方案明細 -->
+                <!-- 訂購結果 -->
                 <div class="col-md-4 px-xl-4">
-                    <div class="position-sticky top-0">
-                        <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
-                            <a href="#" class="stretched-link"></a>
-                            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
-                            <h3 class="fs-6 text-dark-gray mb-0">2 入組</h3>
-                            <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-2">
-                                <h5 class="fw-bold mb-0">NT$ 1,300</h5>
-                                <span class="badge bg-info-light text-black">65折</span>
-                            </div>
-                            <span class="fs-6 badge bg-danger">剩餘498份</span>
-                            </div>
-                            <small class="text-dark-gray">預定售價 NT$ 1,000，現省 NT$ 700</small>
-                            <div>
-                                <span>本方案內含：</span><br>
-                                <span class="fs-5 fw-bold">《走入創世記》2 套</span>
-                            </div>
-                            <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
-                            <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                            <small>臺灣本島免運、可寄離島</small>
-                            </div>
-                        </div>
-                        <div class="rounded-5 border border-5 border-light-gray p-5 gap-3">
-                            <label for="coupon-code" class="form-label text-danger fw-medium">優惠卷</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control placeholder-light" id="coupon-code" placeholder="請輸入優惠卷">
-                                <button class="btn btn-danger text-white" type="button" id="coupon-code">確認</button>
-                            </div>
-                            <h6 class="mb-2">付款明細</h6>
-                            <div class="d-flex flex-column gap-1 px-2">
-                                <div class="d-flex justify-content-between text-dark-gray">
-                                    <span>項目</span>
-                                    <span>NT$ 1,300</span>
+                    <div class="rounded-5 border border-5 border-light p-5 h-100">
+                        <div class="row row-cols-1 gy-5">
+                            <div class="col px-10">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="d-flex gap-2 text-dark-gray mb-2">
+                                            <span>訂單時間</span>
+                                            <span>2024/03/17 14:45:04</span>
+                                        </div>
+                                        <div class="d-flex gap-2 text-dark-gray">
+                                            <span>訂單編號</span>
+                                            <span>20240317144504</span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex justify-content-center align-items-center gap-2 gap-lg-4 p-4">
+                                            <i class="bi bi-check-circle-fill text-dark-secondary fs-4"></i>
+                                            <h4 class="mb-0">預購成功</h4>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-between text-dark-gray">
-                                    <span>運費</span>
-                                    <span>NT$ 0</span>
-                                </div>
-                                <hr class="bg-light-gray my-2">
-                                <div class="d-flex justify-content-between text-dark-gray fw-bold">
-                                    <span>總計</span>
-                                    <h5 class="fw-bold mb-0">NT$ 1,300</h5>
+                            </div>
+                            <div class="col px-5">
+                                <div class="d-flex flex-column justify-content-between">
+                                    <div class="rounded-5 border border-light border-3 p-4 mb-5">
+                                        <table class="table table-border">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" colspan="3" class="fs-5">預購資訊</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="align-middle">
+                                                <tr>
+                                                    <th scope="row">預購金額</th>
+                                                    <td>
+                                                        <span class="fs-5 fw-bold">NT$ 1,300元</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex gap-2">
+                                                            <i class="bi bi-check-circle-fill text-dark-secondary"></i>
+                                                            <span class="text-dark-gray">已使用優惠卷</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">預購內容</th>
+                                                    <td>
+                                                        <span class="fs-5 fw-bold">《走入創世記》<br>2 套</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="text-dark-gray">
+                                                            完整 1 套內含：
+                                                            <ul class="list-unstyled mb-0">
+                                                                <li>✔ 中英雙語地圖 x 3 張</li>
+                                                                <li>✔ 聖經故事圖卡 x 62 個</li>
+                                                                <li>✔ 中英說明書 x 1 份</li>
+                                                                <li>✔ 圓形魔鬼氈 x 2 片</li>
+                                                            </ul>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">收件訊息</th>
+                                                    <td colspan="2">
+                                                        <ul class="list-unstyled mb-0 text-dark-gray">
+                                                            <li>收件姓名：</li>
+                                                            <li>收件手機：</li>
+                                                            <li>Email：</li>
+                                                            <li>運送方式：</li>
+                                                            <li>收件地址：</li>
+                                                            <li>備註：</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-">
+                                                    <th scope="row">付款狀態</th>
+                                                    <td colspan="2">
+                                                        <div class="d-flex gap-2">
+                                                            <i class="bi bi-pause-circle-fill text-gray"></i>
+                                                            <span class="text-dark-gray">尚未開放付款</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary text-white">完成訂單</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
