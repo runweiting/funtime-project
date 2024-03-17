@@ -17,9 +17,9 @@
                             :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
                             </small>
                         </nav>
-                        <h1 class="fs-4 card-title fw-bold mb-3">
+                        <h2 class="fs-4 card-title fw-bold mb-3">
                             《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！
-                        </h1>
+                        </h2>
                         <div class="d-flex align-items-baseline gap-3">
                             <small class="text-dark-gray">提案人</small>
                             <small class="text-dark-gray">我們的主日學</small>
@@ -152,22 +152,55 @@
                 </div>
                 <!-- 填寫訂購 -->
                 <div class="col-md-8 px-xl-4">
-                    <form ref="form-payment">
-                        <!-- 會員資料 -->
-                        <div class="d-none p-5">
-                            <h3 class="fs-5">會員資料</h3>
-                            <form ref="form-member">
-                                <div class="form-floating mb-3">
-                                    <input
-                                    type="email"
-                                    class="form-control"
-                                    id="floatingEmail"
-                                    name="email"
-                                    placeholder="請輸入email"
-                                    disabled                           />
-                                    <label for="floatingEmail" class="form-label">Email</label>
-                                    <ErrorMessage name="email" class="invalid-feedback" />
+                    <!-- 會員資料 -->
+                    <div class="d-none p-5">
+                        <h3 class="fs-5">會員資料</h3>
+                        <form ref="form-member">
+                            <div class="form-floating mb-3">
+                                <input
+                                type="email"
+                                class="form-control"
+                                id="floatingEmail"
+                                name="email"
+                                placeholder="請輸入email"
+                                disabled                           />
+                                <label for="floatingEmail" class="form-label">Email</label>
+                                <ErrorMessage name="email" class="invalid-feedback" />
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input
+                                        type="text"
+                                        class="form-control"
+                                        id="floatingName"
+                                        name="姓名"
+                                        placeholder="請輸入姓名" disabled
+                                        />
+                                        <label for="floatingName" class="form-label">收件人姓名</label>
+                                        <ErrorMessage name="姓名" class="invalid-feedback" />
+                                    </div>
                                 </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input
+                                        type="tel"
+                                        class="form-control"
+                                        id="floatingTel"
+                                        name="手機" disabled
+                                        />
+                                        <label for="floatingTel" class="form-label">手機</label>
+                                        <ErrorMessage name="手機" class="invalid-feedback" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 收件資料 -->
+                    <div class="rounded-5 border border-5 border-light p-5 h-100">
+                        <from ref="form-order" class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                                <h3 class="fs-5">收件人</h3>
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-floating mb-3">
@@ -176,9 +209,8 @@
                                             class="form-control"
                                             id="floatingName"
                                             name="姓名"
-                                            placeholder="請輸入姓名" disabled
                                             />
-                                            <label for="floatingName" class="form-label">收件人姓名</label>
+                                            <label for="floatingName" class="form-label">真實姓名</label>
                                             <ErrorMessage name="姓名" class="invalid-feedback" />
                                         </div>
                                     </div>
@@ -188,163 +220,98 @@
                                             type="tel"
                                             class="form-control"
                                             id="floatingTel"
-                                            name="手機" disabled
+                                            name="手機"
                                             />
                                             <label for="floatingTel" class="form-label">手機</label>
                                             <ErrorMessage name="手機" class="invalid-feedback" />
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <!-- 發票類型 -->
-                        <div class="rounded-5 border border-5 border-light p-5 mb-5">
-    
-                            <h3 class="fs-5">發票類型</h3>
-                            <div class="row row-cols-1 gy-2">
-                                <div class="col">
-                                    <div class="rounded-5 border border-light border-3 p-4">
-                                        <div class="form-check ps-10">
-                                            <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="個人發票-電子發票" id="individual-invoice">
-                                            <label class="form-check-label text-dark-gray" for="individual-invoice">
-                                                個人發票（電子發票）
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="rounded-5 border border-light border-3 p-4">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="個人發票-手機載具" id="individual-invoice">
-                                                    <label class="form-check-label text-dark-gray" for="individual-invoice">
-                                                        個人發票（手機載具）
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label for="mobile-invoice" class="form-label text-dark-gray">手機載具</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light" id="mobile-invoice" aria-describedby="mobile-invoice" placeholder="請輸入手機載具">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="rounded-5 border border-light border-3 p-4">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="公司發票" id="company-invoice">
-                                                    <label class="form-check-label text-dark-gray" for="company-invoice">
-                                                        公司發票（電子發票）
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label for="company-ubn" class="form-label text-dark-gray">統一編號</label>
-                                                <div class="input-group mb-4">
-                                                    <input type="text" class="form-control placeholder-light" id="company-ubn" aria-describedby="company-ubn" placeholder="請輸入統一編號">
-                                                </div>
-                                                <label for="company-name" class="form-label text-dark-gray">公司抬頭</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light" id="company-name" aria-describedby="company-name" placeholder="請輸入公司抬頭">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="form-floating">
+                                    <input
+                                    type="email"
+                                    class="form-control"
+                                    id="floatingEmail"
+                                    name="email"
+                                    placeholder="請輸入email"
+                                    />
+                                    <label for="floatingEmail" class="form-label">Email</label>
+                                    <ErrorMessage name="email" class="invalid-feedback" />
                                 </div>
                             </div>
-                        </div>
-                        <!-- 付款方式 -->
-                        <div class="rounded-5 border border-5 border-light p-5">
-                            <h3 class="fs-5">付款方式</h3>
-                            <div class="row row-cols-1 gy-2 mb-3">
-                                <div class="col">
-                                    <div class="rounded-5 border border-light border-3 p-4">
-                                        <div class="row mb-4">
-                                            <div class="col">
-                                                <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="credit-card" id="credit-card">
-                                                    <label class="form-check-label text-dark-gray" for="credit-card">
-                                                        線上刷卡
-                                                    </label>
-                                                </div>
-                                            </div>
+                            <div>
+                                <h4 class="fs-6">請選擇運送方式</h4>
+                                <select class="form-select bg-light text-center text-dark-gray" aria-label="select-shipment" disabled>
+                                    <option value="home-delivery" selected>宅配到府</option>
+                                </select>
+                            </div>
+                            <div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label class="form-label text-dark-gray">收件地點</label>
+                                        <select class="form-select" aria-label="select-country">
+                                            <option value="taiwan-mainland" selected>台灣本島</option>
+                                            <option value="taiwan-outerIslands">台灣外島</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label text-dark-gray">縣市</label>
+                                        <select class="form-select" aria-label="select-city">
+                                            <option value="taipei" selected>台北</option>
+                                            <option value="taichung">台中</option>
+                                            <option value="kaohsiung">高雄</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label text-dark-gray">鄉鎮市區</label>
+                                        <select class="form-select" aria-label="select-region">
+                                            <option value="north" selected>北區</option>
+                                            <option value="center">中區</option>
+                                            <option value="south">南區</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="form-floating">
+                                            <input
+                                            type="text"
+                                            class="form-control"
+                                            id="floatingPostcode"
+                                            name="postcode"
+                                            placeholder="請輸入郵遞區號"
+                                            />
+                                            <label for="floatingPostcode" class="form-label">郵遞區號</label>
+                                            <ErrorMessage name="postcode" class="invalid-feedback" />
                                         </div>
-                                        <div class="row row-cols-2">
-                                            <div class="col">
-                                                <label for="name" class="form-label text-dark-gray">持卡人</label>
-                                                <div class="input-group mb-4">
-                                                    <input type="text" class="form-control placeholder-light" id="name" aria-describedby="name" placeholder="請輸入持卡人姓名">
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label for="credit-card-number" class="form-label text-dark-gray">信用卡號碼</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light" id="credit-card-number" aria-describedby="credit-card-number" placeholder="請填入信用卡號碼">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row row-cols-3">
-                                            <div class="col">
-                                                <label for="expiry-date-month" class="form-label text-dark-gray">有效期限 MM</label>
-                                                <div class="input-group mb-4">
-                                                    <input type="number" class="form-control placeholder-light" id="expiry-date-month" aria-describedby="expiry-date-month" placeholder="MM">
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light align-self-end" id="expiry-date-month" aria-describedby="expiry-date-month" placeholder="YY" style="margin-top: 32px;">
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label for="credit-card-cvv" class="form-label text-dark-gray">安全碼</label>
-                                                <div class="input-group mb-4">
-                                                    <input type="number" class="form-control placeholder-light" id="credit-card-cvv" aria-describedby="credit-card-cvv" placeholder="CVV">
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-floating">
+                                            <VField
+                                            type="text"
+                                            class="form-control"
+                                            id="floatingAddress"
+                                            name="地址"
+                                            placeholder="請輸入地址"
+                                            />
+                                            <label for="floatingAddress" class="form-label">地址</label>
+                                            <ErrorMessage name="地址" class="invalid-feedback" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="rounded-5 border border-light border-3 p-4">
-                                        <div class="row mb-4">
-                                            <div class="col">
-                                                <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="bank-transfer" id="bank-transfer">
-                                                    <label class="form-check-label text-dark-gray" for="bank-transfer">
-                                                        ATM虛擬帳號轉帳
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="d-flex gap-2 mb-2">
-                                                    <span>繳費銀行名稱：</span>
-                                                    <span>六角銀行</span>
-                                                </div>
-                                                <div class="d-flex gap-2 mb-2">
-                                                    <span>繳費銀行代碼：</span>
-                                                    <span>xxx</span>
-                                                </div>
-                                                <div class="d-flex gap-2 mb-2">
-                                                    <span>繳費虛擬帳號：</span>
-                                                    <span>xxxx xxxx xxxx xxxx</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <label for="message" class="form-label text-dark-gray">備註(選填)</label>
+                                    <textarea
+                                    id="message"
+                                    class="form-control" rows="3"
+                                    ></textarea>
                                 </div>
                             </div>
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary text-white">送出訂單</button>
                             </div>
-                        </div>
-                    </form>
+                        </from>
+                    </div>
                 </div>
             </div>
             <div class="col px-xl-4 my-3 my-lg-6">

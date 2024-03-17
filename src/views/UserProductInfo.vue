@@ -16,9 +16,9 @@
               :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
             </small>
           </nav>
-          <h1 class="fs-4 card-title fw-bold">
+          <h2 class="fs-4 card-title fw-bold">
             《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！
-          </h1>
+          </h2>
         </div>
       </div>
       <div class="row row-cols-1 py-2 p-xl-4 row-cols-xl-2">
