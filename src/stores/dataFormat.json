@@ -9,24 +9,23 @@
             "小組團契"
         ],
         "proposer": "我們的主日學",
-        "target_unit": 500,
-        "current_unit": 0,
-        "backers-count": 0,
-        "percentage-raised": 0,
+        "target_units": 500,
         "description": "探索《創世記》的精彩旅程！將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。無論您是新手還是聖經學者，這款遊戲都將為您提供一個獨特而豐富啟發的體驗。",
-        "feature": [
+        "features": [
             "原創商品", "臺灣設計", "臺灣製造"
         ],
         "content": {
-            "title": "一開始讀經時，你是不是也有以下的困擾？",
-            "post": [
+            "question": "一開始讀經時，你是不是也有以下的困擾？",
+            "points": [
                 {
-                    "subtitle": "趣味性",
-                    "sections": "將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。"
+                    "title": "趣味性",
+                    "content": "將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。",
+                    "imageUrl": ""
                 },
                 {
-                    "subtitle": "互動性",
-                    "sections": "通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。"
+                    "title": "互動性",
+                    "content": "通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。",
+                    "imageUrl": ""
                 }
             ]
         },
@@ -34,25 +33,25 @@
             "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             "https://images.unsplash.com/photo-1553729784-e91953dec042?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
-        "package": [
+        "packages": [
             {
-                "package_name": "2 入組",
-                "package_unit": 2,
+                "name": "2 入組",
+                "units": 2
             },
             {
-                "package_name": "6 入組",
-                "package_unit": 6,
+                "name": "6 入組",
+                "units": 6
             },
             {
-                "package_name": "10 入組",
-                "package_unit": 10
+                "name": "10 入組",
+                "units": 10
             }
         ],
         "category": "地圖",
         "origin_price": 1000,
-        "price": 650,
         "discount": 0.65,
         "unit": "組",
-        "is_enabled": 1
+        "is_enabled": 1,
+        "productRatings": 0
         }
     }

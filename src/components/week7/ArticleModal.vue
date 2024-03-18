@@ -87,28 +87,28 @@
               </div>
               <div class="col-md-6">
                 <div class="row mb-2">
-                    <label for="title" class="col-sm-4 col-form-label">文章標籤：</label>
-                    <div class="col-sm-8">
-                      <div class="input-group mb-2">
-                        <input :disabled="inputDisabled" type="text" class="form-control" placeholder="輸入標籤" v-model="newTag" @keyup.enter="addTag">
-                        <button class="btn btn-outline-secondary" type="button" @click="addTag">新增</button>
-                      </div>
-                      <div class="d-flex flex-wrap gap-2">
-                        <span class="badge bg-secondary d-flex align-items-center" v-for="(tag, index) in tempArticle.tag" :key="index" style="opacity: 0.75;">
-                          <span>{{ tag }}</span>
-                          <button type="button" class="btn-close" aria-label="Close" @click="removeTag(index)" style="scale: 0.75;">
-                          </button>
-                        </span>
-                      </div>
+                  <label for="title" class="col-sm-4 col-form-label">文章標籤：</label>
+                  <div class="col-sm-8">
+                    <div class="input-group mb-2">
+                      <input :disabled="inputDisabled" type="text" class="form-control" placeholder="輸入標籤" v-model="newTag" @keyup.enter="addTag">
+                      <button class="btn btn-outline-secondary" type="button" @click="addTag">新增</button>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span class="badge bg-secondary d-flex align-items-center" v-for="(tag, index) in tempArticle.tag" :key="index" style="opacity: 0.75;">
+                        <span>{{ tag }}</span>
+                        <button type="button" class="btn-close" aria-label="Close" @click="removeTag(index)" style="scale: 0.75;">
+                        </button>
+                      </span>
                     </div>
                   </div>
-                  <div class="row mb-2">
-                    <label for="dateInput" class="col-sm-4 col-form-label">發佈日期：</label>
-                    <div class="col-sm-8">
-                      <input @change="validateDateInput"
-                      v-model="tempArticle.create_at" :disabled="inputDisabled" type="date" class="form-control" id="title">
-                    </div>
+                </div>
+                <div class="row mb-2">
+                  <label for="dateInput" class="col-sm-4 col-form-label">發佈日期：</label>
+                  <div class="col-sm-8">
+                    <input @change="validateDateInput"
+                    v-model="tempArticle.create_at" :disabled="inputDisabled" type="date" class="form-control" id="title">
                   </div>
+                </div>
               </div>
             </div>
             <div class="row mb-2">
