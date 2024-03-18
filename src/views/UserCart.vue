@@ -101,7 +101,7 @@
                             </div>
                             <span class="fs-6 badge bg-danger">剩餘498份</span>
                         </div>
-                        <small class="text-dark-gray">預定售價 NT$ 10,00，現省 NT$ 700</small>
+                        <small class="text-dark-gray">預定售價 <del>NT$ 10,00</del>，現省 NT$ 700</small>
                         <div>
                             <span>本方案內含：</span><br>
                             <span class="fs-5 fw-bold">《走入創世記》2 套</span>

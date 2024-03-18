@@ -101,7 +101,7 @@
         <div class="container px-lg-12 py-3 py-lg-6">
             <div class="row row-cols-1">
                 <!-- 方案明細 -->
-                <div class="col-md-4 px-xl-4">
+                <div class="col-md-6 col-lg-5 px-xl-4">
                     <div class="position-sticky top-0">
                         <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
                             <a href="#" class="stretched-link"></a>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
                 <!-- 填寫訂購 -->
-                <div class="col-md-8 px-xl-4">
+                <div class="col-md-6 col-lg-7 px-xl-4 gy-3 gy-md-0">
                     <!-- 會員資料 -->
                     <div class="d-none p-5">
                         <h3 class="fs-5">會員資料</h3>
@@ -198,7 +198,7 @@
                     </div>
                     <!-- 收件資料 -->
                     <div class="rounded-5 border border-5 border-light p-5 h-100">
-                        <from ref="form-order" class="d-flex flex-column justify-content-between h-100">
+                        <from ref="form-order" class="d-flex flex-column gap-3 h-100">
                             <div>
                                 <h3 class="fs-5">收件人</h3>
                                 <div class="row">
@@ -307,7 +307,13 @@
                                     ></textarea>
                                 </div>
                             </div>
-                            <div class="text-end">
+                            <div class="form-check">
+                                <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="checked" name="check">
+                                <label class="form-check-label text-dark-gray" for="flexCheckChecked">
+                                    我已閱讀並同意 funtime 服務條款與隱私權政策。
+                                </label>
+                            </div>
+                            <div class="text-end mt-auto">
                                 <button type="submit" class="btn btn-primary text-white">送出訂單</button>
                             </div>
                         </from>

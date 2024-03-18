@@ -36,7 +36,7 @@
             </button>
           </div>
         </form>
-        <p class="text-secondary text-center pt-5">&copy; create-vue-project</p>
+        <p class="text-dark-gray text-center pt-5">&copy; funtime</p>
       </div>
     </div>
   </main>
@@ -58,8 +58,14 @@ export default {
     };
   },
   methods: {
+    // 刪除舊的 token
+    deleteOldToken() {
+      document.cookie = "myToken=; expires=; path=/;";
+    },
     // POST 登入及驗證
     login() {
+      // 超過 token 期限，先刪除舊 token
+      this.deleteOldToken();
       // 驗證是否有 token
       if (isUserLoggedIn()) {
         this.goToAdmin();
