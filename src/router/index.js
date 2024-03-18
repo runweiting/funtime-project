@@ -71,7 +71,7 @@ const baseRoutes = [
         name: "order-result",
         component: () => import("../views/UserOrderResult.vue"),
         meta: {
-          title: "訂單成果",
+          title: "訂單結果",
         },
       },
       {
@@ -80,6 +80,14 @@ const baseRoutes = [
         component: () => import("../views/UserPayment.vue"),
         meta: {
           title: "付款明細",
+        },
+      },
+      {
+        path: "payment-result",
+        name: "payment-result",
+        component: () => import("../views/UserPaymentResult.vue"),
+        meta: {
+          title: "付款結果",
         },
       },
     ],
