@@ -2,7 +2,6 @@
   <!-- editModal -->
   <div
     class="modal fade"
-    id="editModal"
     tabindex="-1"
     aria-labelledby="editModalLabel"
     aria-hidden="true"
@@ -385,15 +384,14 @@ import { mapState, mapActions } from 'pinia';
 import adminProductsStore from '@/stores/dashboard/adminProductsStore';
 import modalMixin from '@/mixins/modalMixin';
 
-// const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   props: {
     tempProduct: Object,
     isNew: Boolean,
   },
+  mixins: [modalMixin],
   data() {
     return {
-      editModal: null,
       selectedProduct: {
         productRatings: 0,
         points: [],
@@ -422,8 +420,6 @@ export default {
       },
     };
   },
-  emit: ['getData'],
-  mixins: [modalMixin],
   created() {
     // 初始化 selectedProduct
     this.selectedProduct = {
@@ -431,7 +427,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(adminProductsStore, ['modalState']),
+    ...mapState(adminProductsStore, ['editModalOpen']),
   },
   watch: {
     tempProduct: {
@@ -440,9 +436,9 @@ export default {
         this.selectedProduct = updateTempProduct;
       }
     },
-    modalState: {
+    editModalOpen: {
       handler(newState) {
-        // modalState 變為 false 時，隱藏 modal
+        // false 時，隱藏 modal
         if (!newState) {
           this.hideModal();
         }
@@ -506,41 +502,6 @@ export default {
       this.inputDisabled = true;
       this.selectedProduct = {};
     },
-    
-    // // POST or PUT 新增商品
-    // updateData() {
-    //   // -> 新增商品
-    //   let url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/product`;
-    //   let method = 'post';
-    //   // -> 編輯商品
-    //   if (!this.isNew) {
-    //     url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/product/${this.selectedProduct.id}`;
-    //     method = 'put';
-    //   }
-    //   this.axios[method](url, {
-    //     data: this.selectedProduct,
-    //   })
-    //     .then((res) => {
-    //       showSuccessToast(res.data.message);
-    //       this.modal.hide();
-    //       this.$emit('getData');
-    //     })
-    //     .catch((err) => {
-    //       showErrorToast(err.response.data.message);
-    //     });
-    // },
-    // // 上傳圖片
-    // upload() {
-    //   const fileInput = document.querySelector('#formFile');
-    //   // 取出 fileInput 內的 file 物件
-    //   const file = fileInput.files[0];
-    //   // 新增 formData 物件
-    //   const formData = new FormData();
-    //   // 在 formData 最後一個子節點插入 file 和 'file-to-upload'
-    //   formData.append('file-to-upload', file);
-    //   const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/upload`;
-    //   this.axios.post(url, formData);
-    // },
   },
 };
 </script>

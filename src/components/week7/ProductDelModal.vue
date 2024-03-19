@@ -2,7 +2,6 @@
   <!-- delModal -->
   <div
     class="modal fade modal-lg"
-    id="delModal"
     tabindex="-1"
     aria-labelledby="delModalLabel"
     aria-hidden="true"
@@ -73,7 +72,6 @@ export default {
   mixins: [modalMixin],
   data() {
     return {
-      delModal: null,
       selectedProduct: {},
     };
   },
@@ -84,7 +82,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(adminProductsStore, ['modalState'])
+    ...mapState(adminProductsStore, ['delModalOpen'])
   },
   watch: {
     tempProduct: {
@@ -93,9 +91,9 @@ export default {
         this.selectedProduct = updateTempProduct;
       },
     },
-    modalState: {
+    delModalOpen: {
       handler(newState) {
-        // modalState 變為 false 時，隱藏 modal
+        // false 時，隱藏 modal
         if (!newState) {
           this.hideModal();
         }
