@@ -25,21 +25,21 @@
             <div class="row">
               <div class="col-sm-8">
                 <h5 class="fw-bold text-danger">
-                  {{ tempData.title }}
+                  {{ tempProduct.title }}
                   <span class="badge bg-dark ms-2">{{
-                    tempData.category
+                    tempProduct.category
                   }}</span>
                 </h5>
-                <p>{{ tempData.description }}</p>
+                <p>{{ tempProduct.description }}</p>
                 <p>
                   <small class="text-muted">
-                    原價: {{ tempData.origin_price }} / 售價:
-                    {{ tempData.price }}
+                    原價: {{ tempProduct.origin_price }} / 售價:
+                    {{ tempProduct.price }}
                   </small>
                 </p>
               </div>
               <div class="col-sm-4">
-                <img :src="tempData.imageUrl" class="img-fluid" />
+                <img :src="tempProduct.imageUrl" class="img-fluid" />
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
           >
             取消
           </button>
-          <button @click="deleteData" type="button" class="btn btn-danger">
+          <button @click="deleteProduct(this.selectedProduct.id)" type="button" class="btn btn-danger">
             確認刪除
           </button>
         </div>
@@ -62,47 +62,49 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2';
+import { mapState, mapActions } from 'pinia';
+import adminProductsStore from '@/stores/dashboard/adminProductsStore';
 import modalMixin from '@/mixins/modalMixin';
 
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   props: {
-    tempData: Object,
+    tempProduct: Object,
   },
+  mixins: [modalMixin],
   data() {
     return {
       delModal: null,
+      selectedProduct: {},
     };
   },
-  emit: ['getData'],
-  mixins: [modalMixin],
-  methods: {
-    // DELETE 刪除商品
-    deleteData() {
-      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/product/${this.tempData.id}`;
-      this.axios
-        .delete(url)
-        .then((res) => {
-          Swal.fire({
-            title: res.data.message,
-            icon: 'success',
-            confirmButtonText: 'OK',
-          });
-        })
-        .then(() => {
-          this.modal.hide();
-          // this.delModal.hide();
-          this.$emit('getData');
-        })
-        .catch((err) => {
-          Swal.fire({
-            title: err.response.data.message,
-            icon: 'error',
-            confirmButtonText: 'OK',
-          });
-        });
+  created() {
+    // 初始化 tempProduct
+    this.selectedProduct = {
+      ...this.tempProduct,
+    };
+  },
+  computed: {
+    ...mapState(adminProductsStore, ['modalState'])
+  },
+  watch: {
+    tempProduct: {
+      deep: true,
+      handler(updateTempProduct) {
+        this.selectedProduct = updateTempProduct;
+      },
+    },
+    modalState: {
+      handler(newState) {
+        // modalState 變為 false 時，隱藏 modal
+        if (!newState) {
+          this.hideModal();
+        }
+      },
+    immediate: true // 立即執行一次
     },
   },
+  methods: {
+    ...mapActions(adminProductsStore, ['deleteProduct'])
+  }
 };
 </script>

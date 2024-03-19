@@ -6,7 +6,7 @@
           <h2>{{ title }}</h2>
           <div class="d-flex justify-content-between gap-2 py-2">
             <p class="p-2 mb-0">
-              {{ `一頁顯示 ${Object.keys(this.products).length} 項商品` }}
+              {{ `一頁顯示 ${Object.keys(this.tempProductList).length} 項商品` }}
             </p>
             <div class="d-flex justify-content-end gap-2">
               <button
@@ -21,14 +21,15 @@
             <!-- editModal -->
             <edit-modal
               ref="editModal"
-              :tempData="tempData"
+              :tempProduct="tempProduct" 
               :is-new="isNew"
               @getData="getProducts"
             >
             </edit-modal>
             <!-- delModal -->
             <del-modal
-              ref="delModal" :tempData="tempData" @getData="getProducts">
+              ref="delModal" 
+              :tempProduct="tempProduct" @getData="getProducts">
             </del-modal>
           </div>
         </div>
@@ -46,7 +47,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in products" :key="item.title">
+              <tr v-for="item in tempProductList" :key="item.title">
                 <td>
                   <img :src="item.imageUrl" class="rounded" style="height: 48px;">
                 </td>
@@ -84,77 +85,91 @@
             </tbody>
           </table>
         </div>
-        <Pagination :pages="pagination" @showPage="getProducts" />
+        <pagination-group @page-selected="handlePageChange"></pagination-group>
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import { mapState, mapActions } from 'pinia';
+import adminProductsStore from '@/stores/dashboard/adminProductsStore';
+import PaginationGroup from '@/components/week5/PaginationGroup.vue';
 import EditModal from '../../components/week7/ProductEditModal.vue';
 import DelModal from '../../components/week7/ProductDelModal.vue';
-import Pagination from '../../components/week7/Pagination.vue';
 
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   components: {
     EditModal,
     DelModal,
-    Pagination,
+    PaginationGroup,
   },
   data() {
     return {
       title: '這是商品頁面',
-      // 商品列表
-      products: [],
       isNew: false,
-      tempData: {
+      tempProductList: [],
+      tempProduct: {
+        productRatings: 0,
+        points: [],
         imagesUrl: [],
-        productRatings: 0, 
+        tags: [],
+        features: [],
+        packages: []
       },
-      // 分頁
-      pagination: {},
     };
+  },
+  created() {
+    this.tempProductList = [
+      ...this.productList
+    ];
+  },
+  watch: {
+    productList: {
+      deep: true,
+      handler(updateProductList) {
+        this.tempProductList = updateProductList
+      }
+    }
+  },
+  computed: {
+    ...mapState(adminProductsStore, ['productList']),
   },
   mounted() {
     this.getProducts();
   },
   methods: {
-    // GET 商品列表
-    // 預設為第一頁，若 page 傳入值則取代 1
-    getProducts(page = 1) {
-      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/products?page=${page}`;
-      this.axios.get(url).then((res) => {
-        const { products, pagination } = res.data;
-        this.products = products;
-        this.pagination = pagination;
-      });
+    ...mapActions(adminProductsStore, ['getProducts', 'postProduct']),
+    // 更新選取頁面的商品列表
+    handlePageChange(category, page) {
+      this.getProducts(category,page)
     },
-    // 切換 modal 狀態：新增、編輯、刪除
-    openModal(isNew, item) {
-      // 新增 -> 清空資料、POST、開啟 editModal
-      if (isNew === 'new') {
-        this.tempData = {
+    openModal(state, item) {
+      // 新增
+      if (state === 'new') {
+        this.tempProduct = { 
+          productRatings: 0,
+          points: [],
           imagesUrl: [],
-          productRatings: 0, 
+          tags: [],
+          features: [],
+          packages: []
         };
         this.isNew = true;
         // 使用 modalMixin.js
         this.$refs.editModal.openModal();
-        // 編輯 -> 淺拷貝、PUT、開啟 editModal
-        console.log(this.products)
-      } else if (isNew === 'edit') {
-        this.tempData = { ...item };
+        // 編輯
+      } else if (state === 'edit') {
+        this.tempProduct = { ...item };
         // * 如果沒有多圖的 item，要新增多圖
-        if (!Array.isArray(this.tempData.imagesUrl)) {
-          this.tempData.imagesUrl = [];
+        if (!Array.isArray(this.tempProduct.imagesUrl)) {
+          this.tempProduct.imagesUrl = [];
         }
         this.isNew = false;
         this.$refs.editModal.openModal();
-        console.log(this.products)
         // 刪除 -> 淺拷貝、開啟 delModal
-      } else if (isNew === 'delete') {
-        this.tempData = { ...item };
+      } else if (state === 'delete') {
+        this.tempProduct = { ...item };
         this.$refs.delModal.openModal();
       }
     },

@@ -84,7 +84,6 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-
 import userProductsStore from '@/stores/userProductsStore';
 import cartStore from '@/stores/cartStore';
 import categoryStore from '@/stores/categoryStore';

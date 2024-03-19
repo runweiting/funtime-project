@@ -93,8 +93,8 @@ export default {
     data() {
         return {
             title: '文章列表',
-            tempArticleList: [],
             isNew: false,
+            tempArticleList: [],
         }
     },
     created() {

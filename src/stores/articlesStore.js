@@ -10,7 +10,7 @@ export default defineStore("articlesStore", {
     // 文章列表
     articleList: [],
     pagination: {},
-    // 特定文章
+    // 編輯文章
     selectedArticle: {},
   }),
   actions: {

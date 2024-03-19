@@ -1,4 +1,3 @@
-<!-- eslint-disable max-len -->
 <template>
   <!-- articleModal -->
   <div
@@ -61,29 +60,27 @@
             <div class="row">
               <h5>文章內容</h5>
               <div class="col-md-6">
-                <form>
-                  <div class="row mb-2">
-                    <label for="title" class="col-sm-4 col-form-label">標題：</label>
-                    <div class="col-sm-8">
-                      <input
-                      v-model="tempArticle.title" :disabled="inputDisabled" type="text" class="form-control" id="title">
-                    </div>
+                <div class="row mb-2">
+                  <label for="title" class="col-sm-4 col-form-label">標題：</label>
+                  <div class="col-sm-8">
+                    <input
+                    v-model="tempArticle.title" :disabled="inputDisabled" type="text" class="form-control" id="title">
                   </div>
-                  <div class="row mb-2">
-                    <label for="code" class="col-sm-4 col-form-label">作者：</label>
-                    <div class="col-sm-8">
-                      <input
-                      v-model="tempArticle.author" :disabled="inputDisabled" type="text" class="form-control" id="code">
-                    </div>
+                </div>
+                <div class="row mb-2">
+                  <label for="code" class="col-sm-4 col-form-label">作者：</label>
+                  <div class="col-sm-8">
+                    <input
+                    v-model="tempArticle.author" :disabled="inputDisabled" type="text" class="form-control" id="code">
                   </div>
-                  <div class="row mb-2">
-                    <label for="code" class="col-sm-4 col-form-label">敘述：</label>
-                    <div class="col-sm-8">
-                      <input
-                      v-model="tempArticle.description" :disabled="inputDisabled" type="text" class="form-control" id="code">
-                    </div>
+                </div>
+                <div class="row mb-2">
+                  <label for="code" class="col-sm-4 col-form-label">敘述：</label>
+                  <div class="col-sm-8">
+                    <input
+                    v-model="tempArticle.description" :disabled="inputDisabled" type="text" class="form-control" id="code">
                   </div>
-                </form>
+                </div>
               </div>
               <div class="col-md-6">
                 <div class="row mb-2">
@@ -210,7 +207,7 @@ export default {
     togglerEdit() {
       this.inputDisabled = false;
     },
-    // 關閉修改
+    // 取消編輯
     cancelUpdate() {
       this.inputDisabled = true;
     },
@@ -243,3 +240,8 @@ export default {
   },
 };
 </script>
+<style scope>
+::placeholder {
+  color: #c5c5c5 !important;
+}
+</style>

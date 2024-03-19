@@ -1,6 +1,6 @@
 <template>
   <div class="px-2">
-    <nav aria-label="Page navigation example">
+    <nav aria-label="page-navigation">
       <ul class="pagination">
         <!-- 前一頁箭頭圖示 -->
         <li
@@ -58,8 +58,9 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia';
+import { mapState } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
+import adminProductsStore from '@/stores/dashboard/adminProductsStore';
 
 export default {
   emits: ['page-selected'],
@@ -70,11 +71,10 @@ export default {
   },
   computed: {
     ...mapState(userProductsStore, ['pagination']),
+    ...mapState(adminProductsStore, ['pagination'])
   },
   methods: {
-    ...mapActions(userProductsStore, ['getProducts']),
     selectedPage(page) {
-      console.log(page);
       this.$emit('page-selected', this.currentCategory, page);
     },
   },
