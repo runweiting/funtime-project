@@ -98,7 +98,6 @@ export default {
           this.hideModal();
         }
       },
-    immediate: true // 立即執行一次
     },
   },
   methods: {

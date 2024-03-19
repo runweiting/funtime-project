@@ -37,7 +37,7 @@
                 <div class="mb-4">
                   <label for="imgUrl" class="form-label">主要圖片</label>
                   <input
-                    v-model="selectedProduct.imageUrl" :disabled="inputDisabled" 
+                    v-model="selectedProduct.imageUrl" :disabled="isInputEnabled" 
                     type="url"
                     class="form-control mb-2"
                     id="imgUrl"
@@ -55,7 +55,7 @@
                     >
                     <input
                       :id="`url${index}`"
-                      v-model="selectedProduct.imagesUrl[index]" :disabled="inputDisabled" 
+                      v-model="selectedProduct.imagesUrl[index]" :disabled="isInputEnabled" 
                       type="url"
                       class="form-control mb-2"
                       placeholder="請輸入網址"
@@ -77,14 +77,14 @@
                       "
                       @click="selectedProduct.imagesUrl.push('')"
                       type="button"
-                      class="btn btn-outline-primary w-100"
+                      class="btn btn-primary w-100"
                     >
                       新增圖片
                     </button>
                     <button
                       @click="selectedProduct.imagesUrl.pop()"
                       type="button"
-                      class="btn btn-outline-danger w-100"
+                      class="btn btn-danger text-white w-100"
                     >
                       刪除圖片
                     </button>
@@ -94,7 +94,7 @@
                 <h4 class="fw-bold">上傳圖片</h4>
                 <div class="mb-4">
                   <input
-                    @change="upload" :disabled="inputDisabled" 
+                    @change="upload" :disabled="isInputEnabled" 
                     class="form-control"
                     type="file"
                     id="formFile"
@@ -109,7 +109,7 @@
                   <div class="col-8">
                     <label for="title" class="form-label">完整標題</label>
                     <input
-                      v-model="selectedProduct.title" :disabled="inputDisabled" 
+                      v-model="selectedProduct.title" :disabled="isInputEnabled" 
                       type="text"
                       class="form-control mb-4"
                       name="full-title"
@@ -119,7 +119,7 @@
                   <div class="col-4">
                     <label for="short-title" class="form-label">簡短標題</label>
                     <input
-                      v-model="selectedProduct.short_title" :disabled="inputDisabled" 
+                      v-model="selectedProduct.short_title" :disabled="isInputEnabled" 
                       type="text"
                       class="form-control mb-4"
                       name="short-title"
@@ -132,7 +132,7 @@
                   <div class="col">
                     <label for="description" class="form-label">商品描述</label>
                     <textarea
-                      v-model="selectedProduct.description" :disabled="inputDisabled" 
+                      v-model="selectedProduct.description" :disabled="isInputEnabled" 
                       class="form-control"
                       placeholder="請輸入專案描述"
                       id="description"
@@ -144,7 +144,7 @@
                   <div class="col">
                     <label for="proposer" class="form-label">提案人</label>
                     <input
-                      v-model="selectedProduct.proposer" :disabled="inputDisabled" 
+                      v-model="selectedProduct.proposer" :disabled="isInputEnabled" 
                       type="text"
                       class="form-control"
                       id="unit"
@@ -153,13 +153,13 @@
                   </div>
                   <div class="col">
                     <label for="tags" class="form-label">標籤</label>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="請輸入標籤" v-model="newTag" @keyup.enter="addTag" :disabled="inputDisabled">
-                      <button class="btn btn-outline-secondary" type="button" @click="addTag">新增</button>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" placeholder="請輸入標籤" v-model="newTag" @keyup.enter="addTag" :disabled="isInputEnabled">
+                      <button class="btn btn-gray text-white" type="button" @click="addTag">新增</button>
                     </div>
                     <div class="d-flex flex-wrap gap-2">
-                      <span class="badge bg-secondary d-flex align-items-center" v-for="(tag, index) in selectedProduct.tags" :key="index" style="opacity: 0.75;">
-                        <span>{{ tag }}</span>
+                      <span class="badge bg-primary d-flex align-items-center" v-for="(tag, index) in selectedProduct.tags" :key="index">
+                        <span># {{ tag }}</span>
                         <button type="button" class="btn-close" aria-label="Close" @click="removeTag(index)" style="scale: 0.75;">
                         </button>
                       </span>
@@ -167,12 +167,12 @@
                   </div>
                   <div class="col">
                     <label for="features" class="form-label">特色</label>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="請輸入特色" v-model="newFeature" @keyup.enter="addFeature" :disabled="inputDisabled">
-                      <button class="btn btn-outline-secondary" type="button" @click="addFeature">新增</button>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" placeholder="請輸入特色" v-model="newFeature" @keyup.enter="addFeature" :disabled="isInputEnabled">
+                      <button class="btn btn-gray text-white" type="button" @click="addFeature">新增</button>
                     </div>
                     <div class="d-flex flex-wrap gap-2">
-                      <span class="badge bg-secondary d-flex align-items-center" v-for="(feature, index) in selectedProduct.features" :key="index" style="opacity: 0.75;">
+                      <span class="badge bg-info-light text-black d-flex align-items-center" v-for="(feature, index) in selectedProduct.features" :key="index">
                         <span>{{ feature }}</span>
                         <button type="button" class="btn-close" aria-label="Close" @click="removeFeature(index)" style="scale: 0.75;">
                         </button>
@@ -184,7 +184,7 @@
                 <div class="row">
                   <div class="col">
                     <label for="category" class="form-label">分類</label>
-                    <select v-model="selectedProduct.category" :disabled="inputDisabled" class="form-select" aria-label="category">
+                    <select v-model="selectedProduct.category" :disabled="isInputEnabled" class="form-select" aria-label="category">
                       <option value="" selected disabled>請輸入分類</option>
                       <option value="地圖">地圖</option>
                       <option value="卡牌">卡牌</option>
@@ -195,7 +195,7 @@
                   <div class="col">
                     <label for="target_units" class="form-label">目標組數</label>
                     <input
-                      v-model.number="selectedProduct.target_units" :disabled="inputDisabled" 
+                      v-model.number="selectedProduct.target_units" :disabled="isInputEnabled" 
                       type="number"
                       min="0"
                       class="form-control"
@@ -206,7 +206,7 @@
                   <div class="col">
                     <label for="unit" class="form-label">單位</label>
                     <input
-                      v-model="selectedProduct.unit" :disabled="inputDisabled" 
+                      v-model="selectedProduct.unit" :disabled="isInputEnabled" 
                       type="text"
                       class="form-control"
                       id="unit"
@@ -220,7 +220,7 @@
                   <div class="col">
                     <label for="content_question" class="form-label">困擾標題</label>
                     <input
-                      v-model="selectedProduct.question" :disabled="inputDisabled" 
+                      v-model="selectedProduct.question" :disabled="isInputEnabled" 
                       type="text"
                       class="form-control"
                       id="content_question"
@@ -232,12 +232,12 @@
                 <div class="row mb-4">
                   <div class="col-4">
                     <label for="point-title" class="form-label">設計特點</label>
-                    <input type="text" class="form-control" placeholder="請輸入特點" v-model="newPoint.title" :disabled="inputDisabled">
+                    <input type="text" class="form-control" placeholder="請輸入特點" v-model="newPoint.title" :disabled="isInputEnabled">
                   </div>
                   <div class="col-8">
                     <label for="point-content" class="form-label">設計內容</label>
                       <textarea
-                        v-model="newPoint.content" :disabled="inputDisabled" 
+                        v-model="newPoint.content" :disabled="isInputEnabled" 
                         class="form-control"
                         placeholder="請輸入內容"
                         id="point-content"
@@ -245,11 +245,11 @@
                   </div>
                 </div>
                 <!-- 情境圖片 -->
-                <div class="row align-items-center">
+                <div class="row align-items-center mb-4">
                   <div class="col">
                     <label for="point-imgUrl" class="form-label">情境圖片</label>
                     <input 
-                      v-model="newPoint.imageUrl" :disabled="inputDisabled" 
+                      v-model="newPoint.imageUrl" :disabled="isInputEnabled" 
                       type="url"
                       class="form-control"
                       id="point-imgUrl"
@@ -260,16 +260,23 @@
                     <img :src="newPoint.imageUrl" class="img-fluid" />
                   </div>
                   <div class="col mt-auto">
-                    <button class="btn btn-outline-secondary" type="button" @click="addPoint">新增</button>
+                    <button class="btn btn-gray text-white" type="button" @click="addPoint">新增</button>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col d-flex flex-wrap gap-2">
-                      <span class="badge bg-secondary d-flex align-items-center" v-for="(point, index) in selectedProduct.points" :key="index" style="opacity: 0.75;">
-                        <span>{{ point }}</span>
-                        <button type="button" class="btn-close" aria-label="Close" @click="removePoint(index)" style="scale: 0.75;">
-                        </button>
-                      </span>
+                  <div class="col">
+                    <div v-for="(point, index) in selectedProduct.points" :key="index" class="d-flex justify-content-between border border-gray border-1 rounded-2 p-2 mb-4">
+                      <div class="row">
+                        <div class="col-md-10">
+                          <div class="text-wrap mb-2" style="overflow-wrap: break-word;">{{ point.title }} : {{ point.content }}</div>
+                          <div class="text-wrap" style="overflow-wrap: break-word;">{{ point.imageUrl }}</div>
+                        </div>
+                        <div class="col-md-2 ms-auto">
+                          <button type="button" class="btn-close" aria-label="Close" @click="removePoint(index)" style="scale: 0.75;">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <hr class="w-100 border-top my-8" style="border: 3px dotted #8C8C8E;">
@@ -278,7 +285,7 @@
                   <div class="col">
                     <label for="original-price" class="form-label">售價</label>
                     <input
-                      v-model.number="selectedProduct.origin_price" :disabled="inputDisabled" 
+                      v-model.number="selectedProduct.origin_price" :disabled="isInputEnabled" 
                       type="number"
                       min="0"
                       class="form-control"
@@ -289,7 +296,7 @@
                   <div class="col">
                     <label for="discount" class="form-label">折扣</label>
                     <input @keyup="calculatePrice"
-                      v-model.number="selectedProduct.discount" :disabled="inputDisabled" 
+                      v-model.number="selectedProduct.discount" :disabled="isInputEnabled" 
                       type="number"
                       min="0"
                       class="form-control"
@@ -308,27 +315,30 @@
                   </div>
                 </div>
                 <!-- 優惠套裝 -->
-                <div class="row">
+                <div class="row mb-4">
                   <div class="col">
                     <label for="package-name" class="form-label">套裝名稱</label>
-                    <input type="text" class="form-control" placeholder="請輸入名稱" v-model="newPackage.name" :disabled="inputDisabled">
+                    <input type="text" class="form-control" placeholder="請輸入名稱" v-model="newPackage.name" :disabled="isInputEnabled">
                   </div>
                   <div class="col">
                     <label for="package-units" class="form-label">內含組數</label>
-                    <input type="number" min="0" class="form-control" placeholder="請輸入組數" v-model.number="newPackage.units" :disabled="inputDisabled">
+                    <input type="number" min="0" class="form-control" placeholder="請輸入組數" v-model.number="newPackage.units" :disabled="isInputEnabled">
                   </div>
                   <div class="col mt-auto">
-                    <button class="btn btn-outline-secondary" type="button" @click="addPackage">新增</button>
+                    <button class="btn btn-gray text-white" type="button" @click="addPackage">新增</button>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col d-flex flex-wrap gap-2">
-                      <span class="badge bg-secondary d-flex align-items-center" v-for="(item, index) in selectedProduct.packages" :key="item.name" style="opacity: 0.75;">
-                        <span>{{ item }}</span>
-                        <button type="button" class="btn-close" aria-label="Close" @click="removePoint(index)" style="scale: 0.75;">
-                        </button>
-                      </span>
+                  <div class="col">
+                      <ul class="ps-0" v-for="(item, index) in selectedProduct.packages" :key="item.name">
+                        <li class="d-flex justify-content-between align-items-center gap-2 p-2 border border-gray border-1 rounded-2">
+                          <span>{{ item.name }}，內含 {{ item.units }} 個</span>
+                          <button type="button" class="btn-close" aria-label="Close" @click="removePoint(index)" style="scale: 0.75;">
+                          </button>
+                        </li>
+                      </ul>
                   </div>
+                  <div class="col"></div>
                 </div>
                 <hr class="w-100 border-top my-8" style="border: 3px dotted #8C8C8E;">
                 <!-- 商品評價 -->
@@ -339,7 +349,7 @@
                       {{ selectedProduct.productRatings }} 分
                     </span>
                     <input
-                      v-model="selectedProduct.productRatings" :disabled="inputDisabled" 
+                      v-model="selectedProduct.productRatings" :disabled="isInputEnabled" 
                       type="range"
                       class="form-range"
                       min="0"
@@ -352,7 +362,7 @@
                       <label class="form-label m-0" for="product-active">啟用商品</label>
                       <label class="switch ms-2">
                         <!-- <input> 開關、<span> 滑動圓點 -->
-                        <input v-model="selectedProduct.is_enabled" :disabled="inputDisabled" type="checkbox">
+                        <input v-model="selectedProduct.is_enabled" :disabled="isInputEnabled" type="checkbox">
                         <span class="slider"></span>
                       </label>
                     </div>
@@ -365,12 +375,12 @@
         <div class="modal-footer">
           <button @click="cancelUpdate" 
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-danger text-white"
             data-bs-dismiss="modal"
           >
             取消
           </button>
-          <button @click="updateProduct(this.isNew, this.selectedProduct)" type="button" class="btn btn-primary">
+          <button @click="updateSelectedProduct(this.isNew, this.selectedProduct)" type="button" class="btn btn-primary">
             確認
           </button>
         </div>
@@ -389,6 +399,12 @@ export default {
     tempProduct: Object,
     isNew: Boolean,
   },
+  setup() {
+    const useAdminProductsStore = adminProductsStore();
+    return { 
+      updateProduct: useAdminProductsStore.updateProduct,
+     };
+  },
   mixins: [modalMixin],
   data() {
     return {
@@ -400,7 +416,6 @@ export default {
         features: [],
         packages: [],
       },
-      inputDisabled: true,
       // price
       newPrice: 0,
       // tags
@@ -418,6 +433,8 @@ export default {
         name: '',
         units: 0
       },
+      // for toggleEdit
+      isInputEnabled: true,
     };
   },
   created() {
@@ -443,11 +460,10 @@ export default {
           this.hideModal();
         }
       },
-    immediate: true // 立即執行一次
     },
   },
   methods: {
-    ...mapActions(adminProductsStore, ['updateProduct', 'upload']),
+    ...mapActions(adminProductsStore, ['upload']),
     // calculatePrice
     calculatePrice() {
       this.newPrice = this.selectedProduct.origin_price * this.selectedProduct.discount;
@@ -495,13 +511,20 @@ export default {
     },
     // 修改訂單
     togglerEdit() {
-      this.inputDisabled = false;
+      // 啟用或禁用輸入欄位
+      this.isInputEnabled = !this.isInputEnabled;
     },
     // 取消編輯
     cancelUpdate() {
-      this.inputDisabled = true;
+      this.isInputEnabled = true;
       this.selectedProduct = {};
     },
+    updateSelectedProduct() {
+      this.isInputEnabled = true;
+      // 使用 store 中的 updateProduct 方法
+      this.updateProduct(this.isNew, this.selectedProduct);
+    }
+
   },
 };
 </script>
