@@ -14,9 +14,9 @@ export default defineStore("adminProductsStore", {
     // 商品列表
     productList: [],
     pagination: {},
-    // modalState
-    editModalOpen: true,
-    delModalOpen: true,
+    // 控制 modal 開關
+    isEditModalOpen: true,
+    isDelModalOpen: true,
   }),
   actions: {
     // GET 商品列表
@@ -51,7 +51,7 @@ export default defineStore("adminProductsStore", {
       })
         .then((res) => {
           showSuccessToast(res.data.message);
-          this.editModalOpen = false;
+          this.isEditModalOpen = false;
           this.getProducts();
         })
         .catch((err) => {
@@ -77,7 +77,7 @@ export default defineStore("adminProductsStore", {
         .delete(url)
         .then((res) => {
           showSuccessToast(res.data.message);
-          this.delModalOpen = false;
+          this.isDelModalOpen = false;
           this.getProducts();
         })
         .catch((err) => {

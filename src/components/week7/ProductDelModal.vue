@@ -82,7 +82,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(adminProductsStore, ['delModalOpen'])
+    ...mapState(adminProductsStore, ['isDelModalOpen'])
   },
   watch: {
     tempProduct: {
@@ -91,9 +91,9 @@ export default {
         this.selectedProduct = updateTempProduct;
       },
     },
-    delModalOpen: {
+    isDelModalOpen: {
+      // 傳進來 true，刪除成功後 false
       handler(newState) {
-        // false 時，隱藏 modal
         if (!newState) {
           this.hideModal();
         }

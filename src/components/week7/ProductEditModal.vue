@@ -184,8 +184,8 @@
                 <div class="row">
                   <div class="col">
                     <label for="category" class="form-label">分類</label>
-                    <select v-model="selectedProduct.category" :disabled="isInputEnabled" class="form-select" aria-label="category">
-                      <option value="" selected disabled>請輸入分類</option>
+                    <select v-model="selectedProduct.category" :disabled="isInputEnabled" class="form-select" aria-label="category"  id="category" name="category">
+                      <option value="" disabled selected hidden>請輸入分類</option>
                       <option value="地圖">地圖</option>
                       <option value="卡牌">卡牌</option>
                       <option value="棋盤">棋盤</option>
@@ -380,7 +380,7 @@
           >
             取消
           </button>
-          <button @click="updateSelectedProduct(this.isNew, this.selectedProduct)" type="button" class="btn btn-primary">
+          <button @click="updateProduct(this.isNew, this.selectedProduct)" type="button" class="btn btn-primary">
             確認
           </button>
         </div>
@@ -399,11 +399,12 @@ export default {
     tempProduct: Object,
     isNew: Boolean,
   },
+  // 在組件中使用 store 裡的方法
   setup() {
     const useAdminProductsStore = adminProductsStore();
-    return { 
+    return {
       updateProduct: useAdminProductsStore.updateProduct,
-     };
+    };
   },
   mixins: [modalMixin],
   data() {
@@ -442,9 +443,11 @@ export default {
     this.selectedProduct = {
       ...this.tempProduct,
     };
+    // 以顯示 "請輸入分類"
+    this.selectedProduct.category = '';
   },
   computed: {
-    ...mapState(adminProductsStore, ['editModalOpen']),
+    ...mapState(adminProductsStore, ['isEditModalOpen']),
   },
   watch: {
     tempProduct: {
@@ -453,9 +456,9 @@ export default {
         this.selectedProduct = updateTempProduct;
       }
     },
-    editModalOpen: {
+    isEditModalOpen: {
+      // 傳進來 true，更新成功後 false
       handler(newState) {
-        // false 時，隱藏 modal
         if (!newState) {
           this.hideModal();
         }
@@ -463,7 +466,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(adminProductsStore, ['upload']),
+    ...mapActions(adminProductsStore, ['updateProduct', 'upload']),
     // calculatePrice
     calculatePrice() {
       this.newPrice = this.selectedProduct.origin_price * this.selectedProduct.discount;
@@ -519,12 +522,6 @@ export default {
       this.isInputEnabled = true;
       this.selectedProduct = {};
     },
-    updateSelectedProduct() {
-      this.isInputEnabled = true;
-      // 使用 store 中的 updateProduct 方法
-      this.updateProduct(this.isNew, this.selectedProduct);
-    }
-
   },
 };
 </script>
