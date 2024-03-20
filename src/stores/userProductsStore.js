@@ -13,8 +13,8 @@ export default defineStore("userProductsStore", {
     // 商品列表
     productList: [],
     pagination: {},
-    // vue-loading-overlay
-    // fullPage: false, 須指定渲染容器，才需設定
+    // 指定商品
+    product: {},
   }),
   actions: {
     // GET 商品列表
@@ -32,7 +32,6 @@ export default defineStore("userProductsStore", {
         const { products, pagination } = res.data;
         this.productList = products;
         this.pagination = pagination;
-        console.log(pagination);
         // 異步操作完成後，調用排序邏輯
         this.sortProducts();
       } catch (err) {
@@ -44,6 +43,19 @@ export default defineStore("userProductsStore", {
     // sort 商品列表
     sortProducts() {
       this.productList = this.productList.sort((a, b) => a.price - b.price);
+    },
+    // GET 指定商品
+    async getProduct(targetId) {
+      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${targetId}`;
+      this.$route.params.id = targetId;
+      try {
+        const res = await this.axios.get(url);
+        this.product = res.data.product;
+      } catch (err) {
+        showErrorToast(err.response.data.message);
+      } finally {
+        this.$router.push({ name: "productInfo" });
+      }
     },
   },
 });

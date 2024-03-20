@@ -184,12 +184,10 @@
                     </div>
                 </div>
             </div>
-            {{ productList }}
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-6">
                 <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-0 px-md-3">
-                    <div class="card h-100 shadow-sm position-relative">
-                        <a :to="{ name: 'productsInfo' }" href="#" class="stretched-link">
-                        </a>
+                    <div class="card h-100 shadow-sm position-relative" style="cursor: pointer;">
+                        <a @click="goToUserProductInfo(product.id)" class="stretched-link"></a>
                         <button type="button" class="btn position-absolute p-0 hvr-pulse">
                             <i class="bi bi-heart-fill fs-5"></i>
                         </button>
@@ -212,7 +210,7 @@
                                     <small class="fw-bold">{{ progressBarValue }}%</small>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <small class="fst-italic fw-bold">目標 {{ product.target_units }} 組 / 累計 {{ 待處理 }} 組</small>
+                                    <small class="fst-italic fw-bold">目標 {{ product.target_units }} 組 / 累計 {{ `待處理` }} 組</small>
                                     <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
                                         <span>20 <i class="bi bi-heart-fill text-danger"></i>
                                         </span>
@@ -264,13 +262,16 @@ export default {
         ...mapState(userProductsStore, ['productList']),
     },
     methods: {
-        ...mapActions(userProductsStore, ['getProducts']),
+        ...mapActions(userProductsStore, ['getProducts', 'getProduct']),
         setDynamicProgress(value) {
             const progress = (value / this.targetValue) * 100;
             this.progressBarWidth = `${progress}%`;
             this.progressBarValue = value;
         },
-        
+        goToUserProductInfo(targetId) {
+            this.$route.params.id = targetId;
+            this.$router.push({ name: "productInfo" });
+        }
     }
 }
 </script>
