@@ -328,50 +328,58 @@
                     <button class="btn btn-gray text-white" type="button" @click="addPackage">新增</button>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row mb-4">
                   <div class="col">
-                      <ul class="ps-0" v-for="(item, index) in selectedProduct.packages" :key="item.name">
-                        <li class="d-flex justify-content-between align-items-center gap-2 p-2 border border-gray border-1 rounded-2">
-                          <span>{{ item.name }}，內含 {{ item.units }} 個</span>
+                    <div class="border border-gray border-1 rounded-2 p-2">
+                      <div v-for="(item, index) in selectedProduct.packages" :key="item.name" class="d-flex justify-content-between">
+                        <div class="mb-2">
+                          {{ item.name }}，內含 {{ item.units }} 個
+                        </div>
+                        <div class="ms-auto">
                           <button type="button" class="btn-close" aria-label="Close" @click="removePoint(index)" style="scale: 0.75;">
                           </button>
-                        </li>
-                      </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="col"></div>
                 </div>
-                <div class="row">
+                <div class="row mb-4">
                   <div class="col">
                     <label for="contents" class="form-label">內容物</label>
-                    <div class="input-group mb-2">
-                      <input type="text" class="form-control" placeholder="請輸入內容物" v-model="newContent" @keyup.enter="addContent" :disabled="isInputEnabled">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="請輸入內容物" v-model="newContent" :disabled="isInputEnabled">
                       <button class="btn btn-gray text-white" type="button" @click="addContent">新增</button>
                     </div>
                   </div>
                   <div class="col">
                     <label for="notes" class="form-label">備註</label>
-                    <div class="input-group mb-2">
-                      <input type="text" class="form-control" placeholder="請輸入備註" v-model="newNote" @keyup.enter="addNote" :disabled="isInputEnabled">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="請輸入備註" v-model="newNote" :disabled="isInputEnabled">
                       <button class="btn btn-gray text-white" type="button" @click="addNote">新增</button>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <div v-for="(content, index) in selectedProduct.contents" :key="index" class="d-flex justify-content-between border border-gray border-1 rounded-2 p-2 mb-4">
-                      <div class="text-wrap mb-2" style="overflow-wrap: break-word;">{{ content }}</div>
-                      <div class="ms-auto">
-                        <button type="button" class="btn-close" aria-label="Close" @click="removeContent(index)" style="scale: 0.75;">
-                        </button>
+                    <div class="border border-gray border-1 rounded-2 p-2">
+                      <div v-for="(content, index) in selectedProduct.contents" :key="index" class="d-flex justify-content-between">
+                        <div class="text-wrap" style="overflow-wrap: break-word;">{{ content }}</div>
+                        <div class="ms-auto">
+                          <button type="button" class="btn-close" aria-label="Close" @click="removeContent(index)" style="scale: 0.75;">
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="col">
-                    <div v-for="(note, index) in selectedProduct.notes" :key="index" class="d-flex justify-content-between border border-gray border-1 rounded-2 p-2 mb-4">
-                      <div class="text-wrap mb-2" style="overflow-wrap: break-word;">{{ note }}</div>
-                      <div class="ms-auto">
-                        <button type="button" class="btn-close" aria-label="Close" @click="removeNote(index)" style="scale: 0.75;">
-                        </button>
+                    <div class="border border-gray border-1 rounded-2 p-2">
+                      <div v-for="(note, index) in selectedProduct.notes" :key="index" class="d-flex justify-content-between">
+                        <div class="text-wrap" style="overflow-wrap: break-word;">{{ note }}</div>
+                        <div class="ms-auto">
+                          <button type="button" class="btn-close" aria-label="Close" @click="removeNote(index)" style="scale: 0.75;">
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>

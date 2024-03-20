@@ -16,23 +16,21 @@
               :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
             </small>
           </nav>
-          <h2 class="fs-4 card-title fw-bold">
-            《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！
-          </h2>
+          {{ product }}
+          <h2 class="fs-4 card-title fw-bold">{{ product.title }}</h2>
         </div>
       </div>
       <div class="row row-cols-1 py-2 p-xl-4 row-cols-xl-2">
         <div class="col-xl-7 px-xl-4">
           <div class="h-100 d-flex flex-column justify-content-between gap-4">
-            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 400px">
+            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 400px">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between gap-2 mb-2">
               <div class="d-flex gap-2">
-                <span class="badge rounded-pill bg-primary text-white"># 聖經歷史和地理</span>
-                <span class="badge rounded-pill bg-primary text-white"># 讀經工具</span>
+                <span v-for="(tag, index) in product.tags" :key="index" class="badge rounded-pill bg-primary text-white"># {{ tag }}</span>
               </div>
               <div class="d-flex align-items-baseline gap-3">
                 <small class="text-dark-gray">提案人</small>
-                <small class="text-dark-gray">我們的主日學</small>
+                <small class="text-dark-gray">{{ product.proposer }}</small>
               </div>
             </div>
           </div>
@@ -43,12 +41,12 @@
               <div class="col-md-5">
                 <div class="d-flex gap-8 align-items-center">
                   <div class="fst-italic">
-                    <small class="text-dark-gray">目標 500 組</small>
-                    <h3 class="fw-bold mt-2 mb-0">累計 50 組</h3>
+                    <small class="text-dark-gray">目標 {{ product.target_units }} 組</small>
+                    <h3 class="fw-bold mt-2 mb-0">累計 {{ `待處理` }} 組</h3>
                   </div>
                   <div class="fst-italic">
                     <small class="text-dark-gray text-start">預購人數</small>
-                    <h3 class="fw-bold mt-2 mb-0 text-end">50 人</h3>
+                    <h3 class="fw-bold mt-2 mb-0 text-end">{{ `待處理` }} 人</h3>
                   </div>
                 </div>
               </div>
@@ -56,30 +54,23 @@
                 <div class="row align-items-center">
                   <div class="col-10">
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: progressBarWidth }">
                         </div>
                     </div>
                   </div>
                   <div class="col-2 text-end">
-                    <small class="fw-bold">75%</small>
+                    <small class="fw-bold">{{ progressBarValue }}%</small>
                   </div>
                 </div>
               </div>
             </div>
-            <p class="card-text mb-0 text-gray-dark">探索《創世記》的精彩旅程！將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。無論您是新手還是聖經學者，這款遊戲都將為您提供一個獨特而豐富啟發的體驗。
-            </p>
+            <p class="card-text mb-0 text-gray-dark">{{ product.description }}</p>
             <div class="d-flex flex-xl-row gap-4">
-              <div class="d-flex justify-content-center gap-1">
-                <i class="bi bi-lightning-fill text-primary"></i>
-                <small class="text-dark-gray">原創商品</small>
-              </div>
-              <div class="d-flex justify-content-center gap-1">
-                <i class="bi bi-people-fill text-primary"></i>
-                <small class="text-dark-gray">臺灣設計</small>
-              </div>
-              <div class="d-flex justify-content-center gap-1">
-                <i class="bi bi-flag-fill text-primary"></i>
-                <small class="text-dark-gray">臺灣製造</small>
+              <div v-for="(feature, index) in product.features" :key="index" class="d-flex justify-content-center gap-1">
+                <i class="bi bi-lightning-fill text-primary" v-if="index === 0"></i>
+                <i class="bi bi-people-fill text-primary" v-else-if="index === 1"></i>
+                <i class="bi bi-flag-fill text-primary" v-else></i>
+                <small class="text-dark-gray">{{ feature }}</small>
               </div>
             </div>
             <div class="rounded-5 border border-5 border-light p-3">
@@ -161,75 +152,51 @@
               立即預購，享優惠價！
             </h3>
             <h4 class="fs-6 fw-normal mb-0">
-              須達成500組，才能啟動生產，您的支持讓有趣的聖經企劃發生！
+              須達成{{ product.target_units }}組，才能啟動生產，您的支持讓有趣的聖經企劃發生！
             </h4>
             <span class="position-absolute top-50 end-0 translate-middle-y" style="left: 100%; border-width: 12px 0px 12px 20px; border-style: solid; border-color: transparent transparent transparent #54FA80; border-radius: 0px 20px 20px 0px;"></span>
           </div>
           <hr class="w-100 border-top my-8" style="border: 5px dotted #8C8C8E;">
           <div class="d-flex flex-column justify-content-between gap-4 mb-8">
-            <h4 class="text-center mb-0">一開始讀經時，<br>你是不是也有以下的困擾？</h4>
-            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 300px">
+            <h4 class="text-center mb-0">{{ product.question }}</h4>
+            <img :src="product.imageUrl" style="max-height: 300px">
           </div>
           <div class="d-flex flex-column justify-content-between gap-8">
             <h4 class="text-center mb-0">設計特點</h4>
             <ol class="list-unstyled d-flex justify-content-center mb-0 gap-4">
-              <li class="d-flex g-xl-2 px-xl-5 text-center">
+              <li v-for="(point, index) in product.points" :key="index" class="d-flex g-xl-2 px-xl-5 text-center">
                 <div class="d-flex flex-column align-items-center me-xl-6">
                   <div class="bg-info text-white rounded-circle position-relative mb-2 mb-md-3 icon-area">
-                    <i class="bi bi-people-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
+                    <i class="bi bi-people-fill fs-3 position-absolute top-50 start-50 translate-middle icon" v-if="index === 0"></i>
+                    <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle icon" v-else-if="index === 1"></i>
+                    <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle icon" v-else></i>
                   </div>
-                  <h5 class="fs-6 fw-bold icon-title">互動性</h5>
-                </div>
-              </li>
-              <li class="d-flex g-xl-2 px-xl-5 text-center">
-                <div class="d-flex flex-column align-items-center me-xl-6">
-                  <div class="bg-info text-white rounded-circle position-relative mb-2 mb-md-3 icon-area">
-                    <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
-                  </div>
-                  <h5 class="fs-6 fw-bold icon-title">趣味性</h5>
-                </div>
-              </li>
-              <li class="d-flex g-xl-2 px-xl-5 text-center">
-                <div class="d-flex flex-column align-items-center me-xl-6">
-                  <div class="bg-info text-white rounded-circle position-relative mb-2 mb-md-3 icon-area">
-                    <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle icon"></i>
-                  </div>
-                  <h5 class="fs-6 fw-bold icon-title">知識性</h5>
+                  <h5 class="fs-6 fw-bold icon-title">{{ point.title }}</h5>
                 </div>
               </li>
             </ol>
-            <div class="row row-cols-2">
+            <div v-for="(point, index) in product.points" :key="index" class="row row-cols-2">
               <div class="col-6 col-md-8">
-                <img src="https://images.unsplash.com/photo-1553729784-e91953dec042?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 300px">
+                <img :src="point.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
               </div>
               <div class="col-6 col-md-4">
                 <div class="d-flex flex-column gap-2 h-100">
-                  <h5 class="fs-5 mb-0">趣味性</h5>
-                  <span>將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。</span>
+                  <h5 class="fs-5 mb-0">{{ point.title }}</h5>
+                  <span>{{ point.content }}</span>
                 </div>
               </div>
             </div>
-            <div class="row row-cols-2">
-              <div class="col-6 col-md-8">
-                <img src="https://images.unsplash.com/photo-1553729784-e91953dec042?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 300px">
-              </div>
-              <div class="col-6 col-md-4">
-                <div class="d-flex flex-column gap-2 h-100">
-                  <h5 class="fs-5 mb-0">互動性</h5>
-                  <span>通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。</span>
-                </div>
-              </div>
-            </div>
+            <!-- feedback -->
             <div class="row row-cols-1 row-cols-lg-2 gy-4">
               <div class="col">
                 <div class="card h-100 rounded-5 border border-info-light border-10 p-5">
                   <div class="card-body d-flex flex-column justify-content-between gap-5">
                     <div class="d-flex gap-2">
                       <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
                       </div>
-                      <div class="d-flex flex-column justify-content-between">
-                        <span class="fw-bold">name</span>
+                      <div class="d-flex flex-column justify-content-between text-start">
+                        <span class="fw-bold">王大衛</span>
                         <small class="fst-italic">2024/03/13</small>
                       </div>
                     </div>
@@ -246,18 +213,18 @@
                       <span class="badge rounded-pill bg-secondary text-black"># 讀經工具</span>
                     </div>
                   </div>
-                </div>
+              </div>
               </div>
               <div class="col">
                 <div class="card h-100 rounded-5 border border-info-light border-10 p-5">
                   <div class="card-body d-flex flex-column justify-content-between gap-5">
                     <div class="d-flex gap-2">
                       <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
                       </div>
-                      <div class="d-flex flex-column justify-content-between">
-                        <span class="fw-bold">name</span>
-                        <small class="fst-italic">2024/03/13</small>
+                      <div class="d-flex flex-column justify-content-between text-start">
+                        <span class="fw-bold">謝安娜</span>
+                        <small class="fst-italic">2024/01/11</small>
                       </div>
                     </div>
                     <div class="d-flex gap-2">
@@ -267,10 +234,10 @@
                       <i class="bi bi-star-fill fs-6"></i>
                       <i class="bi bi-star-fill fs-6"></i>
                     </div>
-                    <p class="card-text text-start">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
+                    <p class="card-text text-start">全新聖經體驗，探索不一樣的聖經之旅！重新感受這段聖經故事的魅力，發現聖經的讀書體驗更加生動有趣！</p>
                     <div class="d-flex gap-2">
+                      <span class="badge rounded-pill bg-secondary text-black"># 團契生活</span>
                       <span class="badge rounded-pill bg-secondary text-black"># 試玩</span>
-                      <span class="badge rounded-pill bg-secondary text-black"># 讀經工具</span>
                     </div>
                   </div>
                 </div>
@@ -287,67 +254,30 @@
               </div>
               <div class="d-flex flex-column justify-content-between">
                 <small class="text-dark-gray">提案人</small>
-                <span class="text-dark-gray">我們的主日學</span>
+                <span class="text-dark-gray">{{ product.proposer }}</span>
               </div>
             </div>
           </div>
           <!-- 預購方案介紹 -->
           <div class="position-lg-sticky">
-            <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative">
+            <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative">
               <a href="#" class="stretched-link"></a>
-              <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
-              <h3 class="fs-6 text-dark-gray mb-0">雙入組</h3>
+              <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+              <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2">
-                  <h5 class="fw-bold mb-0">NT$ 1,300</h5>
-                  <span class="badge bg-info-light text-black">65折</span>
+                  <h5 class="fw-bold mb-0">NT$ {{ product.price * product.discount * item.units }}</h5>
+                  <span class="badge bg-info-light text-black">{{ product.discount * 100 }}折</span>
                 </div>
-                <span class="fs-6 badge bg-danger">剩餘498份</span>
+                <span class="fs-6 badge bg-danger">剩餘{{ `待處理` }}份</span>
               </div>
-              <small class="text-dark-gray">預定售價 NT$ 1,000，現省 NT$ 700</small>
+              <small class="text-dark-gray">預定售價 NT$ {{ product.price }}，現省 NT$ {{ product.price - (product.price * product.discount) }}</small>
               <ul class="list-unstyled mb-0">
-                <li>✧ 中英雙語地圖 x 3 張</li>
-                <li>✧ 聖經故事圖卡 x 62 個</li>
-                <li>✔ 中英說明書 x 1 份</li>
-                <li>✔ 圓形魔鬼氈 x 2 片</li>
+                <li v-for="(content, index) in product.contents" :key="index">{{ content }}</li>
               </ul>
               <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
               <ul class="list-unstyled mb-0">
-                <li>▶ 製作時程需 3 個月</li>
-                <li>▶ 達成目標數量，即啟動生產</li>
-                <li>▶ 依預購順序出貨，歡迎團購</li>
-                <li>▶ 發票如需開立抬頭/統編，請於備註欄註明</li>
-              </ul>
-              <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
-              <div class="d-flex align-items-center gap-2">
-                <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                <small>臺灣本島免運、可寄離島</small>
-              </div>
-            </div>
-            <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
-              <a href="#" class="stretched-link"></a>
-              <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
-              <h3 class="fs-6 text-dark-gray mb-0">10 入組</h3>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex gap-2">
-                  <h5 class="fw-bold mb-0">NT$ 6,500</h5>
-                  <span class="badge bg-info-light text-black">65折</span>
-                </div>
-                <span class="fs-6 badge bg-danger">剩餘498份</span>
-              </div>
-              <small class="text-dark-gray">預定售價 NT$ 10,000，現省 NT$ 3,500</small>
-              <ul class="list-unstyled mb-0">
-                <li>✧ 中英雙語地圖 x 3 張</li>
-                <li>✧ 聖經故事圖卡 x 62 個</li>
-                <li>✔ 中英說明書 x 1 份</li>
-                <li>✔ 圓形魔鬼氈 x 2 片</li>
-              </ul>
-              <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
-              <ul class="list-unstyled mb-0">
-                <li>▶ 製作時程需 3 個月</li>
-                <li>▶ 達成目標數量，即啟動生產</li>
-                <li>▶ 依預購順序出貨，歡迎團購</li>
-                <li>▶ 發票如需開立抬頭/統編，請於備註欄註明</li>
+                <li v-for="(note, index) in product.notes" :key="index">{{ note }}</li>
               </ul>
               <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
               <div class="d-flex align-items-center gap-2">
@@ -360,10 +290,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
   <main class="container">
     <h1 class="pt-5 text-start">單一商品介紹</h1>
@@ -412,28 +338,35 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia';
+import { mapState, mapActions } from 'pinia';
+import userProductsStore from '@/stores/userProductsStore';
 import cartStore from '@/stores/cartStore';
-
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 
 export default {
   data() {
     return {
-      product: {},
       qty: 1,
+      progressBarWidth: '0%',
+      progressBarValue: 0,
+      targetValue: 100
     };
   },
   mounted() {
     const { id } = this.$route.params;
-    const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${id}`;
-    this.axios
-    .get(url).then((res) => {
-      this.product = res.data.product;
-    })
+    this.getProduct(id);
+    this.setDynamicProgress(20);
+  },
+  computed: {
+    ...mapState(userProductsStore, ['product']),
   },
   methods: {
     ...mapActions(cartStore, ['addToCart']),
+    ...mapActions(userProductsStore, ['getProduct']),
+    setDynamicProgress(value) {
+      const progress = (value / this.targetValue) * 100;
+      this.progressBarWidth = `${progress}%`;
+      this.progressBarValue = value;
+    },
   },
 };
 </script>
