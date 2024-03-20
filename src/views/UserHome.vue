@@ -171,6 +171,7 @@
     <!-- 最新企劃 -->
     <div class="m-3 m-lg-6">
         <div class="container rounded-5 border border-secondary border-10 p-10 p-md-20" data-aos="fade-up">
+            <!-- 最新企劃 -->
             <div class="row my-3 my-lg-6">
                 <div class="col px-0 px-md-3">
                     <div class="d-flex justify-content-between">
@@ -178,90 +179,51 @@
                             <h2 class="d-none d-sm-block fw-bold mb-0">What's news?</h2>
                             <h3 class="fw-bold mb-0">最新企劃</h3>
                         </div>
-                        <button type="button" class="btn btn-primary">更多
-                            <i class="bi bi-chevron-right text-white"></i>
-                        </button>
+                        <RouterLink :to="{ name: 'products' }" class="btn btn-primary hvr-pop">更多 <i class="bi bi-chevron-right text-white"></i>
+                        </RouterLink>
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <div class="col mb-5 mb-md-0 px-0 px-md-3">
+            {{ productList }}
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-6">
+                <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-0 px-md-3">
                     <div class="card h-100 shadow-sm position-relative">
-                        <a href="#" class="stretched-link">
+                        <a :to="{ name: 'productsInfo' }" href="#" class="stretched-link">
                         </a>
                         <button type="button" class="btn position-absolute p-0 hvr-pulse">
                             <i class="bi bi-heart-fill fs-5"></i>
                         </button>
-                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
+                        <div class="rounded-circle bg-black position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm hvr-pop" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
                             <span class="text-white fw-bold fs-6" >試玩</span>
                             <small class="text-white" >報名中</small>
                         </div>
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame1">
-                            <span class="badge rounded-pill bg-white text-primary position-absolute z-index-8" style="bottom: 16px;right: 16px;"># 讀經工具</span>
-                        </div>
+                        <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid">
                         <div class="card-body d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold">《走入創世記》A Walk Through Genesis</h5>
-                                <p class="card-text">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
+                            <div class="mb-4">
+                                <h5 class="card-title fw-bold">{{ product.title }}</h5>
+                                <p class="card-text text-dark-gray">{{ product.description }}</p>
                             </div>
-                            <div>
+                            <div class="mb-4">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div class="progress" style="width: 85%;">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"  :style="{ width: progressBarWidth }">
                                         </div>
                                     </div>
-                                    <small class="fw-bold">75%</small>
+                                    <small class="fw-bold">{{ progressBarValue }}%</small>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <small class="fst-italic fw-bold">目標 500 組 / 累計 50 組</small>
+                                    <small class="fst-italic fw-bold">目標 {{ product.target_units }} 組 / 累計 {{ 待處理 }} 組</small>
                                     <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
-                                        <span>20 <i class="bi bi-heart-fill text-primary"></i>
+                                        <span>20 <i class="bi bi-heart-fill text-danger"></i>
                                         </span>
-                                        <span>20 <i class="bi bi-chat-fill text-primary"></i>
+                                        <span>20 <i class="bi bi-chat-fill text-gray"></i>
                                         </span>
                                     </small>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5 mb-md-0 px-0 px-md-3">
-                    <div class="card h-100 shadow-sm position-relative">
-                        <a href="#" class="stretched-link">
-                        </a>
-                        <button type="button" class="btn position-absolute p-0 hvr-pulse">
-                            <i class="bi bi-heart-fill fs-5"></i>
-                        </button>
-                        <div class="rounded-circle bg-primary position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm" style="width: 65px; height: 65px;top: 16px;left: 16px; transform: rotate(-10deg);">
-                            <span class="text-white fw-bold fs-6" >試玩</span>
-                            <small class="text-white" >報名中</small>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="boardGame1">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title fw-bold">《走入創世記》新手讀經工具</h5>
-                            <p class="card-text">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記！</p>
-                            <nav class="d-flex gap-2 mb-2" aria-label="breadcrumb">
-                                <small class="text-dark-gray">預購專案</small>
-                                <small class="text-dark-gray" style="font-size: 12px;">|</small>
-                                <small class="text-dark-gray">讀經</small>
-                            </nav>
-                            <div>
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <div class="progress" style="width: 85%;">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
-                                        </div>
-                                    </div>
-                                    <small class="text-primary">75%</small>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="fst-italic fw-bold">目標 500 組 / 累計 50 組</small>
-                                    <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
-                                        <span>20 <i class="bi bi-heart-fill"></i>
-                                        </span>
-                                        <span>20 <i class="bi bi-chat-fill"></i>
-                                        </span>
-                                    </small>
+                            <div class="d-flex justify-content-end gap-2">
+                                <div v-for="(tag, index) in product.tags" :key="index">
+                                    <span class="badge rounded-pill bg-primary text-white" style="bottom: 16px;right: 16px;">{{ `# ${tag}` }}</span>
                                 </div>
                             </div>
                         </div>
@@ -278,7 +240,7 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import productsStore from '@/stores/userProductsStore';
+import userProductsStore from '@/stores/userProductsStore';
 import FeedbackSwiper from '@/components/FeedbackSwiper.vue';
 import FaqAccordion from '@/components/FaqAccordion.vue';
 
@@ -287,14 +249,28 @@ export default {
         FeedbackSwiper,
         FaqAccordion
     },
+    data() {
+        return {
+            progressBarWidth: '0%',
+            progressBarValue: 0,
+            targetValue: 100
+        }
+    },
     mounted() {
         this.getProducts();
+        this.setDynamicProgress(20);
     },
     computed: {
-        ...mapState(productsStore, ['productList']),
+        ...mapState(userProductsStore, ['productList']),
     },
     methods: {
-        ...mapActions(productsStore, ['getProducts']),
+        ...mapActions(userProductsStore, ['getProducts']),
+        setDynamicProgress(value) {
+            const progress = (value / this.targetValue) * 100;
+            this.progressBarWidth = `${progress}%`;
+            this.progressBarValue = value;
+        },
+        
     }
 }
 </script>
