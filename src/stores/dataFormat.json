@@ -1,6 +1,6 @@
 {
     "data-example": {
-        "full_title": "《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！",
+        "title": "《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！",
         "short_title": "《走入創世記》",
         "imageUrl": "https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "tags": [
@@ -14,21 +14,19 @@
         "features": [
             "原創商品", "臺灣設計", "臺灣製造"
         ],
-        "content": {
-            "question": "一開始讀經時，你是不是也有以下的困擾？",
-            "points": [
-                {
-                    "title": "趣味性",
-                    "content": "將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。",
-                    "imageUrl": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                },
-                {
-                    "title": "互動性",
-                    "content": "通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。",
-                    "imageUrl": "https://images.unsplash.com/photo-1553729784-e91953dec042?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                }
-            ]
-        },
+        "question": "一開始讀經時，你是不是也有以下的困擾？",
+        "points": [
+            {
+                "title": "趣味性",
+                "content": "將地圖、讀經進度和故事圖卡巧妙融合，幫助您沉浸於聖經世界。",
+                "imageUrl": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                "title": "互動性",
+                "content": "通過遊戲，您將逐步閱讀《創世記》1-50章，並深入探索其故事。",
+                "imageUrl": "https://images.unsplash.com/photo-1553729784-e91953dec042?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+        ],
         "imagesUrl": [],
         "packages": [
             {
@@ -46,12 +44,13 @@
         ],
         "category": "地圖",
         "origin_price": 1000,
+        "price": 650,
         "discount": 0.65,
         "unit": "組",
         "is_enabled": 1,
         "productRatings": 0
-        },
-        "data-api": {
+    },
+    "data-api": {
             "category": "1",
             "question": "1",
             "points": [
