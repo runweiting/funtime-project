@@ -115,7 +115,9 @@ export default {
         imagesUrl: [],
         tags: [],
         features: [],
-        packages: []
+        packages: [],
+        contents: [],
+        notes: []
       },
     };
   },
@@ -153,7 +155,9 @@ export default {
           imagesUrl: [],
           tags: [],
           features: [],
-          packages: []
+          packages: [],
+          contents: [],
+          notes: []
         };
         this.isNew = true;
         // 使用 modalMixin.js

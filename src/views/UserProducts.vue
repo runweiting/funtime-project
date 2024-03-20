@@ -30,9 +30,8 @@
                     </div>
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
                         <div v-for="product in productList" :key="product.id" class="col mb-md-0 px-0 px-md-3">
-                            <div class="card h-100 shadow-sm position-relative">
-                                <a href="#" class="stretched-link">
-                                </a>
+                            <div class="card h-100 shadow-sm position-relative" style="cursor: pointer;">
+                                <a @click="goToUserProductInfo(product.id)" class="stretched-link"></a>
                                 <button type="button" class="btn position-absolute p-0 hvr-pulse">
                                     <i class="bi bi-heart-fill fs-5"></i>
                                 </button>
@@ -152,6 +151,10 @@ export default {
     },
     methods: {
         ...mapActions(userProductsStore, ['getProducts']),
+        goToUserProductInfo(targetId) {
+            this.$route.params.id = targetId;
+            this.$router.push({ name: "productInfo" });
+        }
     }
 };
 </script>

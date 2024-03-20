@@ -130,12 +130,12 @@
                 <!-- 描述 -->
                 <div class="row mb-4">
                   <div class="col">
-                    <label for="description" class="form-label">商品描述</label>
+                    <label for="description" class="form-label">專案描述</label>
                     <textarea
                       v-model="selectedProduct.description" :disabled="isInputEnabled" 
                       class="form-control"
                       placeholder="請輸入專案描述"
-                      id="description"
+                      id="description" rows="3"
                     ></textarea>
                   </div>
                 </div>
@@ -240,7 +240,7 @@
                         v-model="newPoint.content" :disabled="isInputEnabled" 
                         class="form-control"
                         placeholder="請輸入內容"
-                        id="point-content"
+                        id="point-content" rows="1"
                       ></textarea>
                   </div>
                 </div>
@@ -340,6 +340,42 @@
                   </div>
                   <div class="col"></div>
                 </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="contents" class="form-label">內容物</label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" placeholder="請輸入內容物" v-model="newContent" @keyup.enter="addContent" :disabled="isInputEnabled">
+                      <button class="btn btn-gray text-white" type="button" @click="addContent">新增</button>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="notes" class="form-label">備註</label>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" placeholder="請輸入備註" v-model="newNote" @keyup.enter="addNote" :disabled="isInputEnabled">
+                      <button class="btn btn-gray text-white" type="button" @click="addNote">新增</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div v-for="(content, index) in selectedProduct.contents" :key="index" class="d-flex justify-content-between border border-gray border-1 rounded-2 p-2 mb-4">
+                      <div class="text-wrap mb-2" style="overflow-wrap: break-word;">{{ content }}</div>
+                      <div class="ms-auto">
+                        <button type="button" class="btn-close" aria-label="Close" @click="removeContent(index)" style="scale: 0.75;">
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div v-for="(note, index) in selectedProduct.notes" :key="index" class="d-flex justify-content-between border border-gray border-1 rounded-2 p-2 mb-4">
+                      <div class="text-wrap mb-2" style="overflow-wrap: break-word;">{{ note }}</div>
+                      <div class="ms-auto">
+                        <button type="button" class="btn-close" aria-label="Close" @click="removeNote(index)" style="scale: 0.75;">
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <hr class="w-100 border-top my-8" style="border: 3px dotted #8C8C8E;">
                 <!-- 商品評價 -->
                 <div class="row">
@@ -399,13 +435,13 @@ export default {
     tempProduct: Object,
     isNew: Boolean,
   },
-  // 在組件中使用 store 裡的方法
-  setup() {
-    const useAdminProductsStore = adminProductsStore();
-    return {
-      updateProduct: useAdminProductsStore.updateProduct,
-    };
-  },
+  // // 在組件中使用 store 裡的方法
+  // setup() {
+  //   const useAdminProductsStore = adminProductsStore();
+  //   return {
+  //     updateProduct: useAdminProductsStore.updateProduct,
+  //   };
+  // },
   mixins: [modalMixin],
   data() {
     return {
@@ -416,24 +452,23 @@ export default {
         tags: [],
         features: [],
         packages: [],
+        contents: [],
+        notes: []
       },
-      // price
       newPrice: 0,
-      // tags
       newTag: '',
-      // feature
       newFeature: '',
-      // point
       newPoint: {
         title: '',
         content: '',
         imageUrl: ''
       },
-      // package
       newPackage: {
         name: '',
         units: 0
       },
+      newContent: '',
+      newNote: '',
       // for toggleEdit
       isInputEnabled: true,
     };
@@ -472,7 +507,6 @@ export default {
       this.newPrice = this.selectedProduct.origin_price * this.selectedProduct.discount;
       this.selectedProduct.price = this.newPrice;
     },
-    // tag
     addTag() {
       if (this.newTag.trim() !== '') {
         this.selectedProduct.tags.push(this.newTag.trim());
@@ -482,7 +516,6 @@ export default {
     removeTag(index) {
       this.selectedProduct.tags.splice(index, 1);
     },
-    // feature
     addFeature() {
       if (this.newFeature.trim() !== '') {
         this.selectedProduct.features.push(this.newFeature.trim());
@@ -492,7 +525,6 @@ export default {
     removeFeature(index) {
       this.selectedProduct.features.splice(index, 1);
     },
-    // point
     addPoint() {
       if (this.newPoint.title.trim() !== '' && this.newPoint.content.trim() !== '' && this.newPoint.imageUrl.trim() !== '') {
         this.selectedProduct.points.push(this.newPoint);
@@ -502,7 +534,6 @@ export default {
     removePoint(index) {
       this.selectedProduct.points.splice(index, 1);
     },
-    // package
     addPackage() {
       if (this.newPackage.name.trim() !== '' && this.newPackage.units !== 0) {
         this.selectedProduct.packages.push(this.newPackage);
@@ -511,6 +542,24 @@ export default {
     },
     removePackage(index) {
       this.selectedProduct.packages.splice(index, 1);
+    },
+    addContent() {
+      if (this.newContent.trim() !== '') {
+        this.selectedProduct.contents.push(this.newContent.trim());
+        this.newContent = '';
+      }
+    },
+    removeContent(index) {
+      this.selectedProduct.contents.splice(index, 1);
+    },
+    addNote() {
+      if (this.newNote.trim() !== '') {
+        this.selectedProduct.notes.push(this.newNote.trim());
+        this.newNote = '';
+      }
+    },
+    removeNote(index) {
+      this.selectedProduct.notes.splice(index, 1);
     },
     // 修改訂單
     togglerEdit() {
