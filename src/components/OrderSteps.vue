@@ -20,11 +20,14 @@
 </template>
 
 <script>
+import userOrderStore from '@/stores/userOrderStore';
+
 export default {
-    data() {
+    setup() {
+        const orderStore = userOrderStore();
         return {
-            currentProgress: 1,
-        }
-    }
-}
+            currentProgress: orderStore.currentProgress,
+        };
+    },
+};
 </script>

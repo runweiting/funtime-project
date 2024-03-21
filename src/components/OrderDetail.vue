@@ -8,42 +8,39 @@
           <div class="col">
             <div class="form-floating mb-3">
               <VField
-              v-model="data.user.name"
+              v-model.trim="data.user.name"
               rules="required"
               :class="{ 'is-invalid': errors['姓名'] }"
               type="text"
               class="form-control"
-              id="name"
-              name="name"
+              name="姓名"
               />
-              <label for="name" class="form-label">真實姓名</label>
-              <ErrorMessage name="name" class="invalid-feedback" />
+              <label for="姓名" class="form-label">真實姓名</label>
+              <ErrorMessage name="姓名" class="invalid-feedback" />
             </div>
           </div>
           <div class="col">
             <div class="form-floating mb-3">
               <VField
-              v-model="data.user.tel"
+              v-model.trim="data.user.tel"
               rules="required|min:8|max:10"
               :class="{ 'is-invalid': errors['手機'] }"
               type="tel"
               class="form-control"
-              id="tel"
-              name="tel"
+              name="手機"
               />
-              <label for="tel" class="form-label">手機</label>
-              <ErrorMessage name="tel" class="invalid-feedback" />
+              <label for="手機" class="form-label">手機</label>
+              <ErrorMessage name="手機" class="invalid-feedback" />
             </div>
           </div>
         </div>
         <div class="form-floating">
           <VField
-          v-model="data.user.email"
+          v-model.trim="data.user.email"
           rules="required|email"
           :class="{ 'is-invalid': errors['email'] }"
           type="email"
           class="form-control"
-          id="email"
           name="email"
           />
           <label for="email" class="form-label">Email</label>
@@ -53,90 +50,90 @@
       <div>
         <h4 class="fs-6">請選擇運送方式</h4>
         <VField v-model="data.user.shipment"
-        rules="required" :class="{ 'is-invalid': errors['運送'] }" as="select" id="shipment" name="shipment" class="form-select bg-light text-center text-dark-gray" aria-label="shipment" disabled>
-          <option value="" selected>宅配到府</option>
+        rules="required" :class="{ 'is-invalid': errors['運送方式'] }" as="select" name="運送方式" class="form-select bg-light text-center text-dark-gray" aria-label="shipment" disabled>
+          <option value="宅配到府" selected>宅配到府</option>
         </VField>
-        <ErrorMessage name="shipment" class="invalid-feedback" />
+        <ErrorMessage name="運送方式" class="invalid-feedback" />
       </div>
       <div>
         <div class="row mb-3">
           <div class="col">
             <label for="country" class="form-label text-dark-gray">收件地點</label>
             <VField v-model="data.user.country"
-            rules="required" :class="{ 'is-invalid': errors['地點'] }" as="select" id="country" name="country" class="form-select" aria-label="country">
-              <option class="text-dark-gray" value="" selected>請選擇</option>
+            rules="required" :class="{ 'is-invalid': errors['地點'] }" as="select" name="地點" class="form-select" aria-label="country">
+              <option value="" selected></option>
               <option value="taiwanMainland">台灣本島</option>
               <option value="taiwanOuterIslands">台灣外島</option>
             </VField>
-            <ErrorMessage name="country" class="invalid-feedback" />
+            <ErrorMessage name="地點" class="invalid-feedback" />
           </div>
           <div class="col">
             <label for="city" class="form-label text-dark-gray">縣市</label>
             <VField v-model="data.user.city"
-            rules="required" :class="{ 'is-invalid': errors['縣市'] }" as="select" id="city" name="city" class="form-select" aria-label="city">
-              <option value="taipei" selected>台北</option>
+            rules="required" :class="{ 'is-invalid': errors['縣市'] }" as="select" name="縣市" class="form-select" aria-label="city">
+              <option value="" selected></option>
+              <option value="taipei">台北</option>
               <option value="taichung">台中</option>
               <option value="kaohsiung">高雄</option>
             </VField>
-            <ErrorMessage name="city" class="invalid-feedback" />
+            <ErrorMessage name="縣市" class="invalid-feedback" />
           </div>
           <div class="col">
             <label for="region" class="form-label text-dark-gray">鄉鎮市區</label>
             <VField v-model="data.user.region"
-            rules="required" :class="{ 'is-invalid': errors['鄉鎮市區'] }" as="select" id="region" name="region"  class="form-select" aria-label="region">
-              <option value="north" selected>北區</option>
+            rules="required" :class="{ 'is-invalid': errors['鄉鎮市區'] }" as="select" name="鄉鎮市區"  class="form-select" aria-label="region">
+              <option value="" selected></option>
+              <option value="north">北區</option>
               <option value="center">中區</option>
               <option value="south">南區</option>
             </VField>
-            <ErrorMessage name="region" class="invalid-feedback" />
+            <ErrorMessage name="鄉鎮市區" class="invalid-feedback" />
           </div>
         </div>
         <div class="row mb-3">
           <div class="col">
             <div class="form-floating">
               <VField
-              v-model="data.user.postcode"
+              v-model.trim="data.user.postcode"
               rules="required"
               :class="{ 'is-invalid': errors['郵遞區號'] }"
               type="text"
               class="form-control"
-              id="postcode"
-              name="postcode"
+              name="郵遞區號"
               />
               <label for="postcode" class="form-label">郵遞區號</label>
-              <ErrorMessage name="postcode" class="invalid-feedback" />
+              <ErrorMessage name="郵遞區號" class="invalid-feedback" />
             </div>
           </div>
           <div class="col">
             <div class="form-floating">
               <VField
-              v-model="data.user.address"
+              v-model.trim="data.user.address"
               rules="required"
               :class="{ 'is-invalid': errors['地址'] }"
               type="text"
               class="form-control"
-              id="address"
-              name="address"
+              name="地址"
               />
               <label for="address" class="form-label">地址</label>
-              <ErrorMessage name="address" class="invalid-feedback" />
+              <ErrorMessage name="地址" class="invalid-feedback" />
             </div>
           </div>
         </div>
         <div>
           <label for="message" class="form-label text-dark-gray">備註(選填)</label>
           <textarea
-          v-model="data.message"
-          id="message"
+          v-model.trim="data.message" id="message"
           class="form-control" rows="3"
           ></textarea>
         </div>
       </div>
       <div class="form-check">
-        <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="checked" name="check">
-        <label class="form-check-label text-dark-gray" for="flexCheckChecked">
+        <VField v-model="data.agreement" rules="required" :class="{ 'is-invalid': errors['同意 funtime 服務條款'] }" class="form-check-input" id="agreement" type="checkbox" value="checked" name="check" />
+        <label class="form-check-label text-dark-gray" for="agreement">
           我已閱讀並同意 funtime 服務條款與隱私權政策。
         </label>
+        <ErrorMessage name="check" class="invalid-feedback" />
       </div>
       <div class="text-end mt-auto">
         <button type="submit" class="btn btn-primary text-white">送出訂單</button>
@@ -149,9 +146,11 @@
 import { ErrorMessage } from 'vee-validate';
 import { mapActions } from 'pinia';
 import couponsStore from '@/stores/couponsStore';
+import userOrderStore from '@/stores/userOrderStore';
 
 export default {
-  emits: ['sendOrder'],
+  emits: ['updateCart'],
+  components: { ErrorMessage },
   data() {
     return {
       title: '訂購訊息',
@@ -161,7 +160,7 @@ export default {
           name: '',
           tel: '',
           email: '',
-          shipment: '',
+          shipment: '宅配到府',
           country: '',
           city: '',
           region: '',
@@ -169,19 +168,21 @@ export default {
           address: '',
         },
         message: '',
+        agreement: ''
       },
     };
   },
-  components: { ErrorMessage },
   methods: {
     ...mapActions(couponsStore, ['clearCoupon']),
+    ...mapActions(userOrderStore, ['createOrder', 'addStep']),
     onSubmit() {
-      this.$emit('sendOrder', this.data);
-      this.clearCoupon();
-    },
-    resetForm() {
+      this.addStep();
+      this.createOrder(this.data);
       this.$refs.formOrder.resetForm();
       this.data.message = '';
+      this.$emit('updateCart');
+      this.clearCoupon();
+      this.$router.push({ name: "order-result" })
     },
   },
 };
