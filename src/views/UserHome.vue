@@ -204,7 +204,7 @@
                             <div class="mb-4">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div class="progress" style="width: 85%;">
-                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"  :style="{ width: progressBarWidth }">
+                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: progressBarWidth }">
                                         </div>
                                     </div>
                                     <small class="fw-bold">{{ progressBarValue }}%</small>

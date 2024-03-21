@@ -16,7 +16,6 @@
               :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
             </small>
           </nav>
-          {{ product }}
           <h2 class="fs-4 card-title fw-bold">{{ product.title }}</h2>
         </div>
       </div>
@@ -159,7 +158,7 @@
           <hr class="w-100 border-top my-8" style="border: 5px dotted #8C8C8E;">
           <div class="d-flex flex-column justify-content-between gap-4 mb-8">
             <h4 class="text-center mb-0">{{ product.question }}</h4>
-            <img :src="product.imageUrl" style="max-height: 300px">
+            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
           </div>
           <div class="d-flex flex-column justify-content-between gap-8">
             <h4 class="text-center mb-0">設計特點</h4>
@@ -260,8 +259,8 @@
           </div>
           <!-- 預購方案介紹 -->
           <div class="position-lg-sticky">
-            <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative">
-              <a href="#" class="stretched-link"></a>
+            <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative" style="cursor: pointer;">
+              <a @click="goToUserCart(product.id)" class="stretched-link"></a>
               <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
               <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
               <div class="d-flex justify-content-between align-items-center">
@@ -367,13 +366,11 @@ export default {
       this.progressBarWidth = `${progress}%`;
       this.progressBarValue = value;
     },
+    goToUserCart(targetId) {
+      this.$route.params.id = targetId;
+      this.$router.push({ name: "cart" });
+    }
   },
 };
 </script>
-
-<style scoped>
-.product-img {
-  object-fit: cover;
-}
-</style>
 

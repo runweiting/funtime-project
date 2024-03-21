@@ -51,7 +51,7 @@ const baseRoutes = [
         },
       },
       {
-        path: "cart",
+        path: "cart/:id",
         name: "cart",
         component: () => import("../views/UserCart.vue"),
         meta: {

@@ -99,7 +99,7 @@
                             <h5 class="fw-bold mb-0">NT$ 1,300</h5>
                             <span class="badge bg-info-light text-black">65折</span>
                             </div>
-                            <span class="fs-6 badge bg-danger">剩餘498份</span>
+                            <span class="badge bg-danger">剩餘498份</span>
                         </div>
                         <small class="text-dark-gray">預定售價 <del>NT$ 10,00</del>，現省 NT$ 700</small>
                         <div>
@@ -164,10 +164,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <div class="container">
         <h1 class="pt-5 text-center">我的購物車</h1>
