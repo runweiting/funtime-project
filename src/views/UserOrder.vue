@@ -26,6 +26,7 @@
                         </div>
                     </div>
                 </div>
+                {{ cartList }}
                 <div class="col px-xl-4">
                     <!-- 集資進度 -->
                     <div class="rounded-5 p-5" style="border: 5px dotted #E7EFFF;">
@@ -340,10 +341,10 @@
 
 <script>
 import Swal from 'sweetalert2';
-import { mapActions } from 'pinia';
-import cartStore from '@/stores/cartStore';
+import { mapActions, mapState } from 'pinia';
 import CartList from '@/components/week6/CartList.vue';
 import OrderDetail from '@/components/week5/OrderDetail.vue';
+import userCartStore from '@/stores/userCartStore';
 
 export default {
     components: {
@@ -356,8 +357,11 @@ export default {
             apiPath: import.meta.env.VITE_APP_PATH,
         }
     },
+    computed: {
+        ...mapState(userCartStore, ['cartList'])
+    },
     methods: {
-        ...mapActions(cartStore, ['getCart']),
+        ...mapActions(userCartStore, ['getCart']),
         // POST 結帳
         createOrder(data) {
             const order = {

@@ -125,7 +125,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import cartStore from '@/stores/cartStore';
+import userCartStore from '@/stores/userCartStore';
 import loadingStore from '@/stores/loadingStore';
 import couponsStore from '@/stores/couponsStore';
 
@@ -141,12 +141,12 @@ export default {
     this.getCart();
   },
   computed: {
-    ...mapState(cartStore, ['cartList', 'cartTotal']),
+    ...mapState(userCartStore, ['cartList', 'cartTotal']),
     ...mapState(loadingStore, ['loadingStatus']),
     ...mapState(couponsStore, ['couponState'])
   },
   methods: {
-    ...mapActions(cartStore, ['getCart', 'putCart', 'deleteCart', 'deleteCarts']),
+    ...mapActions(userCartStore, ['getCart', 'putCart', 'deleteCart', 'deleteCarts']),
     ...mapActions(couponsStore, ['postCoupon']),
     async applyCoupon() {
       await this.postCoupon(this.couponCode)

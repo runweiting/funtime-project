@@ -85,7 +85,7 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
-import cartStore from '@/stores/cartStore';
+import userCartStore from '@/stores/userCartStore';
 import categoryStore from '@/stores/categoryStore';
 import loadingStore from '@/stores/loadingStore';
 
@@ -117,7 +117,7 @@ export default {
   },
   methods: {
     ...mapActions(userProductsStore, ['getProducts']),
-    ...mapActions(cartStore, ['addToCart']),
+    ...mapActions(userCartStore, ['addToCart']),
     ...mapActions(categoryStore, ['getCategory']),
     // 更新選取類別的商品列表
     handleCategoryChange(category) {

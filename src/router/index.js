@@ -43,8 +43,8 @@ const baseRoutes = [
         },
       },
       {
-        path: "products/:id",
-        name: "productInfo",
+        path: "product/:id",
+        name: "product",
         component: () => import("../views/UserProductInfo.vue"),
         meta: {
           title: "企劃介紹",

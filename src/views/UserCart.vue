@@ -17,12 +17,11 @@
                             :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
                             </small>
                         </nav>
-                        <h2 class="fs-4 card-title fw-bold mb-3">
-                            《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！
+                        <h2 class="fs-4 card-title fw-bold mb-3">{{ product.title }}
                         </h2>
                         <div class="d-flex align-items-baseline gap-3">
                             <small class="text-dark-gray">提案人</small>
-                            <small class="text-dark-gray">我們的主日學</small>
+                            <small class="text-dark-gray">{{ product.proposer }}</small>
                         </div>
                     </div>
                 </div>
@@ -38,34 +37,34 @@
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 0.99%">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="bg-info text-white rounded-circle position-relative"  style="width: 50px; height: 50px;">
+                                        <div :class="{ 'bg-info': this.currentProgress === 1 }" class="text-white rounded-circle position-relative"  style="width: 50px; height: 50px;">
                                             <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                                         </div>
-                                        <small>加入預購</small>
+                                        <small class="text-dark-gray">加入預購</small>
                                     </div>
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 33.33%;">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
+                                        <div :class="{ 'bg-info': this.currentProgress === 2 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                                             <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                                         </div>
-                                        <small>集資成功</small>
+                                        <small class="text-dark-gray">集資成功</small>
                                     </div>
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 66.66%;">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
+                                        <div :class="{ 'bg-info': this.currentProgress === 3 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                                             <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                                         </div>
-                                        <small>通知付款</small>
+                                        <small class="text-dark-gray">通知付款</small>
                                     </div>
                                 </div>
                                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 98.99%;">
                                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
+                                        <div :class="{ 'bg-info': this.currentProgress === 4 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                                             <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                                         </div>
-                                        <small>出貨</small>
+                                        <small class="text-dark-gray">出貨</small>
                                     </div>
                                 </div>
                             </div>
@@ -89,22 +88,22 @@
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12">
             <div class="row gy-3 gy-lg-6">
-                <div class="col px-xl-4">
-                    <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
-                        <a href="#" class="stretched-link"></a>
-                        <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
-                        <h3 class="fs-6 text-dark-gray mb-0">2 入組</h3>
+                <div v-for="(item, index) in product.packages" :key="index" class="col px-xl-4">
+                    <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative" style="cursor: pointer;">
+                        <a @click="handleAddToCart(product.id, item.units)" class="stretched-link"></a>
+                        <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+                        <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex gap-2">
-                            <h5 class="fw-bold mb-0">NT$ 1,300</h5>
-                            <span class="badge bg-info-light text-black">65折</span>
+                            <h5 class="fw-bold mb-0">NT$ {{ product.price * product.discount * item.units }}</h5>
+                            <span class="badge bg-info-light text-black">{{ product.discount * 100 }}折</span>
                             </div>
-                            <span class="badge bg-danger">剩餘498份</span>
+                            <span class="badge bg-danger">剩餘{{ `待處理` }}份</span>
                         </div>
-                        <small class="text-dark-gray">預定售價 <del>NT$ 10,00</del>，現省 NT$ 700</small>
+                        <small class="text-dark-gray">預定售價 <del>NT$ {{ product.price }}</del>，現省 NT$ {{ product.price - (product.price * product.discount) }}</small>
                         <div>
                             <span>本方案內含：</span><br>
-                            <span class="fs-5 fw-bold">《走入創世記》2 套</span>
+                            <span class="fs-5 fw-bold">{{ product.short_title }}{{ item.units }} 套</span>
                         </div>
                         <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
                         <div class="d-flex gap-2">
@@ -113,66 +112,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col px-xl-4">
-                    <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
-                        <a href="#" class="stretched-link"></a>
-                        <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
-                        <h3 class="fs-6 text-dark-gray mb-0">6 入組</h3>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-2">
-                                <h5 class="fw-bold mb-0">NT$ 3,900</h5>
-                                <span class="badge bg-info-light text-black">65折</span>
-                                </div>
-                                <span class="fs-6 badge bg-danger">剩餘498份</span>
-                            </div>
-                        <small class="text-dark-gray">預定售價 NT$ 10,000，現省 NT$ 2,100</small>
-                        <div>
-                            <span>本方案內含：</span><br>
-                            <span class="fs-5 fw-bold">《走入創世記》6 套</span>
-                        </div>
-                        <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
-                        <div class="d-flex gap-2">
-                            <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                            <small>臺灣本島免運、可寄離島</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col px-xl-4">
-                    <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
-                        <a href="#" class="stretched-link"></a>
-                        <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px;">
-                        <h3 class="fs-6 text-dark-gray mb-0">10 入組</h3>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-2">
-                            <h5 class="fw-bold mb-0">NT$ 6,500</h5>
-                            <span class="badge bg-info-light text-black">65折</span>
-                            </div>
-                            <span class="fs-6 badge bg-danger">剩餘498份</span>
-                        </div>
-                        <small class="text-dark-gray">預定售價 NT$ 10,000，現省 NT$ 3,500</small>
-                        <div>
-                            <span>本方案內含：</span><br>
-                            <span class="fs-5 fw-bold">《走入創世記》10 套</span>
-                        </div>
-                        <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
-                        <div class="d-flex gap-2">
-                            <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                            <small>臺灣本島免運、可寄離島</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <h1 class="pt-5 text-center">我的購物車</h1>
-        <div class="row">
-            <div class="col">
-                <cart-list class="w-100 py-3" />
-            </div>
-            <div class="col">
-                <order-detail class="w-100 mt-4 p-3" @sendOrder="createOrder" ref="orderDetail" />
             </div>
         </div>
     </div>
@@ -180,24 +119,34 @@
 
 <script>
 import Swal from 'sweetalert2';
-import { mapActions } from 'pinia';
-import cartStore from '@/stores/cartStore';
-import CartList from '@/components/week6/CartList.vue';
-import OrderDetail from '@/components/week5/OrderDetail.vue';
+import { mapState, mapActions } from 'pinia';
+import userProductsStore from '@/stores/userProductsStore';
+import userCartStore from '@/stores/userCartStore';
+// import CartList from '@/components/week6/CartList.vue';
+// import OrderDetail from '@/components/week5/OrderDetail.vue';
 
 export default {
-    components: {
-        CartList,
-        OrderDetail
-    },
     data() {
         return {
             apiUrl: import.meta.env.VITE_APP_URL,
             apiPath: import.meta.env.VITE_APP_PATH,
+            currentProgress: 1,
         }
     },
+    mounted() {
+        const { id } = this.$route.params;
+        this.getProduct(id);
+    },
+    computed: {
+        ...mapState(userProductsStore, ['product'])
+    },
     methods: {
-        ...mapActions(cartStore, ['getCart']),
+        ...mapActions(userProductsStore, ['getProduct']),
+        ...mapActions(userCartStore, ['addToCart']),
+        handleAddToCart(productId, units) {
+            this.addToCart(productId, units);
+            this.$router.push({ name: "order" });
+        },
         // POST 結帳
         createOrder(data) {
             const order = {
@@ -224,6 +173,7 @@ export default {
                 });
             });
         },
+        
     }
 }
 </script>

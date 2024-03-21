@@ -43,7 +43,7 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
-import cartStore from '@/stores/cartStore';
+import userCartStore from '@/stores/userCartStore';
 
 export default {
   data() {
@@ -55,7 +55,7 @@ export default {
     ...mapState(userProductsStore, ['selectedProduct'])
   },
   methods: {
-    ...mapActions(cartStore, ['addToCart']),
+    ...mapActions(userCartStore, ['addToCart']),
   },
   watch: {
     // 當傳入的 product 值有變化時，重置 qty

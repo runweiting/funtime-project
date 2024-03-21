@@ -5,7 +5,7 @@ import showErrorToast from "@/utils/showErrorToast";
 import loadingStore from "./loadingStore";
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
-export default defineStore("cartStore", {
+export default defineStore("userCartStore", {
   state: () => ({
     // 購物車列表
     cartList: [],
@@ -14,10 +14,10 @@ export default defineStore("cartStore", {
   }),
   actions: {
     // POST 加入購物車
-    addToCart(targetId, qty = 1) {
+    addToCart(targetId, qty) {
       // 使用 loadingStore
-      const loading = loadingStore();
-      loading.loadingStatus.updateQty = targetId;
+      // const loading = loadingStore();
+      // loading.loadingStatus.updateQty = targetId;
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`;
       const cart = {
         product_id: targetId,
@@ -27,11 +27,10 @@ export default defineStore("cartStore", {
         .post(url, { data: cart })
         .then((res) => {
           showSuccessToast(res.data.message);
-          loading.loadingStatus.updateQty = "";
-          this.getCart();
+          // loading.loadingStatus.updateQty = "";
         })
         .catch((err) => {
-          showErrorToast(err.response.data.message);
+          showErrorToast(err);
         });
     },
     // GET 購物車列表

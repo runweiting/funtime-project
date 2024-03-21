@@ -107,7 +107,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import ordersStore from '@/stores/ordersStore';
+import adminOrdersStore from '@/stores/dashboard/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
 
 import OrderModal from '../../components/week7/OrderModal.vue';
@@ -139,13 +139,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(ordersStore, ['orderList', 'pagination', 'calculateTotal']),
+    ...mapState(adminOrdersStore, ['orderList', 'pagination', 'calculateTotal']),
   },
   mounted() {
     this.getOrders();
   },
   methods: {
-    ...mapActions(ordersStore, ['getOrders', 'deleteOrder', 'deleteOrders']),
+    ...mapActions(adminOrdersStore, ['getOrders', 'deleteOrder', 'deleteOrders']),
     // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate, formattedTime } = timestampToDate(timestamp);

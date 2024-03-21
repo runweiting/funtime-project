@@ -260,7 +260,7 @@
           <!-- 預購方案介紹 -->
           <div class="position-lg-sticky">
             <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative" style="cursor: pointer;">
-              <a @click="goToUserCart(product.id)" class="stretched-link"></a>
+              <router-link :to="`/cart/${product.id}`" class="stretched-link"></router-link>
               <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
               <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
               <div class="d-flex justify-content-between align-items-center">
@@ -270,7 +270,7 @@
                 </div>
                 <span class="fs-6 badge bg-danger">剩餘{{ `待處理` }}份</span>
               </div>
-              <small class="text-dark-gray">預定售價 NT$ {{ product.price }}，現省 NT$ {{ product.price - (product.price * product.discount) }}</small>
+              <small class="text-dark-gray">預定售價 <del>NT$ {{ product.price }}</del>，現省 NT$ {{ product.price - (product.price * product.discount) }}</small>
               <ul class="list-unstyled mb-0">
                 <li v-for="(content, index) in product.contents" :key="index">{{ content }}</li>
               </ul>
@@ -289,57 +289,11 @@
       </div>
     </div>
   </div>
-
-  <main class="container">
-    <h1 class="pt-5 text-start">單一商品介紹</h1>
-    <div class="row py-2">
-      <div v-if="product">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-4">
-              <img :src="product.imageUrl" class="img-fluid product-img" />
-            </div>
-            <div class="col-sm-8">
-              <h2>
-                {{ product.title }}
-                <span class="badge bg-dark ms-2">{{ product.category }}</span>
-              </h2>
-              <small class="mb-2 text-secondary">商品敘述：</small>
-              <p class="mb-3">{{ product.description }}</p>
-              <small class="mb-2 text-secondary">商品內容：</small>
-              <p class="mb-3">{{ product.content }}</p>
-              <div class="mb-3">
-                <del class="fs-6 fw-bold text-secondary me-2">
-                  原價{{ product.origin_price }}元
-                </del>
-                <span class="fs-5 fw-bold text-danger">
-                  現在只要{{ product.price }}元
-                </span>
-              </div>
-              <div class="input-group">
-                <select class="form-select" v-model="this.qty">
-                  <option v-for="i in 10" :key="i" :value="i">{{ i }}</option>
-                </select>
-                <button
-                  @click="addToCart(product.id, this.qty)"
-                  type="button"
-                  class="btn btn-primary"
-                >
-                  加入購物車
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 </template>
 
 <script>
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
-import cartStore from '@/stores/cartStore';
 
 export default {
   data() {
@@ -359,17 +313,12 @@ export default {
     ...mapState(userProductsStore, ['product']),
   },
   methods: {
-    ...mapActions(cartStore, ['addToCart']),
     ...mapActions(userProductsStore, ['getProduct']),
     setDynamicProgress(value) {
       const progress = (value / this.targetValue) * 100;
       this.progressBarWidth = `${progress}%`;
       this.progressBarValue = value;
     },
-    goToUserCart(targetId) {
-      this.$route.params.id = targetId;
-      this.$router.push({ name: "cart" });
-    }
   },
 };
 </script>

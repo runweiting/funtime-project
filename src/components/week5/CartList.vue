@@ -100,7 +100,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import cartStore from '@/stores/cartStore';
+import userCartStore from '@/stores/userCartStore';
 import loadingStore from '@/stores/loadingStore';
 
 export default {
@@ -110,11 +110,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(cartStore, ['cartList', 'cartTotal']),
+    ...mapState(userCartStore, ['cartList', 'cartTotal']),
     ...mapState(loadingStore, ['loadingStatus'])
   },
   methods: {
-    ...mapActions(cartStore, ['putCart', 'deleteCart', 'deleteCarts']),
+    ...mapActions(userCartStore, ['putCart', 'deleteCart', 'deleteCarts']),
   },
 };
 </script>

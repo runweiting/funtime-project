@@ -200,7 +200,7 @@
 <script>
 import { mapActions } from 'pinia';
 
-import ordersStore from '@/stores/ordersStore';
+import adminOrdersStore from '@/stores/dashboard/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
 import modalMixin from '@/mixins/modalMixin';
 import showSuccessToast from '@/utils/showSuccessToast';
@@ -248,7 +248,7 @@ export default {
     
   },
   methods: {
-    ...mapActions(ordersStore, ['getOrders', 'timestampToDate']),
+    ...mapActions(adminOrdersStore, ['getOrders', 'timestampToDate']),
     // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDay, formattedDate } = timestampToDate(timestamp);

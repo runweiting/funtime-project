@@ -31,7 +31,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
                         <div v-for="product in productList" :key="product.id" class="col mb-md-0 px-0 px-md-3">
                             <div class="card h-100 shadow-sm position-relative" style="cursor: pointer;">
-                                <a @click="goToUserProductInfo(product.id)" class="stretched-link"></a>
+                                <router-link :to="`/product/${product.id}`" class="stretched-link"></router-link>
                                 <button type="button" class="btn position-absolute p-0 hvr-pulse">
                                     <i class="bi bi-heart-fill fs-5"></i>
                                 </button>
@@ -114,24 +114,16 @@
             </div>
         </div>
     </div>
-
-    <main class="container">
-        <h1 class="pt-5 text-center">商品列表</h1>
-        <div class="row py-2">
-        <product-list />
-        </div>
-    </main>
 </template>
 
 <script>
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
 import { CountTo } from 'vue3-count-to';
-import ProductList from '../components/week6/ProductList.vue';
+// import ProductList from '../components/week6/ProductList.vue';
 
 export default {
     components: {
-        ProductList,
         CountTo,
     },
     data() {
@@ -151,10 +143,6 @@ export default {
     },
     methods: {
         ...mapActions(userProductsStore, ['getProducts']),
-        goToUserProductInfo(targetId) {
-            this.$route.params.id = targetId;
-            this.$router.push({ name: "productInfo" });
-        }
     }
 };
 </script>

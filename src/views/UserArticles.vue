@@ -63,7 +63,7 @@
 
 <script>
 import { mapActions } from 'pinia';
-import cartStore from '@/stores/cartStore';
+import cartStore from '@/stores/userCartStore';
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 

@@ -91,7 +91,7 @@ import { mapState, mapActions } from 'pinia';
 
 // 匯入 stores
 import productsStore from '@/stores/userProductsStore';
-import cartStore from '@/stores/cartStore';
+import userCartStore from '@/stores/userCartStore';
 import categoryStore from '@/stores/categoryStore';
 import loadingStore from '@/stores/loadingStore';
 
@@ -134,7 +134,7 @@ export default {
   },
   methods: {
     ...mapActions(productsStore, ['getProducts']),
-    ...mapActions(cartStore, ['getCart']),
+    ...mapActions(userCartStore, ['getCart']),
     ...mapActions(categoryStore, ['getCategory']),
     // GET 指定商品
     getProduct(targetId) {

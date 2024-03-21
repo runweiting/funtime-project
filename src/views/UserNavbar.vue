@@ -30,7 +30,7 @@
                         </li>
                         <li class="nav-item">
                             <RouterLink 
-                            :to="{ name: 'cart' }"
+                            :to="{ name: 'order' }"
                             class="nav-link text-decoration-none"
                             >{{ $t('menu.cart') }}<span class="badge rounded-pill bg-danger ms-2">{{ cartList.length }}</span></RouterLink>
                         </li>
@@ -90,23 +90,23 @@
 
 <script>
 import { mapState } from "pinia";
-import cartStore from "@/stores/cartStore";
+import userCartStore from "@/stores/userCartStore";
 
 export default {
-  computed: {
-    ...mapState(cartStore, ["cartList"]),
-  },
-  methods: {
-    changeLanguage(event) {
-        const selectLanguage = event.target.value;
-        this.$i18n.locale = selectLanguage;
+    computed: {
+        ...mapState(userCartStore, ["cartList"]),
     },
-  }
+    methods: {
+        changeLanguage(event) {
+            const selectLanguage = event.target.value;
+            this.$i18n.locale = selectLanguage;
+        },
+    }
 };
 </script>
 
 <style lang="scss">
 .nav-link.active {
-  color: white !important;
+    color: white !important;
 }
 </style>

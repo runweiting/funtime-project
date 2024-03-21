@@ -1,7 +1,6 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 import { useLoading } from "vue-loading-overlay";
-
 import showErrorToast from "@/utils/showErrorToast";
 
 // 在 Vue.js 中，使用 $ 前綴來表示這是一個特殊的對象或全局對象
