@@ -4,7 +4,7 @@
         <div class="container px-lg-12 mb-3 mb-lg-6">
             <div class="row row-cols-1 gy-3 gy-lg-6 row-cols-md-2 px-md-2 px-lg-3 px-xl-4">
                 <div class="col px-xl-4">
-                    <div class="h-100 d-flex flex-column justify-content-between">
+                    <div v-for="cart in cartList" :key="cart.id" class="h-100 d-flex flex-column justify-content-between">
                         <nav class="d-flex gap-2 mb-3" aria-label="breadcrumb">
                             <small class="text-dark-gray">
                             <RouterLink 
@@ -18,107 +18,46 @@
                             </small>
                         </nav>
                         <h2 class="fs-4 card-title fw-bold mb-3">
-                            《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！
+                            {{ cart.product.title }}
                         </h2>
                         <div class="d-flex align-items-baseline gap-3">
                             <small class="text-dark-gray">提案人</small>
-                            <small class="text-dark-gray">我們的主日學</small>
+                            <small class="text-dark-gray">{{ cart.product.proposer }}</small>
                         </div>
                     </div>
                 </div>
-                {{ cartList }}
                 <div class="col px-xl-4">
                     <!-- 集資進度 -->
-                    <div class="rounded-5 p-5" style="border: 5px dotted #E7EFFF;">
-                        <h3 class="fs-5 mb-10">集資進度</h3>
-                        <div class="w-100 px-8 pb-12">
-                            <div class="position-relative">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-info-light" role="progressbar" style="width: 0%;" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 0.99%">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="bg-info text-white rounded-circle position-relative"  style="width: 50px; height: 50px;">
-                                            <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>加入預購</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 33.33%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>集資成功</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 66.66%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>通知付款</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 98.99%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>出貨</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <fundraising-steps />
                 </div>
             </div>
         </div>
     </div>
     <!-- 預購進度 -->
     <div class="mx-3 mx-lg-10">
-        <div class="container bg-light rounded-5 px-6 py-3 px-lg-12 px-xl-15">
-            <div class="d-flex justify-content-center gap-1 gap-414-2 gap-md-6 gap-lg-12">
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls">確認品項</span>
-                    <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                </div>
-                <i class="bi bi-chevron-right"></i>
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls text-gray">填寫訂單</span>
-                    <i class="bi bi-check-circle-fill text-gray"></i>
-                </div>
-                <i class="bi bi-chevron-right"></i>
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls text-gray">預購結果</span>
-                    <i class="bi bi-check-circle-fill text-gray"></i>
-                </div>
-            </div>
-        </div>
+        <order-steps />
     </div>
     <!-- 結帳明細 -->
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12 py-3 py-lg-6">
             <div class="row row-cols-1">
                 <!-- 方案明細 -->
-                <div class="col-md-6 col-lg-5 px-xl-4">
+                <div v-for="cart in cartList" :key="cart.id" class="col-md-6 col-lg-5 px-xl-4">
                     <div class="position-sticky top-0">
                         <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
-                            <a href="#" class="stretched-link"></a>
-                            <img src="https://images.unsplash.com/photo-1585084293063-45ae031e7df4?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
-                            <h3 class="fs-6 text-dark-gray mb-0">2 入組</h3>
+                            <img :src="cart.product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+                            <h3 class="fs-6 text-dark-gray mb-0">{{ cart.qty }} 入組</h3>
                             <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex gap-2">
-                                <h5 class="fw-bold mb-0">NT$ 1,300</h5>
-                                <span class="badge bg-info-light text-black">65折</span>
+                                <h5 class="fw-bold mb-0">NT$ {{ cart.total }}</h5>
+                                <span class="badge bg-info-light text-black">{{ cart.product.discount * 100 }}折</span>
                             </div>
-                            <span class="fs-6 badge bg-danger">剩餘498份</span>
+                            <span class="fs-6 badge bg-danger">剩餘{{ cart.product.target_units - cart.qty }}份</span>
                             </div>
-                            <small class="text-dark-gray">預定售價 NT$ 1,000，現省 NT$ 700</small>
+                            <small class="text-dark-gray">預定售價 <del>NT$ {{ cart.product.origin_price }}</del>，現省 NT$ {{ (cart.product.origin_price * cart.qty) - (cart.product.origin_price * cart.product.discount * cart.qty) }}</small>
                             <div>
                                 <span>本方案內含：</span><br>
-                                <span class="fs-5 fw-bold">《走入創世記》2 套</span>
+                                <span class="fs-5 fw-bold">{{ cart.product.short_title }}{{ cart.qty }} 套</span>
                             </div>
                             <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
                             <div class="d-flex align-items-center gap-2">
@@ -129,23 +68,27 @@
                         <div class="rounded-5 border border-5 border-light-gray p-5 gap-3">
                             <label for="coupon-code" class="form-label text-danger fw-medium">優惠卷</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control placeholder-light" id="coupon-code" placeholder="請輸入優惠卷">
-                                <button class="btn btn-danger text-white" type="button" id="coupon-code">確認</button>
+                                <input :disabled="couponState.success" v-model="couponCode" type="text" class="form-control" :placeholder="couponState.success ? couponState.message : '請輸入優惠碼'" aria-label="coupon-code" aria-describedby="coupon-code" id="coupon-code">
+                                <button @click="applyCoupon(couponCode)" class="btn btn-danger text-white" type="button" id="coupon-code">確認</button>
                             </div>
                             <h6 class="mb-2">付款明細</h6>
                             <div class="d-flex flex-column gap-1 px-2">
                                 <div class="d-flex justify-content-between text-dark-gray">
                                     <span>項目</span>
-                                    <span>NT$ 1,300</span>
+                                    <span>NT$ {{ cart.total }}</span>
                                 </div>
                                 <div class="d-flex justify-content-between text-dark-gray">
                                     <span>運費</span>
                                     <span>NT$ 0</span>
                                 </div>
                                 <hr class="bg-light-gray my-2">
-                                <div class="d-flex justify-content-between text-dark-gray fw-bold">
+                                <div v-if="!couponState.success" class="d-flex justify-content-between text-dark-gray fw-bold">
                                     <span>總計</span>
-                                    <h5 class="fw-bold mb-0">NT$ 1,300</h5>
+                                    <h5 class="fw-bold mb-0">NT$ {{ cart.total }}</h5>
+                                </div>
+                                <div v-else class="d-flex justify-content-between text-dark-gray fw-bold">
+                                    <span>折扣總計</span>
+                                    <h5 class="fw-bold mb-0">NT$ {{ Math.round(couponState.data.final_total) }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -198,142 +141,8 @@
                         </form>
                     </div>
                     <!-- 收件資料 -->
-                    <div class="rounded-5 border border-5 border-light p-5 h-100">
-                        <from ref="form-order" class="d-flex flex-column gap-3 h-100">
-                            <div>
-                                <h3 class="fs-5">收件人</h3>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input
-                                            type="text"
-                                            class="form-control"
-                                            id="floatingName"
-                                            name="姓名"
-                                            />
-                                            <label for="floatingName" class="form-label">真實姓名</label>
-                                            <ErrorMessage name="姓名" class="invalid-feedback" />
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-floating mb-3">
-                                            <input
-                                            type="tel"
-                                            class="form-control"
-                                            id="floatingTel"
-                                            name="手機"
-                                            />
-                                            <label for="floatingTel" class="form-label">手機</label>
-                                            <ErrorMessage name="手機" class="invalid-feedback" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-floating">
-                                    <input
-                                    type="email"
-                                    class="form-control"
-                                    id="floatingEmail"
-                                    name="email"
-                                    placeholder="請輸入email"
-                                    />
-                                    <label for="floatingEmail" class="form-label">Email</label>
-                                    <ErrorMessage name="email" class="invalid-feedback" />
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="fs-6">請選擇運送方式</h4>
-                                <select class="form-select bg-light text-center text-dark-gray" aria-label="select-shipment" disabled>
-                                    <option value="home-delivery" selected>宅配到府</option>
-                                </select>
-                            </div>
-                            <div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label class="form-label text-dark-gray">收件地點</label>
-                                        <select class="form-select" aria-label="select-country">
-                                            <option value="taiwan-mainland" selected>台灣本島</option>
-                                            <option value="taiwan-outerIslands">台灣外島</option>
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <label class="form-label text-dark-gray">縣市</label>
-                                        <select class="form-select" aria-label="select-city">
-                                            <option value="taipei" selected>台北</option>
-                                            <option value="taichung">台中</option>
-                                            <option value="kaohsiung">高雄</option>
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <label class="form-label text-dark-gray">鄉鎮市區</label>
-                                        <select class="form-select" aria-label="select-region">
-                                            <option value="north" selected>北區</option>
-                                            <option value="center">中區</option>
-                                            <option value="south">南區</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <div class="form-floating">
-                                            <input
-                                            type="text"
-                                            class="form-control"
-                                            id="floatingPostcode"
-                                            name="postcode"
-                                            placeholder="請輸入郵遞區號"
-                                            />
-                                            <label for="floatingPostcode" class="form-label">郵遞區號</label>
-                                            <ErrorMessage name="postcode" class="invalid-feedback" />
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-floating">
-                                            <VField
-                                            type="text"
-                                            class="form-control"
-                                            id="floatingAddress"
-                                            name="地址"
-                                            placeholder="請輸入地址"
-                                            />
-                                            <label for="floatingAddress" class="form-label">地址</label>
-                                            <ErrorMessage name="地址" class="invalid-feedback" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="message" class="form-label text-dark-gray">備註(選填)</label>
-                                    <textarea
-                                    id="message"
-                                    class="form-control" rows="3"
-                                    ></textarea>
-                                </div>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="checked" name="check">
-                                <label class="form-check-label text-dark-gray" for="flexCheckChecked">
-                                    我已閱讀並同意 funtime 服務條款與隱私權政策。
-                                </label>
-                            </div>
-                            <div class="text-end mt-auto">
-                                <button type="submit" class="btn btn-primary text-white">送出訂單</button>
-                            </div>
-                        </from>
-                    </div>
+                    <order-detail @sendOrder="createOrder" ref="orderDetail" />
                 </div>
-            </div>
-            <div class="col px-xl-4 my-3 my-lg-6">
-                <order-detail class="w-100 mt-4 p-3" @sendOrder="createOrder" ref="orderDetail" />
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="container">
-        <h1 class="pt-5 text-center">結帳</h1>
-        <div class="row">
-            <div class="col">
-                <cart-list class="w-100 py-3" />
             </div>
         </div>
     </div>
@@ -342,26 +151,42 @@
 <script>
 import Swal from 'sweetalert2';
 import { mapActions, mapState } from 'pinia';
-import CartList from '@/components/week6/CartList.vue';
-import OrderDetail from '@/components/week5/OrderDetail.vue';
 import userCartStore from '@/stores/userCartStore';
+import OrderDetail from '@/components/OrderDetail.vue';
+import FundraisingSteps from '@/components/FundraisingSteps.vue';
+import OrderSteps from '@/components/OrderSteps.vue';
+import couponsStore from '@/stores/couponsStore';
 
 export default {
     components: {
-        CartList,
+        FundraisingSteps,
+        OrderSteps,
         OrderDetail
     },
     data() {
         return {
             apiUrl: import.meta.env.VITE_APP_URL,
             apiPath: import.meta.env.VITE_APP_PATH,
+            // 優惠碼
+            couponCode: null,
         }
     },
+    mounted() {
+        this.getCart();
+    },
     computed: {
-        ...mapState(userCartStore, ['cartList'])
+        ...mapState(userCartStore, ['cartList', 'cartTotal']),
+        ...mapState(couponsStore, ['couponState'])
     },
     methods: {
         ...mapActions(userCartStore, ['getCart']),
+        ...mapActions(couponsStore, ['postCoupon']),
+        async applyCoupon() {
+            await this.postCoupon(this.couponCode)
+            .then(() => {
+                this.couponCode = '';
+            })
+        },
         // POST 結帳
         createOrder(data) {
             const order = {

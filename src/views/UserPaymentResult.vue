@@ -263,7 +263,7 @@ import Swal from 'sweetalert2';
 import { mapActions } from 'pinia';
 import cartStore from '@/stores/userCartStore';
 import CartList from '@/components/week6/CartList.vue';
-import OrderDetail from '@/components/week5/OrderDetail.vue';
+import OrderDetail from '@/components/OrderDetail.vue';
 
 export default {
     components: {

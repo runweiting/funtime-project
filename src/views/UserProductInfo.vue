@@ -120,8 +120,8 @@
         </div>
         <div class="col-lg-5 d-none d-lg-block">
           <div class="d-flex gap-4">
-            <button type="button" class="btn btn-primary flex-fill hvr-pop">報名試玩</button>
-            <button type="button" class="btn btn-primary flex-fill hvr-pop">登記預購</button>
+            <router-link :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</router-link>
+            <router-link :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</router-link>
           </div>
         </div>
       </div>
@@ -133,8 +133,8 @@
       <div class="row align-items-center">
         <div class="col">
           <div class="d-flex gap-4">
-            <button type="button" class="btn btn-primary flex-fill hvr-pop">報名試玩</button>
-            <button type="button" class="btn btn-primary flex-fill hvr-pop">登記預購</button>
+            <router-link :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</router-link>
+            <router-link :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</router-link>
           </div>
         </div>
       </div>
