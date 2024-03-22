@@ -1,64 +1,15 @@
 <template>
     <!-- 專案名稱 -->
+    <order-header />
+    <!-- 訂單進度 -->
     <div class="mx-3 mx-lg-10">
-        <div class="container px-lg-12 mb-3 mb-lg-6">
-            <div class="row row-cols-1 gy-3 gy-lg-6 row-cols-md-2 px-md-2 px-lg-3 px-xl-4">
-                <div class="col px-xl-4">
-                    <div v-if="cartList.length === 0" class="h-100 d-flex flex-column gap-4">
-                        <nav class="d-flex gap-2 mb-3" aria-label="breadcrumb">
-                            <small class="text-dark-gray">
-                                <RouterLink 
-                                :to="{ name: 'home' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.home') }}
-                                </RouterLink>
-                            </small>
-                            <small class="text-dark-gray">/</small>
-                            <small class="text-dark-gray">
-                                <RouterLink 
-                                :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
-                            </small>
-                        </nav>
-                        <h2 class="fs-4 card-title fw-bold mb-3">
-                            請先選擇預購方案
-                        </h2>
-                    </div>
-                    <div v-else v-for="cart in cartList" :key="cart.id" class="h-100 d-flex flex-column justify-content-between">
-                        <nav class="d-flex gap-2 mb-3" aria-label="breadcrumb">
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'home' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.home') }}
-                            </RouterLink>
-                            </small>
-                            <small class="text-dark-gray">/</small>
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
-                            </small>
-                        </nav>
-                        <h2 class="fs-4 card-title fw-bold mb-3">
-                            {{ cart.product.title }}
-                        </h2>
-                        <div class="d-flex align-items-baseline gap-3">
-                            <small class="text-dark-gray">提案人</small>
-                            <small class="text-dark-gray">{{ cart.product.proposer }}</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col px-xl-4">
-                    <!-- 集資進度 -->
-                    <fundraising-steps />
-                </div>
-            </div>
-        </div>
+        <order-steps :currentProgress="currentProgress" />
     </div>
-    <!-- 預購進度 -->
-    <div class="mx-3 mx-lg-10">
-        <order-steps />
-    </div>
-    <!-- 結帳明細 -->
+    <!-- 訂單明細 -->
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12 py-3 py-lg-6">
             <div class="row row-cols-1">
-                <!-- 方案明細 -->
+                <!-- 方案內容 -->
                 <div v-if="cartList.length === 0" class="col-md-6 col-lg-5 px-xl-4">
                     <div class="position-sticky top-0">
                         <div class="d-flex flex-column align-items-center rounded-5 border border-5 border-light p-5 gap-3">
@@ -118,7 +69,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- 填寫訂購 -->
                 <div class="col-md-6 col-lg-7 px-xl-4 gy-3 gy-md-0">
                     <!-- 會員資料 -->
@@ -176,19 +126,20 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import userCartStore from '@/stores/userCartStore';
-import OrderDetail from '@/components/OrderDetail.vue';
-import FundraisingSteps from '@/components/FundraisingSteps.vue';
-import OrderSteps from '@/components/OrderSteps.vue';
 import couponsStore from '@/stores/couponsStore';
+import OrderDetail from '@/components/OrderDetail.vue';
+import OrderSteps from '@/components/OrderSteps.vue';
+import OrderHeader from '@/components/OrderHeader.vue';
 
 export default {
     components: {
-        FundraisingSteps,
         OrderSteps,
-        OrderDetail
+        OrderDetail,
+        OrderHeader,
     },
     data() {
         return {
+            currentProgress: 2,
             // 優惠碼
             couponCode: null,
         }
@@ -198,7 +149,7 @@ export default {
     },
     computed: {
         ...mapState(userCartStore, ['cartList', 'cartTotal']),
-        ...mapState(couponsStore, ['couponState'])
+        ...mapState(couponsStore, ['couponState']),
     },
     methods: {
         ...mapActions(userCartStore, ['getCart']),

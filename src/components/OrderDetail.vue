@@ -62,8 +62,8 @@
             <VField v-model="data.user.country"
             rules="required" :class="{ 'is-invalid': errors['地點'] }" as="select" name="地點" class="form-select text-dark-gray" aria-label="country">
               <option value="" selected>請選擇</option>
-              <option value="taiwanMainland">台灣本島</option>
-              <option value="taiwanOuterIslands">台灣外島</option>
+              <option value="台灣">台灣</option>
+              <option value="國際">國際</option>
             </VField>
             <ErrorMessage name="地點" class="invalid-feedback" />
           </div>
@@ -72,9 +72,9 @@
             <VField v-model="data.user.city"
             rules="required" :class="{ 'is-invalid': errors['縣市'] }" as="select" name="縣市" class="form-select text-dark-gray" aria-label="city">
               <option value="" selected>請選擇</option>
-              <option value="taipei">台北</option>
-              <option value="taichung">台中</option>
-              <option value="kaohsiung">高雄</option>
+              <option value="台北">台北</option>
+              <option value="台中">台中</option>
+              <option value="高雄">高雄</option>
             </VField>
             <ErrorMessage name="縣市" class="invalid-feedback" />
           </div>
@@ -83,9 +83,9 @@
             <VField v-model="data.user.region"
             rules="required" :class="{ 'is-invalid': errors['鄉鎮市區'] }" as="select" name="鄉鎮市區"  class="form-select text-dark-gray" aria-label="region">
               <option value="" selected>請選擇</option>
-              <option value="north">北區</option>
-              <option value="center">中區</option>
-              <option value="south">南區</option>
+              <option value="北區">北區</option>
+              <option value="中區">中區</option>
+              <option value="南區">南區</option>
             </VField>
             <ErrorMessage name="鄉鎮市區" class="invalid-feedback" />
           </div>
@@ -184,9 +184,8 @@ export default {
   },
   methods: {
     ...mapActions(couponsStore, ['clearCoupon']),
-    ...mapActions(userOrderStore, ['createOrder', 'addStep']),
+    ...mapActions(userOrderStore, ['createOrder']),
     onSubmit() {
-      this.addStep();
       this.createOrder(this.data);
       this.$refs.formOrder.resetForm();
       this.data.message = '';

@@ -1,101 +1,8 @@
 <template>
     <!-- 專案名稱 -->
-    <div class="mx-3 mx-lg-10">
-        <div class="container px-lg-12 mb-3 mb-lg-6">
-            <div class="row row-cols-1 gy-3 gy-lg-6 row-cols-md-2 px-md-2 px-lg-3 px-xl-4">
-                <div class="col px-xl-4">
-                    <div class="h-100 d-flex flex-column justify-content-between">
-                        <nav class="d-flex gap-2 mb-3" aria-label="breadcrumb">
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'home' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.home') }}
-                            </RouterLink>
-                            </small>
-                            <small class="text-dark-gray">/</small>
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
-                            </small>
-                        </nav>
-                        <h1 class="fs-4 card-title fw-bold mb-3">
-                            《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！
-                        </h1>
-                        <div class="d-flex align-items-baseline gap-3">
-                            <small class="text-dark-gray">提案人</small>
-                            <small class="text-dark-gray">我們的主日學</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col px-xl-4">
-                    <!-- 集資進度 -->
-                    <div class="rounded-5 p-5" style="border: 5px dotted #E7EFFF;">
-                        <h3 class="fs-5 mb-10">集資進度</h3>
-                        <div class="w-100 px-8 pb-12">
-                            <div class="position-relative">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-info-light" role="progressbar" style="width: 0%;" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 0.99%">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="bg-info text-white rounded-circle position-relative"  style="width: 50px; height: 50px;">
-                                            <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>加入預購</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 33.33%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>集資成功</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 66.66%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>通知付款</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 98.99%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>出貨</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <order-header />
     <!-- 預購進度 -->
-    <div class="mx-3 mx-lg-10">
-        <div class="container bg-light rounded-5 px-6 py-3 px-lg-12 px-xl-15">
-            <div class="d-flex justify-content-center gap-1 gap-414-2 gap-sm-3 gap-md-6 gap-lg-12">
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls">確認品項</span>
-                    <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                </div>
-                <i class="bi bi-chevron-right"></i>
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls text-gray">填寫訂單</span>
-                    <i class="bi bi-check-circle-fill text-gray"></i>
-                </div>
-                <i class="bi bi-chevron-right"></i>
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls text-gray">預購結果</span>
-                    <i class="bi bi-check-circle-fill text-gray"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+    <order-steps :currentProgress="currentProgress" />
     <!-- 結帳明細 -->
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12 py-3 py-lg-6">
@@ -109,11 +16,14 @@
                                     <div class="col-md-7">
                                         <div class="d-flex gap-2 text-dark-gray mb-2">
                                             <span>訂單時間</span>
-                                            <span>2024/03/17 14:45</span>
+                                            <span v-if="order.create_at">
+                                                {{ formatDate(order.create_at).formattedDate }}
+                                                {{ formatDate(order.create_at).formattedTime }}
+                                            </span>
                                         </div>
                                         <div class="d-flex gap-2 text-dark-gray">
                                             <span>訂單編號</span>
-                                            <span>20240317144504</span>
+                                            <span>{{ order.id }}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -130,7 +40,7 @@
                             <div class="col-md-7 px-xl-5">
                                 <div class="d-flex flex-column justify-content-between">
                                     <div class="rounded-5 border border-light border-3 p-4">
-                                        <table class="table table-border mb-0">
+                                        <table v-for="item in order.products" :key="item.id" class="table table-border mb-0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" colspan="3" class="fs-5">訂單資訊</th>
@@ -140,24 +50,22 @@
                                                 <tr>
                                                     <th scope="row">訂單<br class="d-414-block">金額</th>
                                                     <td>
-                                                        <span class="fs-5 fw-bold">NT$ 1,300元</span>
-                                                        <div class="d-flex gap-2 mt-1">
+                                                        <span class="fs-5 fw-bold">NT$ {{ item.total }}元</span>
+                                                        <div v-if="item.coupon" class="d-flex gap-2 mt-1">
                                                             <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                                                            <span class="text-dark-gray">已使用優惠卷</span>
+                                                            <span class="text-dark-gray">已使用優惠卷：{{ item.coupon.code }}</span>
+                                                            <span class="text-dark-gray">{{ item.coupon.title }}</span>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">訂單<br class="d-414-block">內容</th>
                                                     <td>
-                                                        <span class="fs-5 fw-bold">《走入創世記》2套</span>
+                                                        <span class="fs-5 fw-bold">{{ item.product.short_title }}{{ item.qty }}套</span>
                                                         <div class="text-dark-gray mt-1">
                                                             完整 1 套內含：
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li><i class="bi bi-check"></i>中英地圖 x 3 張</li>
-                                                                <li><i class="bi bi-check"></i>故事圖卡 x 62 個</li>
-                                                                <li><i class="bi bi-check"></i>中英說明書 x 1 份</li>
-                                                                <li><i class="bi bi-check"></i>圓形魔鬼氈 x 2 片</li>
+                                                            <ul v-for="(content, index) in item.product.contents" :key="index" class="list-unstyled mb-0">
+                                                                <li>{{ content }}</li>
                                                             </ul>
                                                         </div>
                                                     </td>
@@ -166,12 +74,12 @@
                                                     <th scope="row">收件<br class="d-414-block">訊息</th>
                                                     <td colspan="2">
                                                         <ul class="list-unstyled mb-0 text-dark-gray">
-                                                            <li>姓名：</li>
-                                                            <li>手機：</li>
-                                                            <li>Email：</li>
-                                                            <li>運送：</li>
-                                                            <li>地址：</li>
-                                                            <li>備註：</li>
+                                                            <li>姓名：{{ order.user.name }}</li>
+                                                            <li>手機：{{ order.user.tel }}</li>
+                                                            <li>Email：{{ order.user.email }}</li>
+                                                            <li>運送：{{ order.user.shipment }}</li>
+                                                            <li>地址：{{ order.user.postcode }}{{ order.user.country }}{{ order.user.city }}{{ order.user.region }}{{ order.user.address }}</li>
+                                                            <li>備註：{{ order.user.message }}</li>
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -212,7 +120,7 @@
                                                         <span class="text-dark-gray">備貨中</span>
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                <tr class="d-none">
                                                     <th scope="row">發票<br class="d-414-block">類型</th>
                                                     <td colspan="2">
                                                         <span class="text-dark-gray">公司發票</span>
@@ -222,7 +130,7 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                <tr class="d-none">
                                                     <th scope="row">付款<br class="d-414-block">方式</th>
                                                     <td colspan="2">
                                                         <span class="text-dark-gray">線上刷卡</span>
@@ -232,7 +140,7 @@
                                         </table>
                                     </div>
                                     <div class="text-end mt-auto">
-                                        <button type="submit" class="btn btn-primary text-white">完成訂單</button>
+                                        <button @click="goHome" type="submit" class="btn btn-primary text-white">完成訂單</button>
                                     </div>
                                 </div>
                             </div>
@@ -240,69 +148,40 @@
                     </div>
                 </div>
             </div>
-            <div class="col px-xl-4 my-3 my-lg-6">
-                <order-detail class="w-100 mt-4 p-3" @sendOrder="createOrder" ref="orderDetail" />
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="container">
-        <h1 class="pt-5 text-center">結帳</h1>
-        <div class="row">
-            <div class="col">
-                <cart-list class="w-100 py-3" />
-            </div>
         </div>
     </div>
 </template>
 
 <script>
-import Swal from 'sweetalert2';
-import { mapActions } from 'pinia';
-import cartStore from '@/stores/userCartStore';
-import CartList from '@/components/week6/CartList.vue';
-import OrderDetail from '@/components/OrderDetail.vue';
+import { mapState } from 'pinia';
+import userOrderStore from '@/stores/userOrderStore';
+import OrderHeader from '@/components/OrderHeader.vue';
+import OrderSteps from '@/components/OrderSteps.vue';
+import timestampToDate from '@/utils/timestampToDate';
 
 export default {
     components: {
-        CartList,
-        OrderDetail
+        OrderHeader,
+        OrderSteps
     },
     data() {
         return {
-            apiUrl: import.meta.env.VITE_APP_URL,
-            apiPath: import.meta.env.VITE_APP_PATH,
+            currentProgress: 3,
         }
     },
+    computed: {
+        ...mapState(userOrderStore, ['order']),
+    },
     methods: {
-        ...mapActions(cartStore, ['getCart']),
-        // POST 結帳
-        createOrder(data) {
-            const order = {
-                data,
-            };
-            const url = `${this.apiUrl}/api/${this.apiPath}/order`;
-            this.axios
-            .post(url, order)
-            .then((res) => {
-                Swal.fire({
-                    title: res.data.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                });
-                // OrderDetail重置表單
-                this.$refs.orderDetail.resetForm();
-                this.getCart();
-            })
-            .catch((err) => {
-                Swal.fire({
-                    title: err.data.message,
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                });
-            });
+        // 轉換 timestamp
+        formatDate(timestamp) {
+            const { formattedDate, formattedTime } = timestampToDate(timestamp);
+            return {
+                formattedDate, formattedTime
+            }
+        },
+        goHome() {
+            this.$router.push({ name: 'home' });
         },
     }
 }

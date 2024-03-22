@@ -1,101 +1,8 @@
 <template>
     <!-- 專案名稱 -->
-    <div class="mx-3 mx-lg-10">
-        <div class="container px-lg-12 mb-3 mb-lg-6">
-            <div class="row row-cols-1 gy-3 gy-lg-6 row-cols-md-2 px-md-2 px-lg-3 px-xl-4">
-                <div class="col px-xl-4">
-                    <div class="h-100 d-flex flex-column justify-content-between">
-                        <nav class="d-flex gap-2 mb-3" aria-label="breadcrumb">
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'home' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.home') }}
-                            </RouterLink>
-                            </small>
-                            <small class="text-dark-gray">/</small>
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
-                            </small>
-                        </nav>
-                        <h1 class="fs-4 card-title fw-bold mb-3">
-                            《走入創世記》讀經進度結合聖經地圖，原來聖經可以這樣讀！
-                        </h1>
-                        <div class="d-flex align-items-baseline gap-3">
-                            <small class="text-dark-gray">提案人</small>
-                            <small class="text-dark-gray">我們的主日學</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col px-xl-4">
-                    <!-- 集資進度 -->
-                    <div class="rounded-5 p-5" style="border: 5px dotted #E7EFFF;">
-                        <h3 class="fs-5 mb-10">集資進度</h3>
-                        <div class="w-100 px-8 pb-12">
-                            <div class="position-relative">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-info-light" role="progressbar" style="width: 0%;" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 0.99%">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="bg-info text-white rounded-circle position-relative"  style="width: 50px; height: 50px;">
-                                            <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>加入預購</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 33.33%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>集資成功</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 66.66%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>通知付款</small>
-                                    </div>
-                                </div>
-                                <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 98.99%;">
-                                    <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                                        <div class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
-                                            <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
-                                        </div>
-                                        <small>出貨</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <order-header />
     <!-- 預購進度 -->
-    <div class="mx-3 mx-lg-10">
-        <div class="container bg-light rounded-5 px-6 py-3 px-lg-12 px-xl-15">
-            <div class="d-flex justify-content-center gap-1 gap-414-2 gap-md-6 gap-lg-12">
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls">確認品項</span>
-                    <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                </div>
-                <i class="bi bi-chevron-right"></i>
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls text-gray">填寫訂單</span>
-                    <i class="bi bi-check-circle-fill text-gray"></i>
-                </div>
-                <i class="bi bi-chevron-right"></i>
-                <div class="d-flex align-items-center gap-2 gap-lg-4">
-                    <span class="span-lh-ls text-gray">預購結果</span>
-                    <i class="bi bi-check-circle-fill text-gray"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+    <order-steps :currentProgress="currentProgress" />
     <!-- 結帳明細 -->
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12 py-3 py-lg-6">
@@ -109,11 +16,14 @@
                                     <div class="col-sm-7">
                                         <div class="d-flex gap-2 text-dark-gray mb-2">
                                             <span>訂單時間</span>
-                                            <span>2024/03/17 14:45</span>
+                                            <span v-if="order.create_at">
+                                                {{ formatDate(order.create_at).formattedDate }}
+                                                {{ formatDate(order.create_at).formattedTime }}
+                                            </span>
                                         </div>
                                         <div class="d-flex gap-2 text-dark-gray">
                                             <span>訂單編號</span>
-                                            <span>20240317144504</span>
+                                            <span>{{ order.id }}</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
@@ -127,7 +37,7 @@
                             <div class="col px-xl-5">
                                 <div class="d-flex flex-column justify-content-between">
                                     <div class="rounded-5 border border-light border-3 p-4">
-                                        <table class="table table-border mb-0">
+                                        <table v-for="item in order.products" :key="item.id" class="table table-border mb-0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" colspan="3" class="fs-5">預購資訊</th>
@@ -137,24 +47,22 @@
                                                 <tr>
                                                     <th scope="row">預購<br class="d-414-block">金額</th>
                                                     <td>
-                                                        <span class="fs-5 fw-bold">NT$ 1,300元</span>
-                                                        <div class="d-flex gap-2 mt-1">
+                                                        <span class="fs-5 fw-bold">NT$ {{ item.total }}元</span>
+                                                        <div v-if="item.coupon" class="d-flex gap-2 mt-1">
                                                             <i class="bi bi-check-circle-fill text-dark-secondary"></i>
-                                                            <span class="text-dark-gray">已使用優惠卷</span>
+                                                            <span class="text-dark-gray">已使用優惠卷：{{ item.coupon.code }}</span>
+                                                            <span class="text-dark-gray">{{ item.coupon.title }}</span>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">預購<br class="d-414-block">內容</th>
                                                     <td>
-                                                        <span class="fs-5 fw-bold">《走入創世記》2套</span>
+                                                        <span class="fs-5 fw-bold">{{ item.product.short_title }}{{ item.qty }}套</span>
                                                         <div class="text-dark-gray mt-1">
                                                             完整 1 套內含：
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li><i class="bi bi-check"></i>中英地圖 x 3 張</li>
-                                                                <li><i class="bi bi-check"></i>故事圖卡 x 62 個</li>
-                                                                <li><i class="bi bi-check"></i>中英說明書 x 1 份</li>
-                                                                <li><i class="bi bi-check"></i>圓形魔鬼氈 x 2 片</li>
+                                                            <ul v-for="(content, index) in item.product.contents" :key="index" class="list-unstyled mb-0">
+                                                                <li>{{ content }}</li>
                                                             </ul>
                                                         </div>
                                                     </td>
@@ -163,12 +71,12 @@
                                                     <th scope="row">收件<br class="d-414-block">訊息</th>
                                                     <td colspan="2">
                                                         <ul class="list-unstyled mb-0 text-dark-gray">
-                                                            <li>姓名：</li>
-                                                            <li>手機：</li>
-                                                            <li>Email：</li>
-                                                            <li>運送：</li>
-                                                            <li>地址：</li>
-                                                            <li>備註：</li>
+                                                            <li>姓名：{{ order.user.name }}</li>
+                                                            <li>手機：{{ order.user.tel }}</li>
+                                                            <li>Email：{{ order.user.email }}</li>
+                                                            <li>運送：{{ order.user.shipment }}</li>
+                                                            <li>地址：{{ order.user.postcode }}{{ order.user.country }}{{ order.user.city }}{{ order.user.region }}{{ order.user.address }}</li>
+                                                            <li>備註：{{ order.user.message }}</li>
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -191,7 +99,8 @@
                 </div>
                 <!-- 付款方式 -->
                 <div class="col-md-6 col-lg-7 px-xl-4">
-                    <form ref="form-payment">
+                    {{ user }}
+                    <VForm ref="formPayment" @submit="onSubmit">
                         <!-- 會員資料 -->
                         <div class="d-none p-5">
                             <h3 class="fs-5">會員資料</h3>
@@ -246,16 +155,16 @@
                                         <div class="row row-cols-1 row-cols-sm-2 gy-3">
                                             <div class="col">
                                                 <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="個人發票-手機載具" id="individual-invoice">
-                                                    <label class="form-check-label text-dark-gray" for="individual-invoice">
+                                                    <VField v-model="invoice_individual" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="invoice_individual" id="invoice_individual" value="true" />
+                                                    <label class="form-check-label text-dark-gray" for="invoice_individual">
                                                         個人發票
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <label for="mobile-invoice" class="form-label text-dark-gray">手機載具</label>
+                                                <label for="mobile_carrier" class="form-label text-dark-gray">手機載具</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light" id="mobile-invoice" aria-describedby="mobile-invoice" placeholder="請填入手機載具" disabled>
+                                                    <VField v-model.trim="mobile_carrier" type="text" class="form-control placeholder-light" name="手機載具" placeholder="請填入手機載具" disabled />
                                                 </div>
                                             </div>
                                         </div>
@@ -267,20 +176,20 @@
                                         <div class="row row-cols-1 row-cols-sm-2 gy-3">
                                             <div class="col">
                                                 <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="公司發票" id="company-invoice">
-                                                    <label class="form-check-label text-dark-gray" for="company-invoice">
+                                                    <VField v-model="invoice_company" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="invoice_company" id="invoice_company" value="true" />
+                                                    <label class="form-check-label text-dark-gray" for="invoice_company">
                                                         公司發票
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <label for="company-ubn" class="form-label text-dark-gray">統一編號</label>
+                                                <label for="company_ubn" class="form-label text-dark-gray">統一編號</label>
                                                 <div class="input-group mb-2">
-                                                    <input type="text" class="form-control placeholder-light" id="company-ubn" aria-describedby="company-ubn" placeholder="請填入統一編號">
+                                                    <VField v-model.trim="company_ubn" type="text" class="form-control placeholder-light" name="統一編號" placeholder="請填入統一編號" />
                                                 </div>
-                                                <label for="company-name" class="form-label text-dark-gray">公司抬頭</label>
+                                                <label for="company_name" class="form-label text-dark-gray">公司抬頭</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light" id="company-name" aria-describedby="company-name" placeholder="請填入公司抬頭">
+                                                    <input v-model.trim="company_name" type="text" class="form-control placeholder-light" name="公司抬頭" placeholder="請填入公司抬頭">
                                                 </div>
                                             </div>
                                         </div>
@@ -297,8 +206,8 @@
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="credit-card" id="credit-card">
-                                                    <label class="form-check-label text-dark-gray" for="credit-card">
+                                                    <VField v-model="creditCard" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="creditCard" id="creditCard" value="true" />
+                                                    <label class="form-check-label text-dark-gray" for="creditCard">
                                                         線上刷卡
                                                     </label>
                                                 </div>
@@ -306,34 +215,34 @@
                                         </div>
                                         <div class="row row-cols-2">
                                             <div class="col-4 pe-0">
-                                                <label for="name" class="form-label text-dark-gray">持卡人</label>
+                                                <label for="cardholder" class="form-label text-dark-gray">持卡人</label>
                                                 <div class="input-group mb-2">
-                                                    <input type="text" class="form-control placeholder-light" id="name" aria-describedby="name" placeholder="請填入姓名">
+                                                    <VField v-model.trim="cardholder" type="text" class="form-control placeholder-light" name="持卡人" placeholder="請填入姓名" />
                                                 </div>
                                             </div>
                                             <div class="col-8 ps-2">
                                                 <label for="credit-card-number" class="form-label text-dark-gray">信用卡號碼</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light" id="credit-card-number" aria-describedby="credit-card-number" placeholder="請填入卡號">
+                                                    <VField v-model.trim="creditCard_number" type="text" class="form-control placeholder-light" name="信用卡號碼" placeholder="請填入卡號" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row row-cols-3">
                                             <div class="col pe-0">
-                                                <label for="expiry-date-month" class="form-label text-dark-gray">有效期限</label>
+                                                <label for="expiryDate" class="form-label text-dark-gray">有效期限</label>
                                                 <div class="input-group mb-4">
-                                                    <input type="number" class="form-control placeholder-light" id="expiry-date-month" aria-describedby="expiry-date-month" placeholder="MM">
+                                                    <VField v-model.trim="expiryDate_month" type="text" class="form-control placeholder-light" name="有效月份" placeholder="MM" />
                                                 </div>
                                             </div>
                                             <div class="col px-2">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control placeholder-light align-self-end" id="expiry-date-month" aria-describedby="expiry-date-month" placeholder="YY" style="margin-top: 32px;">
+                                                    <VField v-model.trim="expiryDate_year" type="text" class="form-control placeholder-light align-self-end" name="有效年份" placeholder="YY" style="margin-top: 32px;" />
                                                 </div>
                                             </div>
                                             <div class="col ps-0">
-                                                <label for="credit-card-cvv" class="form-label text-dark-gray">安全碼</label>
+                                                <label for="creditCard_cvv" class="form-label text-dark-gray">安全碼</label>
                                                 <div class="input-group mb-4">
-                                                    <input type="number" class="form-control placeholder-light" id="credit-card-cvv" aria-describedby="credit-card-cvv" placeholder="CVV">
+                                                    <VField v-model.trim="creditCard_cvv" type="text" class="form-control placeholder-light" name="安全碼" placeholder="CVV" />
                                                 </div>
                                             </div>
                                         </div>
@@ -344,8 +253,8 @@
                                         <div class="row mb-4">
                                             <div class="col">
                                                 <div class="form-check ps-10">
-                                                    <input class="form-check-input" style="margin-left: -2rem;" type="checkbox" value="bank-transfer" id="bank-transfer">
-                                                    <label class="form-check-label text-dark-gray" for="bank-transfer">
+                                                    <VField v-model="bank_transfer" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="虛擬轉帳" id="bank_transfer" value="true" />
+                                                    <label class="form-check-label text-dark-gray" for="bank_transfer">
                                                         ATM虛擬帳號轉帳
                                                     </label>
                                                 </div>
@@ -374,72 +283,64 @@
                                 <button type="submit" class="btn btn-primary text-white">確認付款</button>
                             </div>
                         </div>
-                    </form>
+                    </VForm>
                 </div>
-            </div>
-            <div class="col px-xl-4 my-3 my-lg-6">
-                <order-detail class="w-100 mt-4 p-3" @sendOrder="createOrder" ref="orderDetail" />
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="container">
-        <h1 class="pt-5 text-center">結帳</h1>
-        <div class="row">
-            <div class="col">
-                <cart-list class="w-100 py-3" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Swal from 'sweetalert2';
-import { mapActions } from 'pinia';
-import cartStore from '@/stores/userCartStore';
-import CartList from '@/components/week6/CartList.vue';
-import OrderDetail from '@/components/OrderDetail.vue';
+import { mapActions, mapState } from 'pinia';
+import userOrderStore from '@/stores/userOrderStore';
+import OrderHeader from '@/components/OrderHeader.vue';
+import OrderSteps from '@/components/OrderSteps.vue';
+import timestampToDate from '@/utils/timestampToDate';
 
 export default {
     components: {
-        CartList,
-        OrderDetail
+        OrderHeader,
+        OrderSteps
     },
     data() {
         return {
-            apiUrl: import.meta.env.VITE_APP_URL,
-            apiPath: import.meta.env.VITE_APP_PATH,
+            currentProgress: 3,
+            // 付款資料
+            data() {
+                return {
+                    invoice_individual: '',
+                    invoice_mobile: '',
+                    mobile_carrier: '',
+                    invoice_company: '',
+                    company_name: '',
+                    company_ubn: '',
+                    creditCard: '',
+                    bank_transfer: '',
+                    cardholder: '',
+                    creditCard_number: '',
+                    expiryDate_month: '',
+                    expiryDate_year: '',
+                    creditCard_cvv: ''
+                }
+            },
         }
     },
+    computed: {
+        ...mapState(userOrderStore, ['order']),
+    },
     methods: {
-        ...mapActions(cartStore, ['getCart']),
-        // POST 結帳
-        createOrder(data) {
-            const order = {
-                data,
-            };
-            const url = `${this.apiUrl}/api/${this.apiPath}/order`;
-            this.axios
-            .post(url, order)
-            .then((res) => {
-                Swal.fire({
-                    title: res.data.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                });
-                // OrderDetail重置表單
-                this.$refs.orderDetail.resetForm();
-                this.getCart();
-            })
-            .catch((err) => {
-                Swal.fire({
-                    title: err.data.message,
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                });
-            });
+        ...mapActions(userOrderStore, ['postPay']),
+        // 轉換 timestamp
+        formatDate(timestamp) {
+            const { formattedDate, formattedTime } = timestampToDate(timestamp);
+            return {
+                formattedDate, formattedTime
+            }
+        },
+        onSubmit() {
+            this.postPay(this.order.id);
+            this.$refs.formPayment.resetForm();
+            this.$router.push({ name: "payment-result" })
         },
     }
 }

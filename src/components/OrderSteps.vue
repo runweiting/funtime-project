@@ -20,14 +20,10 @@
 </template>
 
 <script>
-import userOrderStore from '@/stores/userOrderStore';
 
 export default {
-    setup() {
-        const orderStore = userOrderStore();
-        return {
-            currentProgress: orderStore.currentProgress,
-        };
-    },
+    props: {
+        currentProgress: Number,
+    }
 };
 </script>

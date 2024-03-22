@@ -46,15 +46,11 @@ export default defineStore("userProductsStore", {
     // GET 指定商品
     async getProduct(targetId) {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${targetId}`;
-      // this.$route.params.id = targetId;
       try {
         const res = await axios.get(url);
         this.product = res.data.product;
       } catch (err) {
         showErrorToast(err);
-        // } finally {
-        //   this.$router.push({ name: "productInfo" });
-        // }
       }
     },
   },

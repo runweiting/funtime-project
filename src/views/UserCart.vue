@@ -1,38 +1,7 @@
 <template>
     <!-- 專案名稱 -->
-    <div class="mx-3 mx-lg-10">
-        <div class="container px-lg-12 mb-3 mb-lg-6">
-            <div class="row row-cols-1 gy-3 gy-lg-6 row-cols-md-2 px-md-2 px-lg-3 px-xl-4">
-                <div class="col px-xl-4">
-                    <div class="h-100 d-flex flex-column justify-content-between">
-                        <nav class="d-flex gap-2 mb-3" aria-label="breadcrumb">
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'home' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.home') }}
-                            </RouterLink>
-                            </small>
-                            <small class="text-dark-gray">/</small>
-                            <small class="text-dark-gray">
-                            <RouterLink 
-                            :to="{ name: 'products' }" class="nav-link text-decoration-none text-nowrap">{{ $t('menu.products') }}</RouterLink>
-                            </small>
-                        </nav>
-                        <h2 class="fs-4 card-title fw-bold mb-3">{{ product.title }}
-                        </h2>
-                        <div class="d-flex align-items-baseline gap-3">
-                            <small class="text-dark-gray">提案人</small>
-                            <small class="text-dark-gray">{{ product.proposer }}</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col px-xl-4">
-                    <!-- 集資進度 -->
-                    <fundraising-steps />
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 企劃導航 -->
+    <order-header />
+    <!-- 預購進度 -->
     <div class="mx-3 mx-lg-10">
         <div class="container bg-light rounded-5 px-6 py-3 px-lg-12 px-xl-15 mb-3 mb-lg-6">
             <div class="row">
@@ -76,24 +45,14 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2';
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
 import userCartStore from '@/stores/userCartStore';
-import FundraisingSteps from '@/components/FundraisingSteps.vue';
-// import CartList from '@/components/week6/CartList.vue';
-// import OrderDetail from '@/components/week5/OrderDetail.vue';
+import OrderHeader from '@/components/OrderHeader.vue';
 
 export default {
     components: {
-        FundraisingSteps,
-    },
-    data() {
-        return {
-            apiUrl: import.meta.env.VITE_APP_URL,
-            apiPath: import.meta.env.VITE_APP_PATH,
-            
-        }
+        OrderHeader
     },
     mounted() {
         const { id } = this.$route.params;
@@ -109,33 +68,6 @@ export default {
             this.addToCart(productId, units);
             this.$router.push({ name: "order" });
         },
-        // POST 結帳
-        createOrder(data) {
-            const order = {
-                data,
-            };
-            const url = `${this.apiUrl}/api/${this.apiPath}/order`;
-            this.axios
-            .post(url, order)
-            .then((res) => {
-                Swal.fire({
-                    title: res.data.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                });
-                // OrderDetail重置表單
-                this.$refs.orderDetail.resetForm();
-                this.getCart();
-            })
-            .catch((err) => {
-                Swal.fire({
-                    title: err.data.message,
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                });
-            });
-        },
-        
     }
 }
 </script>
