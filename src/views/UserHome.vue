@@ -202,15 +202,23 @@
                                 <p class="card-text text-dark-gray">{{ product.description }}</p>
                             </div>
                             <div class="mb-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <div class="progress" style="width: 85%;">
-                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: progressBarWidth }">
-                                        </div>
+                                <div v-for="(item, itemId) in productQtyMap" :key="itemId" class="d-flex justify-content-between align-items-center">
+                                    <div v-if="product.id === itemId" class="progress" style="width: 85%;">
+                                        <div v-if="product.id === itemId" ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: ((item.productQty / product.target_units) * 100).toFixed(2) + '%' }"></div>
                                     </div>
-                                    <small class="fw-bold">{{ progressBarValue }}%</small>
+                                    <div v-if="product.id === itemId">
+                                        <small class="fw-bold">{{ (item.productQty / product.target_units).toFixed(2) * 100 }}%</small>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <small class="fst-italic fw-bold">目標 {{ product.target_units }} 組 / 累計 {{ `待處理` }} 組</small>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <small class="fst-italic fw-bold">目標 {{ product.target_units }} 組 / </small>
+                                        </div>
+                                        <div v-for="(item, index) in productQtyMap" :key="index">
+                                            <small v-if="product.id === index" class="fst-italic fw-bold"> 累計 {{ item.productQty }} 組</small>
+                                        </div>
+                                    </div>
                                     <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
                                         <span>20 <i class="bi bi-heart-fill text-danger"></i>
                                         </span>
@@ -239,6 +247,7 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
+import userOrderStore from '@/stores/userOrderStore';
 import FeedbackSwiper from '@/components/FeedbackSwiper.vue';
 import FaqAccordion from '@/components/FaqAccordion.vue';
 
@@ -247,27 +256,17 @@ export default {
         FeedbackSwiper,
         FaqAccordion
     },
-    data() {
-        return {
-            progressBarWidth: '0%',
-            progressBarValue: 0,
-            targetValue: 100
-        }
-    },
     mounted() {
         this.getProducts();
-        this.setDynamicProgress(20);
+        this.getOrders();
     },
     computed: {
         ...mapState(userProductsStore, ['productList']),
+        ...mapState(userOrderStore, ['productQtyMap'])
     },
     methods: {
         ...mapActions(userProductsStore, ['getProducts']),
-        setDynamicProgress(value) {
-            const progress = (value / this.targetValue) * 100;
-            this.progressBarWidth = `${progress}%`;
-            this.progressBarValue = value;
-        },
+        ...mapActions(userOrderStore, ['getOrders']),
     }
 }
 </script>

@@ -13,7 +13,6 @@
               type="email"
               class="form-control"
               id="floatingInput"
-              placeholder="name@example.com"
               autocomplete="email"
             />
             <label for="floatingInput">Email address</label>

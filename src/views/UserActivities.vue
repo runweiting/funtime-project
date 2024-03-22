@@ -31,8 +31,5 @@
 </script>
 
 <style scoped>
-.product-img {
-  object-fit: cover;
-}
 </style>
 

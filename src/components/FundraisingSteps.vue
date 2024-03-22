@@ -9,7 +9,7 @@
                 </div>
                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 0.99%">
                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                        <div :class="{ 'bg-info': this.currentProgress === 1 }" class="text-white rounded-circle position-relative"  style="width: 50px; height: 50px;">
+                        <div :class="{ 'bg-info': currentFundraisingSteps >= 1 }" class="text-white rounded-circle position-relative"  style="width: 50px; height: 50px;">
                             <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                         </div>
                         <small class="text-dark-gray">加入預購</small>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 33.33%;">
                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                        <div :class="{ 'bg-info': this.currentProgress === 2 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
+                        <div :class="{ 'bg-info': currentFundraisingSteps >= 2 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                             <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                         </div>
                         <small class="text-dark-gray">集資成功</small>
@@ -25,15 +25,15 @@
                 </div>
                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 66.66%;">
                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                        <div :class="{ 'bg-info': this.currentProgress === 3 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
+                        <div :class="{ 'bg-info': currentFundraisingSteps >= 3 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                             <i class="bi bi-alarm-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                         </div>
-                        <small class="text-dark-gray">通知付款</small>
+                        <small class="text-dark-gray">完成付款</small>
                     </div>
                 </div>
                 <div class="position-absolute translate-middle z-index-8" style="top: 16px; left: 98.99%;">
                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                        <div :class="{ 'bg-info': this.currentProgress === 4 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
+                        <div :class="{ 'bg-info': currentFundraisingSteps >= 4 }" class="text-white rounded-circle position-relative" style="width: 50px; height: 50px; background: #e9ecef;">
                             <i class="bi bi-box-seam-fill fs-3 position-absolute top-50 start-50 translate-middle"></i>
                         </div>
                         <small class="text-dark-gray">出貨</small>
@@ -46,10 +46,8 @@
 
 <script>
 export default {
-    data() {
-        return {
-            currentProgress: 1,
-        }
+    props: {
+        currentFundraisingSteps: Number,
     }
 }
 </script>

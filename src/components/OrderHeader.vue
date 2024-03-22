@@ -45,7 +45,7 @@
                 </div>
                 <div class="col px-xl-4">
                     <!-- 集資進度 -->
-                    <fundraising-steps />
+                    <fundraising-steps :currentFundraisingSteps="currentFundraisingSteps" />
                 </div>
             </div>
         </div>
@@ -59,6 +59,7 @@ import userOrderStore from '@/stores/userOrderStore';
 import FundraisingSteps from "./FundraisingSteps.vue";
 
 export default {
+    props: ['currentFundraisingSteps'],
     components: {
         FundraisingSteps,
     },

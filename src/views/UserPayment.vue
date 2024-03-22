@@ -1,6 +1,6 @@
 <template>
     <!-- 專案名稱 -->
-    <order-header />
+    <order-header :currentFundraisingSteps="currentFundraisingSteps" />
     <!-- 預購進度 -->
     <order-steps :currentProgress="currentProgress" />
     <!-- 結帳明細 -->
@@ -99,7 +99,6 @@
                 </div>
                 <!-- 付款方式 -->
                 <div class="col-md-6 col-lg-7 px-xl-4">
-                    {{ user }}
                     <VForm ref="formPayment" @submit="onSubmit">
                         <!-- 會員資料 -->
                         <div class="d-none p-5">
@@ -304,25 +303,22 @@ export default {
     },
     data() {
         return {
+            currentFundraisingSteps: 2,
             currentProgress: 3,
             // 付款資料
-            data() {
-                return {
-                    invoice_individual: '',
-                    invoice_mobile: '',
-                    mobile_carrier: '',
-                    invoice_company: '',
-                    company_name: '',
-                    company_ubn: '',
-                    creditCard: '',
-                    bank_transfer: '',
-                    cardholder: '',
-                    creditCard_number: '',
-                    expiryDate_month: '',
-                    expiryDate_year: '',
-                    creditCard_cvv: ''
-                }
-            },
+            invoice_individual: '',
+            invoice_mobile: '',
+            mobile_carrier: '',
+            invoice_company: '',
+            company_name: '',
+            company_ubn: '',
+            creditCard: '',
+            bank_transfer: '',
+            cardholder: '',
+            creditCard_number: '',
+            expiryDate_month: '',
+            expiryDate_year: '',
+            creditCard_cvv: ''
         }
     },
     computed: {

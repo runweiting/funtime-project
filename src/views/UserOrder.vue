@@ -1,9 +1,9 @@
 <template>
     <!-- 專案名稱 -->
-    <order-header />
+    <order-header :currentFundraisingSteps="currentFundraisingSteps" />
     <!-- 訂單進度 -->
     <div class="mx-3 mx-lg-10">
-        <order-steps :currentProgress="currentProgress" />
+        <order-steps :currentOrderSteps="currentOrderSteps" />
     </div>
     <!-- 訂單明細 -->
     <div class="mx-3 mx-lg-10">
@@ -139,7 +139,8 @@ export default {
     },
     data() {
         return {
-            currentProgress: 2,
+            currentFundraisingSteps: 1,
+            currentOrderSteps: 2,
             // 優惠碼
             couponCode: null,
         }

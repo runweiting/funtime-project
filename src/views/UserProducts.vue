@@ -97,12 +97,12 @@
                                         <div class="row align-items-center">
                                             <div class="col-3 px-0  d-flex justify-content-end align-items-center gap-2 pe-1">
                                                 <div class="bg-white border rounded-circle border-3 border-black position-relative" style="width: 35px; height: 35px;">
-                                                    <span class="text-black position-absolute top-50 start-50 translate-middle z-index-10"  style="font-size: 18px;">1</span>
+                                                    <span class="text-black position-absolute top-50 start-50 translate-middle z-index-10"  style="font-size: 18px;">2</span>
                                                 </div>
                                                 <span class="text-black"  style="font-size: 18px;">#</span>
                                             </div>
                                             <div class="col-9 px-0">
-                                                <span class="text-black text-wrap" style="font-size: 18px;">總是讀不完創世記呀～</span>
+                                                <span class="text-black text-wrap" style="font-size: 18px;">好多不同的故事和人物～</span>
                                             </div>
                                         </div>
                                     </li>

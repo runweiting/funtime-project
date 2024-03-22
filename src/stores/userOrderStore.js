@@ -11,6 +11,8 @@ export default defineStore("userOrderStore", {
     // 指定訂單
     order: {},
     orderId: "",
+    orders: [],
+    productQtyMap: {},
   }),
   actions: {
     // POST 訂單
@@ -29,6 +31,7 @@ export default defineStore("userOrderStore", {
           this.getOrder();
         })
         .catch((err) => {
+          console.log(err);
           showErrorToast(err.data.message);
         })
         .finally(() => {
@@ -44,9 +47,23 @@ export default defineStore("userOrderStore", {
           this.order = res.data.order;
         })
         .catch((err) => {
+          console.log(err);
           showErrorToast(err.data);
         });
     },
+    // GET 全部訂單
+    async getOrders() {
+      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/orders`;
+      try {
+        const res = await axios.get(url);
+        this.orders = res.data.orders;
+        this.calculateQty();
+      } catch (err) {
+        console.log(err);
+        showErrorToast(err.data);
+      }
+    },
+    // post 付款
     postPay(id) {
       const loader = $loading.show();
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/pay/${id}`;
@@ -56,11 +73,37 @@ export default defineStore("userOrderStore", {
           showSuccessToast(res.data.message);
         })
         .catch((err) => {
+          console.log(err);
           showErrorToast(err.data);
         })
         .finally(() => {
           loader.hide();
         });
+    },
+    // 計算購買數量
+    calculateQty() {
+      this.orders.forEach((order) => {
+        // 是否有 products
+        if (order.products && typeof order.products === "object") {
+          Object.values(order.products).forEach((product) => {
+            const productId = product.product_id;
+            const { qty } = product;
+            const productName = product.product.short_title;
+            // 初始化 qty 為 0
+            if (!this.productQtyMap[productId]) {
+              this.productQtyMap[productId] = {
+                name: productName,
+                productQty: 0,
+                orderQty: 0,
+              };
+            }
+            // 累加購買數量
+            this.productQtyMap[productId].productQty += qty;
+            // 累加訂單數量
+            this.productQtyMap[productId].orderQty += 1;
+          });
+        }
+      });
     },
   },
 });

@@ -41,24 +41,25 @@
                 <div class="d-flex gap-8 align-items-center">
                   <div class="fst-italic">
                     <small class="text-dark-gray">目標 {{ product.target_units }} 組</small>
-                    <h3 class="fw-bold mt-2 mb-0">累計 {{ `待處理` }} 組</h3>
+                    <div v-for="(item, index) in productQtyMap" :key="index">
+                      <h3 v-if="product.id === index" class="fw-bold mt-2 mb-0">累計 {{ item.productQty }} 組</h3>
+                    </div>
                   </div>
                   <div class="fst-italic">
                     <small class="text-dark-gray text-start">預購人數</small>
-                    <h3 class="fw-bold mt-2 mb-0 text-end">{{ `待處理` }} 人</h3>
+                    <div v-for="(item, index) in productQtyMap" :key="index">
+                      <h3 v-if="product.id === index" class="fw-bold mt-2 mb-0 text-end">{{ item.orderQty }} 人</h3>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="col-md-7">
-                <div class="row align-items-center">
-                  <div class="col-10">
-                    <div class="progress">
-                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: progressBarWidth }">
-                        </div>
-                    </div>
+                <div v-for="(item, itemId) in productQtyMap" :key="itemId" class="d-flex justify-content-between align-items-center">
+                  <div v-if="product.id === itemId" class="progress" style="width: 85%;">
+                      <div v-if="product.id === itemId" ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: ((item.productQty / product.target_units) * 100).toFixed(2) + '%' }"></div>
                   </div>
-                  <div class="col-2 text-end">
-                    <small class="fw-bold">{{ progressBarValue }}%</small>
+                  <div v-if="product.id === itemId">
+                    <small class="fw-bold">{{ (item.productQty / product.target_units).toFixed(2) * 100 }}%</small>
                   </div>
                 </div>
               </div>
@@ -265,12 +266,14 @@
               <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2">
-                  <h5 class="fw-bold mb-0">NT$ {{ product.price * product.discount * item.units }}</h5>
+                  <h5 class="fw-bold mb-0">NT$ {{ product.origin_price * product.discount * item.units }}</h5>
                   <span class="badge bg-info-light text-black">{{ product.discount * 100 }}折</span>
                 </div>
-                <span class="fs-6 badge bg-danger">剩餘{{ `待處理` }}份</span>
+                <div v-for="(item, index) in productQtyMap" :key="index">
+                  <span v-if="product.id === index" class="fs-6 badge bg-danger">剩餘{{ product.target_units - item.productQty }}份</span>
+                </div>
               </div>
-              <small class="text-dark-gray">預定售價 <del>NT$ {{ product.price }}</del>，現省 NT$ {{ product.price - (product.price * product.discount) }}</small>
+              <small class="text-dark-gray">預定售價 <del>NT$ {{ product.origin_price }}</del>，現省 NT$ {{ (product.origin_price - (product.origin_price * product.discount)) * item.units }}</small>
               <ul class="list-unstyled mb-0">
                 <li v-for="(content, index) in product.contents" :key="index">{{ content }}</li>
               </ul>
@@ -294,31 +297,21 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/userProductsStore';
+import userOrderStore from '@/stores/userOrderStore';
 
 export default {
-  data() {
-    return {
-      qty: 1,
-      progressBarWidth: '0%',
-      progressBarValue: 0,
-      targetValue: 100
-    };
-  },
   mounted() {
     const { id } = this.$route.params;
     this.getProduct(id);
-    this.setDynamicProgress(20);
+    this.getOrders();
   },
   computed: {
     ...mapState(userProductsStore, ['product']),
+    ...mapState(userOrderStore, ['productQtyMap'])
   },
   methods: {
     ...mapActions(userProductsStore, ['getProduct']),
-    setDynamicProgress(value) {
-      const progress = (value / this.targetValue) * 100;
-      this.progressBarWidth = `${progress}%`;
-      this.progressBarValue = value;
-    },
+    ...mapActions(userOrderStore, ['getOrders']),
   },
 };
 </script>

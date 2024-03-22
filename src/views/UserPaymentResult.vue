@@ -1,6 +1,6 @@
 <template>
     <!-- 專案名稱 -->
-    <order-header />
+    <order-header :currentFundraisingSteps="currentFundraisingSteps" />
     <!-- 預購進度 -->
     <order-steps :currentProgress="currentProgress" />
     <!-- 結帳明細 -->
@@ -166,6 +166,7 @@ export default {
     },
     data() {
         return {
+            currentFundraisingSteps: 3,
             currentProgress: 3,
         }
     },

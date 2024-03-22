@@ -1,9 +1,11 @@
 import axios from "axios";
 import { defineStore } from "pinia";
+import { useLoading } from "vue-loading-overlay";
 import showSuccessToast from "@/utils/showSuccessToast";
 import showErrorToast from "@/utils/showErrorToast";
 import loadingStore from "./loadingStore";
 
+const $loading = useLoading({});
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default defineStore("userCartStore", {
   state: () => ({
@@ -35,6 +37,7 @@ export default defineStore("userCartStore", {
     },
     // GET 購物車列表
     getCart() {
+      const loader = $loading.show();
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`;
       axios
         .get(url)
@@ -44,6 +47,9 @@ export default defineStore("userCartStore", {
         })
         .catch((err) => {
           showErrorToast(err.response.data.message);
+        })
+        .finally(() => {
+          loader.hide();
         });
     },
     // PUT 修改購物車

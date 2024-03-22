@@ -1,8 +1,8 @@
 <template>
     <!-- 專案名稱 -->
-    <order-header />
+    <order-header :currentFundraisingSteps="currentFundraisingSteps" />
     <!-- 訂單進度 -->
-    <order-steps :currentProgress="currentProgress" />
+    <order-steps :currentOrderSteps="currentOrderSteps" />
     <!-- 結帳明細 -->
     <div class="mx-3 mx-lg-10">
         <div class="container px-lg-12 py-3 py-lg-6">
@@ -146,7 +146,8 @@ export default {
     },
     data() {
         return {
-            currentProgress: 3,
+            currentOrderSteps: 3,
+            currentFundraisingSteps: 1,
         }
     },
     computed: {

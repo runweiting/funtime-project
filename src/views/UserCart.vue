@@ -1,6 +1,6 @@
 <template>
     <!-- 專案名稱 -->
-    <order-header />
+    <order-header :currentFundraisingSteps="currentFundraisingSteps" />
     <!-- 預購進度 -->
     <div class="mx-3 mx-lg-10">
         <div class="container bg-light rounded-5 px-6 py-3 px-lg-12 px-xl-15 mb-3 mb-lg-6">
@@ -53,6 +53,11 @@ import OrderHeader from '@/components/OrderHeader.vue';
 export default {
     components: {
         OrderHeader
+    },
+    data() {
+        return {
+            currentFundraisingSteps: 1,
+        }
     },
     mounted() {
         const { id } = this.$route.params;
