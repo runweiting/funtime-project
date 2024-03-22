@@ -165,7 +165,7 @@ export default {
             this.$router.push({ name: 'home' })
         },
         goToPayment() {
-            this.currentProgress = 1;
+            this.currentOrderSteps = 1;
             this.$router.push({ name: 'payment' })
         },
     }

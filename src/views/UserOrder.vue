@@ -116,7 +116,7 @@
                         </form>
                     </div>
                     <!-- 收件資料 -->
-                    <order-detail @updateCart="getCart" />
+                    <order-detail />
                 </div>
             </div>
         </div>
@@ -145,15 +145,11 @@ export default {
             couponCode: null,
         }
     },
-    mounted() {
-        this.getCart();
-    },
     computed: {
         ...mapState(userCartStore, ['cartList', 'cartTotal']),
         ...mapState(couponsStore, ['couponState']),
     },
     methods: {
-        ...mapActions(userCartStore, ['getCart']),
         ...mapActions(couponsStore, ['postCoupon']),
         async applyCoupon() {
             await this.postCoupon(this.couponCode)

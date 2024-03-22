@@ -28,6 +28,7 @@ export default defineStore("userCartStore", {
       axios
         .post(url, { data: cart })
         .then((res) => {
+          this.getCart();
           showSuccessToast(res.data.message);
           // loading.loadingStatus.updateQty = "";
         })
