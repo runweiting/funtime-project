@@ -60,8 +60,8 @@
           <div class="col">
             <label for="country" class="form-label text-dark-gray">收件地點</label>
             <VField v-model="data.user.country"
-            rules="required" :class="{ 'is-invalid': errors['地點'] }" as="select" name="地點" class="form-select" aria-label="country">
-              <option value="" selected></option>
+            rules="required" :class="{ 'is-invalid': errors['地點'] }" as="select" name="地點" class="form-select text-dark-gray" aria-label="country">
+              <option value="" selected>請選擇</option>
               <option value="taiwanMainland">台灣本島</option>
               <option value="taiwanOuterIslands">台灣外島</option>
             </VField>
@@ -70,8 +70,8 @@
           <div class="col">
             <label for="city" class="form-label text-dark-gray">縣市</label>
             <VField v-model="data.user.city"
-            rules="required" :class="{ 'is-invalid': errors['縣市'] }" as="select" name="縣市" class="form-select" aria-label="city">
-              <option value="" selected></option>
+            rules="required" :class="{ 'is-invalid': errors['縣市'] }" as="select" name="縣市" class="form-select text-dark-gray" aria-label="city">
+              <option value="" selected>請選擇</option>
               <option value="taipei">台北</option>
               <option value="taichung">台中</option>
               <option value="kaohsiung">高雄</option>
@@ -81,8 +81,8 @@
           <div class="col">
             <label for="region" class="form-label text-dark-gray">鄉鎮市區</label>
             <VField v-model="data.user.region"
-            rules="required" :class="{ 'is-invalid': errors['鄉鎮市區'] }" as="select" name="鄉鎮市區"  class="form-select" aria-label="region">
-              <option value="" selected></option>
+            rules="required" :class="{ 'is-invalid': errors['鄉鎮市區'] }" as="select" name="鄉鎮市區"  class="form-select text-dark-gray" aria-label="region">
+              <option value="" selected>請選擇</option>
               <option value="north">北區</option>
               <option value="center">中區</option>
               <option value="south">南區</option>
@@ -129,11 +129,12 @@
         </div>
       </div>
       <div class="form-check">
-        <VField v-model="data.agreement" rules="required" :class="{ 'is-invalid': errors['同意 funtime 服務條款'] }" class="form-check-input" id="agreement" type="checkbox" value="checked" name="check" />
+        <VField v-model="data.agreement" rules="required"
+        :class="{ 'is-invalid': errors['funtime 服務條款'] }" type="checkbox" name="funtime 服務條款" id="agreement" class="form-check-input" value="true" />
         <label class="form-check-label text-dark-gray" for="agreement">
           我已閱讀並同意 funtime 服務條款與隱私權政策。
         </label>
-        <ErrorMessage name="check" class="invalid-feedback" />
+        <ErrorMessage name="funtime 服務條款" class="invalid-feedback" />
       </div>
       <div class="text-end mt-auto">
         <button type="submit" class="btn btn-primary text-white">送出訂單</button>
@@ -153,8 +154,7 @@ export default {
   components: { ErrorMessage },
   data() {
     return {
-      title: '訂購訊息',
-      // 結帳資料
+      // 訂單資料
       data: {
         user: {
           name: '',
@@ -168,9 +168,19 @@ export default {
           address: '',
         },
         message: '',
-        agreement: ''
+        agreement: false,
       },
     };
+  },
+  watch: {
+    'data.agreement': {
+      deep: true,
+      handler(newValue) {
+        if (newValue === 'true') {
+          this.data.agreement = true;
+        }
+      },
+    }
   },
   methods: {
     ...mapActions(couponsStore, ['clearCoupon']),
