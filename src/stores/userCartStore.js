@@ -36,21 +36,18 @@ export default defineStore("userCartStore", {
         });
     },
     // GET 購物車列表
-    getCart() {
+    async getCart() {
       const loader = $loading.show();
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`;
-      axios
-        .get(url)
-        .then((res) => {
-          this.cartList = res.data.data.carts;
-          this.cartTotal = res.data.data.total;
-        })
-        .catch((err) => {
-          showErrorToast(err.response.data.message);
-        })
-        .finally(() => {
-          loader.hide();
-        });
+      try {
+        const res = await axios.get(url);
+        this.cartList = res.data.data.carts;
+        this.cartTotal = res.data.data.total;
+      } catch (err) {
+        showErrorToast(err.response.data.message);
+      } finally {
+        loader.hide();
+      }
     },
     // PUT 修改購物車
     async putCart(item) {

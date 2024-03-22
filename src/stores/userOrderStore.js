@@ -31,7 +31,6 @@ export default defineStore("userOrderStore", {
           this.getOrder();
         })
         .catch((err) => {
-          console.log(err);
           showErrorToast(err.data.message);
         })
         .finally(() => {
@@ -47,7 +46,6 @@ export default defineStore("userOrderStore", {
           this.order = res.data.order;
         })
         .catch((err) => {
-          console.log(err);
           showErrorToast(err.data);
         });
     },
@@ -59,7 +57,6 @@ export default defineStore("userOrderStore", {
         this.orders = res.data.orders;
         this.calculateQty();
       } catch (err) {
-        console.log(err);
         showErrorToast(err.data);
       }
     },
@@ -73,7 +70,6 @@ export default defineStore("userOrderStore", {
           showSuccessToast(res.data.message);
         })
         .catch((err) => {
-          console.log(err);
           showErrorToast(err.data);
         })
         .finally(() => {
