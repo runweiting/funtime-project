@@ -443,13 +443,6 @@ export default {
     tempProduct: Object,
     isNew: Boolean,
   },
-  // // 在組件中使用 store 裡的方法
-  // setup() {
-  //   const useAdminProductsStore = adminProductsStore();
-  //   return {
-  //     updateProduct: useAdminProductsStore.updateProduct,
-  //   };
-  // },
   mixins: [modalMixin],
   data() {
     return {

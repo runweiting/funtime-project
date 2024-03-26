@@ -31,10 +31,10 @@ export default defineStore("userProductsStore", {
         const { products, pagination } = res.data;
         this.productList = products;
         this.pagination = pagination;
+        console.log(this.productList);
         // 異步操作完成後，調用排序邏輯
         this.sortProducts();
       } catch (err) {
-        console.log(err);
         showErrorToast(err.response.data.message);
       } finally {
         loader.hide();
@@ -51,7 +51,6 @@ export default defineStore("userProductsStore", {
         const res = await axios.get(url);
         this.product = res.data.product;
       } catch (err) {
-        console.log(err);
         showErrorToast(err);
       }
     },

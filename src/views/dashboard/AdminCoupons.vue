@@ -88,7 +88,7 @@ import couponsStore from '@/stores/couponsStore';
 import timestampToDate from '@/utils/timestampToDate';
 
 import CouponModal from '@/components/week7/CouponModal.vue';
-import Pagination from '@/components/week7/Pagination.vue';
+import Pagination from '@/components/week7/PaginationGroup.vue';
 
 export default {
   components: {

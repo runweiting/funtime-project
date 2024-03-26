@@ -198,7 +198,7 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 
 import adminOrdersStore from '@/stores/dashboard/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
@@ -247,6 +247,9 @@ export default {
     },
     
   },
+  computed: {
+    ...mapState(adminOrdersStore, ['currentPage'])
+  },
   methods: {
     ...mapActions(adminOrdersStore, ['getOrders', 'timestampToDate']),
     // 轉換 timestamp
@@ -290,7 +293,7 @@ export default {
         this.subTotal = 0;
         this.inputDisabled = true;
         this.modal.hide();
-        this.getOrders();
+        this.getOrders(this.currentPage);
       })
       .catch((err) => {
         showErrorToast(err.response.data.message);

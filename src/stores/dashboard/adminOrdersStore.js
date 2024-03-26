@@ -10,6 +10,8 @@ export default defineStore("adminOrdersStore", {
     // 訂單列表
     orderList: [],
     pagination: {},
+    // 目前頁面
+    currentPage: null,
   }),
   actions: {
     // GET 訂單列表
@@ -29,6 +31,7 @@ export default defineStore("adminOrdersStore", {
           }));
           this.orderList = newOrderFormat;
           this.pagination = pagination;
+          this.currentPage = page;
         })
         .catch((err) => {
           showErrorToast(err.response.data.message);
@@ -46,11 +49,11 @@ export default defineStore("adminOrdersStore", {
       return total;
     },
     // DELETE 刪除指定訂單
-    deleteOrder(orderId) {
+    deleteOrder(orderId, page) {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/order/${orderId}`;
       axios.delete(url).then((res) => {
         showSuccessToast(res.data.message);
-        this.getOrders();
+        this.getOrders(page);
       });
     },
     // DELETE 刪除全部訂單

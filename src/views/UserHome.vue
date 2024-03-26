@@ -202,12 +202,18 @@
                                 <p class="card-text text-dark-gray">{{ product.description }}</p>
                             </div>
                             <div class="mb-4">
-                                <div v-for="(item, itemId) in productQtyMap" :key="itemId" class="d-flex justify-content-between align-items-center">
-                                    <div v-if="product.id === itemId" class="progress" style="width: 85%;">
-                                        <div v-if="product.id === itemId" ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: ((item.productQty / product.target_units) * 100).toFixed(2) + '%' }"></div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div v-if="productQtyMap[product.id]" class="progress" style="width: 85%;">
+                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: ((productQtyMap[product.id].productQty / product.target_units) * 100).toFixed(2) + '%' }"></div>
                                     </div>
-                                    <div v-if="product.id === itemId">
-                                        <small class="fw-bold">{{ (item.productQty / product.target_units).toFixed(2) * 100 }}%</small>
+                                    <div v-else class="progress" style="width: 85%;">
+                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: 0 + '%' }"></div>
+                                    </div>
+                                    <div v-if="productQtyMap[product.id]">
+                                        <small class="fw-bold">{{ (productQtyMap[product.id].productQty / product.target_units).toFixed(2) * 100 }}%</small>
+                                    </div>
+                                    <div v-else>
+                                        <small class="fw-bold">{{ 0 }}%</small>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">

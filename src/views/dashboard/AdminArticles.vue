@@ -83,7 +83,7 @@ import { mapActions, mapState } from 'pinia';
 import articlesStore from '@/stores/articlesStore';
 import timestampToDate from '@/utils/timestampToDate';
 import ArticleModal from '@/components/week7/ArticleModal.vue'
-import Pagination from '@/components/week7/Pagination.vue';
+import Pagination from '@/components/week7/PaginationGroup.vue';
 
 export default {
     components: {

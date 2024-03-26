@@ -78,10 +78,12 @@ export default defineStore("userOrderStore", {
     },
     // 計算購買數量
     calculateQty() {
+      console.log(this.orders);
       this.orders.forEach((order) => {
         // 是否有 products
         if (order.products && typeof order.products === "object") {
           Object.values(order.products).forEach((product) => {
+            console.log(product);
             const productId = product.product_id;
             const { qty } = product;
             const productName = product.product.short_title;
@@ -100,6 +102,7 @@ export default defineStore("userOrderStore", {
           });
         }
       });
+      console.log(this.productQtyMap);
     },
   },
 });

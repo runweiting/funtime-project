@@ -26,7 +26,8 @@
                             <th scope="col">日期</th>
                             <th scope="col">序號</th>
                             <th scope="col">訂單編號</th>
-                            <th scope="col">品項</th>
+                            <th scope="col">品名</th>
+                            <th scope="col">數量</th>
                             <th scope="col">金額</th>
                             <th scope="col">優惠卷</th>
                             <th scope="col">訂單狀態</th>
@@ -53,6 +54,7 @@
                               </td>
                               <td>{{ item.num }}</td>
                               <td>{{ item.id }}</td>
+                              <td v-for="(product, cartId) in item.products" :key="cartId">{{ product.product.short_title }}</td>
                               <td>
                                   {{ (Object.keys(item.products)).length }}
                               </td>
@@ -80,14 +82,14 @@
                                       aria-label="Basic outlined example"
                                   >
                                       <button
-                                      @click="checkOrder(item)"
+                                      @click="checkOrder(item, this.currentPage)"
                                       type="button"
                                       class="btn btn-outline-primary btn-sm"
                                       >
                                       查看訂單
                                       </button>
                                       <button
-                                      @click="deleteOrder(item.id)"
+                                      @click="deleteOrder(item.id, currentPage)"
                                       type="button"
                                       class="btn btn-outline-danger btn-sm"
                                       >
@@ -99,7 +101,7 @@
                         </tbody>
                     </table>
                 </div>
-                <Pagination :pages="pagination" @showPage="getOrders" />
+                <pagination-group />
             </main>
         </div>
     </main>
@@ -110,12 +112,12 @@ import { mapActions, mapState } from 'pinia';
 import adminOrdersStore from '@/stores/dashboard/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
 import OrderModal from '../../components/week7/OrderModal.vue';
-import Pagination from '../../components/week7/Pagination.vue';
+import PaginationGroup from '../../components/week7/PaginationGroup.vue';
 
 export default {
   components: {
     OrderModal,
-    Pagination,
+    PaginationGroup,
   },
   data() {
     return {      
@@ -138,7 +140,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(adminOrdersStore, ['orderList', 'pagination', 'calculateTotal']),
+    ...mapState(adminOrdersStore, ['orderList', 'calculateTotal', 'currentPage']),
   },
   mounted() {
     this.getOrders();
