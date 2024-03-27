@@ -7,7 +7,7 @@ import showErrorToast from "@/utils/showErrorToast";
 // $loading 代表使用 useLoading({}) 建立的一個對象，它提供了顯示和隱藏 loading 等功能
 const $loading = useLoading({});
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
-export default defineStore("userProductsStore", {
+const userProductsStore = defineStore("userProductsStore", {
   state: () => ({
     // 商品列表
     productList: [],
@@ -31,7 +31,6 @@ export default defineStore("userProductsStore", {
         const { products, pagination } = res.data;
         this.productList = products;
         this.pagination = pagination;
-        console.log(this.productList);
         // 異步操作完成後，調用排序邏輯
         this.sortProducts();
       } catch (err) {
@@ -56,3 +55,5 @@ export default defineStore("userProductsStore", {
     },
   },
 });
+
+export default userProductsStore;

@@ -204,13 +204,13 @@
                             <div class="mb-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div v-if="productQtyMap[product.id]" class="progress" style="width: 85%;">
-                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: ((productQtyMap[product.id].productQty / product.target_units) * 100).toFixed(2) + '%' }"></div>
+                                        <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: ((productQtyMap[product.id].productQty / product.target_units) * 100).toFixed(1) + '%' }"></div>
                                     </div>
                                     <div v-else class="progress" style="width: 85%;">
                                         <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: 0 + '%' }"></div>
                                     </div>
                                     <div v-if="productQtyMap[product.id]">
-                                        <small class="fw-bold">{{ (productQtyMap[product.id].productQty / product.target_units).toFixed(2) * 100 }}%</small>
+                                        <small class="fw-bold">{{ ((productQtyMap[product.id].productQty / product.target_units) * 100).toFixed(1) }}%</small>
                                     </div>
                                     <div v-else>
                                         <small class="fw-bold">{{ 0 }}%</small>
@@ -252,19 +252,19 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import userProductsStore from '@/stores/userProductsStore';
-import userOrderStore from '@/stores/userOrderStore';
 import FeedbackSwiper from '@/components/FeedbackSwiper.vue';
 import FaqAccordion from '@/components/FaqAccordion.vue';
+import userProductsStore from '@/stores/userProductsStore';
+import userOrderStore from '@/stores/userOrderStore';
 
 export default {
     components: {
         FeedbackSwiper,
-        FaqAccordion
+        FaqAccordion,
     },
     mounted() {
         this.getProducts();
-        this.getOrders();
+        this.calculateQty();
     },
     computed: {
         ...mapState(userProductsStore, ['productList']),
@@ -272,7 +272,7 @@ export default {
     },
     methods: {
         ...mapActions(userProductsStore, ['getProducts']),
-        ...mapActions(userOrderStore, ['getOrders']),
+        ...mapActions(userOrderStore, ['calculateQty'])
     }
 }
 </script>

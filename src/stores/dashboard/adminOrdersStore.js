@@ -1,11 +1,11 @@
 import axios from "axios";
 import { defineStore } from "pinia";
-
 import showSuccessToast from "@/utils/showSuccessToast";
 import showErrorToast from "@/utils/showErrorToast";
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
-export default defineStore("adminOrdersStore", {
+export default defineStore({
+  id: "adminOrdersStore",
   state: () => ({
     // 訂單列表
     orderList: [],
@@ -34,7 +34,7 @@ export default defineStore("adminOrdersStore", {
           this.currentPage = page;
         })
         .catch((err) => {
-          showErrorToast(err.response.data.message);
+          showErrorToast(err.response);
         });
     },
     updateTotal(order) {

@@ -55,9 +55,7 @@
                               <td>{{ item.num }}</td>
                               <td>{{ item.id }}</td>
                               <td v-for="(product, cartId) in item.products" :key="cartId">{{ product.product.short_title }}</td>
-                              <td>
-                                  {{ (Object.keys(item.products)).length }}
-                              </td>
+                              <td v-for="(product, cartId) in item.products" :key="cartId">{{ product.qty }}</td>
                               <td>
                                 <!-- 有優惠卷 total 折後金額，沒有優惠卷不能用 -->
                                 <span v-if="Object.values(item.products).some(item => item.coupon)">
@@ -146,7 +144,7 @@ export default {
     this.getOrders();
   },
   methods: {
-    ...mapActions(adminOrdersStore, ['getOrders', 'deleteOrder', 'deleteOrders']),
+    ...mapActions(adminOrdersStore, ['getOrders', 'deleteOrder', 'deleteOrders', 'calculateQty']),
     // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate, formattedTime } = timestampToDate(timestamp);
