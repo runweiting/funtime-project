@@ -1,11 +1,10 @@
-/* eslint-env node */
 module.exports = {
   root: true,
   extends: [
-    // ESLint 會依照以下順序檢查規範
+    // 依照以下順序檢查規範
     "plugin:vue/vue3-essential",
     "eslint:recommended",
-    // 讓 ESLint 支援 Airbnb 規範
+    // 支援 Airbnb 規範
     "airbnb-base",
     "prettier",
   ],
@@ -13,7 +12,7 @@ module.exports = {
     ecmaVersion: "latest",
   },
   settings: {
-    // 讓 ESLint 可以正常解析 @ 的路徑
+    // 正常解析 @ 的路徑
     "import/resolver": {
       alias: {
         map: [["@", "./src"]],
@@ -24,7 +23,10 @@ module.exports = {
         paths: ["src"],
       },
     },
-    // import/core-modules 告訴 ESLint 這些套件是可以安裝在 devDependencies 裡面的，而不是 dependencies 裡面
+    // 可以安裝在 devDependencies 裡的，而不是 dependencies 裡
     "import/core-modules": ["vite", "@vitejs/plugin-vue"],
+  },
+  rules: {
+    indent: ["error", 2],
   },
 };

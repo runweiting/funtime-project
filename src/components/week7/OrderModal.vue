@@ -285,19 +285,19 @@ export default {
     updateOrder() {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/order/${this.tempOrder.id}`;
       this.axios
-      .put(url, {
-        "data": this.tempOrder,
-      })
-      .then((res) => {
-        showSuccessToast(res.data.message);
-        this.subTotal = 0;
-        this.inputDisabled = true;
-        this.modal.hide();
-        this.getOrders(this.currentPage);
-      })
-      .catch((err) => {
-        showErrorToast(err.response.data.message);
-      });
+        .put(url, {
+          "data": this.tempOrder,
+        })
+        .then((res) => {
+          showSuccessToast(res.data.message);
+          this.subTotal = 0;
+          this.inputDisabled = true;
+          this.modal.hide();
+          this.getOrders(this.currentPage);
+        })
+        .catch((err) => {
+          showErrorToast(err.response.data.message);
+        });
     },
   },
 };

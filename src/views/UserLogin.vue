@@ -78,9 +78,9 @@ export default {
           const { expired, token } = res.data;
           document.cookie = `myToken=${token}; expires=${new Date(expired)}`;
           showSuccessToast(res.data.message)
-          .then(() => {
-            this.goToAdmin();
-          });
+            .then(() => {
+              this.goToAdmin();
+            });
           // 清空 user
           this.user = {};
         })

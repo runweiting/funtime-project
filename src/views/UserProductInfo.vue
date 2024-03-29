@@ -154,7 +154,7 @@
             <h4 class="fs-6 fw-normal mb-0">
               須達成{{ product.target_units }}組，才能啟動生產，您的支持讓有趣的聖經企劃發生！
             </h4>
-            <span class="position-absolute top-50 end-0 translate-middle-y" style="left: 100%; border-width: 12px 0px 12px 20px; border-style: solid; border-color: transparent transparent transparent #54FA80; border-radius: 0px 20px 20px 0px;"></span>
+            <span class="position-absolute top-50 end-0 translate-middle-y" style="left: 100%; border-color: transparent transparent transparent #54FA80; border-style: solid; border-width: 12px 0 12px 20px; border-radius: 0 20px 20px 0;"></span>
           </div>
           <hr class="w-100 border-top my-8" style="border: 5px dotted #8C8C8E;">
           <div class="d-flex flex-column justify-content-between gap-4 mb-8">

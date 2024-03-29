@@ -231,17 +231,17 @@ export default {
           percent: parseInt(this.tempCoupon.percent, 10),
         }
       })
-      .then((res) => {
-        showSuccessToast(res.data.message);
-        this.getCoupons();
-      })
-      .then(() => {
-        this.inputDisabled = true;
-        this.modal.hide();
-      })
-      .catch((err) => {
-        showErrorToast(err.response.data.message);
-      });
+        .then((res) => {
+          showSuccessToast(res.data.message);
+          this.getCoupons();
+        })
+        .then(() => {
+          this.inputDisabled = true;
+          this.modal.hide();
+        })
+        .catch((err) => {
+          showErrorToast(err.response.data.message);
+        });
     },
   },
 };

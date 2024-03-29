@@ -225,17 +225,17 @@ export default {
       this.tempArticle.create_at = this.createAtDateTimestamp;
       this.axios[method](url, {
         "data": this.tempArticle})
-      .then((res) => {
-        showSuccessToast(res.data.message);
-        this.getArticles();
-      })
-      .then(() => {
-        this.inputDisabled = true;
-        this.modal.hide();
-      })
-      .catch((err) => {
-        showErrorToast(err.response.data.message)
-      });
+        .then((res) => {
+          showSuccessToast(res.data.message);
+          this.getArticles();
+        })
+        .then(() => {
+          this.inputDisabled = true;
+          this.modal.hide();
+        })
+        .catch((err) => {
+          showErrorToast(err.response.data.message)
+        });
     },
   },
 };

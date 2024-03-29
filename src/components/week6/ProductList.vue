@@ -151,12 +151,13 @@ export default {
 <style scoped>
 .sticky {
   /* 填滿整個視窗高度 */
-  height: 100vh;
   top: 0;
+  height: 100vh;
   overflow-y: auto;
 }
+
 .product-img {
-  object-fit: cover;
   height: 100px;
+  object-fit: cover;
 }
 </style>

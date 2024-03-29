@@ -189,48 +189,49 @@ export default {
   width: 50px;
   height: 24px;
 }
+
 /* input 樣式，隱藏 checkbox */
 .switch input { 
-  opacity: 0;
   width: 0;
   height: 0;
+  opacity: 0;
 }
+
 /* span 樣式，透過 -webkit-transition 和 transition 屬性，設定滑動效果 */
 .slider {
   position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
   border-radius: 34px;
-}
-/* span :before 偽元素樣式 */
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 2px;
-  top: 2px;
-  background-color: white;
-  /*  -webkit- 支援舊版瀏覽器 */
-  -webkit-transition: .4s;
+  cursor: pointer;
   transition: .4s;
-  border-radius: 50%;
+  transition: .4s;
 }
+
+/* span :before 偽元素樣式 */
+.slider::before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+  transition: .4s;
+  content: "";
+}
+
 /* 當 input:checked .slider 圓點背景顏色變成綠色 */
 input:checked + .slider {
   background-color: green;
 }
+
 /* 當 input:checked .slider:before 圓點滑動至右側 */
-input:checked + .slider:before {
+input:checked + .slider::before {
   /*  -webkit- 、 -ms- 支援舊版瀏覽器 */
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  transform: translateX(26px);
   transform: translateX(26px);
 }
 </style>

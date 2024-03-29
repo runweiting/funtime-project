@@ -1,91 +1,91 @@
 /* placeholder */
 .placeholder-light::placeholder {
-    color: #c5c5c5 !important;
+  color: #c5c5c5 !important;
 }
 /* border */
 .border-10 {
-    border-width: 10px !important;
+  border-width: 10px !important;
 }
 /* z-index */
 .z-index-n1 {
-    z-index: -1;
+  z-index: -1;
 }
 .z-index-10 {
-    z-index: 10;
+  z-index: 10;
 }
 .z-index-9 {
-    z-index: 9;
+  z-index: 9;
 }
 .z-index-8 {
-    z-index: 8;
+  z-index: 8;
 }
 /* line-height */
 .h5-lh-ls {
-    line-height: 1.6;
-    letter-spacing: 1.5px;
+  line-height: 1.6;
+  letter-spacing: 1.5px;
 }
 .span-lh-ls {
-    letter-spacing: 10px;
-    @media (max-width: 768px) {
-        letter-spacing: 5px;
-    }
-    @media (max-width: 414px) {
-        font-size: 14px;
-        letter-spacing: normal;
-    }
+  letter-spacing: 10px;
+  @media (max-width: 768px) {
+      letter-spacing: 5px;
+  }
+  @media (max-width: 414px) {
+      font-size: 14px;
+      letter-spacing: normal;
+  }
 }
 /* 414px */
 .d-414-none {
-    @media (max-width: 414px) {
-        display: none;
-    }
+  @media (max-width: 414px) {
+      display: none;
+  }
 }
 .d-414-block {
-    @media (max-width: 414px) {
-        display: block;
-    }
+  @media (max-width: 414px) {
+    display: block;
+  }
 }
 .gap-414-2 {
-    gap: 0.5rem; // 8px
+  gap: 0.5rem; // 8px
 }
 /* progress-chart */
 .icon-area {
-    width: 35px;
-    height: 35px;
-    @media (min-width: 576px) {
-        width: 50px;
-        height: 50px;
-    }
-    @media (min-width: 992px) {
-        width: 85px;
-        height: 85px;
-    }
+  width: 35px;
+  height: 35px;
+  @media (min-width: 576px) {
+    width: 50px;
+      height: 50px;
+  }
+  @media (min-width: 992px) {
+    width: 85px;
+      height: 85px;
+  }
 }
 .icon-title {
-    font-size: 16px;
-    @media (min-width: 768px) {
-        font-size: 20px;
-    }
-    @media (min-width: 992px) {
-        font-size: 24px;
-    }
+  font-size: 16px;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+  @media (min-width: 992px) {
+    font-size: 24px;
+  }
 }
 .icon {
-    font-size: 16px;
-    @media (min-width: 992px) {
-        font-size: 32px;
-    }
+  font-size: 16px;
+  @media (min-width: 992px) {
+    font-size: 32px;
+  }
 }
 /* position-sticky */
 .position-lg-sticky {
-    @media (min-width: 992px) {
-        position: sticky;
-        top: 0px;
-    }
+  @media (min-width: 992px) {
+    position: sticky;
+    top: 0px;
+  }
 }
 .position-md-sticky {
-    @media (min-width: 786px) {
-        position: sticky;
-        top: 0px;
-    }
+  @media (min-width: 786px) {
+    position: sticky;
+    top: 0px;
+  }
 }

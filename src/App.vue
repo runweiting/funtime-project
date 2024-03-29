@@ -24,5 +24,5 @@ export default {
 <style lang="scss">
 /* {
   outline: 1px solid yellowgreen
-}*/
+} */
 </style>

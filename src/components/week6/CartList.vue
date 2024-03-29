@@ -150,9 +150,9 @@ export default {
     ...mapActions(couponsStore, ['postCoupon']),
     async applyCoupon() {
       await this.postCoupon(this.couponCode)
-      .then(() => {
-        this.couponCode = '';
-      })
+        .then(() => {
+          this.couponCode = '';
+        })
     },
   },
 };
@@ -160,7 +160,7 @@ export default {
 
 <style scoped>
 .cart-img {
-  object-fit: cover;
   height: 50px;
+  object-fit: cover;
 }
 </style>

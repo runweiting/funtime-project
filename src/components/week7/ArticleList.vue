@@ -10,15 +10,15 @@
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default {
-    data () {
-        return {
-        editor: ClassicEditor,
-        editorData: '<p>Hello world!!</p>',
-        editorConfig: {
-            toolbar: ['heading', '|', 'bold', 'italic', 'link']
-        }
-        }
+  data () {
+    return {
+      editor: ClassicEditor,
+      editorData: '<p>Hello world!!</p>',
+      editorConfig: {
+        toolbar: ['heading', '|', 'bold', 'italic', 'link']
+      }
     }
+  }
 }
 </script>
 
