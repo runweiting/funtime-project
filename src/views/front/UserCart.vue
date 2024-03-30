@@ -15,7 +15,7 @@
         <div v-for="(item, index) in product.packages" :key="index" class="col px-xl-4">
           <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative" style="cursor: pointer;">
             <a @click="handleAddToCart(product.id, item.units)" class="stretched-link"></a>
-            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+            <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
             <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex gap-2">

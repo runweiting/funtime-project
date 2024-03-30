@@ -7,7 +7,7 @@
         <div class="col-md-4 px-xl-4">
           <div class="position-md-sticky">
             <div v-for="item in order.products" :key="item.id" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
-              <img :src="item.product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+              <img :src="item.product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="product-image" style="max-height: 100px">
               <h3 class="fs-6 text-dark-gray mb-0">{{ item.qty }} 入組</h3>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2">

@@ -21,7 +21,7 @@
       <div class="row row-cols-1 py-2 p-xl-4 row-cols-xl-2">
         <div class="col-xl-7 px-xl-4">
           <div class="h-100 d-flex flex-column justify-content-between gap-4">
-            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 400px">
+            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="product-image" style="max-height: 400px">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between gap-2 mb-2">
               <div class="d-flex gap-2">
                 <span v-for="(tag, index) in product.tags" :key="index" class="badge rounded-pill bg-primary text-white"># {{ tag }}</span>
@@ -119,8 +119,8 @@
         </div>
         <div class="col-lg-5 d-none d-lg-block">
           <div class="d-flex gap-4">
-            <router-link :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</router-link>
-            <router-link :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</router-link>
+            <RouterLink :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</RouterLink>
+            <RouterLink :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</RouterLink>
           </div>
         </div>
       </div>
@@ -131,8 +131,8 @@
       <div class="row align-items-center">
         <div class="col">
           <div class="d-flex gap-4">
-            <router-link :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</router-link>
-            <router-link :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</router-link>
+            <RouterLink :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</RouterLink>
+            <RouterLink :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</RouterLink>
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@
           <hr class="w-100 border-top my-8" style="border: 5px dotted #8C8C8E;">
           <div class="d-flex flex-column justify-content-between gap-4 mb-8">
             <h4 class="text-center mb-0">{{ product.question }}</h4>
-            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
+            <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
           </div>
           <div class="d-flex flex-column justify-content-between gap-8">
             <h4 class="text-center mb-0">設計特點</h4>
@@ -172,7 +172,7 @@
             </ol>
             <div v-for="(point, index) in product.points" :key="index" class="row row-cols-2">
               <div class="col-6 col-md-8">
-                <img :src="point.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
+                <img :src="point.imageUrl" alt="product-key-points" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
               </div>
               <div class="col-6 col-md-4">
                 <div class="d-flex flex-column gap-2 h-100">
@@ -187,7 +187,7 @@
                   <div class="card-body d-flex flex-column justify-content-between gap-5">
                     <div class="d-flex gap-2">
                       <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-man" class="object-fit-cover img-fluid">
                       </div>
                       <div class="d-flex flex-column justify-content-between text-start">
                         <span class="fw-bold">王大衛</span>
@@ -214,7 +214,7 @@
                   <div class="card-body d-flex flex-column justify-content-between gap-5">
                     <div class="d-flex gap-2">
                       <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-woman" class="object-fit-cover img-fluid">
                       </div>
                       <div class="d-flex flex-column justify-content-between text-start">
                         <span class="fw-bold">謝安娜</span>
@@ -243,7 +243,7 @@
           <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 my-5">
             <div class="d-flex gap-2">
               <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="company-logo" class="object-fit-cover img-fluid">
               </div>
               <div class="d-flex flex-column justify-content-between">
                 <small class="text-dark-gray">提案人</small>
@@ -253,8 +253,8 @@
           </div>
           <div class="position-lg-sticky">
             <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative" style="cursor: pointer;">
-              <router-link :to="`/cart/${product.id}`" class="stretched-link"></router-link>
-              <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+              <RouterLink :to="`/cart/${product.id}`" class="stretched-link"></RouterLink>
+              <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
               <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2">

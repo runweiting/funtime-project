@@ -42,7 +42,7 @@
                 <div class="card-body d-flex flex-column justify-content-between gap-5">
                   <div class="d-flex gap-2">
                     <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                      <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                      <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-man" class="object-fit-cover img-fluid">
                     </div>
                     <div class="d-flex flex-column justify-content-between text-start">
                       <span class="fw-bold">王大衛</span>
@@ -69,7 +69,7 @@
                 <div class="card-body d-flex flex-column justify-content-between gap-5">
                   <div class="d-flex gap-2">
                     <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-woman" class="object-fit-cover img-fluid">
                     </div>
                     <div class="d-flex flex-column justify-content-between text-start">
                       <span class="fw-bold">謝安娜</span>
@@ -96,7 +96,7 @@
                 <div class="card-body d-flex flex-column justify-content-between gap-5">
                   <div class="d-flex gap-2">
                     <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                      <img src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                      <img src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-man" class="object-fit-cover img-fluid">
                     </div>
                     <div class="d-flex flex-column justify-content-between text-start">
                       <span class="fw-bold">張約翰</span>
@@ -124,7 +124,7 @@
                 <div class="card-body d-flex flex-column justify-content-between gap-5">
                   <div class="d-flex gap-2">
                     <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                      <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar1" class="object-fit-cover img-fluid">
+                      <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-woman" class="object-fit-cover img-fluid">
                     </div>
                     <div class="d-flex flex-column justify-content-between text-start">
                       <span class="fw-bold">李莉亞</span>

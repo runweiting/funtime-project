@@ -4,7 +4,7 @@
       <div class="container py-3 px-lg-8 py-lg-10" data-aos="fade-up">
           <div class="row">
               <div class="col col-lg-6 col-xl-4">
-                  <img src="/dazzle-woman-stands-with-her-back-with-a-magnifying-glass.png" alt="home-png-left" class="object-fit-cover img-fluid">
+                  <img src="/dazzle-woman-stands-with-her-back-with-a-magnifying-glass.png" alt="woman-stands-with-her-back-with-a-magnifying-glass" class="object-fit-cover img-fluid">
               </div>
               <div class="col col-lg-6 col-xl-4 d-flex flex-column justify-content-center align-items-center gap-2 text-center">
                   <h1 class="display-1 pt-5 fw-bold d-none d-sm-block">funtime</h1>
@@ -13,7 +13,7 @@
                   <RouterLink :to="{ name: 'products' }" class="btn btn-primary btn-lg hvr-pop">探索企劃</RouterLink>
               </div>
               <div class="d-none col-xl-4 d-xl-block text-end">
-                  <img src="/dazzle-man-getting-ready-for-arm-wrestling.png" class="object-fit-cover img-fluid">
+                  <img src="/dazzle-man-getting-ready-for-arm-wrestling.png" alt="man-getting-ready-for-arm-wrestling" class="object-fit-cover img-fluid">
               </div>
           </div>
       </div>
@@ -31,7 +31,7 @@
               </div>
               <div class="col">
                   <div class="text-center">
-                      <img src="/bouncy-open-book-glasses-and-stars.gif" class="object-fit-cover img-fluid" style="max-height: 290px;">
+                      <img src="/bouncy-open-book-glasses-and-stars.gif" alt="open-book-glasses-and-stars" class="object-fit-cover img-fluid" style="max-height: 290px;">
                   </div>
               </div>
           </div>
@@ -50,7 +50,7 @@
               <div class="col">
                   <div class="card h-100 rounded-5 border border-info-light border-10 p-5 p-md-10">
                       <div class="overflow-hidden" style="height: 182px;">
-                          <img src="/dazzle-man-with-light-bulb-generating-ideas.png" class="object-fit-cover img-fluid">
+                          <img src="/dazzle-man-with-light-bulb-generating-ideas.png" alt="man-with-light-bulb-generating-ideas" class="object-fit-cover img-fluid">
                       </div>
                       <div class="card-body">
                           <h5 class="card-title">想要發現聖經的智慧</h5>
@@ -60,7 +60,7 @@
               <div class="col">
                   <div class="card h-100 rounded-5 border border-info-light border-10 p-5 p-md-10">
                       <div class="d-flex justify-content-center align-items-center" style="height: 182px">
-                          <img src="/dazzle-two-books-with-a-bookmark.gif" class="object-fit-cover w-50">
+                          <img src="/dazzle-two-books-with-a-bookmark.gif" alt="two-books-with-a-bookmark" class="object-fit-cover w-50">
                       </div>
                       <div class="card-body">
                           <h5 class="card-title">更多認識歷史和地理</h5>
@@ -70,7 +70,7 @@
               <div class="col">
                   <div class="card h-100 rounded-5 border border-info-light border-10 p-5 p-md-10">
                       <div class="overflow-hidden" style="height: 182px;">
-                          <img src="/dazzle-success.gif" class="object-fit-cover img-fluid">
+                          <img src="/dazzle-success.gif" alt="two-people-hi-five" class="object-fit-cover img-fluid">
                       </div>
                       <div class="card-body">
                           <h5 class="card-title">一起學習聖經的真理</h5>
@@ -94,7 +94,7 @@
               </div>
               <div class="col">
                   <div class="text-center">
-                      <img src="/dazzle-girl-sitting-on-a-box-and-choosing-products-in-online-shop.gif" class="object-fit-cover img-fluid" style="max-height: 290px;">
+                      <img src="/dazzle-girl-sitting-on-a-box-and-choosing-products-in-online-shop.gif" alt="girl-sitting-on-a-box-and-choosing-products-in-online-shop" class="object-fit-cover img-fluid" style="max-height: 290px;">
                   </div>
               </div>
           </div>
@@ -186,7 +186,7 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-6">
         <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-0 px-md-3">
           <div class="card h-100 shadow-sm position-relative" style="cursor: pointer;">
-            <router-link :to="`/product/${product.id}`" class="stretched-link"></router-link>
+            <RouterLink :to="`/product/${product.id}`" class="stretched-link" />
             <button type="button" class="btn position-absolute p-0 hvr-pulse">
               <i class="bi bi-heart-fill fs-5"></i>
             </button>
@@ -194,7 +194,7 @@
               <span class="text-white fw-bold fs-6" >試玩</span>
               <small class="text-white" >報名中</small>
             </div>
-            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid">
+            <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="height: 200px;">
             <div class="card-body d-flex flex-column justify-content-between">
               <div class="mb-4">
                 <h5 class="card-title fw-bold">{{ product.title }}</h5>

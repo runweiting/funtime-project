@@ -39,10 +39,10 @@
                 class="card h-100 shadow-sm position-relative"
                 style="cursor: pointer"
               >
-                <router-link
+                <RouterLink
                   :to="`/product/${product.id}`"
                   class="stretched-link"
-                ></router-link>
+                />
                 <button
                   type="button"
                   class="btn position-absolute p-0 hvr-pulse"
@@ -50,7 +50,7 @@
                   <i class="bi bi-heart-fill fs-5"></i>
                 </button>
                 <img
-                  :src="product.imageUrl"
+                  :src="product.imageUrl" alt="product-image"
                   class="card-img-top object-fit-cover img-fluid"
                 />
                 <div

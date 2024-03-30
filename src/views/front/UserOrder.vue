@@ -9,7 +9,7 @@
         <div class="col-md-6 col-lg-5 px-xl-4">
           <div v-for="cart in cartList" :key="cart.id" class="position-sticky top-0">
             <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
-              <img :src="cart.product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="boardGame1" style="max-height: 100px">
+              <img :src="cart.product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
               <h3 class="fs-6 text-dark-gray mb-0">{{ cart.qty }} 入組</h3>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2">
