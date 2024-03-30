@@ -7,13 +7,13 @@ const baseRoutes = [
   {
     path: "/",
     redirect: "home",
-    component: () => import("../views/UserNavbar.vue"),
+    component: () => import("@/views/front/UserNavbar.vue"),
     meta: { navbarType: "frontend" },
     children: [
       {
         path: "home",
         name: "home",
-        component: () => import("../views/UserHome.vue"),
+        component: () => import("@/views/front/UserHome.vue"),
         meta: {
           title: "funtime 聖經企劃",
         },
@@ -21,7 +21,7 @@ const baseRoutes = [
       {
         path: "products",
         name: "products",
-        component: () => import("../views/UserProducts.vue"),
+        component: () => import("@/views/front/UserProducts.vue"),
         meta: {
           title: "企劃排名",
         },
@@ -29,7 +29,7 @@ const baseRoutes = [
       {
         path: "activities",
         name: "activities",
-        component: () => import("../views/UserActivities.vue"),
+        component: () => import("@/views/front/UserActivities.vue"),
         meta: {
           title: "試玩活動",
         },
@@ -37,7 +37,7 @@ const baseRoutes = [
       {
         path: "articles",
         name: "articles",
-        component: () => import("../views/UserArticles.vue"),
+        component: () => import("@/views/front/UserArticles.vue"),
         meta: {
           title: "聖經趣聞",
         },
@@ -45,7 +45,7 @@ const baseRoutes = [
       {
         path: "product/:id",
         name: "product",
-        component: () => import("../views/UserProductInfo.vue"),
+        component: () => import("@/views/front/UserProductInfo.vue"),
         meta: {
           title: "企劃介紹",
         },
@@ -53,7 +53,7 @@ const baseRoutes = [
       {
         path: "cart/:id",
         name: "cart",
-        component: () => import("../views/UserCart.vue"),
+        component: () => import("@/views/front/UserCart.vue"),
         meta: {
           title: "選擇方案",
         },
@@ -61,7 +61,7 @@ const baseRoutes = [
       {
         path: "order",
         name: "order",
-        component: () => import("../views/UserOrder.vue"),
+        component: () => import("@/views/front/UserOrder.vue"),
         meta: {
           title: "填寫訂單",
         },
@@ -69,7 +69,7 @@ const baseRoutes = [
       {
         path: "order-result",
         name: "order-result",
-        component: () => import("../views/UserOrderResult.vue"),
+        component: () => import("@/views/front/UserOrderResult.vue"),
         meta: {
           title: "訂單結果",
         },
@@ -77,7 +77,7 @@ const baseRoutes = [
       {
         path: "payment",
         name: "payment",
-        component: () => import("../views/UserPayment.vue"),
+        component: () => import("@/views/front/UserPayment.vue"),
         meta: {
           title: "付款明細",
         },
@@ -85,7 +85,7 @@ const baseRoutes = [
       {
         path: "payment-result",
         name: "payment-result",
-        component: () => import("../views/UserPaymentResult.vue"),
+        component: () => import("@/views/front/UserPaymentResult.vue"),
         meta: {
           title: "付款結果",
         },
@@ -95,7 +95,7 @@ const baseRoutes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("../views/UserLogin.vue"),
+    component: () => import("@/views/front/UserLogin.vue"),
     // meta 屬性添加 requiresAuth 和 message，前者表示是否需要驗證，後者是額外的信息
     meta: {
       title: "登入後台",
@@ -104,7 +104,7 @@ const baseRoutes = [
   {
     // 匹配任意路徑 -> 404 頁面
     path: "/:pathMatch(.*)*",
-    component: () => import("../views/NotFound.vue"),
+    component: () => import("@/views/NotFound.vue"),
   },
   {
     // 特定頁面下的重新導向 -> products 頁面
@@ -120,7 +120,7 @@ const adminRoutes = [
     path: "/admin",
     name: "admin",
     redirect: "admin/products",
-    component: () => import("../views/dashboard/AdminNavbar.vue"),
+    component: () => import("@/views/admin/AdminNavbar.vue"),
     meta: {
       requiresAuth: true,
       message: "這是後台商品頁面",
@@ -130,7 +130,7 @@ const adminRoutes = [
       {
         path: "products",
         name: "admin/products",
-        component: () => import("../views/dashboard/AdminProducts.vue"),
+        component: () => import("@/views/admin/AdminProducts.vue"),
         meta: {
           title: "後台 - 商品管理",
         },
@@ -138,7 +138,7 @@ const adminRoutes = [
       {
         path: "orders",
         name: "admin/orders",
-        component: () => import("../views/dashboard/AdminOrders.vue"),
+        component: () => import("@/views/admin/AdminOrders.vue"),
         meta: {
           title: "後台 - 訂單管理",
         },
@@ -146,7 +146,7 @@ const adminRoutes = [
       {
         path: "coupons",
         name: "admin/coupons",
-        component: () => import("../views/dashboard/AdminCoupons.vue"),
+        component: () => import("@/views/admin/AdminCoupons.vue"),
         meta: {
           title: "後台 - 優惠卷管理",
         },
@@ -154,7 +154,7 @@ const adminRoutes = [
       {
         path: "articles",
         name: "admin/articles",
-        component: () => import("../views/dashboard/AdminArticles.vue"),
+        component: () => import("@/views/admin/AdminArticles.vue"),
         meta: {
           title: "後台 - 文章管理",
         },

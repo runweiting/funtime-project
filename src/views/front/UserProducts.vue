@@ -185,7 +185,6 @@
 import { mapState, mapActions } from "pinia";
 import userProductsStore from "@/stores/userProductsStore";
 import { CountTo } from "vue3-count-to";
-// import ProductList from '../components/week6/ProductList.vue';
 
 export default {
   components: {

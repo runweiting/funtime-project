@@ -205,7 +205,6 @@ export default {
   border-radius: 34px;
   cursor: pointer;
   transition: .4s;
-  transition: .4s;
 }
 
 /* span :before 偽元素樣式 */
@@ -218,7 +217,6 @@ export default {
   background-color: white;
   border-radius: 50%;
   transition: .4s;
-  transition: .4s;
   content: "";
 }
 
@@ -229,9 +227,6 @@ input:checked + .slider {
 
 /* 當 input:checked .slider:before 圓點滑動至右側 */
 input:checked + .slider::before {
-  /*  -webkit- 、 -ms- 支援舊版瀏覽器 */
-  transform: translateX(26px);
-  transform: translateX(26px);
   transform: translateX(26px);
 }
 </style>
