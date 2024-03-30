@@ -34,7 +34,7 @@ export default defineStore({
           this.currentPage = page;
         })
         .catch((err) => {
-          showErrorToast(err.response);
+          showErrorToast(err.response.data.message);
         });
     },
     updateTotal(order) {
@@ -51,18 +51,28 @@ export default defineStore({
     // DELETE 刪除指定訂單
     deleteOrder(orderId, page) {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/order/${orderId}`;
-      axios.delete(url).then((res) => {
-        showSuccessToast(res.data.message);
-        this.getOrders(page);
-      });
+      axios
+        .delete(url)
+        .then((res) => {
+          showSuccessToast(res.data.message);
+          this.getOrders(page);
+        })
+        .catch((err) => {
+          showErrorToast(err.response.data.message);
+        });
     },
     // DELETE 刪除全部訂單
     deleteOrders() {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/orders/all`;
-      axios.delete(url).then((res) => {
-        showSuccessToast(res.data.message);
-        this.getOrders();
-      });
+      axios
+        .delete(url)
+        .then((res) => {
+          showSuccessToast(res.data.message);
+          this.getOrders();
+        })
+        .catch((err) => {
+          showErrorToast(err.response.data.message);
+        });
     },
   },
 });

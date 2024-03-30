@@ -33,7 +33,7 @@ export default defineStore("userCartStore", {
           // loading.loadingStatus.updateQty = "";
         })
         .catch((err) => {
-          showErrorToast(err);
+          showErrorToast(err.response.data.message);
         });
     },
     // GET 購物車列表

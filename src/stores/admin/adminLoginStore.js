@@ -40,13 +40,18 @@ export default defineStore("loginStore", {
     // POST 登出
     logout() {
       const url = `${VITE_APP_URL}/logout`;
-      axios.post(url).then((res) => {
-        showSuccessToast(res.data.message).then(() => {
-          document.cookie = "myToken=; expires=;";
-          axios.defaults.headers.common.Authorization = null;
-          router.push({ name: "home" });
+      axios
+        .post(url)
+        .then((res) => {
+          showSuccessToast(res.data.message).then(() => {
+            document.cookie = "myToken=; expires=;";
+            axios.defaults.headers.common.Authorization = null;
+            router.push({ name: "home" });
+          });
+        })
+        .catch((err) => {
+          showErrorToast(err.response.data.message);
         });
-      });
     },
   },
 });

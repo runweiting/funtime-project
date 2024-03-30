@@ -49,7 +49,7 @@ const userProductsStore = defineStore("userProductsStore", {
         const res = await axios.get(url);
         this.product = res.data.product;
       } catch (err) {
-        showErrorToast(err);
+        showErrorToast(err.response.data.message);
       }
     },
   },
