@@ -1,9 +1,9 @@
 <template>
   <!-- 專案名稱 -->
-  <order-header :currentFundraisingSteps="currentFundraisingSteps" />
+  <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
   <!-- 訂單進度 -->
   <div class="mx-3 mx-lg-10">
-      <order-steps :currentOrderSteps="currentOrderSteps" />
+      <OrderSteps :currentOrderSteps="currentOrderSteps" />
   </div>
   <!-- 訂單明細 -->
   <div class="mx-3 mx-lg-10">
@@ -116,7 +116,7 @@
             </form>
           </div>
           <!-- 收件資料 -->
-          <order-detail />
+          <OrderDetail />
         </div>
       </div>
     </div>

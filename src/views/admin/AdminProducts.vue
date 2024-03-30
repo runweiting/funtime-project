@@ -19,18 +19,16 @@
               </button>
             </div>
             <!-- editModal -->
-            <edit-modal
+            <EditModal
               ref="editModal"
               :tempProduct="tempProduct" 
               :is-new="isNew"
               @getData="getProducts"
-            >
-            </edit-modal>
+            />
             <!-- delModal -->
-            <del-modal
+            <DelModal
               ref="delModal" 
-              :tempProduct="tempProduct" @getData="getProducts">
-            </del-modal>
+              :tempProduct="tempProduct" @getData="getProducts" />
           </div>
         </div>
         <div class="container">
@@ -85,7 +83,7 @@
             </tbody>
           </table>
         </div>
-        <pagination-group :pagination="pagination" @getPages="getPages" />
+        <PaginationGroup :pagination="pagination" @getPages="getPages" />
       </div>
     </div>
   </main>
@@ -230,4 +228,3 @@ input:checked + .slider::before {
   transform: translateX(26px);
 }
 </style>
-@/stores/admin/adminProductsStore

@@ -15,8 +15,7 @@
               </button>
             </div>
             <!-- orderModal -->
-            <order-modal ref="orderModal" :currentOrder="selectedOrder">
-            </order-modal>
+            <OrderModal ref="orderModal" :currentOrder="selectedOrder" />
           </div>
         </div>
         <div class="container">
@@ -93,7 +92,7 @@
             </tbody>
           </table>
         </div>
-        <pagination-group :pagination="pagination" @getPages="getPages" />
+        <PaginationGroup :pagination="pagination" @getPages="getPages" />
       </main>
     </div>
   </main>
@@ -103,8 +102,8 @@
 import { mapActions, mapState } from 'pinia';
 import adminOrdersStore from '@/stores/admin/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
-import PaginationGroup from '@/components/admin/PaginationGroup.vue';
 import OrderModal from '@/components/admin/OrderModal.vue';
+import PaginationGroup from '@/components/admin/PaginationGroup.vue';
 
 export default {
   components: {
@@ -157,4 +156,4 @@ export default {
     },
   },
 };
-</script>@/stores/admin/adminOrdersStore
+</script>

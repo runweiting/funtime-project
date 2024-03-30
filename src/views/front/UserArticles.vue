@@ -1,5 +1,4 @@
 <template>
-  <!-- 聖經趣聞 -->
   <div class="m-3 m-lg-6">
     <div class="container bg-primary rounded-5 p-5 p-md-10" data-aos="fade-up">
       <div class="row">

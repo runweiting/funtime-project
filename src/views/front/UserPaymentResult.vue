@@ -1,8 +1,8 @@
 <template>
     <!-- 專案名稱 -->
-    <order-header :currentFundraisingSteps="currentFundraisingSteps" />
+    <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
     <!-- 預購進度 -->
-    <order-steps :currentProgress="currentProgress" />
+    <OrderSteps :currentProgress="currentProgress" />
     <!-- 結帳明細 -->
     <div class="mx-3 mx-lg-10">
       <div class="container px-lg-12 py-3 py-lg-6">

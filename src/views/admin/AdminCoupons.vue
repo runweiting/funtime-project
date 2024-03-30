@@ -15,8 +15,7 @@
               </button>
             </div>
             <!-- couponModal -->
-            <coupon-modal ref="couponModal" :currentCoupon="selectedCoupon" :is-new="isNew">
-            </coupon-modal>
+            <CouponModal ref="couponModal" :currentCoupon="selectedCoupon" :is-new="isNew" />
           </div>
         </div>
         <div class="container">
@@ -76,7 +75,7 @@
             </tbody>
           </table>
         </div>
-        <pagination-group :pagination="pagination" @getPages="getPages" />
+        <PaginationGroup :pagination="pagination" @getPages="getPages" />
       </main>
     </div>
   </main>
