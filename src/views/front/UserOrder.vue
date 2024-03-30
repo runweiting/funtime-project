@@ -1,15 +1,11 @@
 <template>
-  <!-- 專案名稱 -->
   <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
-  <!-- 訂單進度 -->
   <div class="mx-3 mx-lg-10">
       <OrderSteps :currentOrderSteps="currentOrderSteps" />
   </div>
-  <!-- 訂單明細 -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12 py-3 py-lg-6">
       <div class="row row-cols-1">
-        <!-- 方案內容 -->
         <div class="col-md-6 col-lg-5 px-xl-4">
           <div v-for="cart in cartList" :key="cart.id" class="position-sticky top-0">
             <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
@@ -69,9 +65,7 @@
             </div>
           </div>
         </div> -->
-        <!-- 填寫訂購 -->
         <div class="col-md-6 col-lg-7 px-xl-4 gy-3 gy-md-0">
-          <!-- 會員資料 -->
           <div class="d-none p-5">
             <h3 class="fs-5">會員資料</h3>
             <form ref="form-member">
@@ -115,7 +109,6 @@
               </div>
             </form>
           </div>
-          <!-- 收件資料 -->
           <OrderDetail />
         </div>
       </div>

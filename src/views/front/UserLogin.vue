@@ -63,7 +63,6 @@ export default {
     },
     // POST 登入及驗證
     login() {
-      // 超過 token 期限，先刪除舊 token
       this.deleteOldToken();
       // 驗證是否有 token
       if (isUserLoggedIn()) {
@@ -81,7 +80,6 @@ export default {
             .then(() => {
               this.goToAdmin();
             });
-          // 清空 user
           this.user = {};
         })
         .catch((err) => {
@@ -100,13 +98,10 @@ export default {
           };
         });
     },
-    // 如有 token 導向後台
     goToAdmin() {
       if (isUserLoggedIn()) {
-        // 已登入，可進入後台
         this.$router.push({ name: 'admin' });
       } else {
-        // 未登入，導向登入頁面
         Swal.fire({
           title: '請先登入',
           icon: 'error',

@@ -18,7 +18,7 @@
           </div>
       </div>
   </div>
-  <!-- introduction: what -->
+  <!-- funtime 是什麼？ -->
   <div class="m-3 m-lg-6">
       <div class="container bg-secondary rounded-5 p-10 p-md-30" data-aos="fade-up">
           <div class="row row-cols-1 g-1 row-cols-md-2 g-4">
@@ -37,8 +37,7 @@
           </div>
       </div>
   </div>
-  <!-- proposal: why, how -->
-  <!-- why -->
+  <!-- 總覺得認識聖經可以更有趣？ -->
   <div class="m-3 m-lg-6">
       <div class="container pt-10 pt-lg-20" data-aos="fade-up">
           <div class="row mb-10 text-center">
@@ -81,7 +80,7 @@
           </div>
       </div>
   </div>
-  <!-- how -->
+  <!-- 你的支持 -->
   <div class="m-3 m-lg-6">
       <div class="container px-5" data-aos="fade-up">
           <div class="row row-cols-1 g-4 row-cols-md-2 mt-3 mt-lg-6 pt-10 p-md-20 pb-md-10">

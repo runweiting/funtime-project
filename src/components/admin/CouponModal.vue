@@ -157,7 +157,6 @@ export default {
   components: { ErrorMessage },
   mixins: [modalMixin],
   created() {
-    // 初始化 tempCoupon
     this.tempCoupon = {
       ...this.currentCoupon,
     };
@@ -171,7 +170,6 @@ export default {
       handler(updateCoupon) {
         // 將 currentCoupon 的新值賦值 tempCoupon，這樣可以保持 tempCoupon 與 currentOrder 同步更新
         this.tempCoupon = updateCoupon;
-        // this.putOrder(updateOrder);
       },
     },
   },

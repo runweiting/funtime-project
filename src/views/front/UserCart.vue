@@ -1,7 +1,5 @@
 <template>
-  <!-- 專案名稱 -->
   <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
-  <!-- 預購進度 -->
   <div class="mx-3 mx-lg-10">
     <div class="container bg-light rounded-5 px-6 py-3 px-lg-12 px-xl-15 mb-3 mb-lg-6">
       <div class="row">
@@ -11,7 +9,6 @@
       </div>
     </div>
   </div>
-  <!-- 方案種類 -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12 pb-12">
       <div class="row gy-3 gy-lg-6">

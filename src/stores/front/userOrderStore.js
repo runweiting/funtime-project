@@ -21,9 +21,9 @@ export default defineStore("userOrderStore", {
       axios.get(url).then(async (res) => {
         const { pagination } = res.data;
         const totalPages = pagination.total_pages;
-        // 使用 Array.from() 生成一個從 1 到 totalPages 的陣列，用於循環遍歷每一頁的訂單資料
-        // 1. 第一個參數傳遞物件 { length: totalPages }，創建長度為 totalPages 個 undefined 的陣列
-        // 2. 第二個參數是 mapping function，(_, index) => index + 1，將當前元素索引作為參數傳遞進去，_ 表示當前元素的值、index 表示當前元素索引，利用 index + 1 來得到從 1 到 totalPages 的連續陣列
+        // Array.from() 返回 1 到 totalPages 陣列，用於遍歷每頁訂單
+        // 1. 第一個參數傳遞物件 { length: totalPages }，返回長度為 totalPages 個 undefined 的陣列
+        // 2. 第二個參數是 mapping function，(_, index) => index + 1，傳入當前索引，_ 表示當前元素的值、index 為當前元素索引，index + 1 取得從 1 到 totalPages 的連續陣列
         const pageNumbers = Array.from(
           { length: totalPages },
           (_, index) => index + 1,
@@ -62,7 +62,7 @@ export default defineStore("userOrderStore", {
                       orderQty: 0,
                     };
                   }
-                  // 累加数量和订单数量
+                  // 計算總數和訂單數量
                   this.productQtyMap[productId].productQty += productQty;
                   this.productQtyMap[productId].orderQty += 1;
                 });

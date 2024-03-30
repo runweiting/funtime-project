@@ -1,13 +1,9 @@
 <template>
-  <!-- 專案名稱 -->
   <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
-  <!-- 預購進度 -->
   <OrderSteps :currentProgress="currentProgress" />
-  <!-- 結帳明細 -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12 py-3 py-lg-6">
       <div class="row row-cols-1 gy-3">
-        <!-- 訂購結果 -->
         <div class="col-md-6 col-lg-5 px-xl-4">
           <div class="rounded-5 border border-5 border-light p-5">
             <div class="row row-cols-1 gy-5">
@@ -97,7 +93,6 @@
             </div>
           </div>
         </div>
-        <!-- 付款方式 -->
         <div class="col-md-6 col-lg-7 px-xl-4">
           <VForm ref="formPayment" @submit="onSubmit">
             <!-- 會員資料 -->

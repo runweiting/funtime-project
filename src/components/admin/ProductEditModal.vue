@@ -1,5 +1,4 @@
 <template>
-  <!-- editModal -->
   <div
     class="modal fade"
     tabindex="-1"

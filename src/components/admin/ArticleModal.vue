@@ -164,7 +164,6 @@ export default {
   },
   mixins: [modalMixin],
   created() {
-    // 初始化 tempArticle
     this.tempArticle = {
       ...this.selectedArticle,
     };

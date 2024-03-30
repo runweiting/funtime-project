@@ -8,13 +8,11 @@
             <p class="p-2 mb-0">
             {{ `一頁顯示 ${Object.keys(this.tempCouponList).length} 項商品` }}
             </p>
-            <!-- Button trigger modal -->
             <div class="d-flex justify-content-end gap-2">
               <button @click="openModal('new')" type="button" class="btn btn-danger">
                 新增優惠卷
               </button>
             </div>
-            <!-- couponModal -->
             <CouponModal ref="couponModal" :currentCoupon="selectedCoupon" :is-new="isNew" />
           </div>
         </div>

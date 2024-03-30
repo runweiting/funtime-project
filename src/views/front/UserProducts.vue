@@ -1,5 +1,4 @@
 <template>
-  <!-- 介紹 -->
   <div class="m-3 m-lg-6">
     <div class="container bg-primary rounded-5 p-5 p-md-10" data-aos="fade-up">
       <div class="row">
@@ -16,11 +15,9 @@
       </div>
     </div>
   </div>
-  <!-- 企劃排名 -->
   <div class="m-3 m-lg-6">
     <div class="container p-5 p-md-10" data-aos="fade-up">
       <div class="row row-cols-1 row-cols-xl-2">
-        <!-- 排名 -->
         <div class="col-xl-9">
           <div class="row row-cols-1">
             <div class="col px-0 px-md-3 mb-3 mb-lg-6">
@@ -101,7 +98,6 @@
             ></div>
           </div>
         </div>
-        <!-- 熱門標籤 -->
         <div class="col-xl-3">
           <div class="row row-cols-1">
             <div class="col px-0 px-md-3 mb-3 mb-lg-6">
@@ -210,4 +206,3 @@ export default {
   },
 };
 </script>
-@/stores/front/userProductsStore

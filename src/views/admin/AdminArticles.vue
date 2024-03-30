@@ -8,13 +8,11 @@
             <p class="p-2 mb-0">
             {{ `一頁顯示 ${Object.keys(this.tempArticleList).length} 篇文章` }}
             </p>
-            <!-- Button trigger modal -->
             <div class="d-flex justify-content-end gap-2">
               <button @click="openModal('new')" type="button" class="btn btn-danger">
                 新增文章
               </button>
             </div>
-            <!-- articleModal -->
             <ArticleModal ref="articleModal" :is-new="isNew" />
           </div>
         </div>

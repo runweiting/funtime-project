@@ -18,14 +18,12 @@
                 建立新的商品
               </button>
             </div>
-            <!-- editModal -->
             <EditModal
               ref="editModal"
               :tempProduct="tempProduct" 
               :is-new="isNew"
               @getData="getProducts"
             />
-            <!-- delModal -->
             <DelModal
               ref="delModal" 
               :tempProduct="tempProduct" @getData="getProducts" />
@@ -195,7 +193,7 @@ export default {
   opacity: 0;
 }
 
-/* span 樣式，透過 -webkit-transition 和 transition 屬性，設定滑動效果 */
+/* span 樣式，transition 設定滑動效果 */
 .slider {
   position: absolute;
   inset: 0;

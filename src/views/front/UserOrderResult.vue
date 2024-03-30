@@ -1,13 +1,9 @@
 <template>
-  <!-- 專案名稱 -->
   <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
-  <!-- 訂單進度 -->
   <OrderSteps :currentOrderSteps="currentOrderSteps" />
-  <!-- 結帳明細 -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12 py-3 py-lg-6">
       <div class="row row-cols-1 gy-3">
-        <!-- 方案內容 -->
         <div class="col-md-4 px-xl-4">
           <div class="position-md-sticky">
             <div v-for="item in order.products" :key="item.id" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative">
@@ -33,7 +29,6 @@
             </div>
           </div>
         </div>
-        <!-- 訂購結果 -->
         <div v-if="order.id" class="col-md-8 px-xl-4">
           <div class="rounded-5 border border-5 border-light p-5 h-100">
             <div class="row row-cols-1 gy-5">

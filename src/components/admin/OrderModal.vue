@@ -240,7 +240,6 @@ export default {
       handler(updateOrder) {
         // 將 currentOrder 的新值賦值 tempOrder，這樣可以保持 tempOrder 與 currentOrder 同步更新
         this.tempOrder = updateOrder;
-        // this.putOrder(updateOrder);
       },
     },
     

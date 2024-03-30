@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container px-4">
-        <a class="navbar-brand mb-0" href="index.html">UNIQLOLO</a>
+        <a class="navbar-brand mb-0" href="index.html">funtime</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,7 +40,6 @@
     </nav>
   </header>
   <main>
-    <!-- 渲染路由 "/admin" children：dashboard-->
     <router-view></router-view>
   </main>
 </template>

@@ -15,12 +15,10 @@ export default defineStore("loginStore", {
       // 開啟 loading
       const loader = $loading.show();
       const url = `${VITE_APP_URL}/api/user/check`;
-      // 從 cookies 讀取 token
       const token = document.cookie.replace(
         /(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/,
         "$1",
       );
-      // axios headers 預設寫法
       if (token) {
         axios.defaults.headers.common.Authorization = token;
       }
@@ -44,11 +42,8 @@ export default defineStore("loginStore", {
       const url = `${VITE_APP_URL}/logout`;
       axios.post(url).then((res) => {
         showSuccessToast(res.data.message).then(() => {
-          // 清除 token
           document.cookie = "myToken=; expires=;";
-          // 清除 headers
           axios.defaults.headers.common.Authorization = null;
-          // 導向登入頁面
           router.push({ name: "home" });
         });
       });

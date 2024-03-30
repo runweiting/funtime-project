@@ -96,7 +96,6 @@ const baseRoutes = [
     path: "/login",
     name: "login",
     component: () => import("@/views/front/UserLogin.vue"),
-    // meta 屬性添加 requiresAuth 和 message，前者表示是否需要驗證，後者是額外的信息
     meta: {
       title: "登入後台",
     },
@@ -168,7 +167,7 @@ const router = createRouter({
   // 可藉由 #/切換至不同 # 位置，避免引發網頁重新讀取
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [...baseRoutes, ...adminRoutes],
-  // scrollBehavior 可自定義路由的滾動行為
+  // scrollBehavior 定義路由的滾動行為
   // 接收三個參數：to 表示目標路由，from 表示當前路由，savedPosition 表示從緩存中獲取的滾動位置
   scrollBehavior(to, from, savedPosition) {
     // 如果存在 savedPosition，將頁面滾動到 savedPosition 的位置
@@ -182,8 +181,8 @@ const router = createRouter({
     }
     return { top: 0 };
   },
-  // linkActiveClass 用於開啟 <router-link>的默認樣式
-  // 當路由啟用時 <router-link> 會呈現 active 狀態(Bootstrap樣式)
+  // linkActiveClass 用於開啟 <RouterLink> 的默認樣式
+  // 當路由啟用時 <RouterLink> 會呈現 active 狀態 (Bootstrap樣式)
   linkActiveClass: "active",
 });
 

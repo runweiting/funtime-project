@@ -1,5 +1,4 @@
 <template>
-  <!-- 單一方案 -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12" data-aos="fade-up">
       <div class="row align-items-center px-xl-4">
@@ -102,7 +101,6 @@
       </div>
     </div>
   </div>
-  <!-- 企劃導航 -->
   <div class="mx-3 mx-lg-10">
     <div class="container bg-light-gray rounded-5 px-6 py-3 px-lg-12 px-xl-15">
       <div class="row row-cols-1 row-cols-lg-2 align-items-center">
@@ -128,7 +126,6 @@
       </div>
     </div>
   </div>
-  <!-- 報名試玩、登記預購導航 -->
   <div class="d-lg-none mx-3 mx-lg-10 fixed-bottom" style="bottom: 12px;">
     <div class="container bg-white rounded-5 border border-light border-5 py-3 px-12">
       <div class="row align-items-center">
@@ -141,11 +138,9 @@
       </div>
     </div>
   </div>
-  <!-- 專案介紹 -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12">
       <div class="row row-cols-1 py-2 p-xl-4 pt-xl-8 row-cols-md-2">
-        <!-- 專案內容 -->
         <div class="col-md-7 px-xl-4">
           <div class="position-relative rounded-5 border border-5 border-secondary p-5 my-5">
             <h3 class="fs-5 fw-bold">
@@ -186,7 +181,6 @@
                 </div>
               </div>
             </div>
-            <!-- feedback -->
             <div class="row row-cols-1 row-cols-lg-2 gy-4">
               <div class="col">
                 <div class="card h-100 rounded-5 border border-info-light border-10 p-5">
@@ -245,7 +239,6 @@
             </div>
           </div>
         </div>
-        <!-- 方案種類 -->
         <div class="col-md-5 px-xl-4">
           <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 my-5">
             <div class="d-flex gap-2">
@@ -258,7 +251,6 @@
               </div>
             </div>
           </div>
-          <!-- 預購方案介紹 -->
           <div class="position-lg-sticky">
             <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative" style="cursor: pointer;">
               <router-link :to="`/cart/${product.id}`" class="stretched-link"></router-link>

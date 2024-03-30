@@ -1,5 +1,4 @@
 <template>
-  <!-- delModal -->
   <div
     class="modal fade modal-lg"
     tabindex="-1"
@@ -19,7 +18,6 @@
           ></button>
         </div>
         <div class="modal-body">
-          <!-- 刪除商品 -->
           <div class="container-fluid">
             <div class="row">
               <div class="col-sm-8">

@@ -23,7 +23,7 @@ export default defineStore({
         .then((res) => {
           const { orders, pagination } = res.data;
           // 將重新計算的訂單金額加入 orderList
-          // 在資料結構中帶入要使用的參數 (很像 template+v-for+方法(參數))
+          // 在資料結構中帶入要使用的參數
           const newOrderFormat = orders.map((order) => ({
             // order 是每筆訂單
             ...order,

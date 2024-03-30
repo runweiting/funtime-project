@@ -3,8 +3,7 @@ import { defineStore } from "pinia";
 import { useLoading } from "vue-loading-overlay";
 import showErrorToast from "@/utils/showErrorToast";
 
-// 在 Vue.js 中，使用 $ 前綴來表示這是一個特殊的對象或全局對象
-// $loading 代表使用 useLoading({}) 建立的一個對象，它提供了顯示和隱藏 loading 等功能
+// useLoading({}) 建立 $loading，提供顯示和隱藏 loading 功能
 const $loading = useLoading({});
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 const userProductsStore = defineStore("userProductsStore", {

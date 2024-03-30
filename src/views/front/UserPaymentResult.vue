@@ -1,13 +1,9 @@
 <template>
-    <!-- 專案名稱 -->
     <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
-    <!-- 預購進度 -->
     <OrderSteps :currentProgress="currentProgress" />
-    <!-- 結帳明細 -->
     <div class="mx-3 mx-lg-10">
       <div class="container px-lg-12 py-3 py-lg-6">
         <div class="row">
-          <!-- 訂購結果 -->
           <div class="col px-xl-4">
             <div class="rounded-5 border border-5 border-light p-5">
               <div class="row mb-5">
@@ -36,7 +32,6 @@
                 </div>
               </div>
               <div class="row row-cols-1 row-cols-md-2 gy-5">
-                <!-- 訂單資訊 -->
                 <div class="col-md-7 px-xl-5">
                   <div class="d-flex flex-column justify-content-between">
                     <div class="rounded-5 border border-light border-3 p-4">
@@ -97,7 +92,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- 訂單狀態 -->
                 <div class="col-md-5 px-xl-5">
                   <div class="d-flex flex-column justify-content-between h-100">
                     <div class="rounded-5 border border-light border-3 p-4 mb-5">

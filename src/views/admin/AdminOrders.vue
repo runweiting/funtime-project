@@ -8,13 +8,11 @@
             <p class="p-2 mb-0">
             {{ `一頁顯示 ${Object.keys(this.tempOrderList).length} 項商品` }}
             </p>
-            <!-- Button trigger modal -->
             <div class="d-flex justify-content-end gap-2">
               <button @click="deleteOrders" type="button" class="btn btn-danger">
                 刪除全部訂單
               </button>
             </div>
-            <!-- orderModal -->
             <OrderModal ref="orderModal" :currentOrder="selectedOrder" />
           </div>
         </div>
