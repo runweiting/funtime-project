@@ -85,7 +85,7 @@
             </tbody>
           </table>
         </div>
-        <pagination-group @page-selected="handlePageChange"></pagination-group>
+        <pagination-group :pagination="pagination" @getPages="getPages" />
       </div>
     </div>
   </main>
@@ -93,10 +93,10 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import adminProductsStore from '@/stores/dashboard/adminProductsStore';
-import PaginationGroup from '@/components/week5/PaginationGroup.vue';
-import EditModal from '../../components/week7/ProductEditModal.vue';
-import DelModal from '../../components/week7/ProductDelModal.vue';
+import adminProductsStore from '@/stores/admin/adminProductsStore';
+import PaginationGroup from '@/components/admin/PaginationGroup.vue';
+import EditModal from '@/components/admin/ProductEditModal.vue';
+import DelModal from '@/components/admin/ProductDelModal.vue';
 
 export default {
   components: {
@@ -135,16 +135,16 @@ export default {
     }
   },
   computed: {
-    ...mapState(adminProductsStore, ['productList']),
+    ...mapState(adminProductsStore, ['productList', 'pagination']),
   },
   mounted() {
     this.getProducts();
   },
   methods: {
     ...mapActions(adminProductsStore, ['getProducts', 'postProduct']),
-    // 更新選取頁面的商品列表
-    handlePageChange(category, page) {
-      this.getProducts(category,page)
+    // pagination 換頁時更新當前頁面
+    getPages(page) {
+      this.getProducts(page)
     },
     openModal(state, item) {
       // 新增
@@ -230,3 +230,4 @@ input:checked + .slider::before {
   transform: translateX(26px);
 }
 </style>
+@/stores/admin/adminProductsStore

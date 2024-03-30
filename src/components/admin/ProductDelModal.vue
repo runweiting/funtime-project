@@ -62,7 +62,7 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import adminProductsStore from '@/stores/dashboard/adminProductsStore';
+import adminProductsStore from '@/stores/admin/adminProductsStore';
 import modalMixin from '@/mixins/modalMixin';
 
 export default {

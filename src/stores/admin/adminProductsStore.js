@@ -17,6 +17,8 @@ export default defineStore("adminProductsStore", {
     // 控制 modal 開關
     isEditModalOpen: true,
     isDelModalOpen: true,
+    // 當前頁面
+    currentPage: null,
   }),
   actions: {
     // GET 商品列表
@@ -30,6 +32,7 @@ export default defineStore("adminProductsStore", {
         const { products, pagination } = res.data;
         this.productList = products;
         this.pagination = pagination;
+        this.currentPage = page;
       } catch (err) {
         showErrorToast(err.response.data.message);
       } finally {

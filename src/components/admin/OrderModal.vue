@@ -1,5 +1,4 @@
 <template>
-  <!-- orderModal -->
   <div
   class="modal fade"
   id="orderModal"
@@ -199,8 +198,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-
-import adminOrdersStore from '@/stores/dashboard/adminOrdersStore';
+import adminOrdersStore from '@/stores/admin/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
 import modalMixin from '@/mixins/modalMixin';
 import showSuccessToast from '@/utils/showSuccessToast';
@@ -305,7 +303,7 @@ export default {
 
 <style scoped>
 .order-img {
-  object-fit: cover;
   height: 50px;
+  object-fit: cover;
 }
 </style>

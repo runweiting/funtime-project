@@ -22,18 +22,18 @@
         <div class="container">
           <table class="table table-hover">
             <thead class="table-dark">
-            <tr class="fw-bold">
-              <th scope="col">日期</th>
-              <th scope="col">序號</th>
-              <th scope="col">訂單編號</th>
-              <th scope="col">品名</th>
-              <th scope="col">數量</th>
-              <th scope="col">金額</th>
-              <th scope="col">優惠卷</th>
-              <th scope="col">訂單狀態</th>
-              <th scope="col">付款日期</th>
-              <th></th>
-            </tr>
+              <tr class="fw-bold">
+                <th scope="col">日期</th>
+                <th scope="col">序號</th>
+                <th scope="col">訂單編號</th>
+                <th scope="col">品名</th>
+                <th scope="col">數量</th>
+                <th scope="col">金額</th>
+                <th scope="col">優惠卷</th>
+                <th scope="col">訂單狀態</th>
+                <th scope="col">付款日期</th>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
               <tr v-if="!tempOrderList">
@@ -74,24 +74,18 @@
                 </td>
                 <td></td>
                 <td>
-                  <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic outlined example"
-                  >
+                  <div class="btn-group" role="group">
                     <button
-                    @click="checkOrder(item, this.currentPage)"
+                    @click="checkOrder(item)"
                     type="button"
                     class="btn btn-outline-primary btn-sm"
-                    >
-                    查看訂單
+                    >查看訂單
                     </button>
                     <button
-                    @click="deleteOrder(item.id, currentPage)"
+                    @click="deleteOrder(item.id)"
                     type="button"
                     class="btn btn-outline-danger btn-sm"
-                    >
-                    刪除
+                    >刪除
                     </button>
                   </div>
                 </td>
@@ -99,7 +93,7 @@
             </tbody>
           </table>
         </div>
-        <pagination-group />
+        <pagination-group :pagination="pagination" @getPages="getPages" />
       </main>
     </div>
   </main>
@@ -107,10 +101,10 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import adminOrdersStore from '@/stores/dashboard/adminOrdersStore';
+import adminOrdersStore from '@/stores/admin/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
-import OrderModal from '../../components/week7/OrderModal.vue';
-import PaginationGroup from '../../components/week7/PaginationGroup.vue';
+import PaginationGroup from '@/components/admin/PaginationGroup.vue';
+import OrderModal from '@/components/admin/OrderModal.vue';
 
 export default {
   components: {
@@ -118,7 +112,7 @@ export default {
     PaginationGroup,
   },
   data() {
-    return {      
+    return {
       title: '訂單列表',
       tempOrderList: [],
       selectedOrder: {},
@@ -138,13 +132,17 @@ export default {
     }
   },
   computed: {
-    ...mapState(adminOrdersStore, ['orderList', 'calculateTotal', 'currentPage']),
+    ...mapState(adminOrdersStore, ['orderList', 'calculateTotal', 'pagination']),
   },
   mounted() {
     this.getOrders();
   },
   methods: {
     ...mapActions(adminOrdersStore, ['getOrders', 'deleteOrder', 'deleteOrders', 'calculateQty']),
+    // pagination 換頁時更新當前頁面
+    getPages(page) {
+      this.getOrders(page)
+    },
     // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate, formattedTime } = timestampToDate(timestamp);
@@ -159,4 +157,4 @@ export default {
     },
   },
 };
-</script>
+</script>@/stores/admin/adminOrdersStore

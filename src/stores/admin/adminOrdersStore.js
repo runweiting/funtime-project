@@ -10,7 +10,7 @@ export default defineStore({
     // 訂單列表
     orderList: [],
     pagination: {},
-    // 目前頁面
+    // 當前頁面
     currentPage: null,
   }),
   actions: {

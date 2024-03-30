@@ -252,10 +252,10 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import FeedbackSwiper from '@/components/FeedbackSwiper.vue';
-import FaqAccordion from '@/components/FaqAccordion.vue';
-import userProductsStore from '@/stores/userProductsStore';
-import userOrderStore from '@/stores/userOrderStore';
+import FeedbackSwiper from '@/components/front/FeedbackSwiper.vue';
+import FaqAccordion from '@/components/front/FaqAccordion.vue';
+import userProductsStore from "@/stores/front/userProductsStore";
+import userOrderStore from '@/stores/front/userOrderStore';
 
 export default {
   components: {

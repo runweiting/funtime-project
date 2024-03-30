@@ -435,7 +435,7 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import adminProductsStore from '@/stores/dashboard/adminProductsStore';
+import adminProductsStore from '@/stores/admin/adminProductsStore';
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
@@ -575,6 +575,7 @@ export default {
   },
 };
 </script>
+
 <style scope>
 ::placeholder {
   color: #c5c5c5 !important;

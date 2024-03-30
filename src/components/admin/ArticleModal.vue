@@ -1,5 +1,4 @@
 <template>
-  <!-- articleModal -->
   <div
   class="modal fade"
   id="articleModal"
@@ -138,7 +137,7 @@ import { mapActions, mapState } from 'pinia';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import modalMixin from '@/mixins/modalMixin';
-import articlesStore from '@/stores/articlesStore';
+import adminArticlesStore from '@/stores/admin/adminArticlesStore';
 import timestampToDate from '@/utils/timestampToDate';
 import showErrorToast from "@/utils/showErrorToast";
 import showSuccessToast from "@/utils/showSuccessToast";
@@ -179,10 +178,10 @@ export default {
     },
   },
   computed: {
-    ...mapState(articlesStore, ['selectedArticle']),
+    ...mapState(adminArticlesStore, ['selectedArticle']),
   },
   methods: {
-    ...mapActions(articlesStore, ['getArticles']),
+    ...mapActions(adminArticlesStore, ['getArticles']),
     // tags
     addTag() {
       if (this.newTag.trim() !== '') {
@@ -240,6 +239,7 @@ export default {
   },
 };
 </script>
+
 <style scope>
 ::placeholder {
   color: #c5c5c5 !important;

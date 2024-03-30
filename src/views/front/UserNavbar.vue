@@ -90,7 +90,7 @@
 
 <script>
 import { mapState } from "pinia";
-import userCartStore from "@/stores/userCartStore";
+import userCartStore from "@/stores/front/userCartStore";
 
 export default {
   computed: {

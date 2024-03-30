@@ -154,9 +154,9 @@
 
 <script>
 import { mapState } from 'pinia';
-import userOrderStore from '@/stores/userOrderStore';
-import OrderHeader from '@/components/OrderHeader.vue';
-import OrderSteps from '@/components/OrderSteps.vue';
+import userOrderStore from '@/stores/front/userOrderStore';
+import OrderHeader from '@/components/front/OrderHeader.vue';
+import OrderSteps from '@/components/front/OrderSteps.vue';
 import timestampToDate from '@/utils/timestampToDate';
 
 export default {

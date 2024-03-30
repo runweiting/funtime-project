@@ -4,7 +4,6 @@ import showErrorToast from "@/utils/showErrorToast";
 import showSuccessToast from "@/utils/showSuccessToast";
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
-
 export default defineStore("articlesStore", {
   state: () => ({
     // 文章列表
@@ -12,6 +11,8 @@ export default defineStore("articlesStore", {
     pagination: {},
     // 編輯文章
     selectedArticle: {},
+    // 當前頁面
+    currentPage: null,
   }),
   actions: {
     // GET 文章列表
@@ -24,6 +25,7 @@ export default defineStore("articlesStore", {
           const { articles, pagination } = res.data;
           this.articleList = articles;
           this.pagination = pagination;
+          this.currentPage = page;
         })
         .catch((err) => {
           showErrorToast(err.response.data.message);

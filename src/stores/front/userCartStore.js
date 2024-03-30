@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import { useLoading } from "vue-loading-overlay";
 import showSuccessToast from "@/utils/showSuccessToast";
 import showErrorToast from "@/utils/showErrorToast";
-import loadingStore from "./loadingStore";
+import loadingStore from "@/stores/front/userLoadingStore";
 
 const $loading = useLoading({});
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;

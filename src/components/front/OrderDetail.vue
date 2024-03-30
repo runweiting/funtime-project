@@ -146,8 +146,8 @@
 <script>
 import { ErrorMessage } from 'vee-validate';
 import { mapActions } from 'pinia';
-import couponsStore from '@/stores/couponsStore';
-import userOrderStore from '@/stores/userOrderStore';
+import adminCouponsStore from '@/stores/admin/adminCouponsStore';
+import userOrderStore from '@/stores/front/userOrderStore';
 
 export default {
   emits: ['updateCart'],
@@ -183,7 +183,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(couponsStore, ['clearCoupon']),
+    ...mapActions(adminCouponsStore, ['clearCoupon']),
     ...mapActions(userOrderStore, ['createOrder']),
     onSubmit() {
       this.createOrder(this.data);

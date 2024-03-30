@@ -125,11 +125,11 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import userCartStore from '@/stores/userCartStore';
-import couponsStore from '@/stores/couponsStore';
-import OrderDetail from '@/components/OrderDetail.vue';
-import OrderSteps from '@/components/OrderSteps.vue';
-import OrderHeader from '@/components/OrderHeader.vue';
+import userCartStore from '@/stores/front/userCartStore';
+import OrderDetail from '@/components/front/OrderDetail.vue';
+import OrderSteps from '@/components/front/OrderSteps.vue';
+import OrderHeader from '@/components/front/OrderHeader.vue';
+import adminCouponsStore from '@/stores/admin/adminCouponsStore';
 
 export default {
   components: {
@@ -147,10 +147,10 @@ export default {
   },
   computed: {
     ...mapState(userCartStore, ['cartList', 'cartTotal']),
-    ...mapState(couponsStore, ['couponState']),
+    ...mapState(adminCouponsStore, ['couponState']),
   },
   methods: {
-    ...mapActions(couponsStore, ['postCoupon']),
+    ...mapActions(adminCouponsStore, ['postCoupon']),
     async applyCoupon() {
       await this.postCoupon(this.couponCode)
         .then(() => {

@@ -76,7 +76,7 @@
             </tbody>
           </table>
         </div>
-        <Pagination :pages="pagination" @showPage="getCoupons" />
+        <pagination-group :pagination="pagination" @getPages="getPages" />
       </main>
     </div>
   </main>
@@ -84,16 +84,15 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import couponsStore from '@/stores/couponsStore';
+import couponsStore from '@/stores/admin/adminCouponsStore';
 import timestampToDate from '@/utils/timestampToDate';
-
-import CouponModal from '@/components/week7/CouponModal.vue';
-import Pagination from '@/components/week7/PaginationGroup.vue';
+import CouponModal from '@/components/admin/CouponModal.vue';
+import PaginationGroup from '@/components/admin/PaginationGroup.vue';
 
 export default {
   components: {
     CouponModal,
-    Pagination,
+    PaginationGroup
   },
   data() {
     return {      
@@ -124,6 +123,10 @@ export default {
   },
   methods: {
     ...mapActions(couponsStore, ['getCoupons', 'deleteCoupon']),
+    // pagination 換頁時更新當前頁面
+    getPages(page) {
+      this.getOrders(page)
+    },
     // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate } = timestampToDate(timestamp);

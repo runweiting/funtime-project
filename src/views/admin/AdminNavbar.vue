@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import loginStore from '@/stores/loginStore';
+import adminLoginStore from '@/stores/admin/adminLoginStore';
 import { mapActions } from 'pinia';
 
 export default {
@@ -54,7 +54,7 @@ export default {
     this.checkLogin();
   },
   methods: {
-    ...mapActions(loginStore, ['checkLogin', 'logout']),
+    ...mapActions(adminLoginStore, ['checkLogin', 'logout']),
   }
 }
 </script>

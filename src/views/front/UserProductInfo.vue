@@ -296,8 +296,8 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import userProductsStore from '@/stores/userProductsStore';
-import userOrderStore from '@/stores/userOrderStore';
+import userProductsStore from '@/stores/front/userProductsStore';
+import userOrderStore from '@/stores/front/userOrderStore';
 
 export default {
   mounted() {
@@ -315,4 +315,3 @@ export default {
   },
 };
 </script>
-

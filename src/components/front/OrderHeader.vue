@@ -54,9 +54,9 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import userCartStore from '@/stores/userCartStore';
-import userOrderStore from '@/stores/userOrderStore';
-import FundraisingSteps from "./FundraisingSteps.vue";
+import userCartStore from '@/stores/front/userCartStore';
+import userOrderStore from '@/stores/front/userOrderStore';
+import FundraisingSteps from "@/components/front/FundraisingSteps.vue";
 
 export default {
   props: ['currentFundraisingSteps'],

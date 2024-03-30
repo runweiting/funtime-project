@@ -46,9 +46,9 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
-import userProductsStore from '@/stores/userProductsStore';
-import userCartStore from '@/stores/userCartStore';
-import OrderHeader from '@/components/OrderHeader.vue';
+import userProductsStore from '@/stores/front/userProductsStore';
+import userCartStore from '@/stores/front/userCartStore';
+import OrderHeader from '@/components/front/OrderHeader.vue';
 
 export default {
   components: {
@@ -75,4 +75,4 @@ export default {
     },
   }
 }
-</script>
+</script>@/stores/front/userProductsStore@/stores/front/userCartStore

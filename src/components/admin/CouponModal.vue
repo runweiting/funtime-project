@@ -1,5 +1,4 @@
 <template>
-  <!-- couponModal -->
   <div
   class="modal fade"
   id="couponModal"
@@ -135,7 +134,7 @@ import { ErrorMessage } from 'vee-validate';
 import { mapActions } from 'pinia';
 
 import modalMixin from '@/mixins/modalMixin';
-import couponsStore from '@/stores/couponsStore';
+import couponsStore from '@/stores/admin/adminCouponsStore';
 import timestampToDate from '@/utils/timestampToDate';
 import showSuccessToast from '@/utils/showSuccessToast';
 import showErrorToast from '@/utils/showErrorToast';

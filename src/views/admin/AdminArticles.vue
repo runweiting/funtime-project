@@ -72,7 +72,7 @@
             </tbody>
           </table>
         </div>
-        <Pagination :pages="pagination" @showPage="getArticles" />
+        <pagination-group :pagination="pagination" @getPages="getPages" />
       </main>
     </div>
   </div>
@@ -80,15 +80,15 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import articlesStore from '@/stores/articlesStore';
+import adminArticlesStore from '@/stores/admin/adminArticlesStore';
 import timestampToDate from '@/utils/timestampToDate';
-import ArticleModal from '@/components/week7/ArticleModal.vue'
-import Pagination from '@/components/week7/PaginationGroup.vue';
+import ArticleModal from '@/components/admin/ArticleModal.vue'
+import PaginationGroup from '@/components/admin/PaginationGroup.vue';
 
 export default {
   components: {
     ArticleModal,
-    Pagination
+    PaginationGroup
   },
   data() {
     return {
@@ -111,13 +111,17 @@ export default {
     }
   },
   computed: {
-    ...mapState(articlesStore, ['articleList', 'pagination']),
+    ...mapState(adminArticlesStore, ['articleList', 'pagination']),
   },
   mounted() {
     this.getArticles();
   },
   methods: {
-    ...mapActions(articlesStore, ['getArticles', 'getArticle', 'deleteArticle', 'postArticle']),
+    ...mapActions(adminArticlesStore, ['getArticles', 'getArticle', 'deleteArticle', 'postArticle']),
+    // pagination 換頁時更新當前頁面
+    getPages(page) {
+      this.getProducts(page)
+    },
     // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate } = timestampToDate(timestamp);

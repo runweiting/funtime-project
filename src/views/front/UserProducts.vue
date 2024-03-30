@@ -183,7 +183,7 @@
 
 <script>
 import { mapState, mapActions } from "pinia";
-import userProductsStore from "@/stores/userProductsStore";
+import userProductsStore from "@/stores/front/userProductsStore";
 import { CountTo } from "vue3-count-to";
 
 export default {
@@ -210,3 +210,4 @@ export default {
   },
 };
 </script>
+@/stores/front/userProductsStore

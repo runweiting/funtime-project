@@ -12,6 +12,8 @@ export default defineStore("couponsStore", {
     pagination: {},
     // 優惠卷狀態
     couponState: {},
+    // 當前頁面
+    currentPage: null,
   }),
   actions: {
     // GET 優惠卷列表
@@ -29,6 +31,7 @@ export default defineStore("couponsStore", {
           }));
           this.couponList = newCouponFormat;
           this.pagination = pagination;
+          this.currentPage = page;
         })
         .catch((err) => {
           showErrorToast(err.response.data.message);
