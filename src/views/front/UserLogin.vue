@@ -29,7 +29,7 @@
             <label for="floatingPassword">Password</label>
           </div>
           <div class="d-flex gap-2">
-            <router-link to="/" class="btn btn-primary w-50">回到首頁</router-link>
+            <RouterLink to="/" class="btn btn-primary w-50">回到首頁</RouterLink>
             <button @click="login" type="button" class="btn btn-primary w-50">
               登入
             </button>

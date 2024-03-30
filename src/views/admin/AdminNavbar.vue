@@ -40,7 +40,7 @@
     </nav>
   </header>
   <main>
-    <router-view></router-view>
+    <RouterView />
   </main>
 </template>
 

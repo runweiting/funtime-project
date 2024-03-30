@@ -19,7 +19,7 @@
             <h2 class="fs-4 card-title fw-bold mb-3">
               請先選擇預購方案
             </h2>
-            <router-link :to="{ name: 'home' }" class="btn btn-primary w-25">回首頁</router-link>
+            <RouterLink :to="{ name: 'home' }" class="btn btn-primary w-25">回首頁</RouterLink>
           </div>
           <div v-else v-for="cart in cartList" :key="cart.id" class="h-100 d-flex flex-column justify-content-between">
             <nav class="d-flex gap-2 mb-3" aria-label="breadcrumb">

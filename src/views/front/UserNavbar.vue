@@ -46,7 +46,7 @@
     </nav>
   </header>
   <main>
-    <router-view></router-view>
+    <RouterView />
   </main>
   <footer>
     <div class="bg-primary rounded-5 m-3 m-md-6">
