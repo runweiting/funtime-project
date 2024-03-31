@@ -21,18 +21,13 @@
               :to="{ name: 'products' }" class="nav-link text-decoration-none">{{ $t('menu.products') }}</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink 
-              :to="{ name: 'activities' }" class="nav-link text-decoration-none">{{ $t('menu.activities') }}</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink 
-              :to="{ name: 'articles' }" class="nav-link text-decoration-none">{{ $t('menu.articles') }}</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink 
-              :to="{ name: 'order' }"
-              class="nav-link text-decoration-none"
-              >{{ $t('menu.cart') }}<span class="badge rounded-pill bg-danger ms-2">{{ cartList.length }}</span></RouterLink>
+              <div v-if="isInputEnabled" class="input-group">
+                <input type="text" class="form-control" placeholder="請輸入訂單編號" aria-label="order-search" aria-describedby="order-search">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">確認</button>
+              </div>
+              <a v-else @click="toggleSearch" class="nav-link text-decoration-none">
+                {{ $t('menu.search') }}
+              </a>
             </li>
             <li class="nav-item">
               <select class="form-select" @change="changeLanguage">
@@ -93,10 +88,18 @@ import { mapState } from "pinia";
 import userCartStore from "@/stores/front/userCartStore";
 
 export default {
+  data() {
+    return {
+      isInputEnabled: false
+    }
+  },
   computed: {
     ...mapState(userCartStore, ["cartList"]),
   },
   methods: {
+    toggleSearch() {
+      this.isInputEnabled = !this.isInputEnabled
+    },
     changeLanguage(event) {
       const selectLanguage = event.target.value;
       this.$i18n.locale = selectLanguage;

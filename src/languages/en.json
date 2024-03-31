@@ -1,8 +1,9 @@
 {
-    "menu.home": "Home",
-    "menu.products": "Products",
-    "menu.activities": "Activities",
-    "menu.articles": "Blogs",
-    "menu.cart": "Cart",
-    "menu.login": "Login"
+  "menu.home": "Home",
+  "menu.products": "Products",
+  "menu.search": "Order Search",
+  "menu.activities": "Activities",
+  "menu.articles": "Blogs",
+  "menu.cart": "Cart",
+  "menu.login": "Login"
 }
