@@ -47,7 +47,7 @@
                   <div class="fst-italic">
                     <small class="text-dark-gray text-start">預購人數</small>
                     <div v-for="(item, index) in productQtyMap" :key="index">
-                      <h3 v-if="product.id === index" class="fw-bold mt-2 mb-0 text-end">{{ item.orderQty }} 人</h3>
+                      <h3 v-if="product.id === index" class="fw-bold mt-2 mb-0">{{ item.orderQty }} 人</h3>
                     </div>
                   </div>
                 </div>
@@ -253,7 +253,7 @@
           </div>
           <div class="position-lg-sticky">
             <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative" style="cursor: pointer;">
-              <RouterLink :to="`/cart/${product.id}`" class="stretched-link"></RouterLink>
+              <RouterLink :to="`/cart/${product.id}/${item.units}`" @click="addToCart(product.id, item.units)" class="stretched-link"></RouterLink>
               <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
               <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
               <div class="d-flex justify-content-between align-items-center">
@@ -261,14 +261,15 @@
                   <h5 class="fw-bold mb-0">NT$ {{ product.origin_price * product.discount * item.units }}</h5>
                   <span class="badge bg-info-light text-black">{{ product.discount * 100 }}折</span>
                 </div>
-                <div v-for="(item, index) in productQtyMap" :key="index">
-                  <span v-if="product.id === index" class="fs-6 badge bg-danger">剩餘{{ product.target_units - item.productQty }}份</span>
-                </div>
+                <span v-if="productQtyMap[product.id]" class="fs-6 badge bg-danger">剩 {{ product.target_units - (productQtyMap[product.id].productQty) }} 組</span>
               </div>
               <small class="text-dark-gray">預定售價 <del>NT$ {{ product.origin_price }}</del>，現省 NT$ {{ (product.origin_price - (product.origin_price * product.discount)) * item.units }}</small>
-              <ul class="list-unstyled mb-0">
-                <li v-for="(content, index) in product.contents" :key="index">{{ content }}</li>
-              </ul>
+              <div>
+                <small class="text-dark-gray">一組內含：</small>
+                <ul class="list-unstyled mb-0">
+                  <li v-for="(content, index) in product.contents" :key="index">{{ content }}</li>
+                </ul>
+              </div>
               <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
               <ul class="list-unstyled mb-0">
                 <li v-for="(note, index) in product.notes" :key="index">{{ note }}</li>
@@ -289,6 +290,7 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/front/userProductsStore';
+import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
 
 export default {
@@ -296,6 +298,7 @@ export default {
     const { id } = this.$route.params;
     this.getProduct(id);
     this.getOrders();
+    this.calculateQty();
   },
   computed: {
     ...mapState(userProductsStore, ['product']),
@@ -303,7 +306,8 @@ export default {
   },
   methods: {
     ...mapActions(userProductsStore, ['getProduct']),
-    ...mapActions(userOrderStore, ['getOrders']),
+    ...mapActions(userOrderStore, ['getOrders', 'calculateQty']),
+    ...mapActions(userCartStore, ['addToCart'])
   },
 };
 </script>

@@ -201,7 +201,7 @@
                 <p class="card-text text-dark-gray">{{ product.description }}</p>
               </div>
               <div class="mb-4">
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center mb-2">
                   <div v-if="productQtyMap[product.id]" class="progress" style="width: 85%;">
                     <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: ((productQtyMap[product.id].productQty / product.target_units) * 100).toFixed(1) + '%' }"></div>
                   </div>
@@ -216,13 +216,10 @@
                   </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <small class="fst-italic fw-bold">目標 {{ product.target_units }} 組 / </small>
-                    </div>
-                    <div v-for="(item, index) in productQtyMap" :key="index">
-                      <small v-if="product.id === index" class="fst-italic fw-bold"> 累計 {{ item.productQty }} 組</small>
-                    </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <small class="fst-italic">目標 {{ product.target_units }} 組</small>
+                    <small class="text-dark-gray">/</small>
+                    <small v-if="productQtyMap[product.id]" class="fst-italic"> 累計 {{ productQtyMap[product.id].orderQty }} 組</small>
                   </div>
                   <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
                     <span>20 <i class="bi bi-heart-fill text-danger"></i>

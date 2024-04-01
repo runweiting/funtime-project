@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 import { useLoading } from "vue-loading-overlay";
 import showSuccessToast from "@/utils/showSuccessToast";
 import showErrorToast from "@/utils/showErrorToast";
-import loadingStore from "@/stores/front/userLoadingStore";
 
 const $loading = useLoading({});
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
@@ -13,6 +12,7 @@ export default defineStore("userCartStore", {
     cartList: [],
     // 購物車總計
     cartTotal: 0,
+    tempCartId: "",
   }),
   actions: {
     // POST 加入購物車
@@ -37,13 +37,19 @@ export default defineStore("userCartStore", {
         });
     },
     // GET 購物車列表
-    async getCart() {
+    async getCart(productId) {
       const loader = $loading.show();
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`;
       try {
         const res = await axios.get(url);
         this.cartList = res.data.data.carts;
         this.cartTotal = res.data.data.total;
+        const targetCart = this.cartList.find(
+          (cart) => cart.product.id === productId,
+        );
+        if (targetCart) {
+          this.tempCartId = targetCart.id;
+        }
       } catch (err) {
         showErrorToast(err.response.data.message);
       } finally {
@@ -51,19 +57,15 @@ export default defineStore("userCartStore", {
       }
     },
     // PUT 修改購物車
-    async putCart(item) {
-      // 使用 loadingStore
-      const loading = loadingStore();
-      loading.loadingStatus.updateQty = item.id;
-      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${item.id}`;
+    async putCart(tempCartId, tempCartQty) {
+      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${tempCartId}`;
       const cart = {
-        product_id: item.product_id,
-        qty: item.qty,
+        product_id: tempCartId,
+        qty: tempCartQty,
       };
       try {
         const res = await axios.put(url, { data: cart });
         showSuccessToast(res.data.message);
-        loading.loadingStatus.updateQty = "";
       } catch (err) {
         showErrorToast(err.response.data.message);
       } finally {
