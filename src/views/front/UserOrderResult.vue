@@ -99,8 +99,8 @@
                           <th scope="row">付款<br class="d-414-block">狀態</th>
                           <td colspan="2">
                             <div class="d-flex align-items-center gap-2">
-                              <i class="bi bi-pause-circle-fill text-gray"></i>
-                              <span class="text-dark-gray">尚未開放付款</span>
+                              <!-- <i class="bi bi-pause-circle-fill text-gray"></i>
+                              <span class="text-dark-gray">尚未開放付款</span> -->
                               <button @click="goToPayment" class="btn btn-primary-light text-white" type="button">前往付款</button>
                             </div>
                           </td>

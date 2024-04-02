@@ -83,6 +83,14 @@ const baseRoutes = [
         },
       },
       {
+        path: "order-search/:orderId",
+        name: "order-search",
+        component: () => import("@/views/front/UserOrderSearch.vue"),
+        meta: {
+          title: "訂單查詢",
+        },
+      },
+      {
         path: "payment/:id",
         name: "payment",
         component: () => import("@/views/front/UserPayment.vue"),

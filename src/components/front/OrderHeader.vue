@@ -45,7 +45,7 @@
         </div>
         <div class="col px-xl-4">
           <!-- 集資進度 -->
-          <fundraising-steps :currentFundraisingSteps="currentFundraisingSteps" />
+          <FundraisingSteps :currentFundraisingSteps="currentFundraisingSteps" />
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default {
   mounted() {
     const { id } = this.$route.params;
     this.tempId = id;
-    this.getProduct(id);
+    this.getProduct(this.tempId);
   },
   computed: {
     ...mapState(userCartStore, ['cartList']),

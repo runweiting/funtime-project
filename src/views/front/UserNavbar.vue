@@ -24,8 +24,8 @@
             </li>
             <li class="nav-item">
               <div v-if="isInputEnabled" class="input-group">
-                <input type="text" class="form-control" placeholder="請輸入訂單編號" aria-label="order-search" aria-describedby="order-search">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">確認</button>
+                <input v-model="tempOrderId" type="text" class="form-control" placeholder="請輸入訂單編號" aria-label="order-search" aria-describedby="order-search">
+                <button @click="goToOrder" class="btn btn-outline-secondary" type="button">確認</button>
               </div>
               <a v-else @click="toggleSearch" class="nav-link text-decoration-none">
                 {{ $t('menu.search') }}
@@ -92,7 +92,8 @@ import userCartStore from "@/stores/front/userCartStore";
 export default {
   data() {
     return {
-      isInputEnabled: false
+      isInputEnabled: false,
+      tempOrderId: ''
     }
   },
   computed: {
@@ -105,6 +106,12 @@ export default {
     changeLanguage(event) {
       const selectLanguage = event.target.value;
       this.$i18n.locale = selectLanguage;
+    },
+    // 查詢訂單
+    goToOrder() {
+      this.$router.push({ name: "order-search", params: { orderId: this.tempOrderId } });
+      this.tempOrderId = '';
+      this.isInputEnabled = false;
     },
   }
 };
