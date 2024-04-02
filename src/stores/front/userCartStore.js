@@ -48,8 +48,6 @@ export default defineStore("userCartStore", {
         if (this.tempCart) {
           this.tempCartId = this.tempCart.id;
         }
-        console.log(this.tempCart);
-        console.log(this.tempCartId);
       } catch (err) {
         showErrorToast(err.response.data.message);
       } finally {
