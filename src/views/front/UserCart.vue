@@ -71,7 +71,14 @@
         </div>
         <div class="col-md-4 px-xl-4 gy-3 gy-md-0">
           <div class="rounded-5 border border-5 border-light p-5">
-            <div class="d-flex flex-column gap-4 mb-8">
+            <div class="d-flex flex-column gap-4">
+              <div class="row align-items-center">
+                <div class="col-4">
+                  <h6 class="text-dark-gray mb-0">預購明細</h6>
+                </div>
+                <div class="col-8">
+                </div>
+              </div>
               <div class="row align-items-center">
                 <div class="col-4">
                   <span class="text-dark-gray">預購數量</span>
@@ -81,7 +88,7 @@
                     <button :disabled="tempCartQty === 1" type="button" class="btn btn-outline-primary" @click="tempCartQty--">
                       <i class="bi bi-dash"></i>                       
                     </button>
-                    <input v-model="tempCartQty" type="number" min="1" class="form-control" aria-label="cart-qty" aria-describedby="cart-qty" readonly>
+                    <input v-model="tempCartQty" type="number" min="1" class="form-control" aria-label="cart-qty" aria-describedby="cart-qty">
                     <button type="button" class="btn btn-outline-primary" @click="tempCartQty++">
                       <i class="bi bi-plus"></i>
                     </button>
@@ -93,9 +100,10 @@
                 <h5 class="fs-4 fw-bold mb-0 text-end">NT$ {{ product.origin_price * product.discount * tempCartQty }}</h5>
               </div>
             </div>
+            <hr class="w-100 border-top my-4" style="border: 3px dotted #8C8C8E;">
             <div class="d-flex gap-2">
-              <button @click="handlePutCart(tempCartId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購方案</button>
-              <button @click="handleDeleteCart(tempCartId)" type="button" class="btn btn-outline-danger w-100">刪除預購方案</button>
+              <button @click="handlePutCart(tempProductId ,tempCartId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購</button>
+              <button @click="handleDeleteCart(tempCartId)" type="button" class="btn btn-outline-danger w-100">刪除預購</button>
             </div>
           </div>
         </div>
@@ -110,6 +118,7 @@ import userProductsStore from '@/stores/front/userProductsStore';
 import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
 import OrderHeader from '@/components/front/OrderHeader.vue';
+import showErrorToast from '@/utils/showErrorToast'
 
 export default {
   components: {
@@ -126,8 +135,8 @@ export default {
     const { id, units } = this.$route.params;
     this.tempProductId = id;
     this.tempCartQty = units;
+    this.getProduct(this.tempProductId);
     this.calculateQty();
-    this.getCart(this.tempProductId);
   },
   computed: {
     ...mapState(userProductsStore, ['product']),
@@ -138,9 +147,13 @@ export default {
     ...mapActions(userProductsStore, ['getProduct']),
     ...mapActions(userCartStore, ['getCart', 'putCart', 'deleteCart']),
     ...mapActions(userOrderStore, ['calculateQty']),
-    handlePutCart(cartId, cartQty) {
-      this.putCart(cartId, cartQty);
-      this.$router.push({ name: "order" });
+    handlePutCart(productId ,cartId, cartQty) {
+      this.getCart(productId).then(() => {
+        this.putCart(productId, this.tempCartId, cartQty);
+        this.$router.push({ name: "order", params: { id: productId, units: cartQty } });
+      }).catch((err) => {
+        showErrorToast(err);
+      });
     },
     handleDeleteCart(cartId) {
       this.deleteCart(cartId);

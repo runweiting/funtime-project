@@ -13,13 +13,13 @@ export default defineStore("userCartStore", {
     // 購物車總計
     cartTotal: 0,
     tempCartId: "",
+    tempCart: {},
+    // 新增 router
+    router: null,
   }),
   actions: {
     // POST 加入購物車
     addToCart(targetId, qty) {
-      // 使用 loadingStore
-      // const loading = loadingStore();
-      // loading.loadingStatus.updateQty = targetId;
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`;
       const cart = {
         product_id: targetId,
@@ -28,12 +28,10 @@ export default defineStore("userCartStore", {
       axios
         .post(url, { data: cart })
         .then((res) => {
-          this.getCart();
           showSuccessToast(res.data.message);
-          // loading.loadingStatus.updateQty = "";
         })
         .catch((err) => {
-          showErrorToast(err.response.data.message);
+          showErrorToast(err.response);
         });
     },
     // GET 購物車列表
@@ -44,12 +42,14 @@ export default defineStore("userCartStore", {
         const res = await axios.get(url);
         this.cartList = res.data.data.carts;
         this.cartTotal = res.data.data.total;
-        const targetCart = this.cartList.find(
+        this.tempCart = this.cartList.find(
           (cart) => cart.product.id === productId,
         );
-        if (targetCart) {
-          this.tempCartId = targetCart.id;
+        if (this.tempCart) {
+          this.tempCartId = this.tempCart.id;
         }
+        console.log(this.tempCart);
+        console.log(this.tempCartId);
       } catch (err) {
         showErrorToast(err.response.data.message);
       } finally {
@@ -57,11 +57,11 @@ export default defineStore("userCartStore", {
       }
     },
     // PUT 修改購物車
-    async putCart(tempCartId, tempCartQty) {
-      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${tempCartId}`;
+    async putCart(productId, cartId, cartQty) {
+      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${cartId}`;
       const cart = {
-        product_id: tempCartId,
-        qty: tempCartQty,
+        product_id: productId,
+        qty: Number(cartQty),
       };
       try {
         const res = await axios.put(url, { data: cart });

@@ -8,12 +8,12 @@ const $loading = useLoading({});
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default defineStore("userOrderStore", {
   state: () => ({
-    // 指定訂單
-    order: {},
-    orderId: "",
+    // 訂單列表
     orders: [],
+    tempOrderId: "",
     // for calculateQty
     productQtyMap: {},
+    tempOrder: {},
   }),
   actions: {
     calculateQty() {
@@ -87,10 +87,9 @@ export default defineStore("userOrderStore", {
       axios
         .post(url, order)
         .then((res) => {
-          const currentOrderId = res.data.orderId;
-          this.orderId = currentOrderId;
+          this.tempOrderId = res.data.orderId;
           showSuccessToast(res.data.message);
-          this.getOrder();
+          this.getOrder(this.tempOrderId);
         })
         .catch((err) => {
           showErrorToast(err.data.message);
@@ -100,12 +99,12 @@ export default defineStore("userOrderStore", {
         });
     },
     // GET 指定訂單
-    getOrder() {
-      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/order/${this.orderId}`;
+    getOrder(orderId) {
+      const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/order/${orderId}`;
       axios
         .get(url)
         .then((res) => {
-          this.order = res.data.order;
+          this.tempOrder = res.data.order;
         })
         .catch((err) => {
           showErrorToast(err.data);

@@ -67,7 +67,7 @@ const baseRoutes = [
         },
       },
       {
-        path: "order",
+        path: "order/:id/:units",
         name: "order",
         component: () => import("@/views/front/UserOrder.vue"),
         meta: {
@@ -75,7 +75,7 @@ const baseRoutes = [
         },
       },
       {
-        path: "order-result",
+        path: "order-result/:id",
         name: "order-result",
         component: () => import("@/views/front/UserOrderResult.vue"),
         meta: {
@@ -83,7 +83,7 @@ const baseRoutes = [
         },
       },
       {
-        path: "payment",
+        path: "payment/:id",
         name: "payment",
         component: () => import("@/views/front/UserPayment.vue"),
         meta: {
@@ -91,7 +91,7 @@ const baseRoutes = [
         },
       },
       {
-        path: "payment-result",
+        path: "payment-result/:id",
         name: "payment-result",
         component: () => import("@/views/front/UserPaymentResult.vue"),
         meta: {

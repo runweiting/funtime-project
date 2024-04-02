@@ -1,6 +1,14 @@
 <template>
     <OrderHeader :currentFundraisingSteps="currentFundraisingSteps" />
-    <OrderSteps :currentProgress="currentProgress" />
+    <div class="mx-3 mx-lg-10">
+    <div class="container bg-light rounded-5 px-6 py-3 px-lg-12 px-xl-15 mb-3 mb-lg-6">
+      <div class="row">
+        <div class="col text-center">
+          <small class="text-dark-gray" style="letter-spacing: 8px;">感謝您的支持！</small>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="mx-3 mx-lg-10">
       <div class="container px-lg-12 py-3 py-lg-6">
         <div class="row">
@@ -12,14 +20,14 @@
                     <div class="col-md-7">
                       <div class="d-flex gap-2 text-dark-gray mb-2">
                         <span>訂單時間</span>
-                        <span v-if="order.create_at">
-                          {{ formatDate(order.create_at).formattedDate }}
-                          {{ formatDate(order.create_at).formattedTime }}
+                        <span v-if="tempOrder.create_at">
+                          {{ formatDate(tempOrder.create_at).formattedDate }}
+                          {{ formatDate(tempOrder.create_at).formattedTime }}
                         </span>
                       </div>
                       <div class="d-flex gap-2 text-dark-gray">
                         <span>訂單編號</span>
-                        <span>{{ order.id }}</span>
+                        <span>{{ tempOrder.id }}</span>
                       </div>
                     </div>
                     <div class="col-md-5">
@@ -35,7 +43,7 @@
                 <div class="col-md-7 px-xl-5">
                   <div class="d-flex flex-column justify-content-between">
                     <div class="rounded-5 border border-light border-3 p-4">
-                      <table v-for="item in order.products" :key="item.id" class="table table-border mb-0">
+                      <table v-for="item in tempOrder.products" :key="item.id" class="table table-border mb-0">
                         <thead>
                           <tr>
                             <th scope="col" colspan="3" class="fs-5">訂單資訊</th>
@@ -69,12 +77,12 @@
                             <th scope="row">收件<br class="d-414-block">訊息</th>
                             <td colspan="2">
                               <ul class="list-unstyled mb-0 text-dark-gray">
-                                <li>姓名：{{ order.user.name }}</li>
-                                <li>手機：{{ order.user.tel }}</li>
-                                <li>Email：{{ order.user.email }}</li>
-                                <li>運送：{{ order.user.shipment }}</li>
-                                <li>地址：{{ order.user.postcode }}{{ order.user.country }}{{ order.user.city }}{{ order.user.region }}{{ order.user.address }}</li>
-                                <li>備註：{{ order.user.message }}</li>
+                                <li>姓名：{{ tempOrder.user.name }}</li>
+                                <li>手機：{{ tempOrder.user.tel }}</li>
+                                <li>Email：{{ tempOrder.user.email }}</li>
+                                <li>運送：{{ tempOrder.user.shipment }}</li>
+                                <li>地址：{{ tempOrder.user.postcode }}{{ tempOrder.user.country }}{{ tempOrder.user.city }}{{ tempOrder.user.region }}{{ tempOrder.user.address }}</li>
+                                <li>備註：{{ tempOrder.user.message }}</li>
                               </ul>
                             </td>
                           </tr>
@@ -150,13 +158,11 @@
 import { mapState } from 'pinia';
 import userOrderStore from '@/stores/front/userOrderStore';
 import OrderHeader from '@/components/front/OrderHeader.vue';
-import OrderSteps from '@/components/front/OrderSteps.vue';
 import timestampToDate from '@/utils/timestampToDate';
 
 export default {
   components: {
-    OrderHeader,
-    OrderSteps
+    OrderHeader
   },
   data() {
     return {
@@ -164,8 +170,12 @@ export default {
       currentProgress: 3,
     }
   },
+  mounted() {
+    const { id } = this.$route.params;
+    this.tempProductId = id;
+  },
   computed: {
-    ...mapState(userOrderStore, ['order']),
+    ...mapState(userOrderStore, ['tempOrder']),
   },
   methods: {
     // 轉換 timestamp

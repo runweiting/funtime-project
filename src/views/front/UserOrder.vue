@@ -7,21 +7,23 @@
     <div class="container px-lg-12 py-3 py-lg-6">
       <div class="row row-cols-1">
         <div class="col-md-6 col-lg-5 px-xl-4">
-          <div v-for="cart in cartList" :key="cart.id" class="position-sticky top-0">
+          <div class="position-sticky top-0">
             <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
-              <img :src="cart.product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
-              <h3 class="fs-6 text-dark-gray mb-0">{{ cart.qty }} 入組</h3>
-              <div class="d-flex justify-content-between align-items-center">
+              <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
+              <h6 class="text-dark-gray fw-normal mb-0">{{ product.short_title }}</h6>
+              <div class="d-flex justify-content-between">
+                <h5 class="mb-0">{{ tempCartQty }} 入組</h5>
                 <div class="d-flex gap-2">
-                  <h5 class="fw-bold mb-0">NT$ {{ cart.total }}</h5>
-                  <span class="badge bg-info-light text-black">{{ cart.product.discount * 100 }}折</span>
+                  <h6 class="fs-5 fw-bold mb-0">NT$ {{ product.origin_price * product.discount * tempCartQty }}</h6>
+                  <span class="badge bg-info-light text-black">{{ product.discount * 100 }}折</span>
                 </div>
-                <span class="fs-6 badge bg-danger">剩餘{{ cart.product.target_units - cart.qty }}份</span>
               </div>
-              <small class="text-dark-gray">預定售價 <del>NT$ {{ cart.product.origin_price }}</del>，現省 NT$ {{ (cart.product.origin_price * cart.qty) - (cart.product.origin_price * cart.product.discount * cart.qty) }}</small>
               <div>
-                <span>本方案內含：</span><br>
-                <span class="fs-5 fw-bold">{{ cart.product.short_title }}{{ cart.qty }} 套</span>
+                <small class="text-dark-gray d-block mb-1">預定售價 <del>NT$ {{ product.origin_price }}</del>，折扣後 NT$ {{ product.origin_price * product.discount }}</small>
+                <div class="d-flex">
+                  <span v-if="productQtyMap[product.id]" class="badge text-dark-gray fw-normal me-2" style="background-color: #E9ECEF;">預購人數 {{ productQtyMap[product.id].orderQty }} 次</span>
+                  <span class="badge text-dark-gray fw-normal" style="background-color: #E9ECEF;">目標達成 3 個月內出貨</span>
+                </div>
               </div>
               <hr class="w-100 border-top my-1" style="border: 3px dotted #8C8C8E;">
               <div class="d-flex align-items-center gap-2">
@@ -31,15 +33,15 @@
             </div>
             <div class="rounded-5 border border-5 border-light-gray p-5 gap-3">
               <label for="coupon-code" class="form-label text-danger fw-medium">優惠卷</label>
-              <div class="input-group mb-3">
+              <div class="input-group mb-4">
                 <input :disabled="couponState.success" v-model="couponCode" type="text" class="form-control" :placeholder="couponState.success ? couponState.message : '請輸入優惠碼'" aria-label="coupon-code" aria-describedby="coupon-code" id="coupon-code">
                 <button @click="applyCoupon(couponCode)" class="btn btn-danger text-white" type="button" id="coupon-code">確認</button>
               </div>
-              <h6 class="mb-2">付款明細</h6>
+              <h6 class="text-dark-gray mb-2">付款明細</h6>
               <div class="d-flex flex-column gap-1 px-2">
                 <div class="d-flex justify-content-between text-dark-gray">
                   <span>項目</span>
-                  <span>NT$ {{ cart.total }}</span>
+                  <span>NT$ {{ product.origin_price * product.discount * tempCartQty }}</span>
                 </div>
                 <div class="d-flex justify-content-between text-dark-gray">
                   <span>運費</span>
@@ -48,11 +50,11 @@
                 <hr class="bg-light-gray my-2">
                 <div v-if="!couponState.success" class="d-flex justify-content-between text-dark-gray fw-bold">
                   <span>總計</span>
-                  <h5 class="fw-bold mb-0">NT$ {{ cart.total }}</h5>
+                  <h5 class="fw-bold mb-0">NT$ {{ product.origin_price * product.discount * tempCartQty }}</h5>
                 </div>
                 <div v-else class="d-flex justify-content-between text-dark-gray fw-bold">
                   <span>折扣總計</span>
-                  <h5 class="fw-bold mb-0">NT$ {{ Math.round(couponState.data.final_total) }}</h5>
+                  <h5 class="fw-bold text-black mb-0">NT$ {{ Math.round(couponState.data.final_total) }}</h5>
                 </div>
               </div>
             </div>
@@ -118,7 +120,9 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
+import userProductsStore from '@/stores/front/userProductsStore';
 import userCartStore from '@/stores/front/userCartStore';
+import userOrderStore from '@/stores/front/userOrderStore';
 import OrderDetail from '@/components/front/OrderDetail.vue';
 import OrderSteps from '@/components/front/OrderSteps.vue';
 import OrderHeader from '@/components/front/OrderHeader.vue';
@@ -136,13 +140,26 @@ export default {
       currentOrderSteps: 2,
       // 優惠碼
       couponCode: null,
+      tempProductId: '',
+      tempCartQty: 0,
     }
   },
+  mounted() {
+    const { id, units } = this.$route.params;
+    this.tempProductId = id;
+    this.tempCartQty = units;
+    this.getCart(this.tempProductId);
+    this.calculateQty();
+  },
   computed: {
-    ...mapState(userCartStore, ['cartList', 'cartTotal']),
+    ...mapState(userProductsStore, ['product']),
+    ...mapState(userOrderStore, ['productQtyMap']),
     ...mapState(adminCouponsStore, ['couponState']),
   },
   methods: {
+    ...mapActions(userProductsStore, ['getProduct']),
+    ...mapActions(userCartStore, ['getCart']),
+    ...mapActions(userOrderStore, ['calculateQty']),
     ...mapActions(adminCouponsStore, ['postCoupon']),
     async applyCoupon() {
       await this.postCoupon(this.couponCode)

@@ -1,6 +1,6 @@
 <template>
   <div class="rounded-5 border border-5 border-light p-5 h-100">
-    <!-- 在 <VForm> 往 v-slot 傳入 errors 錯誤訊息，所以 <VField> 和 <ErrorMessage> 都可讀取 errors -->
+    <!-- 往 v-slot 傳入 errors 錯誤訊息，所以 <VField> 和 <ErrorMessage> 可讀取 errors -->
     <VForm v-slot="{ errors }" ref="formOrder" class="d-flex flex-column gap-3 h-100" @submit="onSubmit">
       <div>
         <h3 class="fs-5">收件人</h3>
@@ -145,12 +145,12 @@
 
 <script>
 import { ErrorMessage } from 'vee-validate';
-import { mapActions } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import adminCouponsStore from '@/stores/admin/adminCouponsStore';
 import userOrderStore from '@/stores/front/userOrderStore';
+import userProductsStore from '@/stores/front/userProductsStore';
 
 export default {
-  emits: ['updateCart'],
   components: { ErrorMessage },
   data() {
     return {
@@ -182,6 +182,9 @@ export default {
       },
     }
   },
+  computed: {
+    ...mapState(userProductsStore, ['product'])
+  },
   methods: {
     ...mapActions(adminCouponsStore, ['clearCoupon']),
     ...mapActions(userOrderStore, ['createOrder']),
@@ -189,9 +192,8 @@ export default {
       this.createOrder(this.data);
       this.$refs.formOrder.resetForm();
       this.data.message = '';
-      this.$emit('updateCart');
       this.clearCoupon();
-      this.$router.push({ name: "order-result" })
+      this.$router.push({ name: "order-result", params: { id: this.product.id } })
     },
   },
 };

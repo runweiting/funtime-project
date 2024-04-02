@@ -3,7 +3,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-5 m-3 m-md-6">
       <div class="container p-5">
         <h1 class="mb-0 overflow-hidden" style="white-space: nowrap;">
-          <a class="navbar-brand mb-0 fs-2 fw-bold" href="index.html">funtime</a>
+          <RouterLink 
+            :to="{ name: 'home' }" class="navbar-brand mb-0 fs-2 fw-bold">funtime
+          </RouterLink>
         </h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
