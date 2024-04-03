@@ -27,6 +27,14 @@ const baseRoutes = [
         },
       },
       {
+        path: "collection",
+        name: "collection",
+        component: () => import("@/views/front/UserCollection.vue"),
+        meta: {
+          title: "收藏清單",
+        },
+      },
+      {
         path: "order-search",
         name: "order-search",
         component: () => import("@/views/front/UserOrderSearch.vue"),

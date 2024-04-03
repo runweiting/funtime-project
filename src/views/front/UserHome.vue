@@ -187,8 +187,11 @@
         <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-0 px-md-3">
           <div class="card h-100 shadow-sm position-relative" style="cursor: pointer;">
             <RouterLink :to="`/product/${product.id}/content`" class="stretched-link" />
-            <button type="button" class="btn position-absolute p-0 hvr-pulse">
-              <i class="bi bi-heart-fill fs-5"></i>
+            <button @click="handleAddToCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes">
+              <i v-if="isLikedList[product.id].isLiked === false" class="bi fs-5 bi-heart-fill text-white">
+              </i>
+              <i v-else class="bi fs-5 bi-heart-fill text-danger">
+              </i>
             </button>
             <div class="rounded-circle bg-black position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm hvr-pop" style="top: 16px;left: 16px;width: 65px; height: 65px; transform: rotate(-10deg);">
               <span class="text-white fw-bold fs-6" >試玩</span>
@@ -252,6 +255,7 @@ import FeedbackSwiper from '@/components/front/FeedbackSwiper.vue';
 import FaqAccordion from '@/components/front/FaqAccordion.vue';
 import userProductsStore from "@/stores/front/userProductsStore";
 import userOrderStore from '@/stores/front/userOrderStore';
+import userLikesStore from '@/stores/front/userLikesStore';
 
 export default {
   components: {
@@ -263,12 +267,25 @@ export default {
     this.calculateQty();
   },
   computed: {
-    ...mapState(userProductsStore, ['productList']),
-    ...mapState(userOrderStore, ['productQtyMap'])
+    ...mapState(userProductsStore, ['productList', 'isLikedList']),
+    ...mapState(userOrderStore, ['productQtyMap']),
+    ...mapState(userLikesStore, ['tempCollection', 'likes'])
   },
   methods: {
     ...mapActions(userProductsStore, ['getProducts']),
-    ...mapActions(userOrderStore, ['calculateQty'])
+    ...mapActions(userOrderStore, ['calculateQty']),
+    ...mapActions(userLikesStore, ['addToCollection', 'removeCollection']),
+    handleAddToCollection(product) {
+      this.isLikedList[product.id].isLiked = !this.isLikedList[product.id].isLiked;
+      if (this.isLikedList[product.id].isLiked === true) {
+        this.addToCollection(product);
+      } else if (this.isLikedList[product.id].isLiked === false) {
+        this.removeCollection(product.id);
+      }
+    }
   }
 }
 </script>
+<style scope>
+
+</style>

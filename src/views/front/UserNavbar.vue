@@ -23,9 +23,13 @@
               :to="{ name: 'products' }" class="nav-link text-decoration-none">{{ $t('menu.products') }}</RouterLink>
             </li>
             <li class="nav-item">
+              <RouterLink 
+              :to="{ name: 'collection' }" class="nav-link text-decoration-none">{{ $t('menu.collection') }}</RouterLink>
+            </li>
+            <li class="nav-item">
               <div v-if="isInputEnabled" class="input-group">
                 <input v-model="tempOrderId" type="text" class="form-control" placeholder="請輸入訂單編號" aria-label="order-search" aria-describedby="order-search">
-                <button @click="goToOrder" class="btn btn-outline-secondary" type="button">確認</button>
+                <button @click="goToOrder(this.tempOrderId)" class="btn btn-outline-secondary" type="button">確認</button>
               </div>
               <a v-else @click="toggleSearch" class="nav-link text-decoration-none">
                 {{ $t('menu.search') }}
@@ -86,8 +90,10 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
-import userCartStore from "@/stores/front/userCartStore";
+import { mapState, mapActions } from "pinia";
+// import userCartStore from "@/stores/front/userCartStore";
+import userOrderStore from "@/stores/front/userOrderStore";
+import showWarningToast from "@/utils/showWarningToast";
 
 export default {
   data() {
@@ -96,10 +102,14 @@ export default {
       tempOrderId: ''
     }
   },
+  mounted() {
+    this.getOrders();
+  },
   computed: {
-    ...mapState(userCartStore, ["cartList"]),
+    ...mapState(userOrderStore, ['orders'])
   },
   methods: {
+    ...mapActions(userOrderStore, ['getOrders']),
     toggleSearch() {
       this.isInputEnabled = !this.isInputEnabled
     },
@@ -107,12 +117,21 @@ export default {
       const selectLanguage = event.target.value;
       this.$i18n.locale = selectLanguage;
     },
-    // 查詢訂單
-    goToOrder() {
-      this.$router.push({ name: "order-search", params: { orderId: this.tempOrderId } });
+    // 查詢、核對訂單
+    goToOrder(orderId) {
+      if (orderId === '') {
+        showWarningToast('請填入訂單編號');
+        return
+      };
+      const targetOrder = this.orders.find(order => order.id === orderId);
+      if (!targetOrder) {
+        showWarningToast('查無此訂單編號');
+        return
+      };
+      this.$router.push({ name: "order-search", params: { orderId } });
       this.tempOrderId = '';
       this.isInputEnabled = false;
-    },
+    }
   }
 };
 </script>
