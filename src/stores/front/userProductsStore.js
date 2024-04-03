@@ -36,7 +36,8 @@ const userProductsStore = defineStore("userProductsStore", {
         this.sortProducts();
         this.isLikedList();
       } catch (err) {
-        showErrorToast(err.response.data.message);
+        console.log(err);
+        showErrorToast(err.response);
       } finally {
         loader.hide();
       }
@@ -52,7 +53,6 @@ const userProductsStore = defineStore("userProductsStore", {
         return acc;
       }, {});
       this.isLikedList = list;
-      console.log(this.isLikedList);
     },
     // GET 指定商品
     async getProduct(targetId) {

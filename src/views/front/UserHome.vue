@@ -269,7 +269,7 @@ export default {
   computed: {
     ...mapState(userProductsStore, ['productList', 'isLikedList']),
     ...mapState(userOrderStore, ['productQtyMap']),
-    ...mapState(userLikesStore, ['tempCollection', 'likes'])
+    ...mapState(userLikesStore, ['tempCollection'])
   },
   methods: {
     ...mapActions(userProductsStore, ['getProducts']),
