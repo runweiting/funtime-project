@@ -107,13 +107,13 @@
         <div class="col-lg-7">
           <ul class="list-unstyled d-flex gap-6 mb-0">
             <li>
-              <a class="text-black text-decoration-none" href="#">專案內容</a>
+              <RouterLink :to="{ name: 'product-content' }" class="text-gray text-decoration-none hvr-pop">專案內容</RouterLink>
             </li>
             <li>
-              <a class="text-black text-decoration-none" href="#">常見問答 2</a>
+              <RouterLink :to="{ name: 'product-faq' }" class="text-gray text-decoration-none hvr-pop">常見問答</RouterLink>
             </li>
             <li>
-              <a class="text-black text-decoration-none" href="#">留言 2</a>
+              <RouterLink :to="{ name: 'product-message' }" class="text-gray text-decoration-none hvr-pop">留言</RouterLink>
             </li>
           </ul>
         </div>
@@ -141,104 +141,7 @@
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12">
       <div class="row row-cols-1 py-2 p-xl-4 pt-xl-8 row-cols-md-2">
-        <div class="col-md-7 px-xl-4">
-          <div class="position-relative rounded-5 border border-5 border-secondary p-5 my-5">
-            <h3 class="fs-5 fw-bold">
-              立即預購，享優惠價！
-            </h3>
-            <h4 class="fs-6 fw-normal mb-0">
-              須達成{{ product.target_units }}組，才能啟動生產，您的支持讓有趣的聖經企劃發生！
-            </h4>
-            <span class="position-absolute top-50 end-0 translate-middle-y" style="left: 100%; border-color: transparent transparent transparent #54FA80; border-style: solid; border-width: 12px 0 12px 20px; border-radius: 0 20px 20px 0;"></span>
-          </div>
-          <hr class="w-100 border-top my-8" style="border: 5px dotted #8C8C8E;">
-          <div class="d-flex flex-column justify-content-between gap-4 mb-8">
-            <h4 class="text-center mb-0">{{ product.question }}</h4>
-            <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
-          </div>
-          <div class="d-flex flex-column justify-content-between gap-8">
-            <h4 class="text-center mb-0">設計特點</h4>
-            <ol class="list-unstyled d-flex justify-content-center mb-0 gap-4">
-              <li v-for="(point, index) in product.points" :key="index" class="d-flex g-xl-2 px-xl-5 text-center">
-                <div class="d-flex flex-column align-items-center me-xl-6">
-                  <div class="bg-info text-white rounded-circle position-relative mb-2 mb-md-3 icon-area">
-                    <i class="bi bi-people-fill fs-3 position-absolute top-50 start-50 translate-middle icon" v-if="index === 0"></i>
-                    <i class="bi bi-bag-check-fill fs-3 position-absolute top-50 start-50 translate-middle icon" v-else-if="index === 1"></i>
-                    <i class="bi bi-buildings-fill fs-3 position-absolute top-50 start-50 translate-middle icon" v-else></i>
-                  </div>
-                  <h5 class="fs-6 fw-bold icon-title">{{ point.title }}</h5>
-                </div>
-              </li>
-            </ol>
-            <div v-for="(point, index) in product.points" :key="index" class="row row-cols-2">
-              <div class="col-6 col-md-8">
-                <img :src="point.imageUrl" alt="product-key-points" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
-              </div>
-              <div class="col-6 col-md-4">
-                <div class="d-flex flex-column gap-2 h-100">
-                  <h5 class="fs-5 mb-0">{{ point.title }}</h5>
-                  <span>{{ point.content }}</span>
-                </div>
-              </div>
-            </div>
-            <div class="row row-cols-1 row-cols-lg-2 gy-4">
-              <div class="col">
-                <div class="card h-100 rounded-5 border border-info-light border-10 p-5">
-                  <div class="card-body d-flex flex-column justify-content-between gap-5">
-                    <div class="d-flex gap-2">
-                      <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-man" class="object-fit-cover img-fluid">
-                      </div>
-                      <div class="d-flex flex-column justify-content-between text-start">
-                        <span class="fw-bold">王大衛</span>
-                        <small class="fst-italic">2024/03/13</small>
-                      </div>
-                    </div>
-                    <div class="d-flex gap-2">
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                    </div>
-                    <p class="card-text text-start">原來聖經可以這樣讀！跟著故事圖卡和地圖，一起走入創世記〈1-50章〉，讓讀聖經變真實又有趣！</p>
-                    <div class="d-flex gap-2">
-                      <span class="badge rounded-pill bg-secondary text-black"># 試玩</span>
-                      <span class="badge rounded-pill bg-secondary text-black"># 讀經工具</span>
-                    </div>
-                  </div>
-              </div>
-              </div>
-              <div class="col">
-                <div class="card h-100 rounded-5 border border-info-light border-10 p-5">
-                  <div class="card-body d-flex flex-column justify-content-between gap-5">
-                    <div class="d-flex gap-2">
-                      <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="customer-feedback-avatar-woman" class="object-fit-cover img-fluid">
-                      </div>
-                      <div class="d-flex flex-column justify-content-between text-start">
-                        <span class="fw-bold">謝安娜</span>
-                        <small class="fst-italic">2024/01/11</small>
-                      </div>
-                    </div>
-                    <div class="d-flex gap-2">
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                      <i class="bi bi-star-fill fs-6"></i>
-                    </div>
-                    <p class="card-text text-start">全新聖經體驗，探索不一樣的聖經之旅！重新感受這段聖經故事的魅力，發現聖經的讀書體驗更加生動有趣！</p>
-                    <div class="d-flex gap-2">
-                      <span class="badge rounded-pill bg-secondary text-black"># 團契生活</span>
-                      <span class="badge rounded-pill bg-secondary text-black"># 試玩</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <RouterView />
         <div class="col-md-5 px-xl-4">
           <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 my-5">
             <div class="d-flex gap-2">
@@ -294,8 +197,12 @@ import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
 import showErrorToast from '@/utils/showErrorToast';
 import showWarningToast from '@/utils/showWarningToast';
+// import ProductContent from '@/components/front/ProductContent.vue';
 
 export default {
+  components: {
+    // ProductContent
+  },
   mounted() {
     const { id } = this.$route.params;
     this.getProduct(id);
@@ -331,3 +238,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.text-gray.active {
+  color: black !important;
+}
+</style>

@@ -40,7 +40,7 @@
                 style="cursor: pointer"
               >
                 <RouterLink
-                  :to="`/product/${product.id}`"
+                  :to="`/product/${product.id}/content`"
                   class="stretched-link"
                 />
                 <button

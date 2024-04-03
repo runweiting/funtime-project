@@ -52,11 +52,38 @@ const baseRoutes = [
       },
       {
         path: "product/:id",
+        redirect: "product/:id/content",
         name: "product",
         component: () => import("@/views/front/UserProductInfo.vue"),
         meta: {
           title: "企劃介紹",
         },
+        children: [
+          {
+            path: "content",
+            name: "product-content",
+            component: () => import("@/components/front/ProductContent.vue"),
+            meta: {
+              title: "專案內容",
+            },
+          },
+          {
+            path: "faq",
+            name: "product-faq",
+            component: () => import("@/components/front/ProductFaq.vue"),
+            meta: {
+              title: "常見問答",
+            },
+          },
+          {
+            path: "message",
+            name: "product-message",
+            component: () => import("@/components/front/ProductMessage.vue"),
+            meta: {
+              title: "留言",
+            },
+          },
+        ],
       },
       {
         path: "cart/:id/:units",
@@ -189,8 +216,16 @@ const router = createRouter({
     // 如果存在 savedPosition，將頁面滾動到 savedPosition 的位置
     if (savedPosition) {
       return savedPosition;
-      // 如果目標路由有 hash，將頁面滾動到 hash 所在的位置
     }
+    // 如果目標路由是 product-content || product-faq || product-message，保持當前位置不變
+    if (
+      to.name === "product-content" ||
+      to.name === "product-faq" ||
+      to.name === "product-message"
+    ) {
+      return false;
+    }
+    // 如果目標路由有 hash，將頁面滾動到 hash 所在的位置
     if (to.hash) {
       return { selector: to.hash };
       // 其他情況將頁面滾動到頂部
