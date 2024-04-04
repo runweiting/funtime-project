@@ -9,6 +9,9 @@ import showErrorToast from "@/utils/showErrorToast";
 const $loading = useLoading();
 const { VITE_APP_URL } = import.meta.env;
 export default defineStore("loginStore", {
+  state: () => ({
+    checkSuccess: false,
+  }),
   actions: {
     // POST 驗證登入
     checkLogin() {
@@ -21,21 +24,24 @@ export default defineStore("loginStore", {
       );
       if (token) {
         axios.defaults.headers.common.Authorization = token;
-      }
-      axios
-        .post(url)
-        .then(() => {
-          showSuccessToast("驗證成功");
-        })
-        .catch((err) => {
-          showErrorToast(err.response.data.message).then(() => {
-            router.push({ name: "login" });
+        axios
+          .post(url)
+          .then(() => {
+            this.checkSuccess = true;
+            showSuccessToast("驗證成功");
+          })
+          .catch((err) => {
+            showErrorToast(err.response.data.message).then(() => {
+              router.push({ name: "login" });
+            });
+          })
+          .finally(() => {
+            // 關閉 loading
+            loader.hide();
           });
-        })
-        .finally(() => {
-          // 關閉 loading
-          loader.hide();
-        });
+      } else {
+        router.push({ name: "login" });
+      }
     },
     // POST 登出
     logout() {

@@ -59,10 +59,10 @@
                 <span class="fs-4 text-white fw-bold">讓有趣的聖經企劃發生</span>
             </div>
             <ul class="navbar-nav flex-row gap-6">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link text-decoration-none" href="#">聯繫我們
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <RouterLink
                     :to="{ name: 'login' }"
