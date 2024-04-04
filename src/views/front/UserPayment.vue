@@ -102,7 +102,7 @@
           </div>
         </div>
         <div class="col-md-6 col-lg-7 px-xl-4">
-          <VForm ref="formPayment" @submit="onSubmit">
+          <VForm v-slot="{ errors }" ref="formPayment" @submit="onSubmit">
             <!-- 會員資料 -->
             <div class="d-none p-5">
               <h3 class="fs-5">會員資料</h3>
@@ -157,16 +157,19 @@
                     <div class="row row-cols-1 row-cols-sm-2 gy-3">
                       <div class="col">
                         <div class="form-check ps-10">
-                          <VField v-model="invoice_individual" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="invoice_individual" id="invoice_individual" value="true" />
-                          <label class="form-check-label text-dark-gray" for="invoice_individual">
+                          <VField @change="clearInput" v-model="selectedInvoiceType" rules="required" :class="{ 'is-invalid': errors['發票類型'] }" type="radio" value="individual"
+                          class="form-check-input" style="margin-left: -2rem;" name="發票類型" id="invoice-type" />
+                          <label class="form-check-label text-dark-gray" for="發票類型">
                             個人發票
                           </label>
+                          <ErrorMessage name="發票類型" class="invalid-feedback" />
                         </div>
                       </div>
                       <div class="col">
-                        <label for="mobile_carrier" class="form-label text-dark-gray">手機載具</label>
+                        <label for="手機載具" class="form-label text-dark-gray">手機載具</label>
                         <div class="input-group">
-                          <VField v-model.trim="mobile_carrier" type="text" class="form-control placeholder-light" name="手機載具" placeholder="請填入手機載具" disabled />
+                          <VField v-model.trim="mobile_carrier" :rules="selectedInvoiceType === 'individual' ? 'required' : ''" :disabled="selectedInvoiceType === 'company'" :class="{ 'is-invalid': errors['手機載具'] }" type="text" class="form-control placeholder-light" name="手機載具" placeholder="請填入手機載具" />
+                          <ErrorMessage name="手機載具" class="invalid-feedback" />
                         </div>
                       </div>
                     </div>
@@ -178,20 +181,23 @@
                     <div class="row row-cols-1 row-cols-sm-2 gy-3">
                       <div class="col">
                         <div class="form-check ps-10">
-                          <VField v-model="invoice_company" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="invoice_company" id="invoice_company" value="true" />
-                          <label class="form-check-label text-dark-gray" for="invoice_company">
+                          <VField @change="clearInput" v-model="selectedInvoiceType" rules="required" :class="{ 'is-invalid': errors['發票類型'] }" type="radio" value="company" class="form-check-input" style="margin-left: -2rem;"  name="發票類型" id="invoice-type" />
+                          <label class="form-check-label text-dark-gray" for="發票類型">
                             公司發票
                           </label>
+                          <ErrorMessage name="發票類型" class="invalid-feedback" />
                         </div>
                       </div>
                       <div class="col">
-                        <label for="company_ubn" class="form-label text-dark-gray">統一編號</label>
+                        <label for="統一編號" class="form-label text-dark-gray">統一編號</label>
                         <div class="input-group mb-2">
-                          <VField v-model.trim="company_ubn" type="text" class="form-control placeholder-light" name="統一編號" placeholder="請填入統一編號" />
+                          <VField v-model.trim="company_ubn" :rules="selectedInvoiceType === 'company' ? 'required' : ''" :disabled="selectedInvoiceType === 'individual'" :class="{ 'is-invalid': errors['統一編號'] }" type="text" class="form-control placeholder-light" name="統一編號" placeholder="請填入統一編號" />
+                          <ErrorMessage name="統一編號" class="invalid-feedback" />
                         </div>
-                        <label for="company_name" class="form-label text-dark-gray">公司抬頭</label>
+                        <label for="公司抬頭" class="form-label text-dark-gray">公司抬頭</label>
                         <div class="input-group">
-                          <input v-model.trim="company_name" type="text" class="form-control placeholder-light" name="公司抬頭" placeholder="請填入公司抬頭">
+                          <VField v-model.trim="company_name" :rules="selectedInvoiceType === 'company' ? 'required' : ''" :disabled="selectedInvoiceType === 'individual'" :class="{ 'is-invalid': errors['公司抬頭'] }" type="text" class="form-control placeholder-light" name="公司抬頭" placeholder="請填入公司抬頭" />
+                          <ErrorMessage name="公司抬頭" class="invalid-feedback" />
                         </div>
                       </div>
                     </div>
@@ -293,6 +299,7 @@
 </template>
 
 <script>
+import { ErrorMessage } from 'vee-validate';
 import { mapActions, mapState } from 'pinia';
 import userOrderStore from '@/stores/front/userOrderStore';
 import OrderHeader from '@/components/front/OrderHeader.vue';
@@ -300,19 +307,19 @@ import timestampToDate from '@/utils/timestampToDate';
 
 export default {
   components: {
-    OrderHeader
+    OrderHeader,
+    ErrorMessage
   },
   data() {
     return {
       currentFundraisingSteps: 2,
       currentProgress: 3,
-      // 付款資料
-      invoice_individual: '',
-      invoice_mobile: '',
+      // 發票類型
+      selectedInvoiceType: '',
       mobile_carrier: '',
-      invoice_company: '',
-      company_name: '',
       company_ubn: '',
+      company_name: '',
+      // 付款方式
       creditCard: '',
       bank_transfer: '',
       cardholder: '',
@@ -323,9 +330,16 @@ export default {
       tempOrderId: '',
     }
   },
+  // created() {
+  //   const { handleSubmit } = useForm();
+  //   this.handleSubmit = handleSubmit;
+  // },
   mounted() {
     const { id } = this.$route.params;
     this.tempProductId = id;
+    // this.mobile_carrier = useField('mobile_carrier');
+    // this.company_ubn = useField('company_ubn');
+    // this.company_name = useField('company_name');
   },
   computed: {
     ...mapState(userOrderStore, ['tempOrder']),
@@ -337,6 +351,14 @@ export default {
       const { formattedDate, formattedTime } = timestampToDate(timestamp);
       return {
         formattedDate, formattedTime
+      }
+    },
+    clearInput() {
+      if (this.selectedInvoiceType === 'individual') {
+        this.company_ubn = '';
+        this.company_name = '';
+      } else if (this.selectedInvoiceType === 'company') {
+        this.mobile_carrier = ''
       }
     },
     onSubmit() {

@@ -3,9 +3,7 @@
     <div class="container bg-primary rounded-5 p-5 p-md-10" data-aos="fade-up">
       <div class="row">
         <div class="col">
-          <div
-            class="d-flex flex-column justify-content-center align-items-center gap-5"
-          >
+          <div class="d-flex flex-column justify-content-center align-items-center gap-5">
             <h2 class="fs-1 text-white fw-bold mb-0">收藏清單</h2>
             <h5 class="text-white responsive-lh-ls text-normal mb-0">
               目前沒有收藏的企劃喔，快去按愛心吧！
@@ -45,13 +43,10 @@
           </div>
           <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
             <div v-for="item in tempCollection" :key="item.product.id" class="col mb-md-0 px-0 px-md-3">
-              <div class="card h-100 shadow-sm position-relative" style="cursor: pointer">
+              <div class="card h-100 shadow-sm position-relative hvr-grow" style="cursor: pointer">
                 <RouterLink :to="`/product/${item.product.id}/content`" class="stretched-link" />
                   <button @click="handleAddToCollection(item.product)" type="button" class="btn btn-white position-absolute p-0 btn-likes">
-                    <i v-if="isLikedList[item.product.id].isLiked === true" class="bi fs-5 bi-heart-fill text-danger">
-                    </i>
-                    <i v-else class="bi fs-5 bi-heart-fill text-white">
-                    </i>
+                    <i class="bi fs-5 bi-heart-fill text-danger"></i>
                   </button>
                 <img :src="item.product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="height: 200px;"/>
                 <div class="card-body d-flex flex-column justify-content-between">
@@ -114,17 +109,25 @@ export default {
       countEnd: 50,
       // 指定商品
       product: {},
+      tempIsLikedList: {}
     };
   },
-  mounted() {
-    this.getProducts();
+  created() {
+    this.tempIsLikedList = { ...this.isLikedList };
+  },
+  watch: {
+    isLikedList: {
+      deep: true,
+      handler(updateIsLikedList) {
+        this.tempIsLikedList = updateIsLikedList
+      }
+    }
   },
   computed: {
-    ...mapState(userProductsStore, ["productList", 'isLikedList']),
+    ...mapState(userProductsStore, ['isLikedList']),
     ...mapState(userLikesStore, ['tempCollection'])
   },
   methods: {
-    ...mapActions(userProductsStore, ["getProducts"]),
     ...mapActions(userLikesStore, ['addToCollection', 'removeCollection']),
     handleAddToCollection(product) {
       this.isLikedList[product.id].isLiked = !this.isLikedList[product.id].isLiked;

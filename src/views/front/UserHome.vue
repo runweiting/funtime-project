@@ -185,7 +185,7 @@
       </div>
       <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-6">
         <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-0 px-md-3">
-          <div class="card h-100 shadow-sm position-relative" style="cursor: pointer;">
+          <div class="card h-100 shadow-sm position-relative hvr-grow" style="cursor: pointer;">
             <RouterLink :to="`/product/${product.id}/content`" class="stretched-link" />
             <button @click="handleAddToCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes">
               <i v-if="isLikedList[product.id].isLiked === false" class="bi fs-5 bi-heart-fill text-white">

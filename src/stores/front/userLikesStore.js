@@ -15,6 +15,7 @@ export default defineStore({
         product,
       });
       showSuccessToast("已加入收藏清單");
+      console.log(this.tempCollection);
     },
     removeCollection(productId) {
       const index = this.tempCollection.findIndex(
@@ -24,6 +25,7 @@ export default defineStore({
         this.tempCollection.splice(index, 1);
         showSuccessToast("已移除收藏清單");
       }
+      console.log(this.tempCollection);
     },
   },
 });

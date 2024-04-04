@@ -50,7 +50,7 @@
     <RouterView />
   </main>
   <footer>
-    <div class="bg-primary rounded-5 m-3 m-md-6">
+    <div class="position-sticky bg-primary rounded-5 m-3 m-md-6 bottom-0">
       <div class="container p-5">
         <nav class="navbar navbar-dark">
             <div class="d-flex flex-column flex-md-row align-items-md-center">

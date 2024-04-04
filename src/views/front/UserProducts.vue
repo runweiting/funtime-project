@@ -36,7 +36,7 @@
               class="col mb-md-0 px-0 px-md-3"
             >
               <div
-                class="card h-100 shadow-sm position-relative"
+                class="card h-100 shadow-sm position-relative hvr-grow"
                 style="cursor: pointer"
               >
                 <RouterLink
@@ -98,7 +98,7 @@
             ></div>
           </div>
         </div>
-        <div class="col-xl-3">
+        <!-- <div class="col-xl-3">
           <div class="row row-cols-1">
             <div class="col px-0 px-md-3 mb-3 mb-lg-6">
               <div class="d-flex align-items-baseline gap-2">
@@ -171,7 +171,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

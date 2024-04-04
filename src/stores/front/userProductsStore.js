@@ -34,9 +34,8 @@ const userProductsStore = defineStore("userProductsStore", {
         this.pagination = pagination;
         // 異步操作完成後，調用排序邏輯
         this.sortProducts();
-        this.isLikedList();
+        this.initIsLikedList();
       } catch (err) {
-        console.log(err);
         showErrorToast(err.response);
       } finally {
         loader.hide();
@@ -47,7 +46,7 @@ const userProductsStore = defineStore("userProductsStore", {
       this.productList = this.productList.sort((a, b) => a.price - b.price);
     },
     //
-    isLikedList() {
+    initIsLikedList() {
       const list = this.productList.reduce((acc, product) => {
         acc[product.id] = { isLiked: false };
         return acc;
