@@ -31,9 +31,12 @@
                       </div>
                     </div>
                     <div class="col-md-5">
-                      <div class="d-flex justify-content-start justify-content-md-center justify-content-md-start align-items-center gap-2 gap-lg-4 pt-4">
-                        <i class="bi bi-check-circle-fill text-dark-secondary fs-4"></i>
-                        <h4 class="mb-0">付款成功</h4>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <img src="/dazzle-order-delivered.gif" alt="open-book-glasses-and-stars" class="object-fit-cover img-fluid w-50">
+                        <div class="d-flex justify-content-start justify-content-md-center align-items-md-center gap-2 gap-lg-4">
+                          <i class="bi bi-check-circle-fill text-dark-secondary fs-4"></i>
+                          <h4 class="mb-0">付款成功</h4>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -141,8 +144,13 @@
                         </tbody>
                       </table>
                     </div>
-                    <div class="text-end mt-auto">
-                      <button @click="goHome" type="submit" class="btn btn-primary text-white">完成訂單</button>
+                    <div class="text-end">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <span class="fs-6 text-dark-gray responsive-lh-ls text-normal mb-0">
+                          感謝您的支持，看看其他有趣的企劃吧！
+                        </span>
+                        <button @click="goHome" type="submit" class="btn btn-primary text-white">前往首頁</button>
+                      </div>
                     </div>
                   </div>
                 </div>
