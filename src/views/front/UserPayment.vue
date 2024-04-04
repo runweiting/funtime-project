@@ -214,43 +214,49 @@
                     <div class="row mb-3">
                       <div class="col">
                         <div class="form-check ps-10">
-                          <VField v-model="creditCard" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="creditCard" id="creditCard" value="true" />
-                          <label class="form-check-label text-dark-gray" for="creditCard">
+                          <VField @change="clearInput" v-model="selectedPaymentType" rules="required" :class="{ 'is-invalid': errors['付款方式'] }" type="radio" value="creditCard" class="form-check-input" style="margin-left: -2rem;" name="付款方式" id="credit-card"/>
+                          <label class="form-check-label text-dark-gray" for="付款方式">
                             線上刷卡
                           </label>
+                          <ErrorMessage name="付款方式" class="invalid-feedback" />
                         </div>
                       </div>
                     </div>
                     <div class="row row-cols-2">
                       <div class="col-4 pe-0">
-                        <label for="cardholder" class="form-label text-dark-gray">持卡人</label>
+                        <label for="持卡人" class="form-label text-dark-gray">持卡人</label>
                         <div class="input-group mb-2">
-                          <VField v-model.trim="cardholder" type="text" class="form-control placeholder-light" name="持卡人" placeholder="請填入姓名" />
+                          <VField v-model.trim="cardHolder" :rules="selectedPaymentType === 'creditCard' ? 'required' : ''" :disabled="selectedPaymentType === 'bankTransfer'" :class="{ 'is-invalid': errors['持卡人'] }" type="text" class="form-control placeholder-light" name="持卡人" placeholder="請填入姓名" />
+                          <ErrorMessage name="持卡人" class="invalid-feedback" />
                         </div>
                       </div>
                       <div class="col-8 ps-2">
-                        <label for="credit-card-number" class="form-label text-dark-gray">信用卡號碼</label>
+                        <label for="信用卡號碼" class="form-label text-dark-gray">信用卡號碼</label>
                         <div class="input-group">
-                          <VField v-model.trim="creditCard_number" type="text" class="form-control placeholder-light" name="信用卡號碼" placeholder="請填入卡號" />
+                          <VField v-model.trim="creditCard_number" :rules="selectedPaymentType === 'creditCard' ? 'required' : ''" :disabled="selectedPaymentType === 'bankTransfer'" :class="{ 'is-invalid': errors['信用卡號碼'] }" type="text" class="form-control placeholder-light" name="信用卡號碼" placeholder="請填入卡號" />
+                          <ErrorMessage name="信用卡號碼" class="invalid-feedback" />
                         </div>
                       </div>
                     </div>
                     <div class="row row-cols-3">
                       <div class="col pe-0">
-                        <label for="expiryDate" class="form-label text-dark-gray">有效期限</label>
+                        <label for="有效期限" class="form-label text-dark-gray">有效期限</label>
                         <div class="input-group mb-4">
-                          <VField v-model.trim="expiryDate_month" type="text" class="form-control placeholder-light" name="有效月份" placeholder="MM" />
+                          <VField v-model.trim="expiryDate_month" :rules="selectedPaymentType === 'creditCard' ? 'required' : ''" :disabled="selectedPaymentType === 'bankTransfer'" :class="{ 'is-invalid': errors['有效月份'] }" type="text" class="form-control placeholder-light" name="有效月份" placeholder="MM" />
+                          <ErrorMessage name="有效月份" class="invalid-feedback" />
                         </div>
                       </div>
                       <div class="col px-2">
                         <div class="input-group">
-                          <VField v-model.trim="expiryDate_year" type="text" class="form-control placeholder-light align-self-end" name="有效年份" placeholder="YY" style="margin-top: 32px;" />
+                          <VField v-model.trim="expiryDate_year" :rules="selectedPaymentType === 'creditCard' ? 'required' : ''" :disabled="selectedPaymentType === 'bankTransfer'" :class="{ 'is-invalid': errors['有效年份'] }" type="text" class="form-control placeholder-light align-self-end" name="有效年份" placeholder="YY" style="margin-top: 32px;" />
+                          <ErrorMessage name="有效年份" class="invalid-feedback" />
                         </div>
                       </div>
                       <div class="col ps-0">
-                        <label for="creditCard_cvv" class="form-label text-dark-gray">安全碼</label>
+                        <label for="安全碼" class="form-label text-dark-gray">安全碼</label>
                         <div class="input-group mb-4">
-                          <VField v-model.trim="creditCard_cvv" type="text" class="form-control placeholder-light" name="安全碼" placeholder="CVV" />
+                          <VField v-model.trim="creditCard_cvv" :rules="selectedPaymentType === 'creditCard' ? 'required' : ''" :disabled="selectedPaymentType === 'bankTransfer'" :class="{ 'is-invalid': errors['安全碼'] }" type="text" class="form-control placeholder-light" name="安全碼" placeholder="CVV" />
+                          <ErrorMessage name="安全碼" class="invalid-feedback" />
                         </div>
                       </div>
                     </div>
@@ -261,10 +267,11 @@
                     <div class="row mb-4">
                       <div class="col">
                         <div class="form-check ps-10">
-                          <VField v-model="bank_transfer" class="form-check-input" style="margin-left: -2rem;" type="checkbox" name="虛擬轉帳" id="bank_transfer" value="true" />
-                          <label class="form-check-label text-dark-gray" for="bank_transfer">
+                          <VField @change="clearInput" v-model="selectedPaymentType" rules="required" :class="{ 'is-invalid': errors['付款方式'] }" type="radio" value="bankTransfer" class="form-check-input" style="margin-left: -2rem;" name="付款方式" id="bank-transfer" />
+                          <label class="form-check-label text-dark-gray" for="付款方式">
                             ATM虛擬帳號轉帳
                           </label>
+                          <ErrorMessage name="付款方式" class="invalid-feedback" />
                         </div>
                       </div>
                     </div>
@@ -320,9 +327,8 @@ export default {
       company_ubn: '',
       company_name: '',
       // 付款方式
-      creditCard: '',
-      bank_transfer: '',
-      cardholder: '',
+      selectedPaymentType: '',
+      cardHolder: '',
       creditCard_number: '',
       expiryDate_month: '',
       expiryDate_year: '',
@@ -330,16 +336,9 @@ export default {
       tempOrderId: '',
     }
   },
-  // created() {
-  //   const { handleSubmit } = useForm();
-  //   this.handleSubmit = handleSubmit;
-  // },
   mounted() {
     const { id } = this.$route.params;
     this.tempProductId = id;
-    // this.mobile_carrier = useField('mobile_carrier');
-    // this.company_ubn = useField('company_ubn');
-    // this.company_name = useField('company_name');
   },
   computed: {
     ...mapState(userOrderStore, ['tempOrder']),
@@ -359,6 +358,13 @@ export default {
         this.company_name = '';
       } else if (this.selectedInvoiceType === 'company') {
         this.mobile_carrier = ''
+      };
+      if (this.selectedPaymentType === 'bankTransfer') {
+        this.cardHolder = '';
+        this.creditCard_number = '';
+        this.expiryDate_month = '';
+        this.expiryDate_year = '';
+        this.creditCard_cvv = '';
       }
     },
     onSubmit() {
