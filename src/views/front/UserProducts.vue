@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="m-3 m-lg-6">
-    <div class="container p-5 p-md-10" data-aos="fade-up">
+    <div class="container p-5 p-md-10">
       <div class="row row-cols-1 row-cols-xl-2">
         <div class="col-xl-9">
           <div class="row row-cols-1">
@@ -27,35 +27,12 @@
               </div>
             </div>
           </div>
-          <div
-            class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative"
-          >
-            <div
-              v-for="product in productList"
-              :key="product.id"
-              class="col mb-md-0 px-0 px-md-3"
-            >
-              <div
-                class="card h-100 shadow-sm position-relative hvr-grow"
-                style="cursor: pointer"
-              >
-                <RouterLink
-                  :to="`/product/${product.id}/content`"
-                  class="stretched-link"
-                />
-                <button
-                  type="button"
-                  class="btn position-absolute p-0 hvr-pulse"
-                >
-                  <i class="bi bi-heart-fill fs-5"></i>
-                </button>
-                <img
-                  :src="product.imageUrl" alt="product-image"
-                  class="card-img-top object-fit-cover img-fluid"
-                />
-                <div
-                  class="card-body d-flex flex-column justify-content-between"
-                >
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
+            <div v-for="product in productList" :key="product.id" class="col mb-md-0 px-0 px-md-3">
+              <div class="card h-100 shadow-sm position-relative hvr-grow" style="cursor: pointer">
+                <RouterLink :to="`/product/${product.id}/content`" class="stretched-link"/>
+                <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="min-height: 200px"/>
+                <div class="card-body d-flex flex-column justify-content-between">
                   <h5 class="card-title fw-bold">{{ product.title }}</h5>
                   <div class="row gx-0 mb-2">
                     <div class="col-4">
@@ -64,9 +41,7 @@
                       </div>
                     </div>
                     <div class="col-8">
-                      <div
-                        class="d-flex justify-content-end align-items-baseline gap-2"
-                      >
+                      <div class="d-flex justify-content-end align-items-baseline gap-2">
                         <count-to
                           :startVal="countStart"
                           :endVal="countEnd"
@@ -82,20 +57,13 @@
                   </div>
                   <div class="d-flex justify-content-end gap-2">
                     <div v-for="(tag, index) in product.tags" :key="index">
-                      <span
-                        class="badge rounded-pill bg-primary text-white"
-                        style="right: 16px; bottom: 16px"
-                        >{{ `# ${tag}` }}</span
-                      >
+                      <span class="badge rounded-pill bg-primary text-white" style="right: 16px; bottom: 16px">{{ `# ${tag}` }}</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="col bg-secondary rounded-5 position-absolute z-index-n1 d-none d-md-block"
-              style="bottom: -20px; width: 100%; height: 40px"
-            ></div>
+            <div class="col bg-secondary rounded-5 position-absolute z-index-n1 d-none d-md-block" style="bottom: -20px; width: 100%; height: 40px"></div>
           </div>
         </div>
         <!-- <div class="col-xl-3">

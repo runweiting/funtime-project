@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="m-3 m-lg-6">
-    <div class="container p-5 p-md-10" data-aos="fade-up">
+    <div class="container p-5 p-md-10">
       <div class="row row-cols-1 row-cols-xl-2">
         <div class="col-xl-9">
           <div class="row row-cols-1">
@@ -48,7 +48,7 @@
                   <button @click="handleAddToCollection(item.product)" type="button" class="btn btn-white position-absolute p-0 btn-likes">
                     <i class="bi fs-5 bi-heart-fill text-danger"></i>
                   </button>
-                <img :src="item.product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="height: 200px;"/>
+                <img :src="item.product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="min-height: 200px;"/>
                 <div class="card-body d-flex flex-column justify-content-between">
                   <h5 class="card-title fw-bold">{{ item.product.title }}</h5>
                   <div class="row gx-0 mb-2">
@@ -74,16 +74,13 @@
                   </div>
                   <div class="d-flex justify-content-end gap-2">
                     <div v-for="(tag, index) in item.product.tags" :key="index">
-                      <span class="badge rounded-pill bg-primary text-white" style="right: 16px; bottom: 16px">{{ `# ${tag}` }}</span
-                      >
+                      <span class="badge rounded-pill bg-primary text-white" style="right: 16px; bottom: 16px">{{ `# ${tag}` }}</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="col bg-secondary rounded-5 position-absolute z-index-n1 d-none d-md-block"
-              style="bottom: -20px; width: 100%; height: 40px"
+            <div class="col bg-secondary rounded-5 position-absolute z-index-n1 d-none d-md-block" style="bottom: -20px; width: 100%; height: 40px"
             ></div>
           </div>
         </div>

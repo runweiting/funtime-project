@@ -188,10 +188,8 @@
           <div class="card h-100 shadow-sm position-relative hvr-grow" style="cursor: pointer;">
             <RouterLink :to="`/product/${product.id}/content`" class="stretched-link" />
             <button @click="handleAddToCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes">
-              <i v-if="isLikedList[product.id].isLiked === false" class="bi fs-5 bi-heart-fill text-white">
-              </i>
-              <i v-else class="bi fs-5 bi-heart-fill text-danger">
-              </i>
+              <i v-if="isLikedList[product.id].isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
+              <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
             <div class="rounded-circle bg-black position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm hvr-pop" style="top: 16px;left: 16px;width: 65px; height: 65px; transform: rotate(-10deg);">
               <span class="text-white fw-bold fs-6" >試玩</span>
