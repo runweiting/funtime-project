@@ -126,18 +126,18 @@
       </div>
     </div>
   </div>
-  <div class="d-lg-none mx-3 mx-lg-10 fixed-bottom" style="bottom: 12px;">
+  <!-- <div class="d-lg-none mx-3 mx-lg-10 fixed-bottom" style="bottom: 12px;">
     <div class="container bg-white rounded-5 border border-light border-5 py-3 px-12">
       <div class="row align-items-center">
         <div class="col">
           <div class="d-flex gap-4">
-            <!-- <RouterLink :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</RouterLink>
-            <RouterLink :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</RouterLink> -->
+            <RouterLink :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</RouterLink>
+            <RouterLink :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</RouterLink>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12">
       <div class="row row-cols-1 py-2 p-xl-4 pt-xl-8 row-cols-md-2">
@@ -158,13 +158,16 @@
             <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative" style="cursor: pointer;">
               <a @click="handleAddToCart(product.id, item.units)" class="stretched-link"></a>
               <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
-              <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
+                <span v-if="productQtyMap[product.id]" class="d-none d-md-block fs-6 badge bg-danger">剩 {{ product.target_units - (productQtyMap[product.id].productQty) }} 組</span>
+              </div>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2">
                   <h5 class="fw-bold mb-0">NT$ {{ product.origin_price * product.discount * item.units }}</h5>
                   <span class="badge bg-info-light text-black">{{ product.discount * 100 }}折</span>
                 </div>
-                <span v-if="productQtyMap[product.id]" class="fs-6 badge bg-danger">剩 {{ product.target_units - (productQtyMap[product.id].productQty) }} 組</span>
+                <span v-if="productQtyMap[product.id]" class="d-md-none fs-6 badge bg-danger">剩 {{ product.target_units - (productQtyMap[product.id].productQty) }} 組</span>
               </div>
               <small class="text-dark-gray">預定售價 <del>NT$ {{ product.origin_price }}</del>，現省 NT$ {{ (product.origin_price - (product.origin_price * product.discount)) * item.units }}</small>
               <div>

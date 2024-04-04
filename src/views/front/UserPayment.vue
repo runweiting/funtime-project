@@ -15,18 +15,18 @@
         <div class="col-md-6 col-lg-5 px-xl-4">
           <div class="rounded-5 border border-5 border-light p-5">
             <div class="row row-cols-1 gy-5">
-              <div class="col px-8 px-xl-10">
+              <div class="col px-8">
                 <div class="row row-cols-md-1 row-cols-sm-2 align-items-center">
                   <div class="col-sm-7">
-                    <div class="d-flex gap-2 text-dark-gray mb-2">
-                      <span>訂單時間</span>
+                    <div class="d-flex gap-1 text-dark-gray mb-2">
+                      <span>時間</span>
                       <span v-if="tempOrder.create_at">
                         {{ formatDate(tempOrder.create_at).formattedDate }}
                         {{ formatDate(tempOrder.create_at).formattedTime }}
                       </span>
                     </div>
-                    <div class="d-flex gap-2 text-dark-gray">
-                      <span>訂單編號</span>
+                    <div class="d-flex gap-1 text-dark-gray">
+                      <span class="text-nowrap">編號</span>
                       <span>{{ tempOrder.id }}</span>
                     </div>
                   </div>
@@ -49,7 +49,7 @@
                       </thead>
                       <tbody class="align-middle">
                         <tr>
-                          <th scope="row">預購<br class="d-414-block">金額</th>
+                          <th scope="row" style="width: 22%;">金額</th>
                           <td>
                             <span class="fs-5 fw-bold">NT$ {{ item.total }}元</span>
                             <div v-if="item.coupon" class="d-flex gap-2 mt-1">
@@ -60,9 +60,9 @@
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">預購<br class="d-414-block">內容</th>
+                          <th scope="row" style="width: 22%;">內容</th>
                           <td>
-                            <span class="fs-5 fw-bold">{{ item.product.short_title }}{{ item.qty }}套</span>
+                            <span class="fs-6 fw-bold">{{ item.product.short_title }}{{ item.qty }}套</span>
                             <div class="text-dark-gray mt-1">
                               完整 1 套內含：
                               <ul v-for="(content, index) in item.product.contents" :key="index" class="list-unstyled mb-0">
@@ -72,7 +72,7 @@
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">收件<br class="d-414-block">訊息</th>
+                          <th scope="row" style="width: 22%;">明細</th>
                           <td colspan="2">
                             <ul class="list-unstyled mb-0 text-dark-gray">
                               <li>姓名：{{ tempOrder.user.name }}</li>
@@ -85,7 +85,7 @@
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">付款<br class="d-414-block">狀態</th>
+                          <th scope="row" style="width: 22%;">狀態</th>
                           <td colspan="2">
                             <div class="d-flex gap-2">
                               <i class="bi bi-alarm-fill text-info"></i>
@@ -158,8 +158,8 @@
                       <div class="col">
                         <div class="form-check ps-10">
                           <VField @change="clearInput" v-model="selectedInvoiceType" rules="required" :class="{ 'is-invalid': errors['發票類型'] }" type="radio" value="individual"
-                          class="form-check-input" style="margin-left: -2rem;" name="發票類型" id="invoice-type" />
-                          <label class="form-check-label text-dark-gray" for="發票類型">
+                          class="form-check-input" style="margin-left: -2rem;" name="發票類型" id="invoice-individual" />
+                          <label class="form-check-label text-dark-gray" for="invoice-individual">
                             個人發票
                           </label>
                           <ErrorMessage name="發票類型" class="invalid-feedback" />
@@ -181,8 +181,8 @@
                     <div class="row row-cols-1 row-cols-sm-2 gy-3">
                       <div class="col">
                         <div class="form-check ps-10">
-                          <VField @change="clearInput" v-model="selectedInvoiceType" rules="required" :class="{ 'is-invalid': errors['發票類型'] }" type="radio" value="company" class="form-check-input" style="margin-left: -2rem;"  name="發票類型" id="invoice-type" />
-                          <label class="form-check-label text-dark-gray" for="發票類型">
+                          <VField @change="clearInput" v-model="selectedInvoiceType" rules="required" :class="{ 'is-invalid': errors['發票類型'] }" type="radio" value="company" class="form-check-input" style="margin-left: -2rem;"  name="發票類型" id="invoice-company" />
+                          <label class="form-check-label text-dark-gray" for="invoice-company">
                             公司發票
                           </label>
                           <ErrorMessage name="發票類型" class="invalid-feedback" />
@@ -215,7 +215,7 @@
                       <div class="col">
                         <div class="form-check ps-10">
                           <VField @change="clearInput" v-model="selectedPaymentType" rules="required" :class="{ 'is-invalid': errors['付款方式'] }" type="radio" value="creditCard" class="form-check-input" style="margin-left: -2rem;" name="付款方式" id="credit-card"/>
-                          <label class="form-check-label text-dark-gray" for="付款方式">
+                          <label class="form-check-label text-dark-gray" for="credit-card">
                             線上刷卡
                           </label>
                           <ErrorMessage name="付款方式" class="invalid-feedback" />
@@ -268,7 +268,7 @@
                       <div class="col">
                         <div class="form-check ps-10">
                           <VField @change="clearInput" v-model="selectedPaymentType" rules="required" :class="{ 'is-invalid': errors['付款方式'] }" type="radio" value="bankTransfer" class="form-check-input" style="margin-left: -2rem;" name="付款方式" id="bank-transfer" />
-                          <label class="form-check-label text-dark-gray" for="付款方式">
+                          <label class="form-check-label text-dark-gray" for="bank-transfer">
                             ATM虛擬帳號轉帳
                           </label>
                           <ErrorMessage name="付款方式" class="invalid-feedback" />
@@ -278,15 +278,15 @@
                     <div class="row">
                       <div class="col">
                         <div class="d-flex gap-2 mb-2 text-dark-gray">
-                          <span>繳費銀行名稱：</span>
+                          <span>銀行名稱：</span>
                           <span>六角銀行</span>
                         </div>
                         <div class="d-flex gap-2 mb-2 text-dark-gray">
-                          <span>繳費銀行代碼：</span>
+                          <span>銀行代碼：</span>
                           <span>xxx</span>
                         </div>
                         <div class="d-flex gap-2 mb-2 text-dark-gray">
-                          <span>繳費虛擬帳號：</span>
+                          <span>繳費帳號：</span>
                           <span>xxxx xxxx xxxx xxxx</span>
                         </div>
                       </div>

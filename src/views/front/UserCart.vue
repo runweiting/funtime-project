@@ -14,11 +14,11 @@
       <div class="row row-cols-1">
         <div class="col-md-8 px-xl-4">
           <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3">
-            <div class="row">
-              <div class="col-5">
+            <div class="row row-cols-1 gy-4">
+              <div class="col-md-5">
                 <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
               </div>
-              <div class="col-7">
+              <div class="col-md-7">
                 <div class="d-flex flex-column h-100">
                   <h6 class="text-dark-gray fw-normal mb-4">{{ product.short_title }}</h6>
                   <div class="d-flex justify-content-between">
@@ -45,7 +45,7 @@
               </div>
               <div class="d-flex">
                 <i class="bi bi-circle-fill text-primary" style="scale: 40%;"></i>
-                <span class="fs-6 fst-italic text-black text-center">歡迎試玩、分享，越早實現企劃。</span>              
+                <span class="fs-6 fst-italic text-black text-center">歡迎試玩分享，越早實現企劃。</span>              
               </div>
             </div>
             <div class="d-flex gap-2 text-dark-gray">
@@ -73,35 +73,33 @@
           <div class="rounded-5 border border-5 border-light p-5">
             <div class="d-flex flex-column gap-4">
               <div class="row align-items-center">
-                <div class="col-4">
+                <div class="col">
                   <h6 class="text-dark-gray mb-0">預購明細</h6>
-                </div>
-                <div class="col-8">
                 </div>
               </div>
               <div class="row align-items-center">
                 <div class="col-4">
-                  <span class="text-dark-gray">預購數量</span>
+                  <span class="text-dark-gray">數量</span>
                 </div>
                 <div class="col-8">
                   <div class="input-group">
-                    <button :disabled="tempCartQty === 1" type="button" class="btn btn-outline-primary" @click="tempCartQty--">
+                    <button :disabled="tempCartQty === 1" type="button" class="btn btn-outline-primary d-md-none d-lg-block" @click="tempCartQty--">
                       <i class="bi bi-dash"></i>                       
                     </button>
                     <input v-model="tempCartQty" type="number" min="1" class="form-control" aria-label="cart-qty" aria-describedby="cart-qty">
-                    <button type="button" class="btn btn-outline-primary" @click="tempCartQty++">
+                    <button type="button" class="btn btn-outline-primary d-md-none d-lg-block" @click="tempCartQty++">
                       <i class="bi bi-plus"></i>
                     </button>
                   </div>
                 </div>
               </div>
               <div class="d-flex justify-content-between">
-                <span class="text-dark-gray">預購金額</span>
+                <span class="text-dark-gray">金額</span>
                 <h5 class="fs-4 fw-bold mb-0 text-end">NT$ {{ product.origin_price * product.discount * tempCartQty }}</h5>
               </div>
             </div>
             <hr class="w-100 border-top my-4" style="border: 3px dotted #8C8C8E;">
-            <div class="d-flex gap-2">
+            <div class="d-flex flex-md-column gap-2">
               <button @click="handlePutCart(tempProductId ,tempCartId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購</button>
               <button @click="handleDeleteCart(tempCartId)" type="button" class="btn btn-outline-danger w-100">刪除預購</button>
             </div>

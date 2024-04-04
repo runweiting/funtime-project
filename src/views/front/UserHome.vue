@@ -210,24 +210,28 @@
                     <div ref="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: 0 + '%' }"></div>
                   </div>
                   <div v-if="productQtyMap[product.id]">
-                    <small class="fw-bold">{{ ((productQtyMap[product.id].productQty / product.target_units) * 100).toFixed(1) }}%</small>
+                    <small class="fw-bold ms-2">{{ ((productQtyMap[product.id].productQty / product.target_units) * 100).toFixed(1) }}%</small>
                   </div>
                   <div v-else>
                     <small class="fw-bold">{{ 0 }}%</small>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center gap-2">
+                  <div class="d-flex align-items-center gap-2 ">
                     <small class="fst-italic">目標 {{ product.target_units }} 組</small>
                     <small class="text-dark-gray">/</small>
                     <small v-if="productQtyMap[product.id]" class="fst-italic"> 累計 {{ productQtyMap[product.id].orderQty }} 組</small>
                   </div>
-                  <small class="d-flex align-items-center gap-2 fst-italic fw-bold">
-                    <span>20 <i class="bi bi-heart-fill text-danger"></i>
-                    </span>
-                    <span>20 <i class="bi bi-chat-fill text-gray"></i>
-                    </span>
-                  </small>
+                  <!-- <div class="d-flex gap-2" >
+                    <div class="d-flex align-items-center gap-2 fst-italic fw-bold">
+                      <span class="d-none d-block-md">20</span>
+                      <i class="bi bi-heart-fill text-danger"></i>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 fst-italic fw-bold">
+                      <span class="d-none d-block-md">20</span>
+                      <i class="bi bi-chat-fill text-gray"></i>
+                    </div>
+                  </div> -->
                 </div>
               </div>
               <div class="d-flex justify-content-end gap-2">

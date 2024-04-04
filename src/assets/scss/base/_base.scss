@@ -48,6 +48,12 @@
 .gap-414-2 {
   gap: 0.5rem; // 8px
 }
+/* 768px */
+.d-768-block {
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
 /* progress-chart */
 .icon-area {
   width: 35px;

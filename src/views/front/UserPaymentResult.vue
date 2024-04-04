@@ -15,25 +15,25 @@
           <div class="col px-xl-4">
             <div class="rounded-5 border border-5 border-light p-5">
               <div class="row mb-5">
-                <div class="col px-8 px-xl-10">
+                <div class="col px-8">
                   <div class="row row-cols-1 row-cols-md-2 align-items-center">
                     <div class="col-md-7">
-                      <div class="d-flex gap-2 text-dark-gray mb-2">
-                        <span>訂單時間</span>
+                      <div class="d-flex gap-1 text-dark-gray mb-2">
+                        <span>時間</span>
                         <span v-if="tempOrder.create_at">
                           {{ formatDate(tempOrder.create_at).formattedDate }}
                           {{ formatDate(tempOrder.create_at).formattedTime }}
                         </span>
                       </div>
-                      <div class="d-flex gap-2 text-dark-gray">
-                        <span>訂單編號</span>
+                      <div class="d-flex gap-1 text-dark-gray">
+                        <span class="text-nowrap">編號</span>
                         <span>{{ tempOrder.id }}</span>
                       </div>
                     </div>
                     <div class="col-md-5">
                       <div class="d-flex justify-content-between align-items-center">
                         <img src="/dazzle-order-delivered.gif" alt="open-book-glasses-and-stars" class="object-fit-cover img-fluid w-50">
-                        <div class="d-flex justify-content-start justify-content-md-center align-items-md-center gap-2 gap-lg-4">
+                        <div class="d-flex justify-content-start flex-md-column justify-content-md-center align-items-md-center gap-2 gap-lg-4">
                           <i class="bi bi-check-circle-fill text-dark-secondary fs-4"></i>
                           <h4 class="mb-0">付款成功</h4>
                         </div>
@@ -54,7 +54,7 @@
                         </thead>
                         <tbody class="align-middle">
                           <tr>
-                            <th scope="row">訂單<br class="d-414-block">金額</th>
+                            <th scope="row" style="width: 22%;">金額</th>
                             <td>
                               <span class="fs-5 fw-bold">NT$ {{ item.total }}元</span>
                               <div v-if="item.coupon" class="d-flex gap-2 mt-1">
@@ -65,9 +65,9 @@
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row">訂單<br class="d-414-block">內容</th>
+                            <th scope="row" style="width: 22%;">內容</th>
                             <td>
-                              <span class="fs-5 fw-bold">{{ item.product.short_title }}{{ item.qty }}套</span>
+                              <span class="fs-6 fw-bold">{{ item.product.short_title }}{{ item.qty }}套</span>
                               <div class="text-dark-gray mt-1">
                                 完整 1 套內含：
                                 <ul v-for="(content, index) in item.product.contents" :key="index" class="list-unstyled mb-0">
@@ -77,7 +77,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row">收件<br class="d-414-block">訊息</th>
+                            <th scope="row" style="width: 22%;">明細</th>
                             <td colspan="2">
                               <ul class="list-unstyled mb-0 text-dark-gray">
                                 <li>姓名：{{ tempOrder.user.name }}</li>
@@ -90,7 +90,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row">付款<br class="d-414-block">狀態</th>
+                            <th scope="row" style="width: 22%;">狀態</th>
                             <td colspan="2">
                               <div class="d-flex gap-2 mt-1">
                                 <i class="bi bi-check-circle-fill text-dark-secondary"></i>
@@ -114,13 +114,13 @@
                         </thead>
                         <tbody class="align-middle">
                           <tr>
-                            <th scope="row">訂單<br class="d-414-block">狀態</th>
+                            <th scope="row">訂單</th>
                             <td colspan="2">
                               <span class="text-dark-gray">處理中</span>
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row">送貨<br class="d-414-block">狀態</th>
+                            <th scope="row">送貨</th>
                             <td colspan="2">
                               <span class="text-dark-gray">備貨中</span>
                             </td>
@@ -145,9 +145,9 @@
                       </table>
                     </div>
                     <div class="text-end">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span class="fs-6 text-dark-gray responsive-lh-ls text-normal mb-0">
-                          感謝您的支持，看看其他有趣的企劃吧！
+                      <div class="d-flex flex-column gap-4 justify-content-center">
+                        <span class="fs-6 text-dark-gray responsive-lh-ls text-normal mb-0 text-center">
+                          感謝您的支持，<span class="d-768-block">看看其他有趣的企劃！</span>
                         </span>
                         <button @click="goHome" type="submit" class="btn btn-primary text-white">前往首頁</button>
                       </div>

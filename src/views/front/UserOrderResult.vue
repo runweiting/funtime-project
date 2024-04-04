@@ -38,22 +38,22 @@
         <div class="col-md-6 col-lg-7 px-xl-4 gy-3 gy-md-0">
           <div class="rounded-5 border border-5 border-light p-5 h-100 position-sticky top-0">
             <div class="row row-cols-1 gy-5">
-              <div class="col px-8 px-xl-10">
-                <div class="row row-cols-1 row-cols-sm-2 align-items-center mb-4">
-                  <div class="col-sm-7">
-                    <div class="d-flex gap-2 text-dark-gray mb-2">
-                      <span>訂單時間</span>
+              <div class="col px-8">
+                <div class="row row-cols-1 gy-6 row-cols-xxl-2 align-items-center mb-4">
+                  <div class="col">
+                    <div class="d-flex gap-1 text-dark-gray mb-2">
+                      <span>時間</span>
                       <span v-if="tempOrder.create_at">
                         {{ formatDate(tempOrder.create_at).formattedDate }}
                         {{ formatDate(tempOrder.create_at).formattedTime }}
                       </span>
                     </div>
-                    <div class="d-flex gap-2 text-dark-gray">
-                      <span>訂單編號</span>
+                    <div class="d-flex gap-1 text-dark-gray">
+                      <span class="text-nowrap">編號</span>
                       <span>{{ tempOrder.id }}</span>
                     </div>
                   </div>
-                  <div class="col-sm-5">
+                  <div class="col">
                     <div v-if="tempOrder.id" class="d-flex justify-content-start justify-content-sm-center align-items-center gap-2 gap-lg-4 pt-4 pt-sm-0">
                       <i class="bi bi-check-circle-fill text-dark-secondary fs-4"></i>
                       <h4 class="mb-0">預購成功</h4>
@@ -72,7 +72,7 @@
                       </thead>
                       <tbody class="align-middle">
                         <tr>
-                          <th scope="row">預購<br class="d-414-block">金額</th>
+                          <th scope="row" style="width: 22%;">金額</th>
                           <td>
                             <span class="fs-5 fw-bold">NT$ {{ product.final_total }}元</span>
                             <div v-if="product.coupon" class="d-flex gap-2 mt-1">
@@ -83,7 +83,7 @@
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">收件<br class="d-414-block">訊息</th>
+                          <th scope="row" style="width: 22%;">明細</th>
                           <td colspan="2">
                             <ul class="list-unstyled mb-0 text-dark-gray">
                               <li>姓名：{{ tempOrder.user.name }}</li>
@@ -96,7 +96,7 @@
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">付款<br class="d-414-block">狀態</th>
+                          <th scope="row" style="width: 22%;">狀態</th>
                           <td colspan="2">
                             <div class="d-flex align-items-center gap-2">
                               <!-- <i class="bi bi-pause-circle-fill text-gray"></i>
