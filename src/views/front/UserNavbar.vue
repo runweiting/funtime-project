@@ -13,18 +13,19 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav gap-6">
             <li class="nav-item">
-            <!-- RouterLink 生成路由連結，編譯後轉為 <a>，to 代表要進入的路由 -->
-              <RouterLink 
-              :to="{ name: 'home' }" class="nav-link text-decoration-none">{{ $t('menu.home') }}
+              <RouterLink @click="closeNavbar" :to="{ name: 'home' }" class="nav-link text-decoration-none">
+                {{ $t('menu.home') }}
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink 
-              :to="{ name: 'products' }" class="nav-link text-decoration-none">{{ $t('menu.products') }}</RouterLink>
+              <RouterLink @click="closeNavbar" :to="{ name: 'products' }" class="nav-link text-decoration-none">
+                {{ $t('menu.products') }}
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink 
-              :to="{ name: 'collection' }" class="nav-link text-decoration-none">{{ $t('menu.collection') }}</RouterLink>
+              <RouterLink @click="closeNavbar" :to="{ name: 'collection' }" class="nav-link text-decoration-none">
+                {{ $t('menu.collection') }}
+              </RouterLink>
             </li>
             <li class="nav-item">
               <div v-if="isInputEnabled" class="input-group">
@@ -117,6 +118,10 @@ export default {
       const selectLanguage = event.target.value;
       this.$i18n.locale = selectLanguage;
     },
+    closeNavbar() {
+      const navbarToggle = document.querySelector('.navbar-toggler');
+      navbarToggle.click();
+    },
     // 查詢、核對訂單
     goToOrder(orderId) {
       if (orderId === '') {
@@ -131,6 +136,7 @@ export default {
       this.$router.push({ name: "order-search", params: { orderId } });
       this.tempOrderId = '';
       this.isInputEnabled = false;
+      this.closeNavbar();
     }
   }
 };

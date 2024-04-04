@@ -29,7 +29,7 @@
           </div>
           <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
             <div v-for="product in productList" :key="product.id" class="col mb-md-0 px-0 px-md-3">
-              <div class="card h-100 shadow-sm position-relative hvr-grow" style="cursor: pointer">
+              <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer">
                 <RouterLink :to="`/product/${product.id}/content`" class="stretched-link"/>
                 <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="min-height: 200px"/>
                 <div class="card-body d-flex flex-column justify-content-between">

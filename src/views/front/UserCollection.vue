@@ -43,7 +43,7 @@
           </div>
           <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
             <div v-for="item in tempCollection" :key="item.product.id" class="col mb-md-0 px-0 px-md-3">
-              <div class="card h-100 shadow-sm position-relative hvr-grow" style="cursor: pointer">
+              <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer">
                 <RouterLink :to="`/product/${item.product.id}/content`" class="stretched-link" />
                   <button @click="handleAddToCollection(item.product)" type="button" class="btn btn-white position-absolute p-0 btn-likes">
                     <i class="bi fs-5 bi-heart-fill text-danger"></i>
