@@ -1,0 +1,1 @@
+import{S as e}from"./index-TFW6QGXf.js";function i(n){return new Promise(o=>{e.mixin({toast:!0,position:"bottom-end",showConfirmButton:!1,timer:3e3,timerProgressBar:!1,didOpen:t=>{t.addEventListener("mouseenter",e.stopTimer),t.addEventListener("mouseleave",e.resumeTimer)}}).fire({icon:"warning",title:n}).then(()=>{o()})})}export{i as s};
