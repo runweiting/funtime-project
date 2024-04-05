@@ -11,6 +11,11 @@
   }
 }
 
+.hvr-card:hover {
+  border: 5px solid #6637ED !important;
+  transition-duration: 0.5s;
+}
+
 /* grow */
 .hvr-grow {
   display: inline-block;

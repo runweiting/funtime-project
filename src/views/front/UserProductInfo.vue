@@ -155,7 +155,7 @@
             </div>
           </div>
           <div class="position-lg-sticky" id="targetSection">
-            <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative" style="cursor: pointer;">
+            <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative hvr-card shadow-sm" style="cursor: pointer;">
               <a @click="handleAddToCart(product.id, item.units)" class="stretched-link"></a>
               <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
               <div class="d-flex justify-content-between align-items-center">
