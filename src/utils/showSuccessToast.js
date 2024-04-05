@@ -17,7 +17,6 @@ export default function showSuccessToast(message) {
       icon: "success",
       title: message,
     }).then(() => {
-      // 確保成功通知顯示後 resolve Promise
       resolve();
     });
   });

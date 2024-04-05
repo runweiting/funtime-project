@@ -17,7 +17,6 @@ export default function showWarningToast(message) {
       icon: "warning",
       title: message,
     }).then(() => {
-      // 確保成功通知顯示後 resolve Promise
       resolve();
     });
   });
