@@ -175,6 +175,14 @@ export default {
       tempOrderId: '',
     }
   },
+  watch: {
+    '$route.params.orderId': {
+      handler(newOrderId) {
+        this.getOrder(newOrderId);
+      },
+      immediate: true
+    }
+  },
   mounted() {
     const { orderId } = this.$route.params;
     this.tempOrderId = orderId;

@@ -200,12 +200,8 @@ import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
 import showErrorToast from '@/utils/showErrorToast';
 import showWarningToast from '@/utils/showWarningToast';
-// import ProductContent from '@/components/front/ProductContent.vue';
 
 export default {
-  components: {
-    // ProductContent
-  },
   mounted() {
     const { id } = this.$route.params;
     this.getProduct(id);
