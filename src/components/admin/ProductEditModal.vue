@@ -23,7 +23,7 @@
               <div class="col-md-3">
                 <div class="mb-4">
                   <label for="imgUrl" class="form-label">主要圖片</label>
-                  <input v-model="selectedProduct.imageUrl" type="url" class="form-control mb-2" id="imgUrl" placeholder="請輸入網址"/>
+                  <input id="imgUrl" v-model="selectedProduct.imageUrl" type="url" class="form-control mb-2" placeholder="請輸入網址"/>
                   <img :src="selectedProduct.imageUrl" class="img-fluid" />
                 </div>
                 <!-- 多圖新增 -->
@@ -68,30 +68,30 @@
                 <div class="row">
                   <div class="col-8">
                     <label for="title" class="form-label">完整標題</label>
-                    <input v-model="selectedProduct.title" type="text" class="form-control mb-4" name="full-title" placeholder="請輸入完整標題"/>
+                    <input id="title" v-model="selectedProduct.title" type="text" class="form-control mb-4" name="full-title" placeholder="請輸入完整標題"/>
                   </div>
                   <div class="col-4">
                     <label for="short-title" class="form-label">簡短標題</label>
-                    <input v-model="selectedProduct.short_title" type="text" class="form-control mb-4" name="short-title" placeholder="請輸入簡單標題"/>
+                    <input id="short-title" v-model="selectedProduct.short_title" type="text" class="form-control mb-4" name="short-title" placeholder="請輸入簡單標題"/>
                   </div>
                 </div>
                 <!-- 描述 -->
                 <div class="row mb-4">
                   <div class="col">
                     <label for="description" class="form-label">專案描述</label>
-                    <textarea v-model="selectedProduct.description" class="form-control" placeholder="請輸入專案描述" id="description" rows="3"></textarea>
+                    <textarea id="description" v-model="selectedProduct.description" class="form-control" placeholder="請輸入專案描述" rows="3"></textarea>
                   </div>
                 </div>
                 <!-- 提案人、#標籤、特色 -->
                 <div class="row mb-4">
                   <div class="col">
                     <label for="proposer" class="form-label">提案人</label>
-                    <input v-model="selectedProduct.proposer" type="text" class="form-control" id="unit" placeholder="請輸入名稱"/>
+                    <input id="proposer" v-model="selectedProduct.proposer" type="text" class="form-control" placeholder="請輸入名稱"/>
                   </div>
                   <div class="col">
                     <label for="tags" class="form-label">標籤</label>
                     <div class="input-group mb-2">
-                      <input type="text" class="form-control" placeholder="請輸入標籤" v-model="newTag" @keyup.enter="addTag">
+                      <input id="tags" type="text" class="form-control" placeholder="請輸入標籤" v-model="newTag" @keyup.enter="addTag">
                       <button class="btn btn-gray text-white" type="button" @click="addTag">新增</button>
                     </div>
                     <div class="d-flex flex-wrap gap-2">
@@ -105,7 +105,7 @@
                   <div class="col">
                     <label for="features" class="form-label">特色</label>
                     <div class="input-group mb-2">
-                      <input type="text" class="form-control" placeholder="請輸入特色" v-model="newFeature" @keyup.enter="addFeature">
+                      <input id="features" type="text" class="form-control" placeholder="請輸入特色" v-model="newFeature" @keyup.enter="addFeature">
                       <button class="btn btn-gray text-white" type="button" @click="addFeature">新增</button>
                     </div>
                     <div class="d-flex flex-wrap gap-2">
@@ -121,7 +121,7 @@
                 <div class="row">
                   <div class="col">
                     <label for="category" class="form-label">分類</label>
-                    <select v-model="selectedProduct.category" class="form-select" aria-label="category"  id="category" name="category">
+                    <select id="category" v-model="selectedProduct.category" class="form-select" aria-label="category" name="category">
                       <option value="" disabled selected hidden>請輸入分類</option>
                       <option value="地圖">地圖</option>
                       <option value="卡牌">卡牌</option>
@@ -131,12 +131,12 @@
                   </div>
                   <div class="col">
                     <label for="target_units" class="form-label">目標組數</label>
-                    <input v-model.number="selectedProduct.target_units" type="number" min="0" class="form-control" id="target_units" placeholder="請輸入目標組數"
+                    <input id="target_units" v-model.number="selectedProduct.target_units" type="number" min="0" class="form-control" placeholder="請輸入目標組數"
                     />
                   </div>
                   <div class="col">
                     <label for="unit" class="form-label">單位</label>
-                    <input v-model="selectedProduct.unit" type="text" class="form-control" id="unit" placeholder="請輸入單位"/>
+                    <input id="unit" v-model="selectedProduct.unit" type="text" class="form-control" placeholder="請輸入單位"/>
                   </div>
                 </div>
                 <hr class="w-100 border-top my-8" style="border: 3px dotted #8C8C8E;">
@@ -144,25 +144,25 @@
                 <div class="row mb-4">
                   <div class="col">
                     <label for="content_question" class="form-label">困擾標題</label>
-                    <input v-model="selectedProduct.question" type="text" class="form-control" id="content_question" placeholder="請輸入困擾標題"/>
+                    <input id="content_question" v-model="selectedProduct.question" type="text" class="form-control" placeholder="請輸入困擾標題"/>
                   </div>
                 </div>
                 <!-- 設計特點 -->
                 <div class="row mb-4">
                   <div class="col-4">
                     <label for="point-title" class="form-label">設計特點</label>
-                    <input type="text" class="form-control" placeholder="請輸入特點" v-model="newPoint.title">
+                    <input id="point-title" type="text" class="form-control" placeholder="請輸入特點" v-model="newPoint.title">
                   </div>
                   <div class="col-8">
                     <label for="point-content" class="form-label">設計內容</label>
-                      <textarea v-model="newPoint.content" class="form-control" placeholder="請輸入內容" id="point-content" rows="1"></textarea>
+                      <textarea id="point-content" v-model="newPoint.content" class="form-control" placeholder="請輸入內容" rows="1"></textarea>
                   </div>
                 </div>
                 <!-- 情境圖片 -->
                 <div class="row align-items-center mb-4">
                   <div class="col">
                     <label for="point-imgUrl" class="form-label">情境圖片</label>
-                    <input  v-model="newPoint.imageUrl" type="url" class="form-control" id="point-imgUrl" placeholder="請輸入網址"/>
+                    <input id="point-imgUrl" v-model="newPoint.imageUrl" type="url" class="form-control" placeholder="請輸入網址"/>
                   </div>
                   <div class="col">
                     <img :src="newPoint.imageUrl" class="img-fluid" />
@@ -192,26 +192,26 @@
                 <div class="row mb-4">
                   <div class="col">
                     <label for="original-price" class="form-label">售價</label>
-                    <input v-model.number="selectedProduct.origin_price" type="number" min="0" class="form-control" id="original-price" placeholder="請輸入售價"/>
+                    <input id="original-price" v-model.number="selectedProduct.origin_price" type="number" min="0" class="form-control" placeholder="請輸入售價"/>
                   </div>
                   <div class="col">
                     <label for="discount" class="form-label">折扣</label>
-                    <input @keyup="calculatePrice" v-model.number="selectedProduct.discount" type="number" min="0" class="form-control" id="discount" placeholder="請輸入折扣"/>
+                    <input id="discount" @keyup="calculatePrice" v-model.number="selectedProduct.discount" type="number" min="0" class="form-control" placeholder="請輸入折扣"/>
                   </div>
                   <div class="col">
                     <label for="original-price" class="form-label">折扣價</label>
-                    <input v-model.number="selectedProduct.price" disabled  type="number" class="form-control" id="original-price"/>
+                    <input id="original-price" v-model.number="selectedProduct.price" disabled  type="number" class="form-control"/>
                   </div>
                 </div>
                 <!-- 優惠套裝 -->
                 <div class="row mb-4">
                   <div class="col">
                     <label for="package-name" class="form-label">套裝名稱</label>
-                    <input type="text" class="form-control" placeholder="請輸入名稱" v-model="newPackage.name">
+                    <input id="package-name" type="text" class="form-control" placeholder="請輸入名稱" v-model="newPackage.name">
                   </div>
                   <div class="col">
                     <label for="package-units" class="form-label">內含組數</label>
-                    <input type="number" min="0" class="form-control" placeholder="請輸入組數" v-model.number="newPackage.units">
+                    <input id="package-units" type="number" min="0" class="form-control" placeholder="請輸入組數" v-model.number="newPackage.units">
                   </div>
                   <div class="col mt-auto">
                     <button class="btn btn-gray text-white" type="button" @click="addPackage">新增</button>
@@ -237,14 +237,14 @@
                   <div class="col">
                     <label for="contents" class="form-label">內容物</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="請輸入內容物" v-model="newContent">
+                      <input id="contents" type="text" class="form-control" placeholder="請輸入內容物" v-model="newContent">
                       <button class="btn btn-gray text-white" type="button" @click="addContent">新增</button>
                     </div>
                   </div>
                   <div class="col">
                     <label for="notes" class="form-label">備註</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="請輸入備註" v-model="newNote">
+                      <input id="notes" type="text" class="form-control" placeholder="請輸入備註" v-model="newNote">
                       <button class="btn btn-gray text-white" type="button" @click="addNote">新增</button>
                     </div>
                   </div>
@@ -281,14 +281,14 @@
                     <span class="ms-2 text-primary fw-bold fs-5">
                       {{ selectedProduct.productRatings }} 分
                     </span>
-                    <input v-model="selectedProduct.productRatings"  type="range" class="form-range" min="0" max="5" step="1"/>
+                    <input id="range" v-model="selectedProduct.productRatings"  type="range" class="form-range" min="0" max="5" step="1"/>
                   </div>
                   <div class="col mt-auto">
                     <div class="form-check pb-2">
-                      <label class="form-label m-0" for="product-active">啟用商品</label>
+                      <label for="product-active" class="form-label m-0">啟用商品</label>
                       <label class="switch ms-2">
                         <!-- <input> 開關、<span> 滑動圓點 -->
-                        <input v-model="selectedProduct.is_enabled" type="checkbox">
+                        <input id="product-active" v-model="selectedProduct.is_enabled" type="checkbox">
                         <span class="slider"></span>
                       </label>
                     </div>
@@ -299,16 +299,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button @click="cancelUpdate" 
-            type="button"
-            class="btn btn-danger text-white"
-            data-bs-dismiss="modal"
-          >
-            取消
-          </button>
-          <button @click="updateProduct(this.isNew, this.selectedProduct)" type="button" class="btn btn-primary">
-            確認
-          </button>
+          <button @click="cancelUpdate" type="button" class="btn btn-danger text-white" data-bs-dismiss="modal">取消</button>
+          <button @click="updateProduct(this.isNew, this.selectedProduct)" type="button" class="btn btn-primary">確認</button>
         </div>
       </div>
     </div>

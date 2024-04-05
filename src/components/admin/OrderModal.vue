@@ -14,12 +14,7 @@
             <span>訂單編號：{{ tempOrder.id }}</span>
             <br>
           </h5>
-          <button @click="cancelUpdateOrder"
-            type="button"
-            class="btn btn-outline-light"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ><i class="bi bi-x-lg"></i>
+          <button @click="cancelUpdateOrder" type="button" class="btn btn-outline-light" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i>
           </button>
         </div>
         <div class="modal-body">
@@ -30,20 +25,13 @@
                   <div class="col-md-5 d-flex align-items-center gap-3">
                     <label for="payment" class="col-form-label">付款狀態：</label>
                     <div>
-                      <select v-model="tempOrder.is_paid" :disabled="inputDisabled" class="form-select" id="payment">
-                        <option :value="true">
-                          已付款
-                        </option>
-                        <option :value="false">
-                          未付款
-                        </option>
+                      <select id="payment" v-model="tempOrder.is_paid" class="form-select">
+                        <option :value="true">已付款</option>
+                        <option :value="false">未付款</option>
                       </select>
                     </div>
                     <i v-if="tempOrder.is_paid" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
                     <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
-                  </div>
-                  <div class="col-md-7">
-                    <button @click="togglerEdit" type="button" class="btn btn-warning">修改訂單</button>
                   </div>
                 </div>
               </div>
@@ -55,38 +43,37 @@
                   <div class="row mb-2">
                     <label for="date" class="col-sm-3 col-form-label">建立時間：</label>
                     <div class="col-sm-9">
-                      <input
-                      v-model="formatDate(tempOrder.create_at).formattedDate" :disabled="inputDisabled" type="text" class="form-control" id="date">
+                      <input id="date" v-model="formatDate(tempOrder.create_at).formattedDate" type="text" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="Email" class="col-sm-3 col-form-label">Email：</label>
                     <div class="col-sm-9">
-                      <input v-model="tempOrder.user.email" :disabled="inputDisabled" type="email" class="form-control" id="Email">
+                      <input id="Email" v-model="tempOrder.user.email" type="email" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="name" class="col-sm-3 col-form-label">收件姓名：</label>
                     <div class="col-sm-9">
-                      <input v-model="tempOrder.user.name" :disabled="inputDisabled" type="text" class="form-control" id="name">
+                      <input id="name" v-model="tempOrder.user.name" type="text" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="tel" class="col-sm-3 col-form-label">聯絡電話：</label>
                     <div class="col-sm-9">
-                      <input v-model="tempOrder.user.tel" :disabled="inputDisabled" type="text" class="form-control" id="tel">
+                      <input id="tel" v-model="tempOrder.user.tel" type="text" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="address" class="col-sm-3 col-form-label">收件地址：</label>
                     <div class="col-sm-9">
-                      <input v-model="tempOrder.user.address" :disabled="inputDisabled" type="text" class="form-control" id="address">
+                      <input id="address" v-model="tempOrder.user.address" type="text" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="note" class="col-sm-3 col-form-label">留言：</label>
                     <div class="col-sm-9">
-                      <textarea v-model="tempOrder.user.message" :disabled="inputDisabled" class="form-control" name="note" id="note" cols="10" rows="10" style="height: 100px;"></textarea>
+                      <textarea id="note" v-model="tempOrder.user.message" class="form-control" name="note" cols="10" rows="10" style="height: 100px;"></textarea>
                     </div>
                   </div>
                 </form>
@@ -132,13 +119,7 @@
                           <p class="fs-6 mb-0">{{ item.product.price }}元</p>
                         </td>
                         <td class="text-end p-0">
-                          <button :disabled="inputDisabled"  @click="deleteOrder"
-                            type="button"
-                            class="btn btn-outline-danger btn-sm py-0"
-                            style="scale: 80%"
-                          >
-                            x
-                          </button>
+                          <button @click="deleteOrder" type="button" class="btn btn-outline-danger btn-sm py-0" style="scale: 80%">x</button>
                         </td>
                       </tr>
                     </tbody>
@@ -180,16 +161,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button @click="cancelUpdateOrder"
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            取消
-          </button>
-          <button @click="updateOrder" type="button" class="btn btn-danger">
-            更新訂單
-          </button>
+          <button @click="cancelUpdateOrder" type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button @click="updateOrder" type="button" class="btn btn-danger">更新訂單</button>
         </div>
       </div>
     </div>
@@ -200,9 +173,9 @@
 import { mapActions, mapState } from 'pinia';
 import adminOrdersStore from '@/stores/admin/adminOrdersStore';
 import timestampToDate from '@/utils/timestampToDate';
-import modalMixin from '@/mixins/modalMixin';
 import showSuccessToast from '@/utils/showSuccessToast';
 import showErrorToast from '@/utils/showErrorToast';
+import modalMixin from '@/mixins/modalMixin';
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
@@ -213,7 +186,6 @@ export default {
     return {
       orderModal: null,
       tempOrder: {},
-      inputDisabled: true,
       subTotal: 0,
     }
   },
@@ -244,6 +216,15 @@ export default {
     },
     
   },
+  mounted() {
+    const productValues = Object.values(this.tempOrder.products);
+    if (productValues.some(item => item.coupon && item.coupon.code)) {
+      // 如果訂單中有優惠券
+      this.subTotal = 0;
+    } else {
+      this.updateSubTotal();
+    }
+  },
   computed: {
     ...mapState(adminOrdersStore, ['currentPage'])
   },
@@ -253,17 +234,6 @@ export default {
     formatDate(timestamp) {
       const { formattedDay, formattedDate } = timestampToDate(timestamp);
       return { formattedDay, formattedDate }
-    },
-    // 修改訂單
-    togglerEdit() {
-      this.inputDisabled = false;
-      const productValues = Object.values(this.tempOrder.products);
-      if (productValues.some(item => item.coupon && item.coupon.code)) {
-        // 如果訂單中有優惠券
-        this.subTotal = 0;
-      } else {
-        this.updateSubTotal();
-      }
     },
     // 重新計算訂單總價
     updateSubTotal() {
@@ -276,7 +246,6 @@ export default {
     // 關閉修改訂單
     cancelUpdateOrder() {
       this.subTotal = 0;
-      this.inputDisabled = true;
     },
     // PUT 更新訂單
     updateOrder() {
@@ -288,7 +257,6 @@ export default {
         .then((res) => {
           showSuccessToast(res.data.message);
           this.subTotal = 0;
-          this.inputDisabled = true;
           this.modal.hide();
           this.getOrders(this.currentPage);
         })

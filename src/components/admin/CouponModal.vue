@@ -11,15 +11,10 @@
       <div class="modal-content">
         <div class="modal-header bg-dark opacity-75 text-white">
           <h5 class="modal-title" id="couponModalLabel">
-            <span>優惠卷ID：{{ tempCoupon.id }}</span>
+            <span>優惠卷編號：{{ tempCoupon.id }}</span>
             <br>
           </h5>
-          <button @click="cancelUpdate"
-            type="button"
-            class="btn btn-outline-light"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ><i class="bi bi-x-lg"></i>
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i>
           </button>
         </div>
         <div class="modal-body">
@@ -30,7 +25,7 @@
                   <div class="col-md-6 d-flex align-items-center gap-3">
                     <label for="dateInput" class="col-form-label">啟用日期：</label>
                     <div class="col-sm-6">
-                      <input v-model="formatDate(tempCoupon.start_date).formattedDate" disabled class="form-control" type="text" id="dateInput">
+                      <input id="dateInput" v-model="formatDate(tempCoupon.start_date).formattedDate" disabled class="form-control" type="text">
                     </div>
                   </div>
                 </div>
@@ -39,23 +34,16 @@
                     <div class="d-flex align-items-center gap-3">
                       <label for="enabled" class="col-form-label">啟用狀態：</label>
                       <div class="col-sm-6">
-                        <VField v-model="tempCoupon.is_enabled" rules="required" :class="{ 'is-invalid': errors['啟用狀態'] }"  :disabled="inputDisabled" class="form-select w-100" id="enabled" name="啟用狀態" as="select">
-                          <option value="已啟用">
-                            已啟用
-                          </option>
-                          <option value="未啟用">
-                            未啟用
-                          </option>
+                        <VField id="enabled" v-model="tempCoupon.is_enabled" rules="isEnabled" :class="{ 'is-invalid': errors['啟用狀態'] }" class="form-select w-100" name="啟用狀態" as="select">
+                          <option value="true">已啟用</option>
+                          <option value="false">未啟用</option>
                         </VField>
                         <ErrorMessage name="啟用狀態" class="invalid-feedback"/>
                       </div>
-                      <i v-if="tempCoupon.is_enabled === '已啟用'" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
+                      <i v-if="tempCoupon.is_enabled" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
                       <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
                     </div>
                   </VForm>
-                  <div class="col-md-6">
-                    <button @click="togglerEdit" type="button" class="btn btn-warning">修改優惠卷</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -67,24 +55,21 @@
                   <div class="row mb-2">
                     <label for="title" class="col-sm-4 col-form-label">優惠卷標題：</label>
                     <div class="col-sm-8">
-                      <VField
-                      v-model.lazy="tempCoupon.title" rules="required" :class="{ 'is-invalid': errors['標題'] }"         :disabled="inputDisabled" type="text" class="form-control" id="title" name="標題"/>
+                      <VField id="title" v-model.lazy="tempCoupon.title" rules="required" :class="{ 'is-invalid': errors['標題'] }" type="text" class="form-control" name="標題"/>
                       <ErrorMessage name="標題" class="invalid-feedback" />
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="code" class="col-sm-4 col-form-label">優惠卷碼：</label>
                     <div class="col-sm-8">
-                      <VField
-                      v-model.lazy="tempCoupon.code" rules="required" :class="{ 'is-invalid': errors['優惠卷碼'] }" :disabled="inputDisabled" type="text" class="form-control" id="code" name="優惠卷碼" />
+                      <VField id="code" v-model.lazy="tempCoupon.code" rules="required" :class="{ 'is-invalid': errors['優惠卷碼'] }" type="text" class="form-control" name="優惠卷碼" />
                       <ErrorMessage name="優惠卷碼" class="invalid-feedback" />
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="percent" class="col-sm-4 col-form-label">折扣百分比：</label>
                     <div class="col-sm-8">
-                      <VField
-                      v-model.lazy="tempCoupon.percent" rules="required|nonNegativeDecimal"  :class="{ 'is-invalid': errors['折扣']}" :disabled="inputDisabled" type="text" class="form-control" id="percent" name="折扣" />
+                      <VField id="percent" v-model.lazy="tempCoupon.percent" rules="required|nonNegativeDecimal" :class="{ 'is-invalid': errors['折扣']}" type="text" class="form-control" name="折扣" />
                       <ErrorMessage name="折扣" class="invalid-feedback" />
                     </div>
                   </div>
@@ -96,14 +81,14 @@
                   <div class="row mb-2">
                     <label for="dateInput" class="col-sm-4 col-form-label">啟用日期：</label>
                     <div class="col-sm-8">
-                      <VField @change="validateDateInput" v-model="tempCoupon.start_date" rules="required" :class="{ 'is-invalid': errors['啟用日']}" :disabled="inputDisabled" class="form-control" type="date" id="dateInput" name="啟用日" />
+                      <VField id="dateInput" @change="validateDateInput" v-model="tempCoupon.start_date" rules="required" :class="{ 'is-invalid': errors['啟用日']}" class="form-control" type="date" name="啟用日" />
                       <ErrorMessage name="啟用日" class="invalid-feedback" />
                     </div>
                   </div>
                   <div class="row mb-2">
                     <label for="dateInput" class="col-sm-4 col-form-label">截止日期：</label>
                     <div class="col-sm-8">
-                      <VField @change="validateDateInput" v-model="tempCoupon.due_date" rules="required" :class="{ 'is-invalid': errors['截止日'] }" :disabled="inputDisabled" class="form-control" type="date" id="dateInput" name="截止日" />
+                      <VField id="dateInput" @change="validateDateInput" v-model="tempCoupon.due_date" rules="required" :class="{ 'is-invalid': errors['截止日'] }" class="form-control" type="date" name="截止日" />
                       <ErrorMessage name="截止日" class="invalid-feedback" />
                     </div>
                   </div>
@@ -113,16 +98,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button @click="cancelUpdate"
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            取消
-          </button>
-          <button @click="updateCoupon" type="button" class="btn btn-danger">
-            確認
-          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button @click="updateCoupon" type="button" class="btn btn-danger">確認</button>
         </div>
       </div>
     </div>
@@ -139,11 +116,16 @@ import timestampToDate from '@/utils/timestampToDate';
 import showSuccessToast from '@/utils/showSuccessToast';
 import showErrorToast from '@/utils/showErrorToast';
 
-// 自定驗證
+// 自定驗證：啟用狀態
+defineRule('isEnabled', (value) => {
+  if (typeof value === 'boolean' && (value === false || value === true)) {
+    return true;
+  }
+  return '啟用狀態為必填';
+});
+// 自定驗證：折扣百分比
 defineRule('nonNegativeDecimal', (value) => {
-  // 先將輸入的值轉換為浮點數
   const floatValue = parseFloat(value);
-  // 檢查是否為數字且不是 NaN，並且大於等於零，且小數位數不超過兩位
   if (!Number.isNaN(floatValue) && floatValue >= 0 && /^\d+(\.\d{1,2})?$/.test(value)) {
     return true;
   }
@@ -159,7 +141,6 @@ export default {
     return {
       couponModal: null,
       tempCoupon: {},
-      inputDisabled: true,
       startDateTimestamp: null,
       dueDateTimestamp: null,
     }
@@ -185,11 +166,6 @@ export default {
   },
   methods: {
     ...mapActions(couponsStore, ['getCoupons']),
-    // isPositiveInteger(value){
-    //   const integerValue = parseInt(value, 10);
-    //   return integerValue.text(value) ? true : '請填入正整數'
-    // },
-    
     onSubmit() {
       this.updateCoupon();
       this.$refs.enabledForm.resetForm();
@@ -211,14 +187,6 @@ export default {
       }
       this.startDateTimestamp = startDate;
       this.dueDateTimestamp = dueDate;
-    },
-    // 修改訂單
-    togglerEdit() {
-      this.inputDisabled = false;
-    },
-    // 關閉修改
-    cancelUpdate() {
-      this.inputDisabled = true;
     },
     // POST or PUT 新增優惠卷
     updateCoupon() {
@@ -247,7 +215,6 @@ export default {
           this.getCoupons();
         })
         .then(() => {
-          this.inputDisabled = true;
           this.modal.hide();
         })
         .catch((err) => {
