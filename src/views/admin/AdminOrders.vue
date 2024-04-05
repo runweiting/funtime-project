@@ -9,9 +9,7 @@
             {{ `一頁顯示 ${Object.keys(this.tempOrderList).length} 項商品` }}
             </p>
             <div class="d-flex justify-content-end gap-2">
-              <button @click="deleteOrders" type="button" class="btn btn-danger">
-                刪除全部訂單
-              </button>
+              <button @click="deleteOrders" type="button" class="btn btn-danger">刪除全部訂單</button>
             </div>
             <OrderModal ref="orderModal" :currentOrder="selectedOrder" />
           </div>
@@ -72,17 +70,10 @@
                 <td></td>
                 <td>
                   <div class="btn-group" role="group">
-                    <button
-                    @click="checkOrder(item)"
-                    type="button"
-                    class="btn btn-outline-primary btn-sm"
-                    >查看訂單
+                    <button @click="checkOrder(item)" type="button"
+                    class="btn btn-outline-primary btn-sm">查看訂單
                     </button>
-                    <button
-                    @click="deleteOrder(item.id)"
-                    type="button"
-                    class="btn btn-outline-danger btn-sm"
-                    >刪除
+                    <button @click="deleteOrder(item.id, currentPage)" type="button" class="btn btn-outline-danger btn-sm">刪除
                     </button>
                   </div>
                 </td>
@@ -129,7 +120,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(adminOrdersStore, ['orderList', 'calculateTotal', 'pagination']),
+    ...mapState(adminOrdersStore, ['orderList', 'calculateTotal', 'pagination', 'currentPage']),
   },
   mounted() {
     this.getOrders();

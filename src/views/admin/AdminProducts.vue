@@ -9,24 +9,11 @@
               {{ `一頁顯示 ${Object.keys(this.tempProductList).length} 項商品` }}
             </p>
             <div class="d-flex justify-content-end gap-2">
-              <button
-                @click="openModal('new')"
-                type="button"
-                class="btn btn-primary"
-                id="modalBtn"
-              >
-                建立新的商品
-              </button>
+              <button @click="openModal('new')" type="button" class="btn btn-primary" id="modalBtn"
+              >建立新的商品</button>
             </div>
-            <EditModal
-              ref="editModal"
-              :tempProduct="tempProduct" 
-              :is-new="isNew"
-              @getData="getProducts"
-            />
-            <DelModal
-              ref="delModal" 
-              :tempProduct="tempProduct" @getData="getProducts" />
+            <EditModal ref="editModal" :tempProduct="tempProduct"  :is-new="isNew" @getData="getProducts"/>
+            <DelModal ref="delModal" :tempProduct="tempProduct" @getData="getProducts" />
           </div>
         </div>
         <div class="container">
@@ -56,25 +43,9 @@
                   <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
                 </td>
                 <td>
-                  <div
-                    class="btn-group"
-                    role="group"
-                    aria-label="Basic outlined example"
-                  >
-                    <button
-                      @click="openModal('edit', item)"
-                      type="button"
-                      class="btn btn-outline-primary btn-sm"
-                    >
-                      編輯
-                    </button>
-                    <button
-                      @click="openModal('delete', item)"
-                      type="button"
-                      class="btn btn-outline-danger btn-sm"
-                    >
-                      刪除
-                    </button>
+                  <div class="btn-group" role="group">
+                    <button @click="openModal('edit', item)" type="button" class="btn btn-outline-primary btn-sm">編輯</button>
+                    <button @click="openModal('delete', item)" type="button" class="btn btn-outline-danger btn-sm">刪除</button>
                   </div>
                 </td>
               </tr>
