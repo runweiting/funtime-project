@@ -51,13 +51,13 @@ export default defineStore("articlesStore", {
       }
     },
     // DELETE 刪除指定文章
-    deleteArticle(id) {
+    deleteArticle(id, page) {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/article/${id}`;
       axios
         .delete(url)
         .then((res) => {
           showSuccessToast(res.data.message);
-          this.getArticles();
+          this.getArticles(page);
         })
         .catch((err) => {
           showErrorToast(err.response.data.message);

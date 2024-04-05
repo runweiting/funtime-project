@@ -30,15 +30,14 @@
                   </div>
                 </div>
                 <div class="row mb-2">
-                  <VForm v-slot="{ errors }" ref="enabledForm" @submit="onSubmit" class="col-md-6 ">
+                  <VForm ref="enabledForm" @submit="onSubmit" class="col-md-6 ">
                     <div class="d-flex align-items-center gap-3">
                       <label for="enabled" class="col-form-label">啟用狀態：</label>
                       <div class="col-sm-6">
-                        <VField id="enabled" v-model="tempCoupon.is_enabled" rules="isEnabled" :class="{ 'is-invalid': errors['啟用狀態'] }" class="form-select w-100" name="啟用狀態" as="select">
+                        <VField id="enabled" v-model="tempCoupon.is_enabled" rules="isEnabled" class="form-select w-100" name="啟用狀態" as="select">
                           <option value="true">已啟用</option>
                           <option value="false">未啟用</option>
                         </VField>
-                        <ErrorMessage name="啟用狀態" class="invalid-feedback"/>
                       </div>
                       <i v-if="tempCoupon.is_enabled" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
                       <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
@@ -202,7 +201,7 @@ export default {
       this.tempCoupon.start_date = this.startDateTimestamp;
       this.tempCoupon.due_date = this.dueDateTimestamp;
       // Boolean to Number
-      const isEnabledValue = this.tempCoupon.is_enabled === '已啟用' ? 1 : 0;
+      const isEnabledValue = this.tempCoupon.is_enabled === 'true' ? 1 : 0;
       this.axios[method](url, {
         "data": {
           ...this.tempCoupon,

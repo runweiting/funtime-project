@@ -44,27 +44,15 @@
                 <td>{{ formatDate(item.start_date) }}</td>
                 <td>{{ formatDate(item.due_date) }}</td>
                 <td>
-                  <i v-if="item.is_enabled" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
+                  <i v-if="item.is_enabled === true" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
                   <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
                 </td>
                 <td>
-                  <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic outlined example"
-                  >
-                    <button
-                    @click="openModal('edit', item)"
-                    type="button"
-                    class="btn btn-outline-primary btn-sm"
-                    >
+                  <div class="btn-group" role="group">
+                    <button @click="openModal('edit', item)" type="button" class="btn btn-outline-primary btn-sm">
                     編輯
                     </button>
-                    <button
-                    @click="deleteCoupon(item.id)"
-                    type="button"
-                    class="btn btn-outline-danger btn-sm"
-                    >
+                    <button @click="deleteCoupon(item.id, currentPage)" type="button" class="btn btn-outline-danger btn-sm">
                     刪除
                     </button>
                   </div>
@@ -113,7 +101,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(couponsStore, ['couponList', 'pagination']),
+    ...mapState(couponsStore, ['couponList', 'pagination', 'currentPage']),
   },
   mounted() {
     this.getCoupons();
@@ -122,7 +110,7 @@ export default {
     ...mapActions(couponsStore, ['getCoupons', 'deleteCoupon']),
     // pagination 換頁時更新當前頁面
     getPages(page) {
-      this.getOrders(page)
+      this.getCoupons(page)
     },
     // 轉換 timestamp
     formatDate(timestamp) {

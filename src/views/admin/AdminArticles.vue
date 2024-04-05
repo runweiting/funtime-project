@@ -44,23 +44,11 @@
                   <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
                 </td>
                 <td>
-                  <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="Basic outlined example"
-                  >
-                    <button
-                    @click="openModal('edit', item.id)"
-                    type="button"
-                    class="btn btn-outline-primary btn-sm"
-                    >
+                  <div class="btn-group" role="group">
+                    <button @click="openModal('edit', item.id)" type="button" class="btn btn-outline-primary btn-sm">
                     編輯
                     </button>
-                    <button
-                    @click="deleteArticle(item.id)"
-                    type="button"
-                    class="btn btn-outline-danger btn-sm"
-                    >
+                    <button @click="deleteArticle(item.id, currentPage)" type="button" class="btn btn-outline-danger btn-sm">
                     刪除
                     </button>
                   </div>
@@ -108,7 +96,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(adminArticlesStore, ['articleList', 'pagination']),
+    ...mapState(adminArticlesStore, ['articleList', 'pagination', 'currentPage']),
   },
   mounted() {
     this.getArticles();
@@ -117,7 +105,7 @@ export default {
     ...mapActions(adminArticlesStore, ['getArticles', 'getArticle', 'deleteArticle', 'postArticle']),
     // pagination 換頁時更新當前頁面
     getPages(page) {
-      this.getProducts(page)
+      this.getArticles(page)
     },
     // 轉換 timestamp
     formatDate(timestamp) {

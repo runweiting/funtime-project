@@ -1,6 +1,5 @@
 <template>
   <div class="px-4">
-    {{ pagination }}
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <!-- 前一頁 -->

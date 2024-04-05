@@ -55,13 +55,13 @@ export default defineStore("couponsStore", {
       this.couponState = {};
     },
     // DELETE 刪除指定優惠卷
-    deleteCoupon(couponId) {
+    deleteCoupon(couponId, page) {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/coupon/${couponId}`;
       axios
         .delete(url)
         .then((res) => {
           showSuccessToast(res.data.message);
-          this.getCoupons();
+          this.getCoupons(page);
         })
         .catch((err) => {
           showErrorToast(err.response.data.message);
