@@ -11,15 +11,10 @@
       <div class="modal-content">
         <div class="modal-header bg-dark opacity-75 text-white">
           <h5 class="modal-title" id="articleModalLabel">
-            <span>文章 ID：{{ tempArticle.id }}</span>
+            <span>文章編號：{{ tempArticle.id }}</span>
             <br>
           </h5>
-          <button @click="cancelUpdate"
-            type="button"
-            class="btn btn-outline-light"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ><i class="bi bi-x-lg"></i>
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i>
           </button>
         </div>
         <div class="modal-body">
@@ -38,20 +33,13 @@
                   <div class="col-md-6 d-flex align-items-center gap-3">
                     <label for="enabled" class="col-form-label">啟用狀態：</label>
                     <div class="col-sm-6">
-                      <select v-model="tempArticle.isPublic" :disabled="inputDisabled" class="form-select w-100" id="enabled">
-                        <option :value="true">
-                          公開
-                        </option>
-                        <option :value="false">
-                          未公開
-                        </option>
+                      <select v-model="tempArticle.isPublic" class="form-select w-100" id="enabled">
+                        <option :value="true">公開</option>
+                        <option :value="false">未公開</option>
                       </select>
                     </div>
                     <i v-if="tempArticle.isPublic" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
                     <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
-                  </div>
-                  <div class="col-md-6">
-                    <button @click="togglerEdit" type="button" class="btn btn-warning">修改文章</button>
                   </div>
                 </div>
               </div>
@@ -62,35 +50,32 @@
                 <div class="row mb-2">
                   <label for="title" class="col-sm-4 col-form-label">標題：</label>
                   <div class="col-sm-8">
-                    <input
-                    v-model="tempArticle.title" :disabled="inputDisabled" type="text" class="form-control" id="title">
+                    <input id="title" v-model="tempArticle.title" type="text" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-2">
-                  <label for="code" class="col-sm-4 col-form-label">作者：</label>
+                  <label for="author" class="col-sm-4 col-form-label">作者：</label>
                   <div class="col-sm-8">
-                    <input
-                    v-model="tempArticle.author" :disabled="inputDisabled" type="text" class="form-control" id="code">
+                    <input id="author" v-model="tempArticle.author" type="text" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-2">
-                  <label for="code" class="col-sm-4 col-form-label">敘述：</label>
+                  <label for="description" class="col-sm-4 col-form-label">敘述：</label>
                   <div class="col-sm-8">
-                    <input
-                    v-model="tempArticle.description" :disabled="inputDisabled" type="text" class="form-control" id="code">
+                    <input id="description" v-model="tempArticle.description" type="text" class="form-control">
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="row mb-2">
-                  <label for="title" class="col-sm-4 col-form-label">文章標籤：</label>
+                  <label for="tags" class="col-sm-4 col-form-label">文章標籤：</label>
                   <div class="col-sm-8">
                     <div class="input-group mb-2">
-                      <input :disabled="inputDisabled" type="text" class="form-control" placeholder="輸入標籤" v-model="newTag" @keyup.enter="addTag">
-                      <button class="btn btn-outline-secondary" type="button" @click="addTag">新增</button>
+                      <input id="tags" type="text" class="form-control" placeholder="輸入標籤" v-model="newTag" @keyup.enter="addTag">
+                      <button class="btn btn-gray text-white" type="button" @click="addTag">新增</button>
                     </div>
                     <div class="d-flex flex-wrap gap-2">
-                      <span class="badge bg-secondary d-flex align-items-center" v-for="(tag, index) in tempArticle.tag" :key="index" style="opacity: 0.75;">
+                      <span class="badge bg-info-light text-black d-flex align-items-center" v-for="(tag, index) in tempArticle.tag" :key="index" style="opacity: 0.75;">
                         <span>{{ tag }}</span>
                         <button type="button" class="btn-close" aria-label="Close" @click="removeTag(index)" style="scale: 0.75;">
                         </button>
@@ -99,10 +84,10 @@
                   </div>
                 </div>
                 <div class="row mb-2">
-                  <label for="dateInput" class="col-sm-4 col-form-label">發佈日期：</label>
+                  <label for="date" class="col-sm-4 col-form-label">發佈日期：</label>
                   <div class="col-sm-8">
-                    <input @change="validateDateInput"
-                    v-model="tempArticle.create_at" :disabled="inputDisabled" type="date" class="form-control" id="title">
+                    <input id="date" @change="validateDateInput"
+                    v-model="tempArticle.create_at" type="date" class="form-control">
                   </div>
                 </div>
               </div>
@@ -110,22 +95,14 @@
             <div class="row mb-2">
               <h5>編輯文章</h5>
               <div class="col">
-                <ckeditor :disabled="inputDisabled" :editor="editor" v-model="tempArticle.content" :config="editorConfig"></ckeditor>
+                <ckeditor :editor="editor" v-model="tempArticle.content" :config="editorConfig"></ckeditor>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button @click="cancelUpdate"
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            取消
-          </button>
-          <button @click="updateArticle" type="button" class="btn btn-danger">
-            確認
-          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button @click="updateArticle" type="button" class="btn btn-danger">確認</button>
         </div>
       </div>
     </div>
@@ -151,7 +128,6 @@ export default {
     return {
       articleModal: null,
       tempArticle: {},
-      inputDisabled: true,
       createAtDateTimestamp: null,
       // ckeditor
       editor: ClassicEditor,
@@ -201,14 +177,6 @@ export default {
       const createAtDate = Math.floor(Date.parse(this.tempArticle.create_at) / 1000);
       this.createAtDateTimestamp = createAtDate;
     },
-    // 修改訂單
-    togglerEdit() {
-      this.inputDisabled = false;
-    },
-    // 取消編輯
-    cancelUpdate() {
-      this.inputDisabled = true;
-    },
     // POST or PUT 文章
     updateArticle() {
       // -> 新增文章
@@ -228,7 +196,6 @@ export default {
           this.getArticles();
         })
         .then(() => {
-          this.inputDisabled = true;
           this.modal.hide();
         })
         .catch((err) => {
