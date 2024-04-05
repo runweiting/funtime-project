@@ -84,7 +84,7 @@
                     <label for="percent" class="col-sm-4 col-form-label">折扣百分比：</label>
                     <div class="col-sm-8">
                       <VField
-                      v-model.lazy="tempCoupon.percent" rules="required" :class="{ 'is-invalid': errors['折扣']}" :disabled="inputDisabled" type="text" class="form-control" id="percent" name="折扣" />
+                      v-model.lazy="tempCoupon.percent" rules="required|nonNegativeDecimal"  :class="{ 'is-invalid': errors['折扣']}" :disabled="inputDisabled" type="text" class="form-control" id="percent" name="折扣" />
                       <ErrorMessage name="折扣" class="invalid-feedback" />
                     </div>
                   </div>
@@ -130,7 +130,7 @@
 </template>
 
 <script>
-import { ErrorMessage } from 'vee-validate';
+import { ErrorMessage, defineRule } from 'vee-validate';
 import { mapActions } from 'pinia';
 
 import modalMixin from '@/mixins/modalMixin';
@@ -139,6 +139,16 @@ import timestampToDate from '@/utils/timestampToDate';
 import showSuccessToast from '@/utils/showSuccessToast';
 import showErrorToast from '@/utils/showErrorToast';
 
+// 自定驗證
+defineRule('nonNegativeDecimal', (value) => {
+  // 先將輸入的值轉換為浮點數
+  const floatValue = parseFloat(value);
+  // 檢查是否為數字且不是 NaN，並且大於等於零，且小數位數不超過兩位
+  if (!Number.isNaN(floatValue) && floatValue >= 0 && /^\d+(\.\d{1,2})?$/.test(value)) {
+    return true;
+  }
+  return '請填入非負數且小數點最多到第二位';
+});
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   props: {
@@ -175,7 +185,11 @@ export default {
   },
   methods: {
     ...mapActions(couponsStore, ['getCoupons']),
-    // VeeValidate
+    // isPositiveInteger(value){
+    //   const integerValue = parseInt(value, 10);
+    //   return integerValue.text(value) ? true : '請填入正整數'
+    // },
+    
     onSubmit() {
       this.updateCoupon();
       this.$refs.enabledForm.resetForm();
