@@ -51,7 +51,7 @@
     <RouterView />
   </main>
   <footer>
-    <div class="position-sticky bg-primary rounded-5 m-3 m-md-6 bottom-0">
+    <div class="sticky-footer bg-primary rounded-5 m-3 m-md-6">
       <div class="container p-5">
         <nav class="navbar navbar-dark">
             <div class="d-flex flex-column flex-md-row align-items-md-center">
@@ -148,5 +148,10 @@ export default {
 <style lang="scss">
 .nav-link.active {
     color: white !important;
+}
+
+.sticky-footer {
+  position: sticky;
+  bottom: 0;
 }
 </style>

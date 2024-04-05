@@ -141,6 +141,11 @@ const baseRoutes = [
           title: "付款結果",
         },
       },
+      {
+        // 匹配任意路徑 -> 404 頁面
+        path: "/:pathMatch(.*)*",
+        component: () => import("@/views/NotFound.vue"),
+      },
     ],
   },
   {
@@ -150,11 +155,6 @@ const baseRoutes = [
     meta: {
       title: "登入後台",
     },
-  },
-  {
-    // 匹配任意路徑 -> 404 頁面
-    path: "/:pathMatch(.*)*",
-    component: () => import("@/views/NotFound.vue"),
   },
   {
     // 特定頁面下的重新導向 -> products 頁面

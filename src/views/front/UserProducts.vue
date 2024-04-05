@@ -17,8 +17,8 @@
   </div>
   <div class="m-3 m-lg-6">
     <div class="container p-5 p-md-10">
-      <div class="row row-cols-1 row-cols-xl-2">
-        <div class="col-xl-9">
+      <div class="row">
+        <div class="col">
           <div class="row row-cols-1">
             <div class="col px-0 px-md-3 mb-3 mb-lg-6">
               <div class="d-flex align-items-baseline gap-2">
@@ -27,9 +27,9 @@
               </div>
             </div>
           </div>
-          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5 mb-5 mb-md-10 position-relative">
-            <div v-for="product in productList" :key="product.id" class="col mb-md-0 px-0 px-md-3">
-              <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer">
+          <div class="row row-cols-md-2 row-cols-lg-3 g-5 g-lg-10 mb-5 mb-md-10 position-relative">
+            <div v-for="product in productList" :key="product.id" class="col">
+              <div class="card h-100 shadow hvr-grow" style="cursor: pointer">
                 <RouterLink :to="`/product/${product.id}/content`" class="stretched-link"/>
                 <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="min-height: 200px"/>
                 <div class="card-body d-flex flex-column justify-content-between">
