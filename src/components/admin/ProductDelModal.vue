@@ -10,12 +10,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="delModalLabel">刪除商品</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="container-fluid">
@@ -42,13 +37,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            取消
-          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
           <button @click="deleteProduct(this.selectedProduct.id)" type="button" class="btn btn-danger">
             確認刪除
           </button>

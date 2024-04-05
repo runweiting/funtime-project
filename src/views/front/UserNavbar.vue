@@ -120,7 +120,10 @@ export default {
     },
     closeNavbar() {
       const navbarToggle = document.querySelector('.navbar-toggler');
-      navbarToggle.click();
+      const isNavbarExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
+      if (isNavbarExpanded) {
+        navbarToggle.click();
+      }
     },
     // 查詢、核對訂單
     goToOrder(orderId) {

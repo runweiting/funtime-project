@@ -13,7 +13,6 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav gap-2">
             <li class="nav-item">
-              <!-- RouterLink 生成路由連結，編譯後轉為 <a>，to 代表要進入的路由 -->
               <RouterLink @click="closeNavbar"
               :to="{ name: 'admin/products' }" class="nav-link text-decoration-none">編輯商品</RouterLink>
             </li>
@@ -63,7 +62,10 @@ export default {
     ...mapActions(adminLoginStore, ['checkLogin', 'logout']),
     closeNavbar() {
       const navbarToggle = document.querySelector('.navbar-toggler');
-      navbarToggle.click();
+      const isNavbarExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
+      if (isNavbarExpanded) {
+        navbarToggle.click();
+      }
     },
   }
 }
