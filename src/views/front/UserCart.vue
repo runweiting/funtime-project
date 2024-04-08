@@ -100,8 +100,8 @@
             </div>
             <hr class="w-100 border-top my-4" style="border: 3px dotted #8C8C8E;">
             <div class="d-flex flex-md-column gap-2">
-              <button @click="handlePutCart(tempProductId ,tempCartId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購</button>
-              <button @click="handleDeleteCart(tempCartId)" type="button" class="btn btn-outline-danger w-100">刪除預購</button>
+              <button @click="handlePutCart(tempProductId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購</button>
+              <button @click="handleDeleteCart" type="button" class="btn btn-outline-danger w-100">刪除預購</button>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ import userProductsStore from '@/stores/front/userProductsStore';
 import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
 import OrderHeader from '@/components/front/OrderHeader.vue';
-import showErrorToast from '@/utils/showErrorToast'
+// import showErrorToast from '@/utils/showErrorToast'
 
 export default {
   components: {
@@ -135,6 +135,7 @@ export default {
     this.tempCartQty = units;
     this.getProduct(this.tempProductId);
     this.calculateQty();
+    this.getCart(this.tempProductId);
   },
   computed: {
     ...mapState(userProductsStore, ['product']),
@@ -143,20 +144,22 @@ export default {
   },
   methods: {
     ...mapActions(userProductsStore, ['getProduct']),
-    ...mapActions(userCartStore, ['getCart', 'putCart', 'deleteCart']),
+    ...mapActions(userCartStore, ['getCart', 'putCart', 'deleteCart', 'deleteCarts']),
     ...mapActions(userOrderStore, ['calculateQty']),
-    handlePutCart(productId ,cartId, cartQty) {
-      this.getCart(productId).then(() => {
-        this.putCart(productId, this.tempCartId, cartQty);
-        this.$router.push({ name: "order", params: { id: productId, units: cartQty } });
-      }).catch((err) => {
-        showErrorToast(err);
-      });
+    handlePutCart(productId, cartQty) {
+      this.putCart(productId, this.tempCartId, cartQty);
+      this.$router.push({ name: "order", params: { id: productId, units: cartQty } });
     },
-    handleDeleteCart(cartId) {
-      this.deleteCart(cartId);
+    handleDeleteCart() {
+      this.deleteCart(this.tempCartId);
       this.$router.push({ name: "home" });
     },
-  }
+  },
+  unmounted() {
+    // 當使用者離開預購頁，且不是前往訂單頁時，執行 deleteCarts，以確保購物車為空
+    if(!this.$route.path.startsWith("/order")){
+      this.deleteCarts();
+    }
+  },
 }
 </script>

@@ -76,7 +76,7 @@ export default defineStore("userCartStore", {
       axios
         .delete(url)
         .then((res) => {
-          showSuccessToast(res.data.message);
+          showSuccessToast(`購物車商品${res.data.message}`);
           this.getCart();
         })
         .catch((err) => {
@@ -89,7 +89,7 @@ export default defineStore("userCartStore", {
       axios
         .delete(url)
         .then((res) => {
-          showSuccessToast(res.data.message);
+          showSuccessToast(`購物車${res.data.message}`);
           this.getCart();
         })
         .catch((err) => {

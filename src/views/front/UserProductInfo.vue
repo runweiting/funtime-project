@@ -199,7 +199,6 @@ import userProductsStore from '@/stores/front/userProductsStore';
 import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
 import showErrorToast from '@/utils/showErrorToast';
-import showWarningToast from '@/utils/showWarningToast';
 
 export default {
   mounted() {
@@ -219,13 +218,6 @@ export default {
     ...mapActions(userOrderStore, ['getOrders', 'calculateQty']),
     ...mapActions(userCartStore, ['addToCart', 'getCart']),
     async handleAddToCart(productId, cartQty) {
-      await this.getCart();
-      if (this.cartList.length > 0) {
-        showWarningToast("請一次預購一個企劃");
-        const targetCart = this.cartList[0];
-        this.$router.push({ name: "cart", params: { id: targetCart.product.id, units: targetCart.qty } });
-        return;
-      }
       try {
         this.addToCart(productId, cartQty);
         await this.getCart(productId);

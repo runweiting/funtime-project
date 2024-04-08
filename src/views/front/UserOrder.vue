@@ -158,7 +158,7 @@ export default {
   },
   methods: {
     ...mapActions(userProductsStore, ['getProduct']),
-    ...mapActions(userCartStore, ['getCart']),
+    ...mapActions(userCartStore, ['getCart', 'deleteCarts']),
     ...mapActions(userOrderStore, ['calculateQty']),
     ...mapActions(adminCouponsStore, ['postCoupon']),
     async applyCoupon() {
@@ -167,6 +167,12 @@ export default {
           this.couponCode = '';
         })
     },
-  }
+  },
+  unmounted() {
+    // 當使用者離開訂單頁，且不是前往結帳頁或預購頁時，執行 deleteCarts，以確保購物車為空
+    if(!this.$route.path.startsWith("/cart") && !this.$route.path.startsWith("/order-result")){
+      this.deleteCarts();
+    }
+  },
 }
 </script>
