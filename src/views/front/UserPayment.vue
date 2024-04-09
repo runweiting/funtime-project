@@ -345,7 +345,6 @@ export default {
   },
   methods: {
     ...mapActions(userOrderStore, ['getOrder', 'postPay']),
-    // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate, formattedTime } = timestampToDate(timestamp);
       return {

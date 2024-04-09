@@ -47,7 +47,7 @@
               <i v-if="isLikedList[product.id]?.isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
-            <img :src="item.product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="min-height: 200px;"/>
+            <img :src="item.product.imageUrl" :alt="item.product.short_title + '商品主圖'" class="card-img-top object-fit-cover img-fluid" style="min-height: 200px;"/>
             <div class="card-body d-flex flex-column justify-content-between">
               <h5 class="card-title fw-bold">{{ item.product.title }}</h5>
               <div class="row gx-0 mb-2">

@@ -24,7 +24,7 @@
                 <div class="mb-4">
                   <label for="imgUrl" class="form-label">主要圖片</label>
                   <input id="imgUrl" v-model="selectedProduct.imageUrl" type="url" class="form-control mb-2" placeholder="請輸入網址"/>
-                  <img :src="selectedProduct.imageUrl" class="img-fluid" />
+                  <img :src="selectedProduct.imageUrl" alt="商品主圖" class="img-fluid" />
                 </div>
                 <!-- 多圖新增 -->
                 <h4 class="fw-bold">多圖新增</h4>
@@ -33,7 +33,7 @@
                   <div v-for="(imgUrl, index) in selectedProduct.imagesUrl" :key="`url${index}`">
                     <label :for="`url${index}`" class="form-label">圖片網址</label>
                     <input :id="`url${index}`" v-model="selectedProduct.imagesUrl[index]"  type="url" class="form-control mb-2" placeholder="請輸入網址"/>
-                    <img :src="selectedProduct.imagesUrl[index]" class="img-fluid mb-2" />
+                    <img :src="selectedProduct.imagesUrl[index]" alt="商品圖片" class="img-fluid mb-2" />
                   </div>
                   <div class="d-flex gap-2">
                     <!--
@@ -165,7 +165,7 @@
                     <input id="point-imgUrl" v-model="newPoint.imageUrl" type="url" class="form-control" placeholder="請輸入網址"/>
                   </div>
                   <div class="col">
-                    <img :src="newPoint.imageUrl" class="img-fluid" />
+                    <img :src="newPoint.imageUrl" alt="示意圖" class="img-fluid" />
                   </div>
                   <div class="col mt-auto">
                     <button class="btn btn-gray text-white" type="button" @click="addPoint">新增</button>

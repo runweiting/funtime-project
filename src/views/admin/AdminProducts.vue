@@ -32,7 +32,7 @@
             <tbody>
               <tr v-for="item in tempProductList" :key="item.title">
                 <td>
-                  <img :src="item.imageUrl" class="rounded" style="height: 48px;">
+                  <img :src="item.imageUrl" :alt="item.short_title + '商品主圖'" class="rounded" style="height: 48px;">
                 </td>
                 <td>{{ item.title }}</td>
                 <td>{{ item.category }}</td>

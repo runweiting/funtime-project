@@ -12,7 +12,7 @@
     <hr class="w-100 border-top my-8" style="border: 5px dotted #8C8C8E;">
     <div class="d-flex flex-column justify-content-between gap-4 mb-8">
       <h4 class="text-center mb-0">{{ product.question }}</h4>
-      <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
+      <img :src="product.imageUrl" :alt="product.short_title + '商品主圖'" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
     </div>
     <div class="d-flex flex-column justify-content-between gap-8">
       <h4 class="text-center mb-0">設計特點</h4>
@@ -30,7 +30,7 @@
       </ol>
       <div v-for="(point, index) in product.points" :key="index" class="row row-cols-2">
         <div class="col-6 col-md-8">
-          <img :src="point.imageUrl" alt="product-key-points" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
+          <img :src="point.imageUrl" :alt="point.title + '示意圖'" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 300px">
         </div>
         <div class="col-6 col-md-4">
           <div class="d-flex flex-column gap-2 h-100">

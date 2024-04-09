@@ -16,7 +16,7 @@
           <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3">
             <div class="row row-cols-1 gy-4">
               <div class="col-md-5">
-                <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
+                <img :src="product.imageUrl" :alt="product.short_title + '商品主圖'" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
               </div>
               <div class="col-md-7">
                 <div class="d-flex flex-column h-100">
@@ -100,7 +100,7 @@
             </div>
             <hr class="w-100 border-top my-4" style="border: 3px dotted #8C8C8E;">
             <div class="d-flex flex-md-column gap-2">
-              <button @click="handlePutCart(tempProductId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購</button>
+              <button @click="handlePutCart(tempProductId, tempCartId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購</button>
               <button @click="handleDeleteCart" type="button" class="btn btn-outline-danger w-100">刪除預購</button>
             </div>
           </div>
@@ -116,7 +116,6 @@ import userProductsStore from '@/stores/front/userProductsStore';
 import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
 import OrderHeader from '@/components/front/OrderHeader.vue';
-// import showErrorToast from '@/utils/showErrorToast'
 
 export default {
   components: {
@@ -146,7 +145,7 @@ export default {
     ...mapActions(userProductsStore, ['getProduct']),
     ...mapActions(userCartStore, ['getCart', 'putCart', 'deleteCart', 'deleteCarts']),
     ...mapActions(userOrderStore, ['calculateQty']),
-    handlePutCart(productId, cartQty) {
+    handlePutCart(productId, cartId, cartQty) {
       this.putCart(productId, this.tempCartId, cartQty);
       this.$router.push({ name: "order", params: { id: productId, units: cartQty } });
     },

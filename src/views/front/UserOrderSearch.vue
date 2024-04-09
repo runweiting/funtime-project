@@ -35,7 +35,7 @@
       <div class="row row-cols-1">
         <div class="col-md-6 col-lg-5 px-xl-4">
           <div v-for="(product, index) in tempOrder.products" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
-            <img :src="product.product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
+            <img :src="product.product.imageUrl" :alt="product.product.short_title + '商品主圖'" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
             <h6 class="text-dark-gray fw-normal mb-0">{{ product.product.short_title }}</h6>
             <div class="d-flex justify-content-between">
               <h5 class="mb-0">{{ product.qty }} 入組</h5>
@@ -193,7 +193,6 @@ export default {
   },
   methods: {
     ...mapActions(userOrderStore, ['getOrder', 'calculateQty']),
-    // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate, formattedTime } = timestampToDate(timestamp);
       return {

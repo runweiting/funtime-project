@@ -1,6 +1,6 @@
 <template>
   <div class="rounded-5 border border-5 border-light p-5 h-100">
-    <!-- 往 v-slot 傳入 errors 錯誤訊息，所以 <VField> 和 <ErrorMessage> 可讀取 errors -->
+    <!-- 傳入 errors 錯誤訊息，使 <VField> 和 <ErrorMessage> 可讀取 errors -->
     <VForm v-slot="{ errors }" ref="formOrder" class="d-flex flex-column gap-3 h-100" @submit="onSubmit">
       <div>
         <h3 class="fs-5">收件人</h3>

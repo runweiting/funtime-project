@@ -107,7 +107,6 @@ export default {
     getPages(page) {
       this.getArticles(page)
     },
-    // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate } = timestampToDate(timestamp);
       return formattedDate;

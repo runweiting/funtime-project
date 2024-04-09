@@ -45,7 +45,6 @@
                 </div>
                 <!-- 隱藏內容 -->
                 <div :id="faq.id" class="accordion-collapse collapse row" data-bs-parent="#accordionFAQ" :class="{ show: faq.expanded }">
-                  <!-- 和標題一樣寬 -->
                   <div class="col px-0 col-xl-9 px-xl-3">
                     <p class="accordion-body text-dark mt-2 mb-0 p-0">
                       {{ faq.content }}

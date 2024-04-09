@@ -230,7 +230,6 @@ export default {
   },
   methods: {
     ...mapActions(adminOrdersStore, ['getOrders', 'timestampToDate']),
-    // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDay, formattedDate } = timestampToDate(timestamp);
       return { formattedDay, formattedDate }

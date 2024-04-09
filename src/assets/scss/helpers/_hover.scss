@@ -32,7 +32,7 @@
 }
 
 .hvr-ranking i {
-  /* 將 `<i>` 元素的旋轉樣式設置為逆向旋轉，以抵消父元素的旋轉效果 */
+  // 逆向旋轉以抵消父元素的旋轉效果
   transform: rotate(-360deg);
 }
 
@@ -75,21 +75,10 @@
   }
 }
 .hvr-pulse {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid white; 
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  color: white;
-  &:hover {
-    color: white;
-  }
   display: inline-block;
   vertical-align: middle;
-  -webkit-transform: perspective(1.5px) translateZ(0);
-  transform: perspective(1.5px) translateZ(0);
+  -webkit-transform: perspective(1.25px) translateZ(0);
+  transform: perspective(1.25px) translateZ(0);
   box-shadow: 0 0 1.5px rgba(0, 0, 0, 0);
 }
 .hvr-pulse:hover, .hvr-pulse:focus {
@@ -99,9 +88,10 @@
   animation-duration: 1s;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: 3;
+  animation-iteration-count: 3;
 }
+
 /* Pop */
 @-webkit-keyframes hvr-pop {
   50% {

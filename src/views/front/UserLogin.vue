@@ -57,14 +57,11 @@ export default {
     };
   },
   methods: {
-    // 刪除舊的 token
     deleteOldToken() {
       document.cookie = "myToken=; expires=; path=/;";
     },
-    // POST 登入及驗證
     login() {
       this.deleteOldToken();
-      // 驗證是否有 token
       if (isUserLoggedIn()) {
         this.goToAdmin();
         return;
@@ -73,7 +70,6 @@ export default {
       this.axios
         .post(url, this.user)
         .then((res) => {
-          // 將 expired 和 token 存入 cookies
           const { expired, token } = res.data;
           document.cookie = `myToken=${token}; expires=${new Date(expired)}`;
           showSuccessToast(res.data.message)

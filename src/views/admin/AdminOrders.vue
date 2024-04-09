@@ -131,14 +131,12 @@ export default {
     getPages(page) {
       this.getOrders(page)
     },
-    // 轉換 timestamp
     formatDate(timestamp) {
       const { formattedDate, formattedTime } = timestampToDate(timestamp);
       return {
         formattedDate, formattedTime
       }
     },
-    // 查看訂單
     checkOrder(item) {
       this.selectedOrder = { ...item };
       this.$refs.orderModal.openModal();

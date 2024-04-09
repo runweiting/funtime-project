@@ -31,7 +31,7 @@
                 </p>
               </div>
               <div class="col-sm-4">
-                <img :src="tempProduct.imageUrl" class="img-fluid" />
+                <img :src="tempProduct.imageUrl" :alt="tempProduct.short_title + '商品主圖'" class="img-fluid" />
               </div>
             </div>
           </div>

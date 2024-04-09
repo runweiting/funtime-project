@@ -9,7 +9,7 @@
         <div class="col-md-6 col-lg-5 px-xl-4">
           <div class="position-sticky top-0">
             <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 position-relative mb-3">
-              <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
+              <img :src="product.imageUrl" :alt="product.short_title + '商品主圖'" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 200px">
               <h6 class="text-dark-gray fw-normal mb-0">{{ product.short_title }}</h6>
               <div class="d-flex justify-content-between">
                 <h5 class="mb-0">{{ tempCartQty }} 入組</h5>
@@ -60,13 +60,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-md-6 col-lg-5 px-xl-4">
-          <div class="position-sticky top-0">
-            <div class="d-flex flex-column align-items-center rounded-5 border border-5 border-light p-5 gap-3">
-              <RouterLink :to="{ name: 'products' }" class="btn btn-primary hvr-pop">前往企劃</RouterLink>
-            </div>
-          </div>
-        </div> -->
         <div class="col-md-6 col-lg-7 px-xl-4 gy-3 gy-md-0">
           <div class="d-none p-5">
             <h3 class="fs-5">會員資料</h3>

@@ -40,7 +40,7 @@
                   </div>
                   <i :class="getRankClass(product.id)" class="fs-1 text-white position-absolute bi"></i>
                 </div>
-                <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid" style="min-height: 150px"/>
+                <img :src="product.imageUrl" :alt="product.title + '商品主圖'" class="card-img-top object-fit-cover img-fluid" style="min-height: 150px"/>
                 <div class="card-body d-flex flex-column justify-content-between">
                   <h5 class="card-title fw-bold">{{ product.title }}</h5>
                   <div class="row gx-0 mb-2">
@@ -75,80 +75,6 @@
             <div class="col bg-secondary rounded-5 position-absolute z-index-n1 d-none d-md-block" style="bottom: -20px; width: 100%; height: 40px"></div>
           </div>
         </div>
-        <!-- <div class="col-xl-3">
-          <div class="row row-cols-1">
-            <div class="col px-0 px-md-3 mb-3 mb-lg-6">
-              <div class="d-flex align-items-baseline gap-2">
-                <h2 class="d-none d-sm-block fw-bold mb-0">Tags</h2>
-                <h4 class="fw-bold mb-0">熱門標籤</h4>
-              </div>
-            </div>
-          </div>
-          <div class="row row-cols-1">
-            <div class="col px-0 px-md-3">
-              <div class="bg-light rounded-5 p-5">
-                <ol class="row row-cols-1 list-unstyled gy-2 mb-0">
-                  <li class="col-md-6 col-xl-12">
-                    <div class="row align-items-center">
-                      <div
-                        class="col-3 px-0 d-flex justify-content-end align-items-center gap-2 pe-1"
-                      >
-                        <div
-                          class="bg-white border rounded-circle border-3 border-black position-relative"
-                          style="width: 35px; height: 35px"
-                        >
-                          <span
-                            class="text-black position-absolute top-50 start-50 translate-middle z-index-10"
-                            style="font-size: 18px"
-                            >1</span
-                          >
-                        </div>
-                        <span class="text-black" style="font-size: 18px"
-                          >#</span
-                        >
-                      </div>
-                      <div class="col-9 px-0">
-                        <span
-                          class="text-black text-wrap"
-                          style="font-size: 18px"
-                          >總是讀不完創世記呀～</span
-                        >
-                      </div>
-                    </div>
-                  </li>
-                  <li class="col-md-6 col-xl-12">
-                    <div class="row align-items-center">
-                      <div
-                        class="col-3 px-0 d-flex justify-content-end align-items-center gap-2 pe-1"
-                      >
-                        <div
-                          class="bg-white border rounded-circle border-3 border-black position-relative"
-                          style="width: 35px; height: 35px"
-                        >
-                          <span
-                            class="text-black position-absolute top-50 start-50 translate-middle z-index-10"
-                            style="font-size: 18px"
-                            >2</span
-                          >
-                        </div>
-                        <span class="text-black" style="font-size: 18px"
-                          >#</span
-                        >
-                      </div>
-                      <div class="col-9 px-0">
-                        <span
-                          class="text-black text-wrap"
-                          style="font-size: 18px"
-                          >好多不同的故事和人物～</span
-                        >
-                      </div>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

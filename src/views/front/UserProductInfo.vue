@@ -25,7 +25,7 @@
               <i v-if="isLikedList[product.id]?.isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
-            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="product-image" style="max-height: 400px">
+            <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" :alt="product.short_title + '商品主圖'" style="max-height: 400px">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between gap-2 mb-2">
               <div class="d-flex gap-2">
                 <span v-for="(tag, index) in product.tags" :key="index" class="badge rounded-pill bg-primary text-white"># {{ tag }}</span>
@@ -118,27 +118,9 @@
             </li>
           </ul>
         </div>
-        <div class="col-lg-5 d-none d-lg-block">
-          <div class="d-flex gap-4">
-            <!-- <RouterLink :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</RouterLink>
-            <RouterLink :to="`/cart/${product.id}/${item.units}`" class="btn btn-primary flex-fill hvr-pop">登記預購</RouterLink> -->
-          </div>
-        </div>
       </div>
     </div>
   </div>
-  <!-- <div class="d-lg-none mx-3 mx-lg-10 fixed-bottom" style="bottom: 12px;">
-    <div class="container bg-white rounded-5 border border-light border-5 py-3 px-12">
-      <div class="row align-items-center">
-        <div class="col">
-          <div class="d-flex gap-4">
-            <RouterLink :to="`/activities`" class="btn btn-primary flex-fill hvr-pop">報名試玩</RouterLink>
-            <RouterLink :to="`/cart/${product.id}`" class="btn btn-primary flex-fill hvr-pop">登記預購</RouterLink>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="mx-3 mx-lg-10">
     <div class="container px-lg-12">
       <div class="row row-cols-1 py-2 p-xl-4 pt-xl-8 row-cols-md-2">
@@ -147,7 +129,7 @@
           <div class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 my-5">
             <div class="d-flex gap-2">
               <div class="rounded-circle overflow-hidden" style="width: 50px; height: 50px;">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="company-logo" class="object-fit-cover img-fluid">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" :alt="product.proposer + 'logo'" class="object-fit-cover img-fluid">
               </div>
               <div class="d-flex flex-column justify-content-between">
                 <small class="text-dark-gray">提案人</small>
@@ -158,7 +140,8 @@
           <div class="position-lg-sticky" id="targetSection">
             <div v-for="(item, index) in product.packages" :key="index" class="d-flex flex-column justify-content-between rounded-5 border border-5 border-light p-5 gap-3 mb-4 position-relative hvr-card shadow-sm" style="cursor: pointer;">
               <a @click="handleAddToCart(product.id, item.units)" class="stretched-link"></a>
-              <img :src="product.imageUrl" alt="product-image" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
+              <img :src="product.imageUrl" :alt="product.short_title + 
+              '商品主圖'" class="card-img-top object-fit-cover img-fluid rounded" style="max-height: 100px">
               <div class="d-flex justify-content-between align-items-center">
                 <h3 class="fs-6 text-dark-gray mb-0">{{ item.name }}</h3>
                 <span v-if="productQtyMap[product.id]" class="d-none d-md-block fs-6 badge bg-danger">剩 {{ product.target_units - (productQtyMap[product.id].productQty) }} 組</span>

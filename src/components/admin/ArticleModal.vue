@@ -157,7 +157,6 @@ export default {
   },
   methods: {
     ...mapActions(adminArticlesStore, ['getArticles']),
-    // tags
     addTag() {
       if (this.newTag.trim() !== '') {
         this.tempArticle.tag.push(this.newTag.trim());
@@ -167,12 +166,10 @@ export default {
     removeTag(index) {
       this.tempArticle.tag.splice(index, 1);
     },
-    // timestamp to String
     formatDate(timestamp) {
       const { formattedDate } = timestampToDate(timestamp);
       return { formattedDate }
     },
-    // validateDateInput
     validateDateInput() {
       const createAtDate = Math.floor(Date.parse(this.tempArticle.create_at) / 1000);
       this.createAtDateTimestamp = createAtDate;

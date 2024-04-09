@@ -49,7 +49,7 @@
             <div class="row">
               <div class="col-md-6">
                 <h5>優惠卷資訊</h5>
-                <!-- 在 <VForm> 往 v-slot 傳入 errors 錯誤訊息，所以 <VField> 和 <ErrorMessage> 都可讀取 errors -->
+                <!-- 傳入 errors 錯誤訊息，使 <VField> 和 <ErrorMessage> 可讀取 errors -->
                 <VForm v-slot="{ errors }" ref="couponForm" @submit="onSubmit">
                   <div class="row mb-2">
                     <label for="title" class="col-sm-4 col-form-label">優惠卷標題：</label>
@@ -170,14 +170,11 @@ export default {
       this.$refs.enabledForm.resetForm();
       this.$refs.couponForm.resetForm();
     },
-    // timestamp to String
     formatDate(timestamp) {
       const { formattedDate } = timestampToDate(timestamp);
       return { formattedDate }
     },
-    // validate dateInput
     validateDateInput() {
-      // String to timestamp
       const startDate = Math.floor(Date.parse(this.tempCoupon.start_date) / 1000);
       const dueDate = Math.floor(Date.parse(this.tempCoupon.due_date) / 1000);
       // 啟用日不可大於截止日
