@@ -32,7 +32,7 @@
               <div class="card h-100 shadow hvr-grow" style="cursor: pointer">
                 <RouterLink :to="`/product/${product.id}/content`" class="stretched-link"/>
                 <button @click="handleCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
-                  <i v-if="isLikedList[product.id]?.isLiked === false" class="bi fs-5 bi-heart text-white"></i>
+                  <i v-if="preferenceState[product.id]?.isLiked === false" class="bi fs-5 bi-heart text-white"></i>
                   <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
                 </button>
                 <div class="d-flex justify-content-center align-items-center position-absolute" style="top: 16px;left: 16px;width: 50px; height: 50px;">
@@ -93,7 +93,7 @@ export default {
     return {
       // count-to
       countStart: 0,
-      tempIsLikedList: {},
+      // tempPreferenceState: {},
       // 前三名模擬資料
       productList: [
         {
@@ -121,25 +121,26 @@ export default {
       productRank: []
     };
   },
-  created() {
-    this.tempIsLikedList = { ...this.isLikedList };
-  },
-  watch: {
-    isLikedList: {
-      deep: true,
-      handler(updateIsLikedList) {
-        this.tempIsLikedList = updateIsLikedList
-      }
-    }
-  },
+  // created() {
+  //   this.tempPreferenceState = { ...this.preferenceState };
+  // },
+  // watch: {
+  //   preferenceState: {
+  //     deep: true,
+  //     handler(updatePreferenceState) {
+  //       this.tempPreferenceState = updatePreferenceState
+  //     }
+  //   }
+  // },
   mounted() {
     this.getProductRank();
+    this.initPreferenceState();
   },
   computed: {
-    ...mapState(userLikesStore, ['tempCollection', 'isLikedList'])
+    ...mapState(userLikesStore, ['preferenceState'])
   },
   methods: {
-    ...mapActions(userLikesStore, ['addToCollection', 'removeCollection']),
+    ...mapActions(userLikesStore, ['initPreferenceState', 'addToCollection', 'removeCollection']),
     getProductRank() {
       const likesList = this.productList.map((product) => ({
         id: product.id,
@@ -157,10 +158,10 @@ export default {
       return rank ? `bi-${rank}-circle-fill` : '';
     },
     handleCollection(product) {
-      this.isLikedList[product.id].isLiked = !this.isLikedList[product.id].isLiked;
-      if (this.isLikedList[product.id].isLiked === true) {
+      this.preferenceState[product.id].isLiked = !this.preferenceState[product.id].isLiked;
+      if (this.preferenceState[product.id].isLiked === true) {
         this.addToCollection(product);
-      } else if (this.isLikedList[product.id].isLiked === false) {
+      } else if (this.preferenceState[product.id].isLiked === false) {
         this.removeCollection(product.id);
       }
     }

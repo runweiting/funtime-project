@@ -6,35 +6,45 @@ const productsStore = userProductsStore();
 export default defineStore({
   id: "userLikesStore",
   state: () => ({
-    likes: 0,
+    // 商品收藏列表
     tempCollection: [],
-    // 是否已初始化收藏清單
+    // 初始化商品狀態列表
     isInitialized: false,
-    // 收藏清單
-    isLikedList: {},
+    // 商品狀態列表
+    preferenceState: {},
   }),
   actions: {
-    async initIsLikedList() {
+    async initPreferenceState() {
       // 如果已初始化過，則不執行
       if (this.isInitialized) return;
       // 如果未初始化過，則執行初始化邏輯
       productsStore.getProducts();
       const { productList } = productsStore;
-      const list = productList.reduce((acc, product) => {
-        acc[product.id] = { isLiked: false };
-        return acc;
-      }, {});
-      this.isLikedList = list;
-      // 設置為已初始化
+      let list = localStorage.getItem("preferenceState");
+      if (!list) {
+        list = productList.reduce((acc, product) => {
+          acc[product.id] = { isLiked: false };
+          return acc;
+        }, {});
+      } else {
+        list = JSON.parse(list);
+      }
+      this.preferenceState = list;
       this.isInitialized = true;
     },
     addToCollection(product) {
-      const like = this.likes + 1;
       this.tempCollection.push({
-        likes: like,
         product,
       });
       showSuccessToast("已加入收藏清單");
+      localStorage.setItem(
+        "preferenceState",
+        JSON.stringify(this.preferenceState),
+      );
+      localStorage.setItem(
+        "tempCollection",
+        JSON.stringify(this.tempCollection),
+      );
     },
     removeCollection(productId) {
       const index = this.tempCollection.findIndex(
@@ -44,6 +54,14 @@ export default defineStore({
         this.tempCollection.splice(index, 1);
         showSuccessToast("已移除收藏清單");
       }
+      localStorage.setItem(
+        "preferenceState",
+        JSON.stringify(this.preferenceState),
+      );
+      localStorage.setItem(
+        "tempCollection",
+        JSON.stringify(this.tempCollection),
+      );
     },
   },
 });

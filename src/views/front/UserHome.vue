@@ -186,7 +186,7 @@
           <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer;">
             <RouterLink :to="`/product/${product.id}/content`" class="stretched-link" />
             <button @click="handleCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
-              <i v-if="isLikedList[product.id]?.isLiked === false" class="bi fs-5 bi-heart text-white"></i>
+              <i v-if="preferenceState[product.id]?.isLiked === false" class="bi fs-5 bi-heart text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
             <div class="rounded-circle bg-black position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm" style="top: 16px;left: 16px;width: 65px; height: 65px; transform: rotate(-10deg);">
@@ -255,22 +255,22 @@ export default {
   async mounted() {
     await this.getProducts();
     this.calculateQty();
-    this.initIsLikedList();
+    this.initPreferenceState();
   },
   computed: {
     ...mapState(userProductsStore, ['productList']),
     ...mapState(userOrderStore, ['productQtyMap']),
-    ...mapState(userLikesStore, ['isLikedList'])
+    ...mapState(userLikesStore, ['preferenceState'])
   },
   methods: {
     ...mapActions(userProductsStore, ['getProducts']),
     ...mapActions(userOrderStore, ['calculateQty']),
-    ...mapActions(userLikesStore, ['initIsLikedList', 'addToCollection', 'removeCollection']),
+    ...mapActions(userLikesStore, ['initPreferenceState', 'addToCollection', 'removeCollection']),
     handleCollection(product) {
-      this.isLikedList[product.id].isLiked = !this.isLikedList[product.id].isLiked;
-      if (this.isLikedList[product.id].isLiked === true) {
+      this.preferenceState[product.id].isLiked = !this.preferenceState[product.id].isLiked;
+      if (this.preferenceState[product.id].isLiked === true) {
         this.addToCollection(product);
-      } else if (this.isLikedList[product.id].isLiked === false) {
+      } else if (this.preferenceState[product.id].isLiked === false) {
         this.removeCollection(product.id);
       }
     }

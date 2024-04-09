@@ -1,4 +1,5 @@
 <template>
+  tempCollection: {{ tempCollection }}
   <div v-if="tempCollection.length === 0" class="m-3 m-lg-6">
     <div class="container bg-primary rounded-5 p-5 p-md-10" data-aos="fade-up">
       <div class="row">
@@ -40,11 +41,11 @@
         </div>
       </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gy-5 position-relative">
-        <div v-for="item in tempCollection" :key="item.product.id" class="col mb-md-0 px-md-3">
+        <div v-for="(item, index) in tempCollection" :key="index" class="col mb-md-0 px-md-3">
           <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer">
             <RouterLink :to="`/product/${item.product.id}/content`" class="stretched-link" />
             <button @click="handleCollection(item.product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
-              <i v-if="isLikedList[product.id]?.isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
+              <i v-if="preferenceState[item.product.id]?.isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
             <img :src="item.product.imageUrl" :alt="item.product.short_title + '商品主圖'" class="card-img-top object-fit-cover img-fluid" style="min-height: 200px;"/>
@@ -82,35 +83,30 @@ import userLikesStore from "@/stores/front/userLikesStore";
 export default {
   data() {
     return {
-      // 指定商品
-      product: {},
-      tempIsLikedList: {}
-    };
-  },
-  created() {
-    this.tempIsLikedList = { ...this.isLikedList };
-    this.calculateQty();
-  },
-  watch: {
-    isLikedList: {
-      deep: true,
-      handler(updateIsLikedList) {
-        this.tempIsLikedList = updateIsLikedList
-      }
+      tempCollection: []
     }
+  },
+  mounted() {
+    this.calculateQty();
+    this.initPreferenceState();
+    this.getTempCollection();
   },
   computed: {
     ...mapState(userOrderStore, ['productQtyMap']),
-    ...mapState(userLikesStore, ['tempCollection', 'isLikedList'])
+    ...mapState(userLikesStore, ['preferenceState'])
   },
   methods: {
     ...mapActions(userOrderStore, ['calculateQty']),
-    ...mapActions(userLikesStore, ['addToCollection', 'removeCollection']),
+    ...mapActions(userLikesStore, ['initPreferenceState', 'addToCollection', 'removeCollection']),
+    getTempCollection() {
+      const collection = JSON.parse(localStorage.getItem("tempCollection"));
+      this.tempCollection = collection;
+    },
     handleCollection(product) {
-      this.isLikedList[product.id].isLiked = !this.isLikedList[product.id].isLiked;
-      if (this.isLikedList[product.id].isLiked === true) {
+      this.preferenceState[product.id].isLiked = !this.preferenceState[product.id].isLiked;
+      if (this.preferenceState[product.id].isLiked === true) {
         this.addToCollection(product);
-      } else if (this.isLikedList[product.id].isLiked === false) {
+      } else if (this.preferenceState[product.id].isLiked === false) {
         this.removeCollection(product.id);
       }
     }
