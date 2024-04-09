@@ -13,8 +13,6 @@ const userProductsStore = defineStore("userProductsStore", {
     pagination: {},
     // 指定商品
     product: {},
-    // 收藏清單
-    isLikedList: {},
   }),
   actions: {
     // GET 商品列表
@@ -34,7 +32,7 @@ const userProductsStore = defineStore("userProductsStore", {
         this.pagination = pagination;
         // 異步操作完成後，調用排序邏輯
         this.sortProducts();
-        this.initIsLikedList();
+        // this.initIsLikedList();
       } catch (err) {
         showErrorToast(err.response);
       } finally {
@@ -44,14 +42,6 @@ const userProductsStore = defineStore("userProductsStore", {
     // sort 商品列表
     sortProducts() {
       this.productList = this.productList.sort((a, b) => a.price - b.price);
-    },
-    //
-    initIsLikedList() {
-      const list = this.productList.reduce((acc, product) => {
-        acc[product.id] = { isLiked: false };
-        return acc;
-      }, {});
-      this.isLikedList = list;
     },
     // GET 指定商品
     async getProduct(targetId) {

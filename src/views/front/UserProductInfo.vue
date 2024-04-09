@@ -20,7 +20,11 @@
       </div>
       <div class="row row-cols-1 py-2 p-xl-4 row-cols-xl-2">
         <div class="col-xl-7 px-xl-4">
-          <div class="h-100 d-flex flex-column justify-content-between gap-4">
+          <div class="h-100 d-flex flex-column justify-content-between gap-4 position-relative">
+            <button @click="handleCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
+              <i v-if="isLikedList[product.id]?.isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
+              <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
+            </button>
             <img :src="product.imageUrl" class="card-img-top object-fit-cover img-fluid rounded" alt="product-image" style="max-height: 400px">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between gap-2 mb-2">
               <div class="d-flex gap-2">
@@ -91,9 +95,6 @@
               </button>
               <button type="button" class="btn p-0 hvr-pop text-primary">
                 <i class="bi bi-share-fill fs-4"></i>
-              </button>
-              <button type="button" class="btn p-0 hvr-pop text-primary">
-                <i class="bi bi-heart-fill fs-4"></i>
               </button>
             </div>
           </div>
@@ -198,6 +199,7 @@ import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/front/userProductsStore';
 import userCartStore from '@/stores/front/userCartStore';
 import userOrderStore from '@/stores/front/userOrderStore';
+import userLikesStore from "@/stores/front/userLikesStore";
 import showErrorToast from '@/utils/showErrorToast';
 
 export default {
@@ -210,13 +212,14 @@ export default {
   computed: {
     ...mapState(userProductsStore, ['product']),
     ...mapState(userOrderStore, ['productQtyMap']),
-    ...mapState(userCartStore, ['cartList'])
-
+    ...mapState(userCartStore, ['cartList']),
+    ...mapState(userLikesStore, ['isLikedList'])
   },
   methods: {
     ...mapActions(userProductsStore, ['getProduct']),
     ...mapActions(userOrderStore, ['getOrders', 'calculateQty']),
     ...mapActions(userCartStore, ['addToCart', 'getCart']),
+    ...mapActions(userLikesStore, ['addToCollection', 'removeCollection']),
     async handleAddToCart(productId, cartQty) {
       try {
         this.addToCart(productId, cartQty);
@@ -226,6 +229,14 @@ export default {
         showErrorToast(err);
       };
     },
+    handleCollection(product) {
+      this.isLikedList[product.id].isLiked = !this.isLikedList[product.id].isLiked;
+      if (this.isLikedList[product.id].isLiked === true) {
+        this.addToCollection(product);
+      } else if (this.isLikedList[product.id].isLiked === false) {
+        this.removeCollection(product.id);
+      }
+    }
   },
 }
 </script>

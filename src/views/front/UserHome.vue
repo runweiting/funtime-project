@@ -169,10 +169,10 @@
   </div>
   <!-- 最新企劃 -->
   <div class="m-3 m-lg-6">
-    <div class="container rounded-5 border border-secondary border-10 p-10 p-md-20" data-aos="fade-up">
+    <div class="container rounded-5 border border-secondary border-10 px-8 py-10 px-md-10 py-md-12" data-aos="fade-up">
       <!-- 最新企劃 -->
       <div class="row my-3 my-lg-6">
-        <div class="col px-0 px-md-3">
+        <div class="col px-md-3">
           <div class="d-flex justify-content-between">
             <div class="d-flex align-items-baseline gap-2">
               <h2 class="d-none d-sm-block fw-bold mb-0">What's news?</h2>
@@ -183,15 +183,15 @@
           </div>
         </div>
       </div>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-6">
-        <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-0 px-md-3">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-5">
+        <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-md-3">
           <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer;">
             <RouterLink :to="`/product/${product.id}/content`" class="stretched-link" />
-            <button @click="handleAddToCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes">
-              <i v-if="isLikedList[product.id].isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
+            <button @click="handleCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
+              <i v-if="isLikedList[product.id]?.isLiked === false" class="bi fs-5 bi-heart text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
-            <div class="rounded-circle bg-black position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm hvr-pop" style="top: 16px;left: 16px;width: 65px; height: 65px; transform: rotate(-10deg);">
+            <div class="rounded-circle bg-black position-absolute d-flex flex-column justify-content-center align-items-center gap-0 z-index-9 shadow-sm" style="top: 16px;left: 16px;width: 65px; height: 65px; transform: rotate(-10deg);">
               <span class="text-white fw-bold fs-6" >試玩</span>
               <small class="text-white" >報名中</small>
             </div>
@@ -264,20 +264,21 @@ export default {
     FeedbackSwiper,
     FaqAccordion,
   },
-  mounted() {
-    this.getProducts();
+  async mounted() {
+    await this.getProducts();
     this.calculateQty();
+    this.initIsLikedList();
   },
   computed: {
-    ...mapState(userProductsStore, ['productList', 'isLikedList']),
+    ...mapState(userProductsStore, ['productList']),
     ...mapState(userOrderStore, ['productQtyMap']),
-    ...mapState(userLikesStore, ['tempCollection'])
+    ...mapState(userLikesStore, ['isLikedList'])
   },
   methods: {
     ...mapActions(userProductsStore, ['getProducts']),
     ...mapActions(userOrderStore, ['calculateQty']),
-    ...mapActions(userLikesStore, ['addToCollection', 'removeCollection']),
-    handleAddToCollection(product) {
+    ...mapActions(userLikesStore, ['initIsLikedList', 'addToCollection', 'removeCollection']),
+    handleCollection(product) {
       this.isLikedList[product.id].isLiked = !this.isLikedList[product.id].isLiked;
       if (this.isLikedList[product.id].isLiked === true) {
         this.addToCollection(product);

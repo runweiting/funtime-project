@@ -225,14 +225,6 @@ const router = createRouter({
     if (savedPosition) {
       return savedPosition;
     }
-    // 如果目標路由是 product-content || product-faq || product-message，保持當前位置不變
-    if (
-      to.name === "product-content" ||
-      to.name === "product-faq" ||
-      to.name === "product-message"
-    ) {
-      return false;
-    }
     // 如果目標路由有 hash，將頁面滾動到 hash 所在的位置
     if (to.hash) {
       return { selector: to.hash };
