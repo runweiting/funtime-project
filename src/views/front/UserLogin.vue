@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
-import isUserLoggedIn from '@/utils/isUserLoggedIn';
+import isUserLoggedIn from "@/utils/isUserLoggedIn";
 import showSuccessToast from "@/utils/showSuccessToast";
+import showErrorToast from "@/utils/showErrorToast"
 
 const { VITE_APP_URL } = import.meta.env;
 export default {
@@ -57,54 +57,31 @@ export default {
     };
   },
   methods: {
-    deleteOldToken() {
-      document.cookie = "myToken=; expires=; path=/;";
-    },
     login() {
-      this.deleteOldToken();
       if (isUserLoggedIn()) {
-        this.goToAdmin();
+        this.$router.push({ name: 'admin/products' });
+        return
+      };
+      const { username, password } = this.user;
+      if (!username || !password) {
+        showErrorToast('請填入登入信箱和密碼');
         return;
-      }
+      };
       const url = `${VITE_APP_URL}/admin/signin`;
       this.axios
         .post(url, this.user)
         .then((res) => {
           const { expired, token } = res.data;
           document.cookie = `myToken=${token}; expires=${new Date(expired)}`;
-          showSuccessToast(res.data.message)
-            .then(() => {
-              this.goToAdmin();
-            });
+          showSuccessToast(res.data.message);
+          this.$router.push({ name: 'admin/products' });
           this.user = {};
         })
         .catch((err) => {
           if (err.response && err.response.status === 400) {
-            Swal.fire({
-              title: '請輸入正確的帳號和密碼',
-              icon: 'error',
-              confirmButtonText: 'OK',
-            });
-          } else if (this.user.username === '' || this.user.password === '') {
-            Swal.fire({
-              title: '請輸入登入信箱和密碼',
-              icon: 'error',
-              confirmButtonText: 'OK',
-            });
-          };
-        });
-    },
-    goToAdmin() {
-      if (isUserLoggedIn()) {
-        this.$router.push({ name: 'admin' });
-      } else {
-        Swal.fire({
-          title: '請先登入',
-          icon: 'error',
-          confirmButtonText: 'OK',
-        });
-        this.$router.push({ name: 'login' });
-      }
+            showErrorToast('請輸入正確的帳號和密碼');
+          }
+        })
     },
   },
 };

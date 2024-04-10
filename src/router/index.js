@@ -168,7 +168,6 @@ const baseRoutes = [
 const adminRoutes = [
   {
     path: "/admin",
-    name: "admin",
     redirect: "admin/products",
     component: () => import("@/views/admin/AdminNavbar.vue"),
     meta: {
