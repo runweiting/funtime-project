@@ -39,8 +39,8 @@
                           <option value="false">未啟用</option>
                         </VField>
                       </div>
-                      <i v-if="tempCoupon.is_enabled" class="bi bi-check-circle-fill text-success" style="scale: 150%;"></i>
-                      <i v-else class="bi bi-x-circle-fill text-danger" style="scale: 150%;"></i>
+                      <i v-if="tempCoupon.is_enabled === 'true'" class="text-success bi bi-check-circle-fill" style="transform: scale(1.5);"></i>
+                      <i v-if="tempCoupon.is_enabled === 'false'" class="text-danger bi bi-x-circle-fill" style="transform: scale(1.5);"></i>
                     </div>
                   </VForm>
                 </div>
@@ -49,6 +49,7 @@
             <div class="row">
               <div class="col-md-6">
                 <h5>優惠卷資訊</h5>
+                {{ tempCoupon }}
                 <!-- 傳入 errors 錯誤訊息，使 <VField> 和 <ErrorMessage> 可讀取 errors -->
                 <VForm v-slot="{ errors }" ref="couponForm" @submit="onSubmit">
                   <div class="row mb-2">
@@ -152,13 +153,9 @@ export default {
     };
   },
   watch: {
-    // watch 監視 currentCoupon 屬性，當其值發生變化時，觸發 handler 方法
     currentCoupon: {
-      // 表示要深度監視 currentCoupon，當其內部屬性發生變化時，觸發 handler 方法
       deep: true,
-      // handler 方法接收一個參數 updateCoupon (代表 currentOrder 的新值)
       handler(updateCoupon) {
-        // 將 currentCoupon 的新值賦值 tempCoupon，這樣可以保持 tempCoupon 與 currentOrder 同步更新
         this.tempCoupon = updateCoupon;
       },
     },
@@ -180,12 +177,21 @@ export default {
       // 啟用日不可大於截止日
       if (startDate > dueDate) {
         showErrorToast('啟用日不可大於截止日');
-      }
+      };
       this.startDateTimestamp = startDate;
       this.dueDateTimestamp = dueDate;
     },
     // POST or PUT 新增優惠卷
     updateCoupon() {
+      const { percent } = this.tempCoupon;
+      if (percent <= 0) {
+        showErrorToast('折扣不可小於或等於0');
+        return
+      };
+      if (!this.startDateTimestamp || !this.dueDateTimestamp) {
+        showErrorToast('啟用、截止日期為必填');
+        return
+      };
       // -> 新增優惠卷
       let url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/coupon`;
       let method = 'post';
