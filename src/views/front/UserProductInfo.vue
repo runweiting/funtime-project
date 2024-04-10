@@ -21,7 +21,7 @@
       <div class="row row-cols-1 py-2 p-xl-4 row-cols-xl-2">
         <div class="col-xl-7 px-xl-4">
           <div class="h-100 d-flex flex-column justify-content-between gap-4 position-relative">
-            <button @click="handleCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
+            <button @click="handleCollection(product, product.id)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
               <i v-if="preferenceState[product.id]?.isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
@@ -213,14 +213,13 @@ export default {
         showErrorToast(err);
       };
     },
-    handleCollection(product) {
-      this.preferenceState[product.id].isLiked = !this.preferenceState[product.id].isLiked;
-      if (this.preferenceState[product.id].isLiked === true) {
+    handleCollection(product, productId) {
+      if (this.preferenceState[productId].isLiked === false) {
         this.addToCollection(product);
-      } else if (this.preferenceState[product.id].isLiked === false) {
-        this.removeCollection(product.id);
-      }
-    }
+      } else if (this.preferenceState[productId].isLiked === true) {
+        this.removeCollection(productId);
+      };
+    },
   },
 }
 </script>

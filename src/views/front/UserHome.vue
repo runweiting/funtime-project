@@ -185,7 +185,7 @@
         <div v-for="product in productList" :key="product.id" class="col mb-5 mb-md-0 px-md-3">
           <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer;">
             <RouterLink :to="`/product/${product.id}/content`" class="stretched-link" />
-            <button @click="handleCollection(product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
+            <button @click="handleCollection(product, product.id)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
               <i v-if="preferenceState[product.id]?.isLiked === false" class="bi fs-5 bi-heart text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
@@ -266,14 +266,13 @@ export default {
     ...mapActions(userProductsStore, ['getProducts']),
     ...mapActions(userOrderStore, ['calculateQty']),
     ...mapActions(userLikesStore, ['initPreferenceState', 'addToCollection', 'removeCollection']),
-    handleCollection(product) {
-      this.preferenceState[product.id].isLiked = !this.preferenceState[product.id].isLiked;
-      if (this.preferenceState[product.id].isLiked === true) {
+    handleCollection(product, productId) {
+      if (this.preferenceState[productId].isLiked === false) {
         this.addToCollection(product);
-      } else if (this.preferenceState[product.id].isLiked === false) {
-        this.removeCollection(product.id);
-      }
-    }
+      } else if (this.preferenceState[productId].isLiked === true) {
+        this.removeCollection(productId);
+      };
+    },
   }
 }
 </script>

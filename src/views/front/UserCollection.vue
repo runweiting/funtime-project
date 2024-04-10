@@ -1,5 +1,4 @@
 <template>
-  tempCollection: {{ tempCollection }}
   <div v-if="tempCollection.length === 0" class="m-3 m-lg-6">
     <div class="container bg-primary rounded-5 p-5 p-md-10" data-aos="fade-up">
       <div class="row">
@@ -44,7 +43,7 @@
         <div v-for="(item, index) in tempCollection" :key="index" class="col mb-md-0 px-md-3">
           <div class="card h-100 shadow position-relative hvr-grow" style="cursor: pointer">
             <RouterLink :to="`/product/${item.product.id}/content`" class="stretched-link" />
-            <button @click="handleCollection(item.product)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
+            <button @click="handleCollection(item.product, item.product.id)" type="button" class="btn btn-white position-absolute p-0 btn-likes hvr-pop">
               <i v-if="preferenceState[item.product.id]?.isLiked === false" class="bi fs-5 bi-heart-fill text-white"></i>
               <i v-else class="bi fs-5 bi-heart-fill text-danger"></i>
             </button>
@@ -102,14 +101,15 @@ export default {
       const collection = JSON.parse(localStorage.getItem("tempCollection"));
       this.tempCollection = collection;
     },
-    handleCollection(product) {
-      this.preferenceState[product.id].isLiked = !this.preferenceState[product.id].isLiked;
-      if (this.preferenceState[product.id].isLiked === true) {
+    handleCollection(product, productId) {
+      if (this.preferenceState[productId].isLiked === false) {
         this.addToCollection(product);
-      } else if (this.preferenceState[product.id].isLiked === false) {
-        this.removeCollection(product.id);
-      }
-    }
+        this.getTempCollection();
+      } else if (this.preferenceState[productId].isLiked === true) {
+        this.removeCollection(productId);
+        this.getTempCollection();
+      };
+    },
   },
 };
 </script>

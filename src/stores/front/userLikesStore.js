@@ -8,16 +8,11 @@ export default defineStore({
   state: () => ({
     // 商品收藏列表
     tempCollection: [],
-    // 初始化商品狀態列表
-    isInitialized: false,
     // 商品狀態列表
     preferenceState: {},
   }),
   actions: {
     async initPreferenceState() {
-      // 如果已初始化過，則不執行
-      if (this.isInitialized) return;
-      // 如果未初始化過，則執行初始化邏輯
       productsStore.getProducts();
       const { productList } = productsStore;
       let list = localStorage.getItem("preferenceState");
@@ -30,12 +25,12 @@ export default defineStore({
         list = JSON.parse(list);
       }
       this.preferenceState = list;
-      this.isInitialized = true;
     },
     addToCollection(product) {
       this.tempCollection.push({
         product,
       });
+      this.preferenceState[product.id].isLiked = true;
       showSuccessToast("已加入收藏清單");
       localStorage.setItem(
         "preferenceState",
@@ -47,13 +42,12 @@ export default defineStore({
       );
     },
     removeCollection(productId) {
-      const index = this.tempCollection.findIndex(
-        (item) => item.product.id === productId,
+      const updateList = this.tempCollection.filter(
+        (item) => item.product.id !== productId,
       );
-      if (index !== -1) {
-        this.tempCollection.splice(index, 1);
-        showSuccessToast("已移除收藏清單");
-      }
+      this.tempCollection = updateList;
+      this.preferenceState[productId].isLiked = false;
+      showSuccessToast("已移除收藏清單");
       localStorage.setItem(
         "preferenceState",
         JSON.stringify(this.preferenceState),
