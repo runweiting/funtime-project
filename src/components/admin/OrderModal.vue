@@ -107,7 +107,7 @@
                         <td class="pe-0">
                           <div class="d-flex justify-content-between align-items-center">
                             <div class="input-group input-group-sm">
-                              <input v-model="item.qty" :disabled="item.coupon" @click="updateSubTotal" 
+                              <input v-model="item.qty" :disabled="item.coupon" @change="updateSubtotal(item.qty)" 
                               type="number" min="1"
                               class="form-control" 
                               />
@@ -222,7 +222,7 @@ export default {
       // 如果訂單中有優惠券
       this.subTotal = 0;
     } else {
-      this.updateSubTotal();
+      this.updateSubtotal();
     }
   },
   computed: {
@@ -235,12 +235,16 @@ export default {
       return { formattedDay, formattedDate }
     },
     // 重新計算訂單總價
-    updateSubTotal() {
-      let total = 0;
-      Object.values(this.tempOrder.products).forEach((product) => {
-        total += product.qty * product.product.price;
-      });
-      this.subTotal = total;
+    updateSubtotal(itemQty) {
+      if (itemQty < 1) {
+        showErrorToast('商品數量不可小於 1')
+      } else {
+        let total = 0;
+        Object.values(this.tempOrder.products).forEach((product) => {
+          total += product.qty * product.product.price;
+        });
+        this.subTotal = total;
+      }
     },
     // 關閉修改訂單
     cancelUpdateOrder() {

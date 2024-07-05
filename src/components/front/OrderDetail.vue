@@ -3,7 +3,10 @@
     <!-- 傳入 errors 錯誤訊息，使 <VField> 和 <ErrorMessage> 可讀取 errors -->
     <VForm v-slot="{ errors }" ref="formOrder" class="d-flex flex-column gap-3 h-100" @submit="onSubmit">
       <div>
-        <h3 class="fs-5">收件人</h3>
+        <div class="d-flex gap-1">
+          <h3 class="fs-6">收件人</h3>
+          <span class="text-danger">*</span>
+        </div>
         <div class="row">
           <div class="col">
             <div class="form-floating mb-3">
@@ -61,7 +64,7 @@
             <label for="country" class="form-label text-dark-gray">收件地點</label>
             <VField v-model="data.user.country"
             rules="required" :class="{ 'is-invalid': errors['地點'] }" as="select" name="地點" class="form-select text-dark-gray" aria-label="country">
-              <option value="" selected>請選擇</option>
+              <option value="">請選擇</option>
               <option value="台灣">台灣</option>
               <option value="國際">國際</option>
             </VField>
@@ -71,7 +74,7 @@
             <label for="city" class="form-label text-dark-gray">縣市</label>
             <VField v-model="data.user.city"
             rules="required" :class="{ 'is-invalid': errors['縣市'] }" as="select" name="縣市" class="form-select text-dark-gray" aria-label="city">
-              <option value="" selected>請選擇</option>
+              <option value="">請選擇</option>
               <option value="台北">台北</option>
               <option value="台中">台中</option>
               <option value="高雄">高雄</option>
@@ -82,7 +85,7 @@
             <label for="region" class="form-label text-dark-gray">鄉鎮市區</label>
             <VField v-model="data.user.region"
             rules="required" :class="{ 'is-invalid': errors['鄉鎮市區'] }" as="select" name="鄉鎮市區"  class="form-select text-dark-gray" aria-label="region">
-              <option value="" selected>請選擇</option>
+              <option value="">請選擇</option>
               <option value="北區">北區</option>
               <option value="中區">中區</option>
               <option value="南區">南區</option>
@@ -137,7 +140,7 @@
         <ErrorMessage name="funtime 服務條款" class="invalid-feedback" />
       </div>
       <div class="text-end mt-auto">
-        <button type="submit" class="btn btn-primary text-white">送出訂單</button>
+        <button :disabled="isDisabled" type="submit" class="btn btn-primary text-white btn-order">送出訂單</button>
       </div>
     </VForm>
   </div>
@@ -170,17 +173,23 @@ export default {
         message: '',
         agreement: false,
       },
+      // 將按鈕設為禁用
+      isDisabled: true
     };
   },
   watch: {
     'data.agreement': {
       deep: true,
-      handler(newValue) {
-        if (newValue === 'true') {
-          this.data.agreement = true;
-        }
+      handler() {
+        this.validateForm();
       },
-    }
+    },
+    'data.user': {
+      deep: true,
+      handler() {
+        this.validateForm();
+      },
+    },
   },
   computed: {
     ...mapState(userProductsStore, ['product'])
@@ -195,6 +204,19 @@ export default {
       this.clearCoupon();
       this.$router.push({ name: "order-result", params: { id: this.product.id } })
     },
+    async validateForm() {
+      // 使用 VeeValidate 語法 validate() 確認表單驗證通過
+      const isValid = await this.$refs.formOrder?.validate();
+      // 表單未通過驗證或用戶未同意服務條款時，按鈕為禁用狀態
+      this.isDisabled = !isValid || !this.data.agreement;
+    },
   },
 };
 </script>
+
+<style scope>
+.btn-order:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+</style>

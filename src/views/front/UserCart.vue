@@ -70,7 +70,10 @@
           </div>
         </div>
         <div class="col-md-4 px-xl-4 gy-3 gy-md-0">
-          <div class="rounded-5 border border-5 border-light p-5">
+          <!-- 何时使用 @submit.prevent？
+            1. 防止页面刷新: 表单提交时不要刷新页面，而是通过 JavaScript 处理表单数据，那么你需要在 @submit 事件中使用 .prevent 修饰符。
+            2. 客户端验证: 在客户端验证表单时，在所有验证通过后再处理表单提交逻辑，这时也需要使用 .prevent 修饰符来阻止默认提交行为。 -->
+          <VForm v-slot="{ errors }" ref="formCart" @submit="onSubmit" class="rounded-5 border border-5 border-light p-5">
             <div class="d-flex flex-column gap-4">
               <div class="row align-items-center">
                 <div class="col">
@@ -86,10 +89,11 @@
                     <button :disabled="tempCartQty === 1" type="button" class="btn btn-outline-primary d-md-none d-lg-block" @click="tempCartQty--">
                       <i class="bi bi-dash"></i>                       
                     </button>
-                    <input v-model="tempCartQty" type="number" min="1" class="form-control" aria-label="cart-qty" aria-describedby="cart-qty">
+                    <VField v-model="tempCartQty" :rules="{ required: true, min_value: 1 }" :class="{ 'is-invalid': errors['預購數量'] }" type="number" min="1" name="預購數量" class="form-control" aria-label="cart-qty" aria-describedby="cart-qty" />
                     <button type="button" class="btn btn-outline-primary d-md-none d-lg-block" @click="tempCartQty++">
                       <i class="bi bi-plus"></i>
                     </button>
+                    <ErrorMessage name="預購數量" class="invalid-feedback" />
                   </div>
                 </div>
               </div>
@@ -100,10 +104,10 @@
             </div>
             <hr class="w-100 border-top my-4" style="border: 3px dotted #8C8C8E;">
             <div class="d-flex flex-md-column gap-2">
-              <button @click="handlePutCart(tempProductId, tempCartId, tempCartQty)" type="button" class="btn btn-primary w-100">確認預購</button>
+              <button type="submit" class="btn btn-primary w-100">確認預購</button>
               <button @click="handleDeleteCart" type="button" class="btn btn-outline-danger w-100">刪除預購</button>
             </div>
-          </div>
+          </VForm>
         </div>
       </div>
     </div>
@@ -111,6 +115,7 @@
 </template>
 
 <script>
+import { ErrorMessage } from 'vee-validate';
 import { mapState, mapActions } from 'pinia';
 import userProductsStore from '@/stores/front/userProductsStore';
 import userCartStore from '@/stores/front/userCartStore';
@@ -119,6 +124,7 @@ import OrderHeader from '@/components/front/OrderHeader.vue';
 
 export default {
   components: {
+    ErrorMessage,
     OrderHeader
   },
   data() {
@@ -145,13 +151,13 @@ export default {
     ...mapActions(userProductsStore, ['getProduct']),
     ...mapActions(userCartStore, ['getCart', 'putCart', 'deleteCart', 'deleteCarts']),
     ...mapActions(userOrderStore, ['calculateQty']),
-    handlePutCart(productId, cartId, cartQty) {
-      this.putCart(productId, this.tempCartId, cartQty);
-      this.$router.push({ name: "order", params: { id: productId, units: cartQty } });
+    onSubmit() {
+      this.putCart(this.tempProductId, this.tempCartId, this.tempCartQty);
+      this.$router.push({ name: "order", params: { id: this.tempProductId, units: this.tempCartQty } });
     },
     handleDeleteCart() {
       this.deleteCart(this.tempCartId);
-      this.$router.push({ name: "home" });
+      this.$router.push({ name: "products" });
     },
   },
   unmounted() {
@@ -162,3 +168,17 @@ export default {
   },
 }
 </script>
+<style>
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+}
+
+</style>

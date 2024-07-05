@@ -149,7 +149,10 @@
             </div>
             <!-- 發票類型 -->
             <div class="rounded-5 border border-5 border-light p-5 mb-3">
-              <h3 class="fs-5">發票類型</h3>
+              <div class="d-flex gap-1">
+                <h3 class="fs-6">發票類型</h3>
+                <span class="text-danger">*</span>
+              </div>
               <div class="row row-cols-1 gy-2">
                 <!-- 個人發票 -->
                 <div class="col">
@@ -207,7 +210,10 @@
             </div>
             <!-- 付款方式 -->
             <div class="rounded-5 border border-5 border-light p-5">
-              <h3 class="fs-5">付款方式</h3>
+              <div class="d-flex gap-1">
+                <h3 class="fs-6">付款方式</h3>
+                <span class="text-danger">*</span>
+              </div>
               <div class="row row-cols-1 gy-2 mb-3">
                 <div class="col">
                   <div class="rounded-5 border border-light border-3 p-4">
@@ -295,7 +301,7 @@
                 </div>
               </div>
               <div class="text-end">
-                <button type="submit" class="btn btn-primary text-white">確認付款</button>
+                <button :disabled="isDisabled"  type="submit" class="btn btn-primary text-white btn-payment">確認付款</button>
               </div>
             </div>
           </VForm>
@@ -334,7 +340,23 @@ export default {
       expiryDate_year: '',
       creditCard_cvv: '',
       tempOrderId: '',
+      // 將按鈕設為禁用
+      isDisabled: true
     }
+  },
+  watch: {
+    'selectedInvoiceType': {
+      deep: true,
+      handler() {
+        this.validateForm();
+      },
+    },
+    'selectedPaymentType': {
+      deep: true,
+      handler() {
+        this.validateForm();
+      },
+    },
   },
   mounted() {
     const { id } = this.$route.params;
@@ -371,6 +393,19 @@ export default {
       this.$refs.formPayment.resetForm();
       this.$router.push({ name: "payment-result", params: { id: this.tempProductId } })
     },
+    async validateForm() {
+      // 使用 VeeValidate 語法 validate() 確認表單驗證通過
+      const isValid = await this.$refs.formPayment?.validate();
+      // 表單未通過驗證、或用戶未填寫發票類型、或用戶未填寫付款方式時，按鈕為禁用狀態
+      this.isDisabled = !isValid || !this.selectedInvoiceType || !this.selectedPaymentType;
+    },
   }
 }
 </script>
+
+<style scope>
+.btn-payment:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+</style>

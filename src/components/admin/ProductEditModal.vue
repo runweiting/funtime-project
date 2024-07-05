@@ -121,8 +121,8 @@
                 <div class="row">
                   <div class="col">
                     <label for="category" class="form-label">分類</label>
-                    <select id="category" v-model="selectedProduct.category" class="form-select" aria-label="category" name="category">
-                      <option value="" disabled selected hidden>請輸入分類</option>
+                    <select v-model="selectedProduct.category" class="form-select" aria-label="category" name="category">
+                      <option value="">請選擇</option>
                       <option value="地圖">地圖</option>
                       <option value="卡牌">卡牌</option>
                       <option value="棋盤">棋盤</option>
@@ -326,9 +326,10 @@ export default {
         imagesUrl: [],
         tags: [],
         features: [],
+        category: "",
         packages: [],
         contents: [],
-        notes: []
+        notes: [],
       },
       newPrice: 0,
       newTag: '',
@@ -351,8 +352,10 @@ export default {
     this.selectedProduct = {
       ...this.tempProduct,
     };
-    // 以顯示 "請輸入分類"
-    this.selectedProduct.category = '';
+    // 以顯示 "請輸入"
+    if (!this.selectedProduct.category) {
+      this.selectedProduct.category = '';
+    }
   },
   computed: {
     ...mapState(adminProductsStore, ['isEditModalOpen']),
@@ -362,7 +365,11 @@ export default {
       deep: true,
       handler(updateTempProduct) {
         this.selectedProduct = updateTempProduct;
-      }
+        // 確保 category 為空字符串，以顯示 "請選擇"
+        if (!this.selectedProduct.category) {
+          this.selectedProduct.category = '';
+        }
+      },
     },
     isEditModalOpen: {
       // 傳進來 true，更新成功後 false

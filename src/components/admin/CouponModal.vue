@@ -49,7 +49,6 @@
             <div class="row">
               <div class="col-md-6">
                 <h5>優惠卷資訊</h5>
-                {{ tempCoupon }}
                 <!-- 傳入 errors 錯誤訊息，使 <VField> 和 <ErrorMessage> 可讀取 errors -->
                 <VForm v-slot="{ errors }" ref="couponForm" @submit="onSubmit">
                   <div class="row mb-2">
